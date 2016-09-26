@@ -25,7 +25,9 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-//    private Manufacturer manufacturer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "manufacturer_id")
+    private Manufacturer manufacturer;
 
 //    private Picture image;
 
