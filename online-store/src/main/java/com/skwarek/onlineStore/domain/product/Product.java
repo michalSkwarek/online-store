@@ -21,8 +21,10 @@ public class Product {
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
-//    private Category category;
-//
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 //    private Manufacturer manufacturer;
 
 //    private Picture image;
