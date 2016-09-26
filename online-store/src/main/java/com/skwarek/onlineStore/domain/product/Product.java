@@ -33,7 +33,6 @@ public class Product {
 //
 //    private Boolean availability;
 
-
     public Product() { }
 
     public Product(String model, BigDecimal unitPrice) {

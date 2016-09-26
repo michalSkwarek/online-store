@@ -8,4 +8,5 @@ import com.skwarek.onlineStore.domain.product.Product;
  */
 public interface ProductDao extends GenericDao<Product, Long> {
 
+    boolean removeProduct(Long id);
 }
