@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.domain.product.specifications;
 
+import com.skwarek.onlineStore.domain.product.Product;
 import com.skwarek.onlineStore.domain.product.specifications.modules.*;
 
 import javax.persistence.*;
@@ -34,8 +35,10 @@ public class ProductSpecifications {
     @Embedded
     private Weight weight;
 
-    public ProductSpecifications() {
-    }
+    @OneToOne(mappedBy = "productSpecifications", cascade = CascadeType.ALL)
+    private Product product;
+
+    public ProductSpecifications() { }
 
     public ProductSpecifications(Display display, Battery battery, PowerSupply powerSupply, OS os, Weight weight) {
         this.display = display;
@@ -91,6 +94,14 @@ public class ProductSpecifications {
 
     public void setWeight(Weight weight) {
         this.weight = weight;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
 
