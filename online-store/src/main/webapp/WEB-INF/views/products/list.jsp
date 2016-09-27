@@ -11,7 +11,11 @@
             <td>ID</td>
             <td>MODEL</td>
             <td>UNIT_PRICE</td>
-
+            <td>CATEGORY_ID</td>
+            <td>NAME</td>
+            <td>MANUFACTURER_ID</td>
+            <td>BRAND</td>
+            <td>WEBSITE</td>
             <td>UPDATE</td>
             <td>DELETE</td>
         </tr>
@@ -20,7 +24,11 @@
                 <td>${product.id}</td>
                 <td>${product.model}</td>
                 <td>${product.unitPrice}</td>
-
+                <td>${product.category.id}</td>
+                <td>${product.category.name}</td>
+                <td>${product.manufacturer.id}</td>
+                <td>${product.manufacturer.brand}</td>
+                <td>${product.manufacturer.website}</td>
                 <td><a href="/products/edit/${product.id}">Edit</a></td>
                 <td><a href="/products/delete/${product.id}">Delete</a></td>
             </tr>

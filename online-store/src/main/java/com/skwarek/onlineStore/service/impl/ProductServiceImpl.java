@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Michal on 26.09.2016.
  */
@@ -22,5 +24,29 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean removeProduct(Long id) {
         return productDao.removeProduct(id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List getProductsByCategory(String category) {
+        return productDao.getProductsByCategory(category);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List getProductsByManufacturer(String manufacturer) {
+        return productDao.getProductsByManufacturer(manufacturer);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List getSortedProductsOrderByUnitPriceAscending() {
+        return productDao.getSortedProductsOrderByUnitPriceAscending();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List getSortedProductsOrderByUnitPriceDescending() {
+        return productDao.getSortedProductsOrderByUnitPriceDescending();
     }
 }

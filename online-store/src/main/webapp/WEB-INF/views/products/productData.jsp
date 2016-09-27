@@ -8,7 +8,7 @@
 <body>
     <h1>Product data</h1>
 
-    <form:form method="post"  modelAttribute="product">
+    <form:form method="post" modelAttribute="product">
 
         <ul>
             <li>
@@ -19,6 +19,22 @@
             <li>
                 <label for="unitPrice">Unit price: </label>
                 <form:input path="unitPrice" id="unitPrice"/>
+            </li>
+
+            <li>
+                <label for="category-select">Category: </label>
+                <form:select path="category" id="category-select">
+                    <form:option value="${product.category}"> -- select -- </form:option>
+                    <form:options items="${categories}" itemLabel="name" itemValue="id"/>
+                </form:select>
+            </li>
+
+            <li>
+                <label for="manufacturer-select">Manufacturer: </label>
+                <form:select path="manufacturer" id="manufacturer-select">
+                    <form:option value="${product.manufacturer}"> -- select -- </form:option>
+                    <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
+                </form:select>
             </li>
 
             <li>

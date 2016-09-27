@@ -54,7 +54,7 @@ public class ManufacturerController {
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Manufacturer manufacturer) {
 
-        manufacturerService.save(manufacturer);
+        manufacturerService.update(manufacturer);
         return "redirect:/manufacturers/list";
     }
 

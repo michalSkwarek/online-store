@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.domain.product;
 
+import com.skwarek.onlineStore.domain.product.specifications.ProductSpecifications;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -31,7 +33,9 @@ public class Product {
 
 //    private Picture image;
 
-//    private ProductSpecifications productSpecifications;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "specifications_id")
+    private ProductSpecifications productSpecifications;
 
 //    private Long unitInMagazine;
 //
@@ -39,9 +43,11 @@ public class Product {
 
     public Product() { }
 
-    public Product(String model, BigDecimal unitPrice) {
+    public Product(String model, BigDecimal unitPrice, Category category, Manufacturer manufacturer) {
         this.model = model;
         this.unitPrice = unitPrice;
+        this.category = category;
+        this.manufacturer = manufacturer;
     }
 
     public Long getId() {
@@ -66,5 +72,21 @@ public class Product {
 
     public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }
