@@ -3,9 +3,11 @@ package com.skwarek.onlineStore.web.controller;
 import com.skwarek.onlineStore.domain.product.Category;
 import com.skwarek.onlineStore.domain.product.Manufacturer;
 import com.skwarek.onlineStore.domain.product.Product;
+import com.skwarek.onlineStore.domain.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.service.CategoryService;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.ProductService;
+import com.skwarek.onlineStore.service.ProductSpecificationsService;
 import com.skwarek.onlineStore.web.editors.CategoryEditor;
 import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -32,6 +36,9 @@ public class ProductController {
     @Autowired
     private ManufacturerService manufacturerService;
 
+    @Autowired
+    private ProductSpecificationsService productSpecificationsService;
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
@@ -44,6 +51,22 @@ public class ProductController {
         List<Product> products = productService.getAll();
         model.addAttribute("products", products);
         return "products/list";
+    }
+
+    @RequestMapping(value = {"/list/price/ascending"}, method = RequestMethod.GET)
+    public String showSortedProductsOrderByUnitPriceAscending(Model model) {
+
+        List products = productService.getSortedProductsOrderByUnitPriceAscending();
+        model.addAttribute("products", products);
+        return "/products/list";
+    }
+
+    @RequestMapping(value = {"/list/price/descending"}, method = RequestMethod.GET)
+    public String showSortedProductsOrderByUnitPriceDescending(Model model) {
+
+        List products = productService.getSortedProductsOrderByUnitPriceDescending();
+        model.addAttribute("products", products);
+        return "/products/list";
     }
 
     @RequestMapping("/{id}")
@@ -67,6 +90,24 @@ public class ProductController {
     public String addProduct(Product product) {
 
         productService.save(product);
+        return "redirect:/products/list";
+    }
+
+    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
+    public String createSpec(@PathVariable Long id, Model model) {
+
+        model.addAttribute("spec", new ProductSpecifications());
+
+
+
+
+        return "products/addSpecifications";
+    }
+
+    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
+    public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
+
+        productSpecificationsService.save(specifications);
         return "redirect:/products/list";
     }
 
@@ -97,40 +138,40 @@ public class ProductController {
         return "redirect:/products/list";
     }
 
-    @RequestMapping(value = {"/list/manufacturer/{manufacturer}"}, method = RequestMethod.GET)
-    public String showProductsByManufacturer(@PathVariable String manufacturer, Model model) {
+    @RequestMapping(value = {"/category/select"}, method = RequestMethod.GET)
+    public String showProductsByCategoryGet(Model model) {
 
-        List products = productService.getProductsByManufacturer(manufacturer);
-        if (products == null || products.isEmpty()) {
-            // TODO: 25.09.2016 Create alert
-        }
-        model.addAttribute("products", products);
-        return "/products/list";
+        List<Category> categories = categoryService.getAll();
+        model.addAttribute("categories", categories);
+        return "/products/productsByCategory";
     }
 
-    @RequestMapping(value = {"/list/category/{category}"}, method = RequestMethod.GET)
-    public String showProductsByCategory(@PathVariable String category, Model model) {
+    @RequestMapping(value = {"/category/select"}, method = RequestMethod.POST)
+    public String showProductsByCategory(@RequestParam String category, Model model) {
 
         List products = productService.getProductsByCategory(category);
         if (products == null || products.isEmpty()) {
-            // TODO: 25.09.2016 Create alert
+            // TODO: 28.09.2016 Create alert
         }
         model.addAttribute("products", products);
         return "/products/list";
     }
 
-    @RequestMapping(value = {"/list/price/ascending"}, method = RequestMethod.GET)
-    public String showSortedProductsOrderByUnitPriceAscending(Model model) {
+    @RequestMapping(value = {"/manufacturer/select"}, method = RequestMethod.GET)
+    public String showProductsByManufacturerGet(Model model) {
 
-        List products = productService.getSortedProductsOrderByUnitPriceAscending();
-        model.addAttribute("products", products);
-        return "/products/list";
+        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        model.addAttribute("manufacturers", manufacturers);
+        return "/products/productsByManufacturer";
     }
 
-    @RequestMapping(value = {"/list/price/descending"}, method = RequestMethod.GET)
-    public String showSortedProductsOrderByUnitPriceDescending(Model model) {
+    @RequestMapping(value = {"/manufacturer/select"}, method = RequestMethod.POST)
+    public String showProductsByManufacturerPost(@RequestParam String manufacturer, Model model) {
 
-        List products = productService.getSortedProductsOrderByUnitPriceDescending();
+        List products = productService.getProductsByManufacturer(manufacturer);
+        if (products == null || products.isEmpty()) {
+            // TODO: 28.09.2016 Create alert
+        }
         model.addAttribute("products", products);
         return "/products/list";
     }

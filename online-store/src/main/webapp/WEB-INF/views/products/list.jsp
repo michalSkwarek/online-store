@@ -17,6 +17,7 @@
             <td>BRAND</td>
             <td>WEBSITE</td>
             <td><b>SPECIFICATIONS</b></td>
+            <td>ADD SPEC</td>
             <td>UPDATE</td>
             <td>DELETE</td>
         </tr>
@@ -31,6 +32,11 @@
                 <td>${product.manufacturer.brand}</td>
                 <td>${product.manufacturer.website}</td>
                 <td><a href="/products/${product.id}">Specifications</a></td>
+                <td>
+                    <c:if test="${product.productSpecifications == null}">
+                        <a href="<c:url value="/products/spec/${product.id}"/>">Add</a>
+                    </c:if>
+                </td>
                 <td><a href="/products/edit/${product.id}">Edit</a></td>
                 <td><a href="/products/delete/${product.id}">Delete</a></td>
             </tr>

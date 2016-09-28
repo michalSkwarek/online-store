@@ -8,7 +8,7 @@
 <body>
     <h1>Product data</h1>
 
-    <form:form method="post" commandName="product">
+    <form:form method="post" modelAttribute="product">
 
         <ul>
             <li>
@@ -36,12 +36,6 @@
                     <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
                 </form:select>
             </li>
-
-            <%--<li>--%>
-                <%--<label for="productSpecifications">Product specifications id: </label>--%>
-                <%--<form:input path="productSpecifications" id="productSpecifications"/>--%>
-            <%--</li>--%>
-
 
             <li>
                 <input type="submit" value="Save"/>

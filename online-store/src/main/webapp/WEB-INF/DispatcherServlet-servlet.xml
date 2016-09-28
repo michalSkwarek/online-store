@@ -13,7 +13,7 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven  />
     <context:component-scan base-package="com.skwarek.onlineStore" />
     <tx:annotation-driven transaction-manager="transactionManager" />
     <context:property-placeholder location="file:/Users/Michal/Desktop/database.txt" />
