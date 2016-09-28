@@ -43,6 +43,13 @@
         <property name="annotatedClasses" >
             <list>
 
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.Weight</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.OS</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.PowerSupply</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.Battery</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.Display</value>
+
+                <value>com.skwarek.onlineStore.domain.product.specifications.ProductSpecifications</value>
                 <value>com.skwarek.onlineStore.domain.product.Manufacturer</value>
                 <value>com.skwarek.onlineStore.domain.product.Category</value>
                 <value>com.skwarek.onlineStore.domain.product.Product</value>

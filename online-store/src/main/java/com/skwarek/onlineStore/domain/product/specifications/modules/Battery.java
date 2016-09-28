@@ -20,6 +20,8 @@ public class Battery {
     @Column(name = "type")
     private String type;
 
+    public Battery() { }
+
     public Battery(Integer capacity, String type) {
         this.capacity = capacity;
         this.type = type;

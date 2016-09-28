@@ -9,6 +9,8 @@ public class Dimensions {
     private Double width;
     private Double thickness;
 
+    public Dimensions() { }
+
     public Dimensions(Double height, Double width, Double thickness) {
         this.height = height;
         this.width = width;

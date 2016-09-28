@@ -27,6 +27,8 @@ public class Display {
     @Transient
     private Integer density;
 
+    public Display() { }
+
     public Display(Double diagonal, Integer widthInPixels, Integer heightInPixels) {
         this.diagonal = diagonal;
         this.widthInPixels = widthInPixels;

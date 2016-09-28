@@ -10,6 +10,8 @@ public class Camera {
     private Double resolutionMainCamera;
     private Double resolutionFrontCamera;
 
+    public Camera() { }
+
     public Camera(Double resolutionMainCamera, Double resolutionFrontCamera) {
         this.resolutionMainCamera = resolutionMainCamera;
         this.resolutionFrontCamera = resolutionFrontCamera;

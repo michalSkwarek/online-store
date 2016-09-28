@@ -9,6 +9,8 @@ public class Processor {
     private String model;
     private Integer RAM;
 
+    public Processor() { }
+
     public Processor(Double speed, String model, Integer RAM) {
         this.speed = speed;
         this.model = model;

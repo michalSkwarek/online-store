@@ -7,6 +7,8 @@ public class Storage {
 
     private Integer diskMemory;
 
+    public Storage() { }
+
     public Storage(Integer diskMemory) {
         this.diskMemory = diskMemory;
     }

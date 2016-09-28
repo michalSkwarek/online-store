@@ -12,6 +12,8 @@ public class Weight {
     @Column(name = "weight")
     private Integer weight;
 
+    public Weight() { }
+
     public Weight(Integer weight) {
         this.weight = weight;
     }

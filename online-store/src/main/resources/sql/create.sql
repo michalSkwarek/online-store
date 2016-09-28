@@ -33,6 +33,6 @@ INSERT INTO manufacturer (id, brand, website) VALUES (4, "Sony", "http://www.son
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (1, "iPhone 7 Plus", 4479, 1, 1, 1);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (2, "iPhone 7", 3879, 1, 1, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (3, "280 G1 MT", 1199, 3, 2, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (4, "Vostro 3900", 1799, 3, 2, 4);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (5, "PlayStation 4", 1279, 4, 3, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (3, "280 G1 MT", 1199, 2, 3, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (4, "Vostro 3900", 1799, 2, 3, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (5, "PlayStation 4", 1279, 3, 4, 5);

@@ -20,6 +20,8 @@ public class OS {
     @Column(name = "version")
     private String version;
 
+    public OS() { }
+
     public OS(String name, String version) {
         this.name = name;
         this.version = version;

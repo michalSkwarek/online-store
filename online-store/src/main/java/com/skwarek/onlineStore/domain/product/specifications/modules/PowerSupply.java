@@ -12,6 +12,8 @@ public class PowerSupply {
     @Column(name = "power_supply")
     private Integer power;
 
+    public PowerSupply() { }
+
     public PowerSupply(Integer power) {
         this.power = power;
     }

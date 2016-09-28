@@ -40,6 +40,12 @@ public class ProductController {
         return "products/list";
     }
 
+    @RequestMapping("/{id}")
+    public String getProductById(Model model, @PathVariable Long id) {
+        model.addAttribute("product", productService.getById(id));
+        return "products/specifications";
+    }
+
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String createProduct(Model model) {
 

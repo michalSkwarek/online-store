@@ -89,4 +89,12 @@ public class Product {
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
+
+    public ProductSpecifications getProductSpecifications() {
+        return productSpecifications;
+    }
+
+    public void setProductSpecifications(ProductSpecifications productSpecifications) {
+        this.productSpecifications = productSpecifications;
+    }
 }
