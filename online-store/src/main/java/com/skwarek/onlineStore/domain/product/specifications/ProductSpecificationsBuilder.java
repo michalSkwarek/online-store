@@ -3,29 +3,17 @@ package com.skwarek.onlineStore.domain.product.specifications;
 /**
  * Created by Michal on 27.09.2016.
  */
-public abstract class ProductSpecificationsBuilder {
+public interface ProductSpecificationsBuilder {
 
-    protected ProductSpecifications productSpecifications;
+    void buildDisplay();
 
-    public void newProductSpecifications() {
-        productSpecifications = new ProductSpecifications();
-    }
+    void buildBattery();
 
-    public ProductSpecifications getProductSpecifications() {
-        return productSpecifications;
-    }
+    void buildPowerSupply();
 
-    public void setProductSpecifications(ProductSpecifications productSpecifications) {
-        this.productSpecifications = productSpecifications;
-    }
+    void buildOS();
 
-    public abstract void buildDisplay();
+    void buildWeight();
 
-    public abstract void buildBattery();
-
-    public abstract void buildPowerSupply();
-
-    public abstract void buildOS();
-
-    public abstract void buildWeight();
+    ProductSpecifications getProductSpecifications();
 }

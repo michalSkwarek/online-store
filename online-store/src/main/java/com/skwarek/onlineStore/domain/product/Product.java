@@ -97,4 +97,15 @@ public class Product {
     public void setProductSpecifications(ProductSpecifications productSpecifications) {
         this.productSpecifications = productSpecifications;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "model='" + model + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", category=" + category +
+                ", manufacturer=" + manufacturer +
+                ", productSpecifications=" + productSpecifications +
+                '}';
+    }
 }

@@ -103,5 +103,16 @@ public class ProductSpecifications {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "\nProductSpecifications{" +
+                "\n, display=" + display +
+                "\n, battery=" + battery +
+                "\n, powerSupply=" + powerSupply +
+                "\n, os=" + os +
+                "\n, weight=" + weight +
+                '}';
+    }
 }
 

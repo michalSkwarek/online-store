@@ -6,13 +6,13 @@ import com.skwarek.onlineStore.domain.product.Product;
 import com.skwarek.onlineStore.service.CategoryService;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.ProductService;
+import com.skwarek.onlineStore.web.editors.CategoryEditor;
+import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +31,12 @@ public class ProductController {
 
     @Autowired
     private ManufacturerService manufacturerService;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
+        binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
+    }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String showProducts(Model model) {
@@ -57,11 +63,9 @@ public class ProductController {
         return "products/productData";
     }
 
-    //TODO
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
     public String addProduct(Product product) {
 
-//        product.getManufacturer().setBrand(manufacturer);
         productService.save(product);
         return "redirect:/products/list";
     }
@@ -71,6 +75,8 @@ public class ProductController {
 
         Product product = productService.getById(id);
         model.addAttribute("product", product);
+        List<Category> categories = categoryService.getAll();
+        model.addAttribute("categories", categories);
         List<Manufacturer> manufacturers = manufacturerService.getAll();
         model.addAttribute("manufacturers", manufacturers);
         return "products/productData";
