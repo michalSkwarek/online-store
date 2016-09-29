@@ -24,20 +24,16 @@ public class Display {
     @Column(name = "height_in_pixels")
     private Integer heightInPixels;
 
-    @Transient
-    private Integer density;
-
     public Display() { }
 
     public Display(Double diagonal, Integer widthInPixels, Integer heightInPixels) {
         this.diagonal = diagonal;
         this.widthInPixels = widthInPixels;
         this.heightInPixels = heightInPixels;
-        calculationOfDensity();
     }
 
-    private void calculationOfDensity() {
-        this.density = (int) Math.round(Math.sqrt(widthInPixels * widthInPixels + heightInPixels * heightInPixels) / diagonal);
+    private int calculationOfDensity() {
+        return (int) Math.round(Math.sqrt(widthInPixels * widthInPixels + heightInPixels * heightInPixels) / diagonal);
     }
 
     public Long getId() {
@@ -100,6 +96,6 @@ public class Display {
     public String toString() {
         return String.format(Locale.US, "%.1f", diagonal) +
                 "\", with " + widthInPixels + " \u00D7 " + heightInPixels +
-                " resolution at " + density + "ppi";
+                " resolution at " + calculationOfDensity() + "ppi";
     }
 }

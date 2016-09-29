@@ -36,4 +36,6 @@ INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specif
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (3, "280 G1 MT", 1199, 2, 3, 3);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (4, "Vostro 3900", 1799, 2, 3, 4);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (5, "PlayStation 4", 1279, 3, 4, 5);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (6, "Productsxqy", 1000, 1, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (6, "abc", 1000, 1, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (7, "klm", 2000, 2, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (8, "xyz", 3000, 3, 4);

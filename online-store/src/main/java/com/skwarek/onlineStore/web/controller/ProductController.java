@@ -3,7 +3,7 @@ package com.skwarek.onlineStore.web.controller;
 import com.skwarek.onlineStore.domain.product.Category;
 import com.skwarek.onlineStore.domain.product.Manufacturer;
 import com.skwarek.onlineStore.domain.product.Product;
-import com.skwarek.onlineStore.domain.product.specifications.ProductSpecifications;
+import com.skwarek.onlineStore.domain.product.specifications.*;
 import com.skwarek.onlineStore.service.CategoryService;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.ProductService;
@@ -96,10 +96,21 @@ public class ProductController {
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
     public String createSpec(@PathVariable Long id, Model model) {
 
-        model.addAttribute("spec", new ProductSpecifications());
+        String productCategory = productService.getById(id).getCategory().getName();
 
+        ProductSpecificationsBuilder SpecBuilder = new SmartphoneSpecifications();
+        if (productCategory.equalsIgnoreCase("smartphone")) {
+            SpecBuilder = new SmartphoneSpecifications();
+        } else if (productCategory.equalsIgnoreCase("pc")) {
+            SpecBuilder = new PCSpecifications();
+        } else if (productCategory.equalsIgnoreCase("console")) {
+            SpecBuilder = new ConsoleSpecifications();
+        }
 
+        ConstructionEngineer engineer1 = new ConstructionEngineer(SpecBuilder);
+        ProductSpecifications smartphoneSpec = engineer1.build();
 
+        model.addAttribute("spec", smartphoneSpec);
 
         return "products/addSpecifications";
     }
@@ -108,6 +119,9 @@ public class ProductController {
     public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
         productSpecificationsService.save(specifications);
+        Product product = productService.getById(id);
+        product.setProductSpecifications(specifications);
+        productService.update(product);
         return "redirect:/products/list";
     }
 

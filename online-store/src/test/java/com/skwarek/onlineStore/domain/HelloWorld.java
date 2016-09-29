@@ -24,29 +24,29 @@ public class HelloWorld {
     @Test
     public void myTest() {
 
-        Product product = new Product();
-        product.setModel("dupa");
-        product.setUnitPrice(new BigDecimal(1000));
-        Category category = new Category("category1");
-        Manufacturer manufacturer = new Manufacturer("brand1", "website1");
-        product.setCategory(category);
-        product.setManufacturer(manufacturer);
-        ProductSpecifications productSpecifications = new ProductSpecifications(
-                new Display(1d, 2, 3),
-                new Battery(4, "type1"),
-                new PowerSupply(5),
-                new OS("osos", "6"),
-                new Weight(7));
-        product.setProductSpecifications(productSpecifications);
-
-        System.out.println(product);
-
-        ProductSpecificationsBuilder smartphoneSpecBuilder = new SmartphoneSpecifications();
-
-        ConstructionEngineer engineer1 = new ConstructionEngineer(smartphoneSpecBuilder);
-        ProductSpecifications smartphoneSpec = engineer1.build();
-
-        System.out.println(" = = = " + smartphoneSpec);
+//        Product product = new Product();
+//        product.setModel("dupa");
+//        product.setUnitPrice(new BigDecimal(1000));
+//        Category category = new Category("category1");
+//        Manufacturer manufacturer = new Manufacturer("brand1", "website1");
+//        product.setCategory(category);
+//        product.setManufacturer(manufacturer);
+//        ProductSpecifications productSpecifications = new ProductSpecifications(
+//                new Display(1d, 2, 3),
+//                new Battery(4, "type1"),
+//                new PowerSupply(5),
+//                new OS("osos", "6"),
+//                new Weight(7));
+//        product.setProductSpecifications(productSpecifications);
+//
+//        System.out.println(product);
+//
+//        ProductSpecificationsBuilder smartphoneSpecBuilder = new SmartphoneSpecifications();
+//
+//        ConstructionEngineer engineer1 = new ConstructionEngineer(smartphoneSpecBuilder);
+//        ProductSpecifications smartphoneSpec = engineer1.build();
+//
+//        System.out.println(" = = = " + smartphoneSpec);
 
 
     }

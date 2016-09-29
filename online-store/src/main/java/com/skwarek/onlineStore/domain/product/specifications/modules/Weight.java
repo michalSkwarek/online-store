@@ -10,20 +10,20 @@ import javax.persistence.Embeddable;
 public class Weight {
 
     @Column(name = "weight")
-    private Integer weight;
+    private Integer value;
 
     public Weight() { }
 
     public Weight(Integer weight) {
-        this.weight = weight;
+        this.value = weight;
     }
 
-    public Integer getWeight() {
-        return weight;
+    public Integer getValue() {
+        return value;
     }
 
-    public void setWeight(Integer weight) {
-        this.weight = weight;
+    public void setValue(Integer value) {
+        this.value = value;
     }
 
     @Override
@@ -31,18 +31,18 @@ public class Weight {
         if (this == o) return true;
         if (!(o instanceof Weight)) return false;
 
-        Weight weight1 = (Weight) o;
+        Weight weight = (Weight) o;
 
-        return weight != null ? weight.equals(weight1.weight) : weight1.weight == null;
+        return value != null ? value.equals(weight.value) : weight.value == null;
     }
 
     @Override
     public int hashCode() {
-        return weight != null ? weight.hashCode() : 0;
+        return value != null ? value.hashCode() : 0;
     }
 
     @Override
     public String toString() {
-        return weight + " grams";
+        return value + " grams";
     }
 }

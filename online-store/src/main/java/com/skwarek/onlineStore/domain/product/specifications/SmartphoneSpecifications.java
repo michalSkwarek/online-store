@@ -18,12 +18,12 @@ public class SmartphoneSpecifications implements ProductSpecificationsBuilder {
 
     @Override
     public void buildDisplay() {
-        productSpecifications.setDisplay(productSpecifications.getDisplay());
+        productSpecifications.setDisplay(new Display());
     }
 
     @Override
     public void buildBattery() {
-        productSpecifications.setBattery(productSpecifications.getBattery());
+        productSpecifications.setBattery(new Battery());
     }
 
     @Override
@@ -31,12 +31,12 @@ public class SmartphoneSpecifications implements ProductSpecificationsBuilder {
 
     @Override
     public void buildOS() {
-        productSpecifications.setOs(productSpecifications.getOs());
+        productSpecifications.setOs(new OS());
     }
 
     @Override
     public void buildWeight() {
-        productSpecifications.setWeight(productSpecifications.getWeight());
+        productSpecifications.setWeight(new Weight());
     }
 
     @Override
