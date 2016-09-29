@@ -8,8 +8,8 @@ import com.skwarek.onlineStore.domain.product.specifications.modules.*;
 public class PCSpecifications extends ProductSpecifications {
 
     public PCSpecifications() {
-        setPowerSupply(new PowerSupply());
-        setOs(new OS());
-        setWeight(new Weight());
+//        setPowerSupply(new PowerSupply());
+//        setOs(new OS());
+//        setWeight(new Weight());
     }
 }

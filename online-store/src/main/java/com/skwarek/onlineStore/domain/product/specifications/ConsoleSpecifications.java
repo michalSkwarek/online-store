@@ -8,6 +8,6 @@ import com.skwarek.onlineStore.domain.product.specifications.modules.Weight;
 public class ConsoleSpecifications extends ProductSpecifications {
 
     public ConsoleSpecifications() {
-        setWeight(new Weight());
+//        setWeight(new Weight());
     }
 }

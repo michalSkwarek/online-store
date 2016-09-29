@@ -11,51 +11,65 @@
     <form:form method="post" modelAttribute="spec">
 
         <ul>
-            <c:if test="${spec.display != null}">
+            <c:if test="${spec.cpu != null}">
                 <li>
-                    <p>Display</p>
-                    <label for="diagonal">Diagonal: </label>
-                    <form:input path="display.diagonal" id="diagonal"/>
-                    <label for="widthInPixels">Width in pixels: </label>
-                    <form:input path="display.widthInPixels" id="widthInPixels"/>
-                    <label for="heightInPixels">Height in pixels: </label>
-                    <form:input path="display.heightInPixels" id="heightInPixels"/>
+                    <p>CPU:</p>
+                    <label for="model">Model: </label>
+                    <form:input path="cpu.model" id="model"/>
+                    <label for="numberOfCores">Number of cores: </label>
+                    <form:input path="cpu.numberOfCores" id="numberOfCores"/>
+                    <label for="lowClockSpeed">Low clock speed: </label>
+                    <form:input path="cpu.lowClockSpeed" id="lowClockSpeed"/>
+                    <label for="highClockSpeed">High clock speed: </label>
+                    <form:input path="cpu.highClockSpeed" id="highClockSpeed"/>
                 </li>
             </c:if>
 
-            <c:if test="${spec.battery != null}">
-                <li>
-                    <p>Battery</p>
-                    <label for="capacity">Capacity: </label>
-                    <form:input path="battery.capacity" id="capacity"/>
-                    <label for="type">Type: </label>
-                    <form:input path="battery.type" id="type"/>
-                </li>
-            </c:if>
+            <%--<c:if test="${spec.display != null}">--%>
+                <%--<li>--%>
+                    <%--<p>Display:</p>--%>
+                    <%--<label for="diagonal">Diagonal: </label>--%>
+                    <%--<form:input path="display.diagonal" id="diagonal"/>--%>
+                    <%--<label for="widthInPixels">Width in pixels: </label>--%>
+                    <%--<form:input path="display.widthInPixels" id="widthInPixels"/>--%>
+                    <%--<label for="heightInPixels">Height in pixels: </label>--%>
+                    <%--<form:input path="display.heightInPixels" id="heightInPixels"/>--%>
+                <%--</li>--%>
+            <%--</c:if>--%>
 
-            <c:if test="${spec.powerSupply != null}">
-                <li>
-                    <p>Power supply</p>
-                    <form:input path="powerSupply.power"/>
-                </li>
-            </c:if>
+            <%--<c:if test="${spec.battery != null}">--%>
+                <%--<li>--%>
+                    <%--<p>Battery:</p>--%>
+                    <%--<label for="capacity">Capacity: </label>--%>
+                    <%--<form:input path="battery.capacity" id="capacity"/>--%>
+                    <%--<label for="type">Type: </label>--%>
+                    <%--<form:input path="battery.type" id="type"/>--%>
+                <%--</li>--%>
+            <%--</c:if>--%>
 
-            <c:if test="${spec.os != null}">
-                <li>
-                    <p>Os</p>
-                    <label for="name">Name: </label>
-                    <form:input path="os.name" id="name"/>
-                    <label for="version">Version: </label>
-                    <form:input path="os.version" id="version"/>
-                </li>
-            </c:if>
+            <%--<c:if test="${spec.powerSupply != null}">--%>
+                <%--<li>--%>
+                    <%--<p>Power supply:</p>--%>
+                    <%--<form:input path="powerSupply.power"/>--%>
+                <%--</li>--%>
+            <%--</c:if>--%>
 
-            <c:if test="${spec.weight != null}">
-                <li>
-                    <p>Weight</p>
-                    <form:input path="weight.value"/>
-                </li>
-            </c:if>
+            <%--<c:if test="${spec.os != null}">--%>
+                <%--<li>--%>
+                    <%--<p>Os:</p>--%>
+                    <%--<label for="name">Name: </label>--%>
+                    <%--<form:input path="os.name" id="name"/>--%>
+                    <%--<label for="version">Version: </label>--%>
+                    <%--<form:input path="os.version" id="version"/>--%>
+                <%--</li>--%>
+            <%--</c:if>--%>
+
+            <%--<c:if test="${spec.weight != null}">--%>
+                <%--<li>--%>
+                    <%--<p>Weight:</p>--%>
+                    <%--<form:input path="weight.value"/>--%>
+                <%--</li>--%>
+            <%--</c:if>--%>
 
             <li>
                 <input type="submit" value="Save"/>

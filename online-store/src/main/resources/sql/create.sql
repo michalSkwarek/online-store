@@ -12,12 +12,18 @@ INSERT INTO battery (id, capacity, type) VALUES (2, 1900, "Li-Ion");
 INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (1, 5.5, 1920, 1080);
 INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (2, 4.7, 1334, 750);
 
+-- add few cpu
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed) VALUES (1, "Apple A10", 4, 2.4);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (2, "Samsung Exynos 8890", 8, 1.6, 2.3);
+
 -- add few specifications
-INSERT INTO specifications (id, display_id, battery_id, os_id, weight) VALUES (1, 1, 1, 1, 189);
-INSERT INTO specifications (id, display_id, battery_id, os_id, weight) VALUES (2, 2, 2, 1, 138);
-INSERT INTO specifications (id, power_supply, os_id, weight) VALUES (3, 180, 3, 7000);
-INSERT INTO specifications (id, power_supply, os_id, weight) VALUES (4, 300, 3, 10000);
-INSERT INTO specifications (id, weight) VALUES (5, 2900);
+INSERT INTO specifications (id, cpu_id) VALUES (1, 1);
+INSERT INTO specifications (id, cpu_id) VALUES (2, 2);
+# INSERT INTO specifications (id, display_id, battery_id, os_id, weight) VALUES (1, 1, 1, 1, 189);
+# INSERT INTO specifications (id, display_id, battery_id, os_id, weight) VALUES (2, 2, 2, 1, 138);
+# INSERT INTO specifications (id, power_supply, os_id, weight) VALUES (3, 180, 3, 7000);
+# INSERT INTO specifications (id, power_supply, os_id, weight) VALUES (4, 300, 3, 10000);
+# INSERT INTO specifications (id, weight) VALUES (5, 2900);
 
 -- add few categories
 INSERT INTO category (id, name) VALUES (1, "smartphone");
@@ -32,10 +38,10 @@ INSERT INTO manufacturer (id, brand, website) VALUES (4, "Sony", "http://www.son
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (1, "iPhone 7 Plus", 4479, 1, 1, 1);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (2, "iPhone 7", 3879, 1, 1, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (3, "280 G1 MT", 1199, 2, 3, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (4, "Vostro 3900", 1799, 2, 3, 4);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (5, "PlayStation 4", 1279, 3, 4, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (2, "Galaxy S7 edge", 3398, 1, 2, 2);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (3, "280 G1 MT", 1199, 2, 3, 3);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (4, "Vostro 3900", 1799, 2, 3, 4);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (5, "PlayStation 4", 1279, 3, 4, 5);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (6, "abc", 1000, 1, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (7, "klm", 2000, 2, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (8, "xyz", 3000, 3, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (7, "klm", 2000, 1, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (8, "xyz", 3000, 1, 4);
