@@ -16,9 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -98,14 +96,10 @@ public class ProductController {
 
         String productCategory = productService.getById(id).getCategory().getName();
 
-        ProductSpecificationsFactory factory = new ProductSpecificationsFactory();
-        ProductSpecificationsBuilder builder = factory.getProductSpecificationsBuilder(productCategory);
+        SpecificationsFactory factory = new SpecificationsFactory();
+        ProductSpecifications specifications = factory.createSpecifications(productCategory);
 
-        ConstructionEngineer engineer1 = new ConstructionEngineer(builder);
-        ProductSpecifications productSpecifications = engineer1.build();
-
-        model.addAttribute("spec", productSpecifications);
-
+        model.addAttribute("spec", specifications);
         return "products/addSpecifications";
     }
 
