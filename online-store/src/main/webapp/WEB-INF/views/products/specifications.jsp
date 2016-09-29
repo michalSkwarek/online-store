@@ -22,26 +22,37 @@
         </c:if>
 
         <c:if test="${product.productSpecifications.cpu != null}">
-        <li>CPU: ${product.productSpecifications.cpu}</li>
+            <li>CPU: ${product.productSpecifications.cpu}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.gpu != null}">
+            <li>GPU: ${product.productSpecifications.gpu}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.ram != null}">
+            <li>RAM: ${product.productSpecifications.ram}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.disk != null}">
+            <li>Disk: ${product.productSpecifications.disk}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.display != null}">
+            <li>Display: ${product.productSpecifications.display}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.battery != null}">
+            <li>Battery: ${product.productSpecifications.battery}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.os != null}">
+            <li>OS: ${product.productSpecifications.os}</li>
         </c:if>
 
 
 
-
-
-
-
-        <%--<c:if test="${product.productSpecifications.display != null}">--%>
-            <%--<li>Display: ${product.productSpecifications.display}</li>--%>
-        <%--</c:if>--%>
-        <%--<c:if test="${product.productSpecifications.battery != null}">--%>
-            <%--<li>Battery: ${product.productSpecifications.battery}</li>--%>
-        <%--</c:if>--%>
         <%--<c:if test="${product.productSpecifications.powerSupply != null}">--%>
             <%--<li>Power supply: ${product.productSpecifications.powerSupply}</li>--%>
-        <%--</c:if>--%>
-        <%--<c:if test="${product.productSpecifications.os != null}">--%>
-            <%--<li>OS: ${product.productSpecifications.os}</li>--%>
         <%--</c:if>--%>
         <%--<c:if test="${product.productSpecifications.weight != null}">--%>
             <%--<li>Weight: ${product.productSpecifications.weight}</li>--%>

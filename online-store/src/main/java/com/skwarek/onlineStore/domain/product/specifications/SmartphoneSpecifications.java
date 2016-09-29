@@ -9,9 +9,12 @@ public class SmartphoneSpecifications extends ProductSpecifications {
 
     public SmartphoneSpecifications() {
         setCpu(new CPU());
-//        setDisplay(new Display());
-//        setBattery(new Battery());
-//        setOs(new OS());
+        setGpu(new GPU());
+        setRam(new RAM());
+        setDisk(new Disk());
+        setDisplay(new Display());
+        setBattery(new Battery());
+        setOs(new OS());
 //        setWeight(new Weight());
     }
 }

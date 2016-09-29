@@ -21,21 +21,31 @@ public class ProductSpecifications {
     @JoinColumn(name = "cpu_id")
     private CPU cpu;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "display_id")
-//    private Display display;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "battery_id")
-//    private Battery battery;
-//
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "gpu_id")
+    private GPU gpu;
+
+    @Embedded
+    private RAM ram;
+
+    @Embedded
+    private Disk disk;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "display_id")
+    private Display display;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "battery_id")
+    private Battery battery;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "os_id")
+    private OS os;
+
 //    @Embedded
 //    private PowerSupply powerSupply;
-//
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "os_id")
-//    private OS os;
-//
+
 //    @Embedded
 //    private Weight weight;
 
@@ -58,6 +68,54 @@ public class ProductSpecifications {
 
     public void setCpu(CPU cpu) {
         this.cpu = cpu;
+    }
+
+    public GPU getGpu() {
+        return gpu;
+    }
+
+    public void setGpu(GPU gpu) {
+        this.gpu = gpu;
+    }
+
+    public RAM getRam() {
+        return ram;
+    }
+
+    public void setRam(RAM ram) {
+        this.ram = ram;
+    }
+
+    public Disk getDisk() {
+        return disk;
+    }
+
+    public void setDisk(Disk disk) {
+        this.disk = disk;
+    }
+
+    public Display getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Display display) {
+        this.display = display;
+    }
+
+    public Battery getBattery() {
+        return battery;
+    }
+
+    public void setBattery(Battery battery) {
+        this.battery = battery;
+    }
+
+    public OS getOs() {
+        return os;
+    }
+
+    public void setOs(OS os) {
+        this.os = os;
     }
 }
 

@@ -25,42 +25,66 @@
                 </li>
             </c:if>
 
-            <%--<c:if test="${spec.display != null}">--%>
-                <%--<li>--%>
-                    <%--<p>Display:</p>--%>
-                    <%--<label for="diagonal">Diagonal: </label>--%>
-                    <%--<form:input path="display.diagonal" id="diagonal"/>--%>
-                    <%--<label for="widthInPixels">Width in pixels: </label>--%>
-                    <%--<form:input path="display.widthInPixels" id="widthInPixels"/>--%>
-                    <%--<label for="heightInPixels">Height in pixels: </label>--%>
-                    <%--<form:input path="display.heightInPixels" id="heightInPixels"/>--%>
-                <%--</li>--%>
-            <%--</c:if>--%>
+            <c:if test="${spec.gpu != null}">
+                <li>
+                    <p>GPU:</p>
+                    <label for="model">Model: </label>
+                    <form:input path="gpu.model" id="model"/>
+                </li>
+            </c:if>
 
-            <%--<c:if test="${spec.battery != null}">--%>
-                <%--<li>--%>
-                    <%--<p>Battery:</p>--%>
-                    <%--<label for="capacity">Capacity: </label>--%>
-                    <%--<form:input path="battery.capacity" id="capacity"/>--%>
-                    <%--<label for="type">Type: </label>--%>
-                    <%--<form:input path="battery.type" id="type"/>--%>
-                <%--</li>--%>
-            <%--</c:if>--%>
+            <c:if test="${spec.ram != null}">
+                <li>
+                    <p>RAM:</p>
+                    <label for="value">Value: </label>
+                    <form:input path="ram.value" id="value"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.disk != null}">
+                <li>
+                    <p>Disk:</p>
+                    <label for="value">Value: </label>
+                    <form:input path="disk.value" id="value"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.display != null}">
+                <li>
+                    <p>Display:</p>
+                    <label for="diagonal">Diagonal: </label>
+                    <form:input path="display.diagonal" id="diagonal"/>
+                    <label for="widthInPixels">Width in pixels: </label>
+                    <form:input path="display.widthInPixels" id="widthInPixels"/>
+                    <label for="heightInPixels">Height in pixels: </label>
+                    <form:input path="display.heightInPixels" id="heightInPixels"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.battery != null}">
+                <li>
+                    <p>Battery:</p>
+                    <label for="capacity">Capacity: </label>
+                    <form:input path="battery.capacity" id="capacity"/>
+                    <label for="type">Type: </label>
+                    <form:input path="battery.type" id="type"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.os != null}">
+                <li>
+                    <p>Os:</p>
+                    <label for="name">Name: </label>
+                    <form:input path="os.name" id="name"/>
+                    <label for="version">Version: </label>
+                    <form:input path="os.version" id="version"/>
+                </li>
+            </c:if>
 
             <%--<c:if test="${spec.powerSupply != null}">--%>
                 <%--<li>--%>
                     <%--<p>Power supply:</p>--%>
                     <%--<form:input path="powerSupply.power"/>--%>
-                <%--</li>--%>
-            <%--</c:if>--%>
-
-            <%--<c:if test="${spec.os != null}">--%>
-                <%--<li>--%>
-                    <%--<p>Os:</p>--%>
-                    <%--<label for="name">Name: </label>--%>
-                    <%--<form:input path="os.name" id="name"/>--%>
-                    <%--<label for="version">Version: </label>--%>
-                    <%--<form:input path="os.version" id="version"/>--%>
                 <%--</li>--%>
             <%--</c:if>--%>
 
