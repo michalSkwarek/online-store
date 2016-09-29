@@ -98,19 +98,13 @@ public class ProductController {
 
         String productCategory = productService.getById(id).getCategory().getName();
 
-        ProductSpecificationsBuilder SpecBuilder = new SmartphoneSpecifications();
-        if (productCategory.equalsIgnoreCase("smartphone")) {
-            SpecBuilder = new SmartphoneSpecifications();
-        } else if (productCategory.equalsIgnoreCase("pc")) {
-            SpecBuilder = new PCSpecifications();
-        } else if (productCategory.equalsIgnoreCase("console")) {
-            SpecBuilder = new ConsoleSpecifications();
-        }
+        ProductSpecificationsFactory factory = new ProductSpecificationsFactory();
+        ProductSpecificationsBuilder builder = factory.getProductSpecificationsBuilder(productCategory);
 
-        ConstructionEngineer engineer1 = new ConstructionEngineer(SpecBuilder);
-        ProductSpecifications smartphoneSpec = engineer1.build();
+        ConstructionEngineer engineer1 = new ConstructionEngineer(builder);
+        ProductSpecifications productSpecifications = engineer1.build();
 
-        model.addAttribute("spec", smartphoneSpec);
+        model.addAttribute("spec", productSpecifications);
 
         return "products/addSpecifications";
     }
