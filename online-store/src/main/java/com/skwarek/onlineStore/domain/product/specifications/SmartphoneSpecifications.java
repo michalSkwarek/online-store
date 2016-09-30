@@ -15,6 +15,8 @@ public class SmartphoneSpecifications extends ProductSpecifications {
         setDisplay(new Display());
         setBattery(new Battery());
         setOs(new OS());
-//        setWeight(new Weight());
+        setCamera(new Camera());
+        setDimensions(new Dimensions());
+        setWeight(new Weight());
     }
 }

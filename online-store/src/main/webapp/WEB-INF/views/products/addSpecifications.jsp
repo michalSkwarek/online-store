@@ -81,6 +81,35 @@
                 </li>
             </c:if>
 
+            <c:if test="${spec.camera != null}">
+                <li>
+                    <p>Camera:</p>
+                    <label for="resolutionMainCamera">Main camera: </label>
+                    <form:input path="camera.resolutionMainCamera" id="resolutionMainCamera"/>
+                    <label for="resolutionFrontCamera">Front camera: </label>
+                    <form:input path="camera.resolutionFrontCamera" id="resolutionFrontCamera"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.dimensions != null}">
+                <li>
+                    <p>Dimensions:</p>
+                    <label for="thickness">Thickness: </label>
+                    <form:input path="dimensions.thickness" id="thickness"/>
+                    <label for="width">Width: </label>
+                    <form:input path="dimensions.width" id="width"/>
+                    <label for="height">Height: </label>
+                    <form:input path="dimensions.height" id="height"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.weight != null}">
+                <li>
+                    <p>Weight:</p>
+                    <form:input path="weight.value"/>
+                </li>
+            </c:if>
+
             <%--<c:if test="${spec.powerSupply != null}">--%>
                 <%--<li>--%>
                     <%--<p>Power supply:</p>--%>
@@ -88,12 +117,6 @@
                 <%--</li>--%>
             <%--</c:if>--%>
 
-            <%--<c:if test="${spec.weight != null}">--%>
-                <%--<li>--%>
-                    <%--<p>Weight:</p>--%>
-                    <%--<form:input path="weight.value"/>--%>
-                <%--</li>--%>
-            <%--</c:if>--%>
 
             <li>
                 <input type="submit" value="Save"/>

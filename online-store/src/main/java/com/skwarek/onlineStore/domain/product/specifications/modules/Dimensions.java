@@ -1,44 +1,29 @@
 package com.skwarek.onlineStore.domain.product.specifications.modules;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * Created by Michal on 27.09.2016.
  */
+@Embeddable
 public class Dimensions {
 
-    private Double height;
-    private Double width;
+    @Column(name = "thickness")
     private Double thickness;
+
+    @Column(name = "width")
+    private Double width;
+
+    @Column(name = "height")
+    private Double height;
 
     public Dimensions() { }
 
-    public Dimensions(Double height, Double width, Double thickness) {
-        this.height = height;
-        this.width = width;
+    public Dimensions(Double thickness, Double width, Double height) {
         this.thickness = thickness;
-    }
-
-    public Double getHeight() {
-        return height;
-    }
-
-    public void setHeight(Double height) {
-        this.height = height;
-    }
-
-    public Double getWidth() {
-        return width;
-    }
-
-    public void setWidth(Double width) {
         this.width = width;
-    }
-
-    public Double getThickness() {
-        return thickness;
-    }
-
-    public void setThickness(Double thickness) {
-        this.thickness = thickness;
+        this.height = height;
     }
 
     @Override
@@ -48,23 +33,23 @@ public class Dimensions {
 
         Dimensions that = (Dimensions) o;
 
-        if (height != null ? !height.equals(that.height) : that.height != null) return false;
+        if (thickness != null ? !thickness.equals(that.thickness) : that.thickness != null) return false;
         if (width != null ? !width.equals(that.width) : that.width != null) return false;
-        return thickness != null ? thickness.equals(that.thickness) : that.thickness == null;
+        return height != null ? height.equals(that.height) : that.height == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = height != null ? height.hashCode() : 0;
+        int result = thickness != null ? thickness.hashCode() : 0;
         result = 31 * result + (width != null ? width.hashCode() : 0);
-        result = 31 * result + (thickness != null ? thickness.hashCode() : 0);
+        result = 31 * result + (height != null ? height.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return outputFormat(height) + " mm \u00D7 " + outputFormat(width) + " mm \u00D7 " + outputFormat(thickness) + " mm";
+        return outputFormat(thickness) + " mm \u00D7 " + outputFormat(width) + " mm \u00D7 " + outputFormat(height) + " mm";
     }
 
     private static String outputFormat(double d) {

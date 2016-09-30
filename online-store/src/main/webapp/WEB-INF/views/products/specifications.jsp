@@ -49,14 +49,24 @@
             <li>OS: ${product.productSpecifications.os}</li>
         </c:if>
 
+        <c:if test="${product.productSpecifications.camera != null}">
+            <li>OS: ${product.productSpecifications.camera}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.dimensions != null}">
+            <li>OS: ${product.productSpecifications.dimensions}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.weight != null}">
+            <li>Weight: ${product.productSpecifications.weight}</li>
+        </c:if>
+
 
 
         <%--<c:if test="${product.productSpecifications.powerSupply != null}">--%>
             <%--<li>Power supply: ${product.productSpecifications.powerSupply}</li>--%>
         <%--</c:if>--%>
-        <%--<c:if test="${product.productSpecifications.weight != null}">--%>
-            <%--<li>Weight: ${product.productSpecifications.weight}</li>--%>
-        <%--</c:if>--%>
+
     </ul>
 
     <br/>

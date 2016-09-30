@@ -43,6 +43,15 @@ public class ProductSpecifications {
     @JoinColumn(name = "os_id")
     private OS os;
 
+    @Embedded
+    private Camera camera;
+
+    @Embedded
+    private Dimensions dimensions;
+
+    @Embedded
+    private Weight weight;
+
 //    @Embedded
 //    private PowerSupply powerSupply;
 
@@ -116,6 +125,30 @@ public class ProductSpecifications {
 
     public void setOs(OS os) {
         this.os = os;
+    }
+
+    public Camera getCamera() {
+        return camera;
+    }
+
+    public void setCamera(Camera camera) {
+        this.camera = camera;
+    }
+
+    public Dimensions getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(Dimensions dimensions) {
+        this.dimensions = dimensions;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
     }
 }
 

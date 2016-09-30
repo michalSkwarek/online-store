@@ -1,13 +1,19 @@
 package com.skwarek.onlineStore.domain.product.specifications.modules;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.util.Locale;
 
 /**
  * Created by Michal on 27.09.2016.
  */
+@Embeddable
 public class Camera {
 
+    @Column(name = "resolution_main_camera")
     private Double resolutionMainCamera;
+
+    @Column(name = "resolution_front_camera")
     private Double resolutionFrontCamera;
 
     public Camera() { }
