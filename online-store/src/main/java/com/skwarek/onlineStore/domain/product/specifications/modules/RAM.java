@@ -1,7 +1,6 @@
 package com.skwarek.onlineStore.domain.product.specifications.modules;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 /**
  * Created by Michal on 30.09.2016.
@@ -11,6 +10,10 @@ public class RAM {
 
     @Column(name = "ram")
     private Integer value;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ram_type_id")
+    private RAMType ramType;
 
     public RAM() { }
 
@@ -26,6 +29,14 @@ public class RAM {
         this.value = value;
     }
 
+    public RAMType getRamType() {
+        return ramType;
+    }
+
+    public void setRamType(RAMType ramType) {
+        this.ramType = ramType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,17 +44,21 @@ public class RAM {
 
         RAM ram = (RAM) o;
 
-        return value != null ? value.equals(ram.value) : ram.value == null;
+        if (value != null ? !value.equals(ram.value) : ram.value != null) return false;
+        return ramType != null ? ramType.equals(ram.ramType) : ram.ramType == null;
 
     }
 
     @Override
     public int hashCode() {
-        return value != null ? value.hashCode() : 0;
+        int result = value != null ? value.hashCode() : 0;
+        result = 31 * result + (ramType != null ? ramType.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return value + " GB";
+        return value + " GB" +
+                ((ramType == null) ? "" : " " + ramType);
     }
 }

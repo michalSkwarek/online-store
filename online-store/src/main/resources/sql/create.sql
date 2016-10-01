@@ -143,7 +143,7 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, ba
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (30, 20, 16, 3, 16, 8, 2680, 2, 4, 13.0, 8.0, 6.4, 72.1, 144.9, 144);
 
 -- add few products
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (1, 'iPhone 7 Plus', 4479, 1, 1, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (1, 'iPhone 7 Plus', 4479, 1, 1, 1);
 # INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (2, 'iPhone 7', 3879, 1, 1, 2);
 # INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (3, 'iPhone 6s Plus', 3879, 1, 1, 3);
 # INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (4, 'iPhone 6s', 3349, 1, 1, 4);
@@ -212,6 +212,11 @@ INSERT INTO display (id, diagonal, display_resolution_id) VALUES (18, 10.1, 9);
 INSERT INTO display (id, diagonal, display_resolution_id) VALUES (19, 8, 9);
 INSERT INTO display (id, diagonal, display_resolution_id) VALUES (20, 12.3, 10);
 
+-- add few ram
+INSERT INTO ram_type (id, type) VALUES (1, 'DDR3');
+INSERT INTO ram_type (id, type) VALUES (2, 'DDR4');
+INSERT INTO ram_type (id, type) VALUES (3, 'DDR5');
+
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (17, 'PowerVR Series 7XT');
 INSERT INTO gpu (id, model) VALUES (18, 'PowerVR Series 7XT');
@@ -231,7 +236,7 @@ INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) 
 INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (29, 'Intel Atom Z3736F', 4, 1.33, 2.16);
 
 -- add few specifications
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (31, 21, 17, 2, 128, 14, 7306, 1, 2, 12.0, 5.0, 6.1, 169.5, 240, 450);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (31, 21, 17, 2, 1, 128, 14, 7306, 1, 2, 12.0, 5.0, 6.1, 169.5, 240, 450);
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (32, 22, 18, 2, 128, 15, 5124, 1, 2, 8.0, 1.2, 6.1, 134.8, 203.2, 299);
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (33, 23, 19, 2, 64, 14, 7340, 1, 2, 8.0, 1.2, 6.1, 169.5, 240, 437);
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (34, 14, 8, 3, 32, 14, 5870, 1, 3, 8.0, 2.1, 6.1, 169.5, 236, 390);
@@ -245,16 +250,16 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, ba
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (31, 'iPad Pro 9.7', 4299, 2, 1, 31);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (32, 'iPad mini 4', 2399, 2, 1, 32);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (33, 'iPad Air 2', 2349, 2, 1, 33);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (34, 'Galaxy Tab S2 9.7', 2149, 2, 2, 34);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (35, 'Galaxy Tab A 10.1', 1399, 2, 2, 35);
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (36, 'Yoga Tablet 3 Pro', 2499, 2, 3, 36);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (37, 'A10-70', 842, 2, 3, 37);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (38, 'MediaPad T1 8.0', 629, 2, 9, 38);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (39, 'Pro Slate 12', 3975, 2, 10, 39);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (40, 'Pro 408 G1', 1767, 2, 10, 40);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (32, 'iPad mini 4', 2399, 2, 1, 32);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (33, 'iPad Air 2', 2349, 2, 1, 33);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (34, 'Galaxy Tab S2 9.7', 2149, 2, 2, 34);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (35, 'Galaxy Tab A 10.1', 1399, 2, 2, 35);
+#
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (36, 'Yoga Tablet 3 Pro', 2499, 2, 3, 36);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (37, 'A10-70', 842, 2, 3, 37);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (38, 'MediaPad T1 8.0', 629, 2, 9, 38);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (39, 'Pro Slate 12', 3975, 2, 10, 39);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (40, 'Pro 408 G1', 1767, 2, 10, 40);
 
 
 
