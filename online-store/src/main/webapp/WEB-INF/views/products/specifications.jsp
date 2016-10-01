@@ -46,7 +46,7 @@
         </c:if>
 
         <c:if test="${product.productSpecifications.powerSupply != null}">
-            <li>Battery: ${product.productSpecifications.powerSupply}</li>
+            <li>Power supply: ${product.productSpecifications.powerSupply}</li>
         </c:if>
 
         <c:if test="${product.productSpecifications.os != null}">

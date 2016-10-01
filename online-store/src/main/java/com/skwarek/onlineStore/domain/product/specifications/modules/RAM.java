@@ -58,7 +58,7 @@ public class RAM {
 
     @Override
     public String toString() {
-        return value + " GB" +
+        return value + ((value > 500) ? " MB" : " GB") +
                 ((memoryType == null) ? "" : " " + memoryType);
     }
 }

@@ -76,7 +76,7 @@
             <c:if test="${spec.powerSupply != null}">
                 <li>
                     <p>Power supply:</p>
-                    <form:input path="powerSupply.value"/>
+                    <form:input path="powerSupply.power"/>
                 </li>
             </c:if>
 

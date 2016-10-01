@@ -43,6 +43,6 @@ public class Weight {
 
     @Override
     public String toString() {
-        return value + ((value > 10) ? " grams" : " kg");
+        return value + ((value > 20) ? " grams" : " kg");
     }
 }
