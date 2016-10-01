@@ -5,34 +5,20 @@ import javax.persistence.*;
 /**
  * Created by Michal on 27.09.2016.
  */
-@Entity
-@Table(name = "battery")
+@Embeddable
 public class Battery {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "capacity")
+    @Column(name = "battery_capacity")
     private Integer capacity;
 
-    @Column(name = "type")
-    private String type;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "battery_type_id")
+    private BatteryType batteryType;
 
     public Battery() { }
 
-    public Battery(Integer capacity, String type) {
+    public Battery(Integer capacity) {
         this.capacity = capacity;
-        this.type = type;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Integer getCapacity() {
@@ -43,12 +29,12 @@ public class Battery {
         this.capacity = capacity;
     }
 
-    public String getType() {
-        return type;
+    public BatteryType getBatteryType() {
+        return batteryType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBatteryType(BatteryType batteryType) {
+        this.batteryType = batteryType;
     }
 
     @Override
@@ -58,22 +44,20 @@ public class Battery {
 
         Battery battery = (Battery) o;
 
-        if (id != null ? !id.equals(battery.id) : battery.id != null) return false;
         if (capacity != null ? !capacity.equals(battery.capacity) : battery.capacity != null) return false;
-        return type != null ? type.equals(battery.type) : battery.type == null;
+        return batteryType != null ? batteryType.equals(battery.batteryType) : battery.batteryType == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
-        result = 31 * result + (type != null ? type.hashCode() : 0);
+        int result = capacity != null ? capacity.hashCode() : 0;
+        result = 31 * result + (batteryType != null ? batteryType.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return capacity + " mAh, " + type;
+        return capacity + " mAh, " + batteryType;
     }
 }

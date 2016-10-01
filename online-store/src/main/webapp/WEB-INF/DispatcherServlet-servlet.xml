@@ -47,7 +47,9 @@
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Dimensions</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Camera</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.OS</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.BatteryType</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Battery</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.DisplayResolution</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Display</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Disk</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.RAM</value>

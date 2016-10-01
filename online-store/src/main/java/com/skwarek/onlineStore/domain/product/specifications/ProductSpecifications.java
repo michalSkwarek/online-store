@@ -35,8 +35,7 @@ public class ProductSpecifications {
     @JoinColumn(name = "display_id")
     private Display display;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "battery_id")
+    @Embedded
     private Battery battery;
 
     @ManyToOne(cascade = CascadeType.ALL)
