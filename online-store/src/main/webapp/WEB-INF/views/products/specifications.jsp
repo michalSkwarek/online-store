@@ -25,41 +25,41 @@
             <li>CPU: ${product.productSpecifications.cpu}</li>
         </c:if>
 
-        <%--<c:if test="${product.productSpecifications.gpu != null}">--%>
-            <%--<li>GPU: ${product.productSpecifications.gpu}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.gpu != null}">
+            <li>GPU: ${product.productSpecifications.gpu}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.ram != null}">--%>
-            <%--<li>RAM: ${product.productSpecifications.ram}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.ram != null}">
+            <li>RAM: ${product.productSpecifications.ram}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.storage != null}">--%>
-            <%--<li>Storage: ${product.productSpecifications.storage}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.storage != null}">
+            <li>Storage: ${product.productSpecifications.storage}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.display != null}">--%>
-            <%--<li>Display: ${product.productSpecifications.display}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.display != null}">
+            <li>Display: ${product.productSpecifications.display}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.battery != null}">--%>
-            <%--<li>Battery: ${product.productSpecifications.battery}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.battery != null}">
+            <li>Battery: ${product.productSpecifications.battery}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.os != null}">--%>
-            <%--<li>OS: ${product.productSpecifications.os}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.os != null}">
+            <li>OS: ${product.productSpecifications.os}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.camera != null}">--%>
-            <%--<li>OS: ${product.productSpecifications.camera}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.camera != null}">
+            <li>Camera: ${product.productSpecifications.camera}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.dimensions != null}">--%>
-            <%--<li>OS: ${product.productSpecifications.dimensions}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.dimensions != null}">
+            <li>Dimensions: ${product.productSpecifications.dimensions}</li>
+        </c:if>
 
-        <%--<c:if test="${product.productSpecifications.weight != null}">--%>
-            <%--<li>Weight: ${product.productSpecifications.weight}</li>--%>
-        <%--</c:if>--%>
+        <c:if test="${product.productSpecifications.weight != null}">
+            <li>Weight: ${product.productSpecifications.weight}</li>
+        </c:if>
 
 
 
@@ -70,6 +70,6 @@
     </ul>
 
     <br/>
-    Go back to <a href="<c:url diskMemory="/products/list" />">List of all products</a>
+    Go back to <a href="<c:url value="/products/list" />">List of all products</a>
 </body>
 </html>

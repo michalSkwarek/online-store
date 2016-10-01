@@ -9,7 +9,6 @@
     <li><a href="${pageContext.request.contextPath}/products/list">List of all products</a></li>
     <li><a href="${pageContext.request.contextPath}/products/list/price/ascending">Ascending list od all products</a></li>
     <li><a href="${pageContext.request.contextPath}/products/list/price/descending">Descending list od all products</a></li>
-    <li><a href="${pageContext.request.contextPath}/categories/list">List of all categories</a></li>
     <li><a href="${pageContext.request.contextPath}/manufacturers/list">List of all manufacturers</a></li>
     <li><a href="${pageContext.request.contextPath}/products/category/select">Category filter</a></li>
     <li><a href="${pageContext.request.contextPath}/products/manufacturer/select">Manufacturer filter</a></li>

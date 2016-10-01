@@ -26,8 +26,8 @@
     </table>
 
     <br/>
-    <a href="<c:url diskMemory="/manufacturers/new"/>">Add new manufacturer</a>
+    <a href="<c:url value="/manufacturers/new"/>">Add new manufacturer</a>
     <br/>
-    <a href="<c:url diskMemory="/"/>">Home page</a>
+    <a href="<c:url value="/"/>">Home page</a>
 </body>
 </html>
