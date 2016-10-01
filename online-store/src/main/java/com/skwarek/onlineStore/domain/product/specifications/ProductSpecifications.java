@@ -29,7 +29,7 @@ public class ProductSpecifications {
     private RAM ram;
 
     @Embedded
-    private Disk disk;
+    private Storage storage;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "display_id")
@@ -53,9 +53,6 @@ public class ProductSpecifications {
 
 //    @Embedded
 //    private PowerSupply powerSupply;
-
-//    @Embedded
-//    private Weight weight;
 
     @OneToOne(mappedBy = "productSpecifications", cascade = CascadeType.ALL)
     private Product product;
@@ -94,12 +91,12 @@ public class ProductSpecifications {
         this.ram = ram;
     }
 
-    public Disk getDisk() {
-        return disk;
+    public Storage getStorage() {
+        return storage;
     }
 
-    public void setDisk(Disk disk) {
-        this.disk = disk;
+    public void setStorage(Storage storage) {
+        this.storage = storage;
     }
 
     public Display getDisplay() {

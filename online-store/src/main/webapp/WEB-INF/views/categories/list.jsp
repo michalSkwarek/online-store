@@ -24,8 +24,8 @@
     </table>
 
     <br/>
-    <a href="<c:url value="/categories/new"/>">Add new category</a>
+    <a href="<c:url diskMemory="/categories/new"/>">Add new category</a>
     <br/>
-    <a href="<c:url value="/"/>">Home page</a>
+    <a href="<c:url diskMemory="/"/>">Home page</a>
 </body>
 </html>

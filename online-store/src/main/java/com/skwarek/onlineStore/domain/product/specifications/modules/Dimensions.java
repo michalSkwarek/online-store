@@ -2,6 +2,7 @@ package com.skwarek.onlineStore.domain.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.util.Locale;
 
 /**
  * Created by Michal on 27.09.2016.
@@ -49,14 +50,8 @@ public class Dimensions {
 
     @Override
     public String toString() {
-        return outputFormat(thickness) + " mm \u00D7 " + outputFormat(width) + " mm \u00D7 " + outputFormat(height) + " mm";
-    }
-
-    private static String outputFormat(double d) {
-        if(d == (int) d) {
-            return String.format("%d", (int) d);
-        } else {
-            return String.format("%s", d);
-        }
+        return String.format(Locale.US, "%.1f", thickness) + " mm \u00D7 " +
+                String.format(Locale.US, "%.1f", width) + " mm \u00D7 " +
+                String.format(Locale.US, "%.1f", height) + " mm";
     }
 }

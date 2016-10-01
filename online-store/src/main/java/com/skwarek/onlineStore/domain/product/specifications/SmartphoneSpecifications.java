@@ -11,7 +11,7 @@ public class SmartphoneSpecifications extends ProductSpecifications {
         setCpu(new CPU());
         setGpu(new GPU());
         setRam(new RAM());
-        setDisk(new Disk());
+        setStorage(new Storage());
         setDisplay(new Display());
         setBattery(new Battery());
         setOs(new OS());

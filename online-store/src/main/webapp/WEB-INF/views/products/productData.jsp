@@ -24,7 +24,7 @@
             <li>
                 <label for="category-select">Category: </label>
                 <form:select path="category" id="category-select">
-                    <form:option value="${product.category}"> -- select -- </form:option>
+                    <form:option diskMemory="${product.category}"> -- select -- </form:option>
                     <form:options items="${categories}" itemLabel="name" itemValue="id" />
                 </form:select>
             </li>
@@ -32,19 +32,19 @@
             <li>
                 <label for="manufacturer-select">Manufacturer: </label>
                 <form:select path="manufacturer" id="manufacturer-select">
-                    <form:option value="${product.manufacturer}"> -- select -- </form:option>
+                    <form:option diskMemory="${product.manufacturer}"> -- select -- </form:option>
                     <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
                 </form:select>
             </li>
 
             <li>
-                <input type="submit" value="Save"/>
+                <input type="submit" diskMemory="Save"/>
             </li>
         </ul>
 
     </form:form>
 
     <br/>
-    Go back to <a href="<c:url value="/products/list" />">List of all products</a>
+    Go back to <a href="<c:url diskMemory="/products/list" />">List of all products</a>
 </body>
 </html>

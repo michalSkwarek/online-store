@@ -103,7 +103,7 @@ public class CPU {
 
     @Override
     public String toString() {
-        return model + " (" + numberOfCores + " cores, " +
+        return model + "\n(" + numberOfCores + "-core, " +
                 formatClockSpeed() + ")";
     }
 

@@ -33,8 +33,8 @@
             <%--<li>RAM: ${product.productSpecifications.ram}</li>--%>
         <%--</c:if>--%>
 
-        <%--<c:if test="${product.productSpecifications.disk != null}">--%>
-            <%--<li>Disk: ${product.productSpecifications.disk}</li>--%>
+        <%--<c:if test="${product.productSpecifications.storage != null}">--%>
+            <%--<li>Storage: ${product.productSpecifications.storage}</li>--%>
         <%--</c:if>--%>
 
         <%--<c:if test="${product.productSpecifications.display != null}">--%>
@@ -70,6 +70,6 @@
     </ul>
 
     <br/>
-    Go back to <a href="<c:url value="/products/list" />">List of all products</a>
+    Go back to <a href="<c:url diskMemory="/products/list" />">List of all products</a>
 </body>
 </html>

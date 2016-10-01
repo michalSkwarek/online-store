@@ -36,16 +36,16 @@
             <%--<c:if test="${spec.ram != null}">--%>
                 <%--<li>--%>
                     <%--<p>RAM:</p>--%>
-                    <%--<label for="value">Value: </label>--%>
-                    <%--<form:input path="ram.value" id="value"/>--%>
+                    <%--<label for="diskMemory">Value: </label>--%>
+                    <%--<form:input path="ram.diskMemory" id="diskMemory"/>--%>
                 <%--</li>--%>
             <%--</c:if>--%>
 
-            <%--<c:if test="${spec.disk != null}">--%>
+            <%--<c:if test="${spec.storage != null}">--%>
                 <%--<li>--%>
-                    <%--<p>Disk:</p>--%>
-                    <%--<label for="value">Value: </label>--%>
-                    <%--<form:input path="disk.value" id="value"/>--%>
+                    <%--<p>Storage:</p>--%>
+                    <%--<label for="diskMemory">Value: </label>--%>
+                    <%--<form:input path="storage.diskMemory" id="diskMemory"/>--%>
                 <%--</li>--%>
             <%--</c:if>--%>
 
@@ -106,7 +106,7 @@
             <%--<c:if test="${spec.weight != null}">--%>
                 <%--<li>--%>
                     <%--<p>Weight:</p>--%>
-                    <%--<form:input path="weight.value"/>--%>
+                    <%--<form:input path="weight.diskMemory"/>--%>
                 <%--</li>--%>
             <%--</c:if>--%>
 
@@ -119,7 +119,7 @@
 
 
             <li>
-                <input type="submit" value="Save"/>
+                <input type="submit" diskMemory="Save"/>
             </li>
         </ul>
     </form:form>

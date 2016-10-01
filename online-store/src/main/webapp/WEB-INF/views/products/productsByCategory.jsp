@@ -18,7 +18,7 @@
         </select>
 
         <br/>
-        <input type="submit" value="Submit"/>
+        <input type="submit" diskMemory="Submit"/>
 
     </form:form>
 </body>

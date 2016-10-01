@@ -17,13 +17,13 @@
             </li>
 
             <li>
-                <input type="submit" value="Save"/>
+                <input type="submit" diskMemory="Save"/>
             </li>
         </ul>
 
     </form:form>
 
     <br/>
-    Go back to <a href="<c:url value="/categories/list" />">List of all categories</a>
+    Go back to <a href="<c:url diskMemory="/categories/list" />">List of all categories</a>
 </body>
 </html>

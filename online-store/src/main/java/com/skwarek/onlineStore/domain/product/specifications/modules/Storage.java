@@ -1,10 +1,15 @@
 package com.skwarek.onlineStore.domain.product.specifications.modules;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
- * Created by Michal on 27.09.2016.
+ * Created by Michal on 30.09.2016.
  */
+@Embeddable
 public class Storage {
 
+    @Column(name = "disk_memory")
     private Integer diskMemory;
 
     public Storage() { }

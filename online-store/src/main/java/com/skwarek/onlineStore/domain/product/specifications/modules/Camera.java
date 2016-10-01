@@ -61,7 +61,7 @@ public class Camera {
 
     @Override
     public String toString() {
-        return String.format(Locale.US, "%.1f", resolutionMainCamera) + " MP main camera, " +
+        return String.format(Locale.US, "%.1f", resolutionMainCamera) + " MP main camera\n" +
                 String.format(Locale.US, "%.1f", resolutionFrontCamera) + " MP front camera";
     }
 }

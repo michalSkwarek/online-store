@@ -51,7 +51,7 @@
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Battery</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.DisplayResolution</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Display</value>
-                <value>com.skwarek.onlineStore.domain.product.specifications.modules.Disk</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.Storage</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.RAM</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.GPU</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.CPU</value>

@@ -6,11 +6,11 @@ package com.skwarek.onlineStore.domain.product.specifications;
 public class SpecificationsFactory {
 
     public ProductSpecifications createSpecifications(String productCategory) {
-        if (productCategory.equalsIgnoreCase("smartphone")) {
+        if (productCategory.equalsIgnoreCase("Smartphone")) {
             return new SmartphoneSpecifications();
         } else if (productCategory.equalsIgnoreCase("pc")) {
             return new PCSpecifications();
-        } else if (productCategory.equalsIgnoreCase("console")) {
+        } else if (productCategory.equalsIgnoreCase("Console")) {
             return new ConsoleSpecifications();
         }
         return null;

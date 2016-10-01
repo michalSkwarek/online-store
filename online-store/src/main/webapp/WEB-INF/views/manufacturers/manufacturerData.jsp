@@ -22,13 +22,13 @@
             </li>
 
             <li>
-                <input type="submit" value="Save"/>
+                <input type="submit" diskMemory="Save"/>
             </li>
         </ul>
 
     </form:form>
 
     <br/>
-    Go back to <a href="<c:url value="/manufacturers/list" />">List of all manufacturers</a>
+    Go back to <a href="<c:url diskMemory="/manufacturers/list" />">List of all manufacturers</a>
 </body>
 </html>
