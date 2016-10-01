@@ -38,6 +38,8 @@
                     <p>RAM:</p>
                     <label for="value">Value: </label>
                     <form:input path="ram.value" id="value"/>
+                    <label for="type">Type: </label>
+                    <form:input path="ram.ramType.type" id="type"/>
                 </li>
             </c:if>
 

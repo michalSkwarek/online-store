@@ -46,6 +46,9 @@ public class ProductSpecifications {
     private Camera camera;
 
     @Embedded
+    private Webcam webcam;
+
+    @Embedded
     private Dimensions dimensions;
 
     @Embedded
@@ -129,6 +132,14 @@ public class ProductSpecifications {
 
     public void setCamera(Camera camera) {
         this.camera = camera;
+    }
+
+    public Webcam getWebcam() {
+        return webcam;
+    }
+
+    public void setWebcam(Webcam webcam) {
+        this.webcam = webcam;
     }
 
     public Dimensions getDimensions() {

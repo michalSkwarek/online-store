@@ -237,16 +237,16 @@ INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) 
 
 -- add few specifications
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (31, 21, 17, 2, 1, 128, 14, 7306, 1, 2, 12.0, 5.0, 6.1, 169.5, 240, 450);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (32, 22, 18, 2, 128, 15, 5124, 1, 2, 8.0, 1.2, 6.1, 134.8, 203.2, 299);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (33, 23, 19, 2, 64, 14, 7340, 1, 2, 8.0, 1.2, 6.1, 169.5, 240, 437);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (34, 14, 8, 3, 32, 14, 5870, 1, 3, 8.0, 2.1, 6.1, 169.5, 236, 390);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (35, 24, 20, 2, 16, 16, 7300, 1, 3, 8.0, 2.0, 8.2, 155, 254, 522);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (32, 22, 18, 2, 1, 128, 15, 5124, 1, 2, 8.0, 1.2, 6.1, 134.8, 203.2, 299);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (33, 23, 19, 2, 1, 64, 14, 7340, 1, 2, 8.0, 1.2, 6.1, 169.5, 240, 437);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (34, 14, 8, 3, 1, 32, 14, 5870, 1, 3, 8.0, 2.1, 6.1, 169.5, 236, 390);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (35, 24, 20, 2, 1, 16, 16, 7300, 1, 3, 8.0, 2.0, 8.2, 155, 254, 522);
 
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (36, 25, 12, 2, 32, 17, 10200, 1, 5, 13.0, 5.0, 6.4, 179, 247, 662);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (37, 26, 21, 1, 16, 18, 6340, 2, 9, 5.0, 2.0, 9, 176, 264, 560);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (38, 27, 21, 1, 8, 19, 4800, 2, 10, 5.0, 0.3, 7.9, 128, 211, 360);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (39, 28, 7, 2, 32, 20, 9750, 1, 6, 8.0, 2.0, 8, 222, 301, 850);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (40, 29, 12, 2, 32, 19, 4800, 2, 8, 8.0, 2.0, 9, 140, 215, 380);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (36, 25, 12, 2, 1, 32, 17, 10200, 1, 5, 13.0, 5.0, 6.4, 179, 247, 662);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (37, 26, 21, 1, 1, 16, 18, 6340, 2, 9, 5.0, 2.0, 9, 176, 264, 560);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (38, 27, 21, 1, 1, 8, 19, 4800, 2, 10, 5.0, 0.3, 7.9, 128, 211, 360);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (39, 28, 7, 2, 1, 32, 20, 9750, 1, 6, 8.0, 2.0, 8, 222, 301, 850);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (40, 29, 12, 2, 1, 32, 19, 4800, 2, 8, 8.0, 2.0, 9, 140, 215, 380);
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (31, 'iPad Pro 9.7', 4299, 2, 1, 31);
@@ -270,6 +270,86 @@ INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
 
+
+-- ----------------------------------------------
+-- Notebook
+-- ----------------------------------------------
+-- add few webcams
+
+
+
+-- add few operating systems
+INSERT INTO os (id, name, version) VALUES (11, 'Mac OS', 'X Yosemite');
+INSERT INTO os (id, name, version) VALUES (12, 'Mac OS', 'X El Capitan');
+INSERT INTO os (id, name, version) VALUES (13, 'Windows', '7 Professional');
+INSERT INTO os (id, name, version) VALUES (14, 'Windows', '10 Pro');
+INSERT INTO os (id, name, version) VALUES (15, 'Windows', '10 Home');
+
+-- add few display resolutions
+INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (11, 2880, 1800);
+INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (12, 1440, 900);
+INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (13, 3840, 2160);
+
+-- add few displays
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (21, 15.4, 11);
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (22, 13.3, 12);
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (23, 14, 1);
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (24, 15.6, 13);
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (25, 15.6, 1);
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (26, 17.3, 13);
+INSERT INTO display (id, diagonal, display_resolution_id) VALUES (27, 17.3, 1);
+
+-- add few gpu
+INSERT INTO gpu (id, model) VALUES (22, 'Intel Iris Pro Graphics');
+INSERT INTO gpu (id, model) VALUES (23, 'Intel HD Graphics 6000');
+INSERT INTO gpu (id, model) VALUES (24, 'Intel HD Graphics 520');
+INSERT INTO gpu (id, model) VALUES (25, 'Intel HD Graphics 530 + NVIDIA GeForce GTX 960M');
+INSERT INTO gpu (id, model) VALUES (26, 'NVIDIA Quadro M600M');
+INSERT INTO gpu (id, model) VALUES (27, 'NVIDIA GeForce GTX 1070 SLI');
+INSERT INTO gpu (id, model) VALUES (28, 'NVIDIA GeForce GTX 980M');
+
+-- add few cpu
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (30, 'Intel Core i7-4770HQ', 4, 2.2, 3.4, 6);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (31, 'Intel Core i5-5250U', 2, 1.6, 2.7, 3);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (32, 'Intel Core i5-6200U', 2, 2.3, 2.8, 3);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (33, 'Intel Core i7-6700HQ', 4, 2.6, 3.5, 6);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (34, 'Intel Xeon E3-1505M v5', 4, 2.8, 3.7, 8);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (35, 'Intel Core i7-6820HK', 4, 2.7, 3.6, 8);
+
+-- add few specifications
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (31, 21, 17, 2, 1, 128, 14, 7306, 1, 2, 12.0, 5.0, 6.1, 169.5, 240, 450);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (32, 22, 18, 2, 1, 128, 15, 5124, 1, 2, 8.0, 1.2, 6.1, 134.8, 203.2, 299);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (33, 23, 19, 2, 1, 64, 14, 7340, 1, 2, 8.0, 1.2, 6.1, 169.5, 240, 437);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (34, 14, 8, 3, 1, 32, 14, 5870, 1, 3, 8.0, 2.1, 6.1, 169.5, 236, 390);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (35, 24, 20, 2, 1, 16, 16, 7300, 1, 3, 8.0, 2.0, 8.2, 155, 254, 522);
+
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (36, 25, 12, 2, 1, 32, 17, 10200, 1, 5, 13.0, 5.0, 6.4, 179, 247, 662);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (37, 26, 21, 1, 1, 16, 18, 6340, 2, 9, 5.0, 2.0, 9, 176, 264, 560);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (38, 27, 21, 1, 1, 8, 19, 4800, 2, 10, 5.0, 0.3, 7.9, 128, 211, 360);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (39, 28, 7, 2, 1, 32, 20, 9750, 1, 6, 8.0, 2.0, 8, 222, 301, 850);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, ram_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (40, 29, 12, 2, 1, 32, 19, 4800, 2, 8, 8.0, 2.0, 9, 140, 215, 380);
+
+-- add few products
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (31, 'iPad Pro 9.7', 4299, 2, 1, 31);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (32, 'iPad mini 4', 2399, 2, 1, 32);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (33, 'iPad Air 2', 2349, 2, 1, 33);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (34, 'Galaxy Tab S2 9.7', 2149, 2, 2, 34);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (35, 'Galaxy Tab A 10.1', 1399, 2, 2, 35);
+#
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (36, 'Yoga Tablet 3 Pro', 2499, 2, 3, 36);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (37, 'A10-70', 842, 2, 3, 37);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (38, 'MediaPad T1 8.0', 629, 2, 9, 38);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (39, 'Pro Slate 12', 3975, 2, 10, 39);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (40, 'Pro 408 G1', 1767, 2, 10, 40);
+
+
+
+
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
 
 
 

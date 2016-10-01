@@ -29,6 +29,9 @@ public class CPU {
     @Column(name = "high_clock_speed")
     private Double highClockSpeed;
 
+    @Column(name = "cache")
+    private Integer cache;
+
     @OneToMany(mappedBy = "cpu", cascade = CascadeType.ALL)
     private List<ProductSpecifications> specifications;
 
@@ -78,6 +81,14 @@ public class CPU {
         this.highClockSpeed = highClockSpeed;
     }
 
+    public Integer getCache() {
+        return cache;
+    }
+
+    public void setCache(Integer cache) {
+        this.cache = cache;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,34 +96,34 @@ public class CPU {
 
         CPU cpu = (CPU) o;
 
+        if (id != null ? !id.equals(cpu.id) : cpu.id != null) return false;
         if (model != null ? !model.equals(cpu.model) : cpu.model != null) return false;
         if (numberOfCores != null ? !numberOfCores.equals(cpu.numberOfCores) : cpu.numberOfCores != null) return false;
         if (lowClockSpeed != null ? !lowClockSpeed.equals(cpu.lowClockSpeed) : cpu.lowClockSpeed != null) return false;
-        return highClockSpeed != null ? highClockSpeed.equals(cpu.highClockSpeed) : cpu.highClockSpeed == null;
+        if (highClockSpeed != null ? !highClockSpeed.equals(cpu.highClockSpeed) : cpu.highClockSpeed != null)
+            return false;
+        if (cache != null ? !cache.equals(cpu.cache) : cpu.cache != null) return false;
+        return specifications != null ? specifications.equals(cpu.specifications) : cpu.specifications == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = model != null ? model.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + (numberOfCores != null ? numberOfCores.hashCode() : 0);
         result = 31 * result + (lowClockSpeed != null ? lowClockSpeed.hashCode() : 0);
         result = 31 * result + (highClockSpeed != null ? highClockSpeed.hashCode() : 0);
+        result = 31 * result + (cache != null ? cache.hashCode() : 0);
+        result = 31 * result + (specifications != null ? specifications.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return model + "\n(" + numberOfCores + "-core, " +
-                formatClockSpeed() + ")";
-    }
-
-    private String formatClockSpeed() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(lowClockSpeed).append(" GHz");
-        if (highClockSpeed != null) {
-            builder.append(" - ").append(highClockSpeed).append(" GHz");
-        }
-        return builder.toString();
+                lowClockSpeed + " GHz" +
+                ((highClockSpeed == null) ? "" : " - " + highClockSpeed + " GHz") +
+                ((cache == null) ? "" : ", " + cache + " MB cache") + ")";
     }
 }
