@@ -20,6 +20,13 @@ public class GPU {
     @Column(name = "model")
     private String model;
 
+    @Column(name = "memory")
+    private Integer memory;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "memory_type_id")
+    private MemoryType memoryType;
+
     @OneToMany(mappedBy = "gpu", cascade = CascadeType.ALL)
     private List<ProductSpecifications> specifications;
 
@@ -43,6 +50,22 @@ public class GPU {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public Integer getMemory() {
+        return memory;
+    }
+
+    public void setMemory(Integer memory) {
+        this.memory = memory;
+    }
+
+    public MemoryType getMemoryType() {
+        return memoryType;
+    }
+
+    public void setMemoryType(MemoryType memoryType) {
+        this.memoryType = memoryType;
     }
 
     public List<ProductSpecifications> getSpecifications() {
@@ -76,6 +99,8 @@ public class GPU {
 
     @Override
     public String toString() {
-        return model;
+        return model +
+                ((memory == null) ? "" : " " + memory + " GB") +
+                ((memoryType == null) ? "" : " " + memoryType);
     }
 }

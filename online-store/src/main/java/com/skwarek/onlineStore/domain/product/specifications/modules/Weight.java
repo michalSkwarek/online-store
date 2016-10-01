@@ -10,19 +10,19 @@ import javax.persistence.Embeddable;
 public class Weight {
 
     @Column(name = "weight")
-    private Integer value;
+    private Double value;
 
     public Weight() { }
 
-    public Weight(Integer weight) {
+    public Weight(Double weight) {
         this.value = weight;
     }
 
-    public Integer getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(Integer value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
@@ -43,6 +43,6 @@ public class Weight {
 
     @Override
     public String toString() {
-        return value + " grams";
+        return value + ((value > 10) ? " grams" : " kg");
     }
 }

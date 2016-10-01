@@ -12,8 +12,8 @@ public class RAM {
     private Integer value;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ram_type_id")
-    private RAMType ramType;
+    @JoinColumn(name = "memory_type_id")
+    private MemoryType memoryType;
 
     public RAM() { }
 
@@ -29,12 +29,12 @@ public class RAM {
         this.value = value;
     }
 
-    public RAMType getRamType() {
-        return ramType;
+    public MemoryType getMemoryType() {
+        return memoryType;
     }
 
-    public void setRamType(RAMType ramType) {
-        this.ramType = ramType;
+    public void setMemoryType(MemoryType memoryType) {
+        this.memoryType = memoryType;
     }
 
     @Override
@@ -45,20 +45,20 @@ public class RAM {
         RAM ram = (RAM) o;
 
         if (value != null ? !value.equals(ram.value) : ram.value != null) return false;
-        return ramType != null ? ramType.equals(ram.ramType) : ram.ramType == null;
+        return memoryType != null ? memoryType.equals(ram.memoryType) : ram.memoryType == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = value != null ? value.hashCode() : 0;
-        result = 31 * result + (ramType != null ? ramType.hashCode() : 0);
+        result = 31 * result + (memoryType != null ? memoryType.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return value + " GB" +
-                ((ramType == null) ? "" : " " + ramType);
+                ((memoryType == null) ? "" : " " + memoryType);
     }
 }

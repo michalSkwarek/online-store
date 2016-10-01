@@ -39,7 +39,7 @@
                     <label for="value">Value: </label>
                     <form:input path="ram.value" id="value"/>
                     <label for="type">Type: </label>
-                    <form:input path="ram.ramType.type" id="type"/>
+                    <form:input path="ram.memoryType.type" id="type"/>
                 </li>
             </c:if>
 
@@ -73,6 +73,13 @@
                 </li>
             </c:if>
 
+            <c:if test="${spec.powerSupply != null}">
+                <li>
+                    <p>Power supply:</p>
+                    <form:input path="powerSupply.value"/>
+                </li>
+            </c:if>
+
             <c:if test="${spec.os != null}">
                 <li>
                     <p>Os:</p>
@@ -90,6 +97,13 @@
                     <form:input path="camera.resolutionMainCamera" id="resolutionMainCamera"/>
                     <label for="resolutionFrontCamera">Front camera: </label>
                     <form:input path="camera.resolutionFrontCamera" id="resolutionFrontCamera"/>
+                </li>
+            </c:if>
+
+            <c:if test="${spec.webcam != null}">
+                <li>
+                    <p>Webcam:</p>
+                    <form:input path="webcam.resolutionWebcam"/>
                 </li>
             </c:if>
 

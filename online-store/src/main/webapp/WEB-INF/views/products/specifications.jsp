@@ -45,12 +45,20 @@
             <li>Battery: ${product.productSpecifications.battery}</li>
         </c:if>
 
+        <c:if test="${product.productSpecifications.powerSupply != null}">
+            <li>Battery: ${product.productSpecifications.powerSupply}</li>
+        </c:if>
+
         <c:if test="${product.productSpecifications.os != null}">
             <li>OS: ${product.productSpecifications.os}</li>
         </c:if>
 
         <c:if test="${product.productSpecifications.camera != null}">
             <li>Camera: ${product.productSpecifications.camera}</li>
+        </c:if>
+
+        <c:if test="${product.productSpecifications.webcam != null}">
+            <li>Webcam: ${product.productSpecifications.webcam}</li>
         </c:if>
 
         <c:if test="${product.productSpecifications.dimensions != null}">

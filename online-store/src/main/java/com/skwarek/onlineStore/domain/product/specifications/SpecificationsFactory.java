@@ -11,13 +11,13 @@ public class SpecificationsFactory {
         } else if (productCategory.equalsIgnoreCase("Tablet")) {
             return new TabletSpecifications();
         } else if (productCategory.equalsIgnoreCase("Notebook")) {
-            return new PCSpecifications();
+            return new NotebookSpecifications();
         } else if (productCategory.equalsIgnoreCase("PC")) {
             return new PCSpecifications();
         } else if (productCategory.equalsIgnoreCase("Console")) {
             return new ConsoleSpecifications();
         } else if (productCategory.equalsIgnoreCase("Smartwatch")) {
-            return new PCSpecifications();
+            return new SmartwatchSpecifications();
         }
         return null;
     }

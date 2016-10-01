@@ -45,14 +45,16 @@
 
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Weight</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Dimensions</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.Webcam</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Camera</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.OS</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.PowerSupply</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.BatteryType</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Battery</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.DisplayResolution</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Display</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.Storage</value>
-                <value>com.skwarek.onlineStore.domain.product.specifications.modules.RAMType</value>
+                <value>com.skwarek.onlineStore.domain.product.specifications.modules.MemoryType</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.RAM</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.GPU</value>
                 <value>com.skwarek.onlineStore.domain.product.specifications.modules.CPU</value>

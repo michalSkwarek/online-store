@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by Michal on 01.10.2016.
  */
 @Entity
-@Table(name = "ram_type")
-public class RAMType {
+@Table(name = "memory_type")
+public class MemoryType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +17,9 @@ public class RAMType {
     @Column(name = "type")
     private String type;
 
-    public RAMType() { }
+    public MemoryType() { }
 
-    public RAMType(String type) {
+    public MemoryType(String type) {
         this.type = type;
     }
 
@@ -42,9 +42,9 @@ public class RAMType {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof RAMType)) return false;
+        if (!(o instanceof MemoryType)) return false;
 
-        RAMType ramType = (RAMType) o;
+        MemoryType ramType = (MemoryType) o;
 
         if (id != null ? !id.equals(ramType.id) : ramType.id != null) return false;
         return type != null ? type.equals(ramType.type) : ramType.type == null;

@@ -38,6 +38,9 @@ public class ProductSpecifications {
     @Embedded
     private Battery battery;
 
+    @Embedded
+    private PowerSupply powerSupply;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "os_id")
     private OS os;
@@ -53,9 +56,6 @@ public class ProductSpecifications {
 
     @Embedded
     private Weight weight;
-
-//    @Embedded
-//    private PowerSupply powerSupply;
 
     @OneToOne(mappedBy = "productSpecifications", cascade = CascadeType.ALL)
     private Product product;
@@ -116,6 +116,14 @@ public class ProductSpecifications {
 
     public void setBattery(Battery battery) {
         this.battery = battery;
+    }
+
+    public PowerSupply getPowerSupply() {
+        return powerSupply;
+    }
+
+    public void setPowerSupply(PowerSupply powerSupply) {
+        this.powerSupply = powerSupply;
     }
 
     public OS getOs() {
