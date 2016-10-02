@@ -1,6 +1,6 @@
 package com.skwarek.onlineStore.web.controller;
 
-import com.skwarek.onlineStore.domain.product.Manufacturer;
+import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

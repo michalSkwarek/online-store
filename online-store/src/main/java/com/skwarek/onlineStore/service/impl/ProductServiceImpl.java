@@ -1,7 +1,7 @@
 package com.skwarek.onlineStore.service.impl;
 
-import com.skwarek.onlineStore.dao.ProductDao;
-import com.skwarek.onlineStore.domain.product.Product;
+import com.skwarek.onlineStore.data.dao.ProductDao;
+import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.service.ProductService;
 import com.skwarek.onlineStore.service.generic.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

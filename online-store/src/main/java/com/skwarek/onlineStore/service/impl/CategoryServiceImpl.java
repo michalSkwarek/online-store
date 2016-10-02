@@ -1,7 +1,7 @@
 package com.skwarek.onlineStore.service.impl;
 
-import com.skwarek.onlineStore.dao.CategoryDao;
-import com.skwarek.onlineStore.domain.product.Category;
+import com.skwarek.onlineStore.data.dao.CategoryDao;
+import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.service.CategoryService;
 import com.skwarek.onlineStore.service.generic.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

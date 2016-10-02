@@ -1,9 +1,10 @@
 package com.skwarek.onlineStore.web.controller;
 
-import com.skwarek.onlineStore.domain.product.Category;
-import com.skwarek.onlineStore.domain.product.Manufacturer;
-import com.skwarek.onlineStore.domain.product.Product;
-import com.skwarek.onlineStore.domain.product.specifications.*;
+import com.skwarek.onlineStore.data.entity.product.Category;
+import com.skwarek.onlineStore.data.entity.product.Manufacturer;
+import com.skwarek.onlineStore.data.entity.product.Product;
+import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import com.skwarek.onlineStore.data.entity.product.specifications.SpecificationsFactory;
 import com.skwarek.onlineStore.service.CategoryService;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.ProductService;

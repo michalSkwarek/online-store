@@ -1,6 +1,6 @@
 package com.skwarek.onlineStore.service;
 
-import com.skwarek.onlineStore.domain.product.Category;
+import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.service.generic.GenericService;
 
 /**

@@ -1,14 +1,14 @@
-package com.skwarek.onlineStore.service;
+package com.skwarek.onlineStore.data.dao;
 
+import com.skwarek.onlineStore.data.dao.generic.GenericDao;
 import com.skwarek.onlineStore.data.entity.product.Product;
-import com.skwarek.onlineStore.service.generic.GenericService;
 
 import java.util.List;
 
 /**
  * Created by Michal on 26.09.2016.
  */
-public interface ProductService extends GenericService<Product, Long> {
+public interface ProductDao extends GenericDao<Product, Long> {
 
     boolean removeProduct(Long id);
 

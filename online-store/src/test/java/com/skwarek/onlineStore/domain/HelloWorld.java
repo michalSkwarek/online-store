@@ -1,20 +1,6 @@
 package com.skwarek.onlineStore.domain;
 
-import com.skwarek.onlineStore.domain.product.Category;
-import com.skwarek.onlineStore.domain.product.Manufacturer;
-import com.skwarek.onlineStore.domain.product.Product;
-import com.skwarek.onlineStore.domain.product.specifications.*;
-import com.skwarek.onlineStore.domain.product.specifications.modules.*;
-import com.skwarek.onlineStore.service.CategoryService;
-import com.skwarek.onlineStore.service.ManufacturerService;
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * Created by Michal on 26.09.2016.

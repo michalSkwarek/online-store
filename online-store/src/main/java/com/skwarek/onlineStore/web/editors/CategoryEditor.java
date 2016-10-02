@@ -1,6 +1,6 @@
 package com.skwarek.onlineStore.web.editors;
 
-import com.skwarek.onlineStore.domain.product.Category;
+import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.service.CategoryService;
 
 import java.beans.PropertyEditorSupport;
