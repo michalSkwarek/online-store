@@ -70,7 +70,7 @@ public class ProductController {
 
     @RequestMapping("/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
-        model.addAttribute("product", productService.getById(id));
+        model.addAttribute("product", productService.read(id));
         return "products/specifications";
     }
 
@@ -88,14 +88,14 @@ public class ProductController {
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
     public String addProduct(Product product) {
 
-        productService.save(product);
+        productService.create(product);
         return "redirect:/products/list";
     }
 
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
     public String createSpec(@PathVariable Long id, Model model) {
 
-        String productCategory = productService.getById(id).getCategory().getName();
+        String productCategory = productService.read(id).getCategory().getName();
 
         SpecificationsFactory factory = new SpecificationsFactory();
         ProductSpecifications specifications = factory.createSpecifications(productCategory);
@@ -107,8 +107,8 @@ public class ProductController {
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
     public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
-        productSpecificationsService.save(specifications);
-        Product product = productService.getById(id);
+        productSpecificationsService.create(specifications);
+        Product product = productService.read(id);
         product.setProductSpecifications(specifications);
         productService.update(product);
         return "redirect:/products/list";
@@ -117,7 +117,7 @@ public class ProductController {
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
     public String getProduct(@PathVariable Long id, Model model) {
 
-        Product product = productService.getById(id);
+        Product product = productService.read(id);
         model.addAttribute("product", product);
         List<Category> categories = categoryService.getAll();
         model.addAttribute("categories", categories);
@@ -137,7 +137,7 @@ public class ProductController {
     @RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Long id) {
 
-        productService.removeProduct(id);
+        productService.deleteProduct(id);
         return "redirect:/products/list";
     }
 

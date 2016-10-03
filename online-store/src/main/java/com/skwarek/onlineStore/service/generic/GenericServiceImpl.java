@@ -13,37 +13,35 @@ import java.util.List;
  * Created by Michal on 26.09.2016.
  */
 @Service
-public abstract class GenericServiceImpl<E, K extends Serializable> implements GenericService<E, K> {
+@Transactional(propagation = Propagation.REQUIRED)
+public abstract class GenericServiceImpl<E, PK extends Serializable> implements GenericService<E, PK> {
 
     @Autowired
-    private GenericDao<E, K> genericDao;
+    private GenericDao<E, PK> genericDao;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
-    public E getById(K id) {
-        return genericDao.getById(id);
+    public void create(E entity) {
+        genericDao.create(entity);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void save(E entity) {
-        genericDao.save(entity);
+    @Transactional(readOnly = true)
+    public E read(PK id) {
+        return genericDao.read(id);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
     public void update(E entity) {
         genericDao.update(entity);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void remove(E entity) {
-        genericDao.remove(entity);
+    public void delete(E entity) {
+        genericDao.delete(entity);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     public List<E> getAll() {
         return genericDao.getAll();
     }

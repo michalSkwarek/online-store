@@ -1,19 +1,20 @@
 package com.skwarek.onlineStore.service.generic;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Michal on 26.09.2016.
  */
-public interface GenericService<E, K> {
+public interface GenericService<E, PK extends Serializable> {
 
-    E getById(K id);
+    void create(E entity);
 
-    void save(E entity);
+    E read(PK id);
 
     void update(E entity);
 
-    void remove(E entity);
+    void delete(E entity);
 
     List<E> getAll();
 }

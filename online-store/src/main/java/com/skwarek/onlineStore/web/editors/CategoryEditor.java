@@ -19,7 +19,7 @@ public class CategoryEditor extends PropertyEditorSupport {
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
         long id = Long.parseLong(text);
-        Category category = categoryService.getById(id);
+        Category category = categoryService.read(id);
         setValue(category);
     }
 }

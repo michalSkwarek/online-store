@@ -19,7 +19,7 @@ public class ManufacturerEditor extends PropertyEditorSupport {
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
         long id = Integer.parseInt(text);
-        Manufacturer manufacturer = manufacturerService.getById(id);
+        Manufacturer manufacturer = manufacturerService.read(id);
         setValue(manufacturer);
     }
 }

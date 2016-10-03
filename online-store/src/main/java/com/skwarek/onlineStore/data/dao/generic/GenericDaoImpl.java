@@ -4,6 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -14,9 +16,10 @@ import java.util.List;
  * Created by Michal on 26.09.2016.
  */
 @Repository
-public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
+@Transactional(propagation = Propagation.REQUIRED)
+public abstract class GenericDaoImpl<E, PK extends Serializable> implements GenericDao<E, PK> {
 
-    private Class<? extends E> daoType;
+    private Class<E> daoType;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -33,13 +36,13 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
     }
 
     @Override
-    public E getById(K id) {
-        return getSession().get(daoType, id);
+    public void create(E entity) {
+        getSession().save(entity);
     }
 
     @Override
-    public void save(E entity) {
-        getSession().save(entity);
+    public E read(PK id) {
+        return getSession().get(daoType, id);
     }
 
     @Override
@@ -48,7 +51,7 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
     }
 
     @Override
-    public void remove(E entity) {
+    public void delete(E entity) {
         getSession().delete(entity);
     }
 

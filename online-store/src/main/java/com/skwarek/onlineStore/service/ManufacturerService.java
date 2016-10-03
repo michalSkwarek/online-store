@@ -8,4 +8,5 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  */
 public interface ManufacturerService extends GenericService<Manufacturer, Long> {
 
+    boolean deleteManufacturer(Long id);
 }

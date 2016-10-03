@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ProductService extends GenericService<Product, Long> {
 
-    boolean removeProduct(Long id);
+    boolean deleteProduct(Long id);
 
     List getProductsByCategory(String category);
 

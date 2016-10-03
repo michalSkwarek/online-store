@@ -22,8 +22,8 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public boolean removeProduct(Long id) {
-        return productDao.removeProduct(id);
+    public boolean deleteProduct(Long id) {
+        return productDao.deleteProduct(id);
     }
 
     @Override

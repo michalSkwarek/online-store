@@ -15,9 +15,9 @@ import java.util.List;
 public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements ProductDao {
 
     @Override
-    public boolean removeProduct(Long id) {
-        Query removeProductQuery = getSession().createQuery("delete from Product where id = :ID");
-        removeProductQuery.setParameter("ID", id);
+    public boolean deleteProduct(Long id) {
+        Query removeProductQuery = getSession().createQuery("delete from Product where id = :id");
+        removeProductQuery.setParameter("id", id);
         return removeProductQuery.executeUpdate() > 0;
     }
 
