@@ -18,7 +18,7 @@ public class Manufacturer {
     @Column(name = "brand")
     private String brand;
 
-//    private Picture logo;
+//    private UploadFile logo;
 
     @Column(name = "website")
     private String website;

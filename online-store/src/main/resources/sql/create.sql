@@ -25,6 +25,9 @@ INSERT INTO manufacturer (id, brand, website) VALUES (12, 'Dell', 'http://www.de
 INSERT INTO manufacturer (id, brand, website) VALUES (13, 'MSI', 'http://www.msi.com');
 
 
+-- - - - - - - -- - - - - --
+INSERT INTO files_upload (id, file_name) VALUES (1, "file.jpg");
+
 
 -- ----------------------------------------------
 -- SMARTPHONE
@@ -350,11 +353,11 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (55, 40, 31, 8, 2, 256, 300, 15, 400, 106, 308, 5.9);
 
 -- add few products
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (51, '280 G1 MT', 1199, 4, 10, 51);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (52, 'Vostro 3900', 1799, 4, 12, 52);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (53, 'XPS 8900', 5299, 4, 12, 53);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (54, 'IdeaCentre 300-20', 2359, 4, 3, 54);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (55, 'IdeaCentre 700-25', 1549, 4, 3, 55);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (51, '280 G1 MT', 1199, 4, 10, 51);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (52, 'Vostro 3900', 1799, 4, 12, 52);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (53, 'XPS 8900', 5299, 4, 12, 53);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (54, 'IdeaCentre 300-20', 2359, 4, 3, 54);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, specifications_id) VALUES (55, 'IdeaCentre 700-25', 1549, 4, 3, 55);
 
 
 
@@ -431,9 +434,9 @@ INSERT INTO specifications (id, cpu_id, ram, disk_memory, display_id, battery_ca
 
 
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
+# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
 #
 #
 # INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);

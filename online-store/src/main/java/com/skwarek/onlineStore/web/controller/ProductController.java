@@ -3,12 +3,10 @@ package com.skwarek.onlineStore.web.controller;
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
+import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.data.entity.product.specifications.SpecificationsFactory;
-import com.skwarek.onlineStore.service.CategoryService;
-import com.skwarek.onlineStore.service.ManufacturerService;
-import com.skwarek.onlineStore.service.ProductService;
-import com.skwarek.onlineStore.service.ProductSpecificationsService;
+import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editors.CategoryEditor;
 import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
 import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
@@ -17,7 +15,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -38,6 +41,9 @@ public class ProductController {
 
     @Autowired
     private ProductSpecificationsService productSpecificationsService;
+
+    @Autowired
+    private UploadFileService uploadFileService;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -88,7 +94,20 @@ public class ProductController {
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String addProduct(Product product) {
+    public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload, HttpServletRequest request) {
+
+        System.out.println(" = = = " + "foo");
+//        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+//
+        System.out.println(" = = = " + "foo2");
+//        System.out.println(" = = = " + rootDirectory);
+
+        if (fileUpload != null) {
+            UploadFile uploadFile = new UploadFile();
+            uploadFile.setFileName(fileUpload.getOriginalFilename());
+            uploadFile.setData(fileUpload.getBytes());
+            uploadFileService.create(uploadFile);
+        }
 
         productService.create(product);
         return "redirect:/products/list";
@@ -128,7 +147,6 @@ public class ProductController {
         return "products/productData";
     }
 
-    //TODO
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Product product) {
 

@@ -31,7 +31,9 @@ public class Product {
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
-//    private Picture image;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_image_id")
+    private UploadFile productImage;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specifications_id")
@@ -96,6 +98,14 @@ public class Product {
 
     public void setProductSpecifications(ProductSpecifications productSpecifications) {
         this.productSpecifications = productSpecifications;
+    }
+
+    public UploadFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(UploadFile productImage) {
+        this.productImage = productImage;
     }
 
     @Override

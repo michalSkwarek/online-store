@@ -8,6 +8,9 @@
     <h1>Product specifications</h1>
 
     <ul>
+        <li>Image:
+            <img src="<c:url value="/resources/images/${product.category.name.toLowerCase()}/${product.id}.jpg" />" alt="image" style="width: 25%" />
+        </li>
         <li>Name: ${product.model}</li>
         <li>Unit price: ${product.unitPrice}</li>
         <li>Category: ${product.category.name}</li>

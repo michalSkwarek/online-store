@@ -15,6 +15,7 @@
 
     <mvc:annotation-driven  />
     <context:component-scan base-package="com.skwarek.onlineStore" />
+    <mvc:resources location="/resources/" mapping="/resources/**" />
     <tx:annotation-driven transaction-manager="transactionManager" />
     <context:property-placeholder location="file:/Users/Michal/Desktop/database.txt" />
 
@@ -59,6 +60,7 @@
                 <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.GPU</value>
                 <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.CPU</value>
 
+                <value>com.skwarek.onlineStore.data.entity.product.UploadFile</value>
                 <value>com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications</value>
                 <value>com.skwarek.onlineStore.data.entity.product.Manufacturer</value>
                 <value>com.skwarek.onlineStore.data.entity.product.Category</value>
@@ -80,6 +82,11 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory"
                   ref="sessionFactory" />
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="20971520" />
+        <property name="maxInMemorySize" value="1048576" />
     </bean>
 
 </beans>
