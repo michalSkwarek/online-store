@@ -13,7 +13,7 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven  />
     <context:component-scan base-package="com.skwarek.onlineStore" />
     <tx:annotation-driven transaction-manager="transactionManager" />
     <context:property-placeholder location="file:/Users/Michal/Desktop/database.txt" />
@@ -43,9 +43,26 @@
         <property name="annotatedClasses" >
             <list>
 
-                <value>com.skwarek.onlineStore.domain.product.Manufacturer</value>
-                <value>com.skwarek.onlineStore.domain.product.Category</value>
-                <value>com.skwarek.onlineStore.domain.product.Product</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Weight</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Dimensions</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Webcam</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Camera</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.OS</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.PowerSupply</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.BatteryType</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Battery</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.DisplayResolution</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Display</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.Storage</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.MemoryType</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.RAM</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.GPU</value>
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.modules.CPU</value>
+
+                <value>com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications</value>
+                <value>com.skwarek.onlineStore.data.entity.product.Manufacturer</value>
+                <value>com.skwarek.onlineStore.data.entity.product.Category</value>
+                <value>com.skwarek.onlineStore.data.entity.product.Product</value>
 
             </list>
         </property>

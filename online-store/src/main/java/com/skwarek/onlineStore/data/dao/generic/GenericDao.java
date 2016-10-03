@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.service.generic;
+package com.skwarek.onlineStore.data.dao.generic;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Michal on 26.09.2016.
  */
-public interface GenericService<E, PK extends Serializable> {
+public interface GenericDao<E, PK extends Serializable> {
 
     void create(E entity);
 

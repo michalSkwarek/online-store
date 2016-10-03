@@ -1,7 +1,7 @@
 package com.skwarek.onlineStore.service.impl;
 
-import com.skwarek.onlineStore.dao.ManufacturerDao;
-import com.skwarek.onlineStore.domain.product.Manufacturer;
+import com.skwarek.onlineStore.data.dao.ManufacturerDao;
+import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.generic.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,4 +15,9 @@ public class ManufacturerServiceImpl extends GenericServiceImpl<Manufacturer, Lo
 
     @Autowired
     private ManufacturerDao manufacturerDao;
+
+    @Override
+    public boolean deleteManufacturer(Long id) {
+        return manufacturerDao.deleteManufacturer(id);
+    }
 }

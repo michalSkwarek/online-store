@@ -1,6 +1,6 @@
 package com.skwarek.onlineStore.web.controller;
 
-import com.skwarek.onlineStore.domain.product.Manufacturer;
+import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,14 +39,14 @@ public class ManufacturerController {
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
     public String addManufacturer(Manufacturer manufacturer) {
 
-        manufacturerService.save(manufacturer);
+        manufacturerService.create(manufacturer);
         return "redirect:/manufacturers/list";
     }
 
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
     public String getProduct(@PathVariable Long id, Model model) {
 
-        Manufacturer manufacturer = manufacturerService.getById(id);
+        Manufacturer manufacturer = manufacturerService.read(id);
         model.addAttribute("manufacturer", manufacturer);
         return "manufacturers/manufacturerData";
     }
@@ -54,15 +54,14 @@ public class ManufacturerController {
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Manufacturer manufacturer) {
 
-        manufacturerService.save(manufacturer);
+        manufacturerService.update(manufacturer);
         return "redirect:/manufacturers/list";
     }
 
     @RequestMapping(value = { "/delete/{id}" }, method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Long id) {
 
-        Manufacturer toDelete = manufacturerService.getById(id);
-        manufacturerService.remove(toDelete);
+        manufacturerService.deleteManufacturer(id);
         return "redirect:/manufacturers/list";
     }
 }

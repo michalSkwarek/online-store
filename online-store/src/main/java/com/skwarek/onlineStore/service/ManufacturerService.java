@@ -1,6 +1,6 @@
 package com.skwarek.onlineStore.service;
 
-import com.skwarek.onlineStore.domain.product.Manufacturer;
+import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.service.generic.GenericService;
 
 /**
@@ -8,4 +8,5 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  */
 public interface ManufacturerService extends GenericService<Manufacturer, Long> {
 
+    boolean deleteManufacturer(Long id);
 }
