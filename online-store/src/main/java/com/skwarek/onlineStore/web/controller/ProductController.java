@@ -11,6 +11,7 @@ import com.skwarek.onlineStore.service.ProductService;
 import com.skwarek.onlineStore.service.ProductSpecificationsService;
 import com.skwarek.onlineStore.web.editors.CategoryEditor;
 import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
+import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +43,7 @@ public class ProductController {
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
+        binder.registerCustomEditor(ProductSpecifications.class, new ProductSpecificationsEditor(productSpecificationsService));
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
@@ -150,7 +152,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = {"/category/select"}, method = RequestMethod.POST)
-    public String showProductsByCategory(@RequestParam String category, Model model) {
+    public String showProductsByCategoryPost(@RequestParam String category, Model model) {
 
         List products = productService.getProductsByCategory(category);
         if (products == null || products.isEmpty()) {
