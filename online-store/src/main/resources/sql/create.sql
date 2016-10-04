@@ -542,3 +542,17 @@ INSERT INTO files_upload (id, file_name) VALUES (64, 'file64.jpg');
 # INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (118, 'xyz', 3000, 6, 4);
 
 
+
+-- ----------------------------------------------
+-- add few customers
+INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, number_of_orders) VALUES (1, 'Michal', 'Aaa', STR_TO_DATE('21-03-1994', '%d-%m-%Y'), '111222333', 1);
+INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, number_of_orders) VALUES (2, 'Weronika', 'Bbb', STR_TO_DATE('21-03-1997', '%d-%m-%Y'), '222333444', 2);
+INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, number_of_orders) VALUES (3, 'Radek', 'Ccc', STR_TO_DATE('21-03-1999', '%d-%m-%Y'), '333444555', 0);
+
+-- add few accounts
+INSERT INTO user (id, login, password, email, date_created, role, customer_id) VALUES (1, 'aaa', '111', 'a1@gamil.com', STR_TO_DATE('21-03-2007 05:31:55', '%d-%m-%Y %H:%i:%s'), 'CUSTOMER', 1);
+INSERT INTO user (id, login, password, email, date_created, role, customer_id) VALUES (2, 'bbb', '222', 'b2@gamil.com', STR_TO_DATE('14-11-2008 20:22:31', '%d-%m-%Y %H:%i:%s'), 'CUSTOMER', 2);
+INSERT INTO user (id, login, password, email, date_created, role, customer_id) VALUES (3, 'ccc', '333', 'c3@gamil.com', STR_TO_DATE('05-06-2009 11:44:07', '%d-%m-%Y %H:%i:%s'), 'CUSTOMER', 3);
+INSERT INTO user (id, login, password, email, date_created, role) VALUES (4, 'yyy', '888', 'y8@gamil.com', STR_TO_DATE('22-12-2015 16:24:00', '%d-%m-%Y %H:%i:%s'), 'ADMIN');
+INSERT INTO user (id, login, password, email, date_created, role) VALUES (5, 'zzz', '999', 'z9@gamil.com', STR_TO_DATE('01-01-2016 23:01:50', '%d-%m-%Y %H:%i:%s'), 'ADMIN');
+
