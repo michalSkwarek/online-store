@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Michal on 26.09.2016.
  */
 @Service
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public abstract class GenericServiceImpl<E, PK extends Serializable> implements GenericService<E, PK> {
 
     @Autowired

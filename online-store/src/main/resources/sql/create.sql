@@ -550,9 +550,9 @@ INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, numbe
 INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, number_of_orders) VALUES (3, 'Radek', 'Ccc', STR_TO_DATE('21-03-1999', '%d-%m-%Y'), '333444555', 0);
 
 -- add few accounts
-INSERT INTO account (id, login, password, email, date_created, role, customer_id) VALUES (1, 'aaa', '111', 'a1@gamil.com', STR_TO_DATE('21-03-2007 05:31:55', '%d-%m-%Y %H:%i:%s'), 'CUSTOMER', 1);
-INSERT INTO account (id, login, password, email, date_created, role, customer_id) VALUES (2, 'bbb', '222', 'b2@gamil.com', STR_TO_DATE('14-11-2008 20:22:31', '%d-%m-%Y %H:%i:%s'), 'CUSTOMER', 2);
-INSERT INTO account (id, login, password, email, date_created, role, customer_id) VALUES (3, 'ccc', '333', 'c3@gamil.com', STR_TO_DATE('05-06-2009 11:44:07', '%d-%m-%Y %H:%i:%s'), 'CUSTOMER', 3);
-INSERT INTO account (id, login, password, email, date_created, role) VALUES (4, 'yyy', '888', 'y8@gamil.com', STR_TO_DATE('22-12-2015 16:24:00', '%d-%m-%Y %H:%i:%s'), 'ADMIN');
-INSERT INTO account (id, login, password, email, date_created, role) VALUES (5, 'zzz', '999', 'z9@gamil.com', STR_TO_DATE('01-01-2016 23:01:50', '%d-%m-%Y %H:%i:%s'), 'ADMIN');
+INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (1, 'aaa', '111', true, 'a1@gamil.com', STR_TO_DATE('21-03-2007 05:31:55', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 1);
+INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (2, 'bbb', '222', true, 'b2@gamil.com', STR_TO_DATE('14-11-2008 20:22:31', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 2);
+INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (3, 'ccc', '333', true, 'c3@gamil.com', STR_TO_DATE('05-06-2009 11:44:07', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 3);
+INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (4, 'yyy', '888', true, 'y8@gamil.com', STR_TO_DATE('22-12-2015 16:24:00', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
+INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (5, 'zzz', '999', true, 'z9@gamil.com', STR_TO_DATE('01-01-2016 23:01:50', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
 

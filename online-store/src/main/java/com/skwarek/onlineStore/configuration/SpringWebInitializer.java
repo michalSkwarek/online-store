@@ -13,12 +13,12 @@ import javax.servlet.ServletRegistration;
  * Created by Michal on 16.09.2016.
  */
 @Configuration
-public class SpringRootConfiguration implements WebApplicationInitializer {
+public class SpringWebInitializer implements WebApplicationInitializer {
 
     public void onStartup(ServletContext container) throws ServletException {
 
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(SpringMvcConfiguration.class);
+        ctx.register(ApplicationContextConfiguration.class);
         ctx.setServletContext(container);
 
         ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));

@@ -16,13 +16,13 @@ import java.util.List;
  * Created by Michal on 26.09.2016.
  */
 @Repository
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public abstract class GenericDaoImpl<E, PK extends Serializable> implements GenericDao<E, PK> {
 
     private Class<E> daoType;
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @SuppressWarnings("unchecked")
     public GenericDaoImpl() {

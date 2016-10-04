@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.skwarek.onlineStore" })
-public class SpringMvcConfiguration {
+public class ApplicationContextConfiguration {
 
     @Bean
     public ViewResolver viewResolver() {
@@ -26,7 +26,7 @@ public class SpringMvcConfiguration {
         return viewResolver;
     }
 
-    @Bean(name = "multipartResolver")
+    @Bean
     public CommonsMultipartResolver getCommonsMultipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setMaxUploadSize(20971520); // 20MB

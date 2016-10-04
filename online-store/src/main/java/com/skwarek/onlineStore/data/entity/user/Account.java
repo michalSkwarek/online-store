@@ -10,19 +10,22 @@ import java.util.Date;
 @Table(name = "account")
 public class Account {
 
-    public static final String ROLE_ADMIN = "ADMIN";
-    public static final String ROLE_CUSTOMER = "CUSTOMER";
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
+    public static final String ROLE_CUSTOMER = "ROLE_USER";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "enabled")
+    private Boolean enabled;
 
     @Column(name = "email")
     private String email;
@@ -39,8 +42,8 @@ public class Account {
 
     public Account() { }
 
-    public Account(String login, String password, String email, Date dateCreated, Customer customer) {
-        this.login = login;
+    public Account(String username, String password, String email, Date dateCreated, Customer customer) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.dateCreated = dateCreated;
@@ -55,12 +58,12 @@ public class Account {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -101,5 +104,13 @@ public class Account {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
