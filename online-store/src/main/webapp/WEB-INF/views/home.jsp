@@ -13,6 +13,7 @@
         <li><a href="${pageContext.request.contextPath}/products/category/select">Category filter</a></li>
         <li><a href="${pageContext.request.contextPath}/products/manufacturer/select">Manufacturer filter</a></li>
 
+        <li><li><a href="${pageContext.request.contextPath}/accounts/new">Register</a></li></li>
         <li><li><a href="${pageContext.request.contextPath}/login">Login</a></li></li>
         <li><li><a href="${pageContext.request.contextPath}/admin">Admin page</a></li></li>
     </ul>

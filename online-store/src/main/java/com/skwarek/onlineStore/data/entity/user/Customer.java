@@ -35,7 +35,7 @@ public class Customer {
     private Integer numberOfOrders;
 
 //    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-//    private Account user;
+//    private Account account;
 
     public Customer() { }
 
