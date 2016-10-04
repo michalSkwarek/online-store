@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.controller;
+package com.skwarek.onlineStore.web.controllers;
 
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
@@ -9,18 +9,16 @@ import com.skwarek.onlineStore.data.entity.product.specifications.Specifications
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editors.CategoryEditor;
 import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
+import com.skwarek.onlineStore.web.editors.ProductImageEditor;
 import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -49,6 +47,7 @@ public class ProductController {
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
+        binder.registerCustomEditor(UploadFile.class, new ProductImageEditor(uploadFileService));
         binder.registerCustomEditor(ProductSpecifications.class, new ProductSpecificationsEditor(productSpecificationsService));
     }
 
@@ -94,19 +93,14 @@ public class ProductController {
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload, HttpServletRequest request) {
-
-        System.out.println(" = = = " + "foo");
-//        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-//
-        System.out.println(" = = = " + "foo2");
-//        System.out.println(" = = = " + rootDirectory);
+    public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload) {
 
         if (fileUpload != null) {
             UploadFile uploadFile = new UploadFile();
             uploadFile.setFileName(fileUpload.getOriginalFilename());
             uploadFile.setData(fileUpload.getBytes());
             uploadFileService.create(uploadFile);
+            product.setProductImage(uploadFile);
         }
 
         productService.create(product);

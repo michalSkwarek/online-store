@@ -39,9 +39,8 @@ public class Product {
     @JoinColumn(name = "specifications_id")
     private ProductSpecifications productSpecifications;
 
-//    private Long unitInMagazine;
-//
-//    private Boolean availability;
+    @Column(name = "units_in_magazine")
+    private Long unitsInMagazine;
 
     public Product() { }
 
@@ -106,6 +105,18 @@ public class Product {
 
     public void setProductImage(UploadFile productImage) {
         this.productImage = productImage;
+    }
+
+    public Long getUnitsInMagazine() {
+        return unitsInMagazine;
+    }
+
+    public void setUnitsInMagazine(Long unitsInMagazine) {
+        this.unitsInMagazine = unitsInMagazine;
+    }
+
+    public Boolean isAvailability() {
+        return unitsInMagazine != 0;
     }
 
     @Override

@@ -55,10 +55,15 @@
             </c:if>
             <c:if test="${product.productImage != null}">
                 <li>
-                    <label for="productImage">Image: </label>
-                    <form:input path="productImage" id="productImage" />
+                    <label>Image: </label>
+                    <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />
                 </li>
             </c:if>
+
+            <li>
+                <label for="unitsInMagazine">Units in magazine: </label>
+                <form:input path="unitsInMagazine" id="unitsInMagazine"/>
+            </li>
 
             <c:if test="${product.productSpecifications.id != null}">
                 <li>

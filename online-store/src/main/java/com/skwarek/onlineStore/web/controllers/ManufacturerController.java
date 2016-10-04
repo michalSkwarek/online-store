@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.controller;
+package com.skwarek.onlineStore.web.controllers;
 
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.service.ManufacturerService;

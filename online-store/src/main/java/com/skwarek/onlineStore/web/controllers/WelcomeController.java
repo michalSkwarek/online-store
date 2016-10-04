@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.controller;
+package com.skwarek.onlineStore.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
