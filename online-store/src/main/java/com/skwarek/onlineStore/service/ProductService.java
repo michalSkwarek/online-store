@@ -12,6 +12,8 @@ public interface ProductService extends GenericService<Product, Long> {
 
     boolean deleteProduct(Long id);
 
+    List getRandomFewProducts();
+
     List getProductsByCategory(String category);
 
     List getProductsByManufacturer(String manufacturer);

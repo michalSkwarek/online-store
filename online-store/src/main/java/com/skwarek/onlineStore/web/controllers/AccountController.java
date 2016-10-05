@@ -50,6 +50,6 @@ public class AccountController {
     public String updateAccount(Account account) {
 
         accountService.update(account);
-        return "redirect:/accounts/list";
+        return "redirect:/";
     }
 }

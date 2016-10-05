@@ -59,6 +59,28 @@ public class ProductController {
         return "products/list";
     }
 
+    @RequestMapping("/{id}")
+    public String getProductById(Model model, @PathVariable Long id) {
+        model.addAttribute("product", productService.read(id));
+        return "products/specifications";
+    }
+
+    @RequestMapping(value = {"/category/{category}"}, method = RequestMethod.GET)
+    public String showProductsByCategory(Model model, @PathVariable String category) {
+
+        List products = productService.getProductsByCategory(category);
+        model.addAttribute("products", products);
+        return "/products/list";
+    }
+
+    @RequestMapping(value = {"/manufacturer/{manufacturer}"}, method = RequestMethod.GET)
+    public String showProductsByManufacturer(Model model, @PathVariable String manufacturer) {
+
+        List products = productService.getProductsByManufacturer(manufacturer);
+        model.addAttribute("products", products);
+        return "/products/list";
+    }
+
     @RequestMapping(value = {"/list/price/ascending"}, method = RequestMethod.GET)
     public String showSortedProductsOrderByUnitPriceAscending(Model model) {
 
@@ -73,12 +95,6 @@ public class ProductController {
         List products = productService.getSortedProductsOrderByUnitPriceDescending();
         model.addAttribute("products", products);
         return "/products/list";
-    }
-
-    @RequestMapping("/{id}")
-    public String getProductById(Model model, @PathVariable Long id) {
-        model.addAttribute("product", productService.read(id));
-        return "products/specifications";
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)

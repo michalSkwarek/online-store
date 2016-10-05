@@ -22,6 +22,13 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Override
+    public List getRandomFewProducts() {
+        Query listOfRandomProducts = getSession().createQuery("from Product p where p.unitPrice > (select avg(p.unitPrice) from p) order by p.unitsInMagazine desc");
+        listOfRandomProducts.setMaxResults(8);
+        return listOfRandomProducts.list();
+    }
+
+    @Override
     public List getProductsByCategory(String category) {
         Query listOfProductsByCategoryQuery = getSession().createQuery("from Product where category.name = :name");
         listOfProductsByCategoryQuery.setParameter("name", category);

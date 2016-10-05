@@ -181,40 +181,40 @@ INSERT INTO files_upload (id, file_name) VALUES (30, 'file30.jpg');
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (1, 'iPhone 7 Plus', 4479, 1, 1, 1, 1, 10);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (2, 'iPhone 7', 3879, 1, 1, 2, 2, 7);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (3, 'iPhone 6s Plus', 3879, 1, 1, 3, 3, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (4, 'iPhone 6s', 3349, 1, 1, 4, 4, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (5, 'iPhone SE', 2399, 1, 1, 5, 5, 1);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (6, 'Galaxy S7 edge', 3398, 1, 2, 6, 6, 6);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (7, 'Galaxy S7', 2998, 1, 2, 7, 7, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (8, 'Galaxy S6 edge', 2149, 1, 2, 8, 8, 7);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (9, 'Galaxy S6', 1999, 1, 2, 9, 9, 9);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (10, 'Moto X Style', 1599, 1, 3, 10, 10, 0);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (11, 'Moto X Play', 1089, 1, 3, 11, 11, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (12, 'G5', 2199, 1, 4, 12, 12, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (13, 'G4', 1599, 1, 4, 13, 13, 1);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (14, 'G3', 1059, 1, 4, 14, 14, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (15, 'Xperia XZ', 2999, 1, 5, 15, 15, 6);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (16, 'Xperia X', 2389, 1, 5, 16, 16, 4);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (17, 'Lumia 950 XL', 1899, 1, 6, 17, 17, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (18, 'Lumia 650', 589, 1, 6, 18, 18, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (19, 'Lumia 640', 469, 1, 6, 19, 19, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (20, 'Lumia 550', 389, 1, 6, 20, 20, 4);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (21, '10 Lifestyle', 2999, 1, 7, 21, 21, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (22, 'One A9 Aero', 1699, 1, 7, 22, 22, 1);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (23, 'One M8S', 1569, 1, 7, 23, 23, 7);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (24, 'Zenfone Zoom', 3028, 1, 8, 24, 24, 4);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (25, 'Zenfone 2', 2078, 1, 8, 25, 25, 8);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (26, 'Zenfone Max', 1778, 1, 8, 26, 26, 5);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (27, 'P9 Plus', 3199, 1, 9, 27, 27, 8);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (28, 'P9', 2449, 1, 9, 28, 28, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (29, 'P9 Lite', 1399, 1, 9, 29, 29, 8);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (30, 'P8', 1499, 1, 9, 30, 30, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (2, 'iPhone 7', 3879, 1, 1, 2, 2, 7);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (3, 'iPhone 6s Plus', 3879, 1, 1, 3, 3, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (4, 'iPhone 6s', 3349, 1, 1, 4, 4, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (5, 'iPhone SE', 2399, 1, 1, 5, 5, 1);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (6, 'Galaxy S7 edge', 3398, 1, 2, 6, 6, 6);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (7, 'Galaxy S7', 2998, 1, 2, 7, 7, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (8, 'Galaxy S6 edge', 2149, 1, 2, 8, 8, 7);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (9, 'Galaxy S6', 1999, 1, 2, 9, 9, 9);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (10, 'Moto X Style', 1599, 1, 3, 10, 10, 0);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (11, 'Moto X Play', 1089, 1, 3, 11, 11, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (12, 'G5', 2199, 1, 4, 12, 12, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (13, 'G4', 1599, 1, 4, 13, 13, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (14, 'G3', 1059, 1, 4, 14, 14, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (15, 'Xperia XZ', 2999, 1, 5, 15, 15, 6);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (16, 'Xperia X', 2389, 1, 5, 16, 16, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (17, 'Lumia 950 XL', 1899, 1, 6, 17, 17, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (18, 'Lumia 650', 589, 1, 6, 18, 18, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (19, 'Lumia 640', 469, 1, 6, 19, 19, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (20, 'Lumia 550', 389, 1, 6, 20, 20, 4);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (21, '10 Lifestyle', 2999, 1, 7, 21, 21, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (22, 'One A9 Aero', 1699, 1, 7, 22, 22, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (23, 'One M8S', 1569, 1, 7, 23, 23, 7);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (24, 'Zenfone Zoom', 3028, 1, 8, 24, 24, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (25, 'Zenfone 2', 2078, 1, 8, 25, 25, 8);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (26, 'Zenfone Max', 1778, 1, 8, 26, 26, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (27, 'P9 Plus', 3199, 1, 9, 27, 27, 8);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (28, 'P9', 2449, 1, 9, 28, 28, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (29, 'P9 Lite', 1399, 1, 9, 29, 29, 8);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (30, 'P8', 1499, 1, 9, 30, 30, 5);
 
 
 
@@ -291,17 +291,17 @@ INSERT INTO files_upload (id, file_name) VALUES (39, 'file39.jpg');
 INSERT INTO files_upload (id, file_name) VALUES (40, 'file40.jpg');
 
 -- add few products
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (31, 'iPad Pro 9.7', 4299, 2, 1, 31, 31, 4);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (32, 'iPad mini 4', 2399, 2, 1, 32, 32, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (33, 'iPad Air 2', 2349, 2, 1, 33, 33, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (34, 'Galaxy Tab S2 9.7', 2149, 2, 2, 34, 34, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (35, 'Galaxy Tab A 10.1', 1399, 2, 2, 35, 35, 1);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (36, 'Yoga Tablet 3 Pro', 2499, 2, 3, 36, 36, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (37, 'A10-70', 842, 2, 3, 37, 37, 7);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (38, 'MediaPad T1 8.0', 629, 2, 9, 38, 38, 5);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (39, 'Pro Slate 12', 3975, 2, 10, 39, 39, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (40, 'Pro 408 G1', 1767, 2, 10, 40, 40, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (31, 'iPad Pro 9.7', 4299, 2, 1, 31, 31, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (32, 'iPad mini 4', 2399, 2, 1, 32, 32, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (33, 'iPad Air 2', 2349, 2, 1, 33, 33, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (34, 'Galaxy Tab S2 9.7', 2149, 2, 2, 34, 34, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (35, 'Galaxy Tab A 10.1', 1399, 2, 2, 35, 35, 1);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (36, 'Yoga Tablet 3 Pro', 2499, 2, 3, 36, 36, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (37, 'A10-70', 842, 2, 3, 37, 37, 7);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (38, 'MediaPad T1 8.0', 629, 2, 9, 38, 38, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (39, 'Pro Slate 12', 3975, 2, 10, 39, 39, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (40, 'Pro 408 G1', 1767, 2, 10, 40, 40, 0);
 
 
 
@@ -376,17 +376,17 @@ INSERT INTO files_upload (id, file_name) VALUES (49, 'file49.jpg');
 INSERT INTO files_upload (id, file_name) VALUES (50, 'file50.jpg');
 
 -- add few products
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (41, 'MacBook Pro', 8649, 3, 1, 41, 41, 4);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (42, 'MacBook Air', 5799, 3, 1, 42, 42, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (43, 'Satellite Pro A40-C-152', 3270, 3, 11, 43, 43, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (44, 'XPS 15', 9499, 3, 12, 44, 44, 6);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (45, 'Inspiron 7559', 5399, 3, 12, 45, 45, 2);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (46, 'ThinkPad P70', 18999, 3, 3, 46, 46, 5);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (47, 'G752VS-GC063T-32', 8899, 3, 8, 47, 47, 8);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (48, 'GT73VR 6RE', 16299, 3, 13, 48, 48, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (49, 'GT72 Dominator Pro', 7529, 3, 13, 49, 49, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (50, 'GS70 Stealth', 6829, 3, 13, 50, 50, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (41, 'MacBook Pro', 8649, 3, 1, 41, 41, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (42, 'MacBook Air', 5799, 3, 1, 42, 42, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (43, 'Satellite Pro A40-C-152', 3270, 3, 11, 43, 43, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (44, 'XPS 15', 9499, 3, 12, 44, 44, 6);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (45, 'Inspiron 7559', 5399, 3, 12, 45, 45, 2);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (46, 'ThinkPad P70', 18999, 3, 3, 46, 46, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (47, 'G752VS-GC063T-32', 8899, 3, 8, 47, 47, 8);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (48, 'GT73VR 6RE', 16299, 3, 13, 48, 48, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (49, 'GT72 Dominator Pro', 7529, 3, 13, 49, 49, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (50, 'GS70 Stealth', 6829, 3, 13, 50, 50, 0);
 
 
 
@@ -420,11 +420,11 @@ INSERT INTO files_upload (id, file_name) VALUES (54, 'file54.jpg');
 INSERT INTO files_upload (id, file_name) VALUES (55, 'file55.jpg');
 
 -- add few products
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (51, '280 G1 MT', 1199, 4, 10, 51, 51, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (52, 'Vostro 3900', 1799, 4, 12, 52, 52, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (53, 'XPS 8900', 5299, 4, 12, 53, 53, 1);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (54, 'IdeaCentre 300-20', 2359, 4, 3, 54, 54, 8);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (55, 'IdeaCentre 700-25', 1549, 4, 3, 55, 55, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (51, '280 G1 MT', 1199, 4, 10, 51, 51, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (52, 'Vostro 3900', 1799, 4, 12, 52, 52, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (53, 'XPS 8900', 5299, 4, 12, 53, 53, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (54, 'IdeaCentre 300-20', 2359, 4, 3, 54, 54, 8);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (55, 'IdeaCentre 700-25', 1549, 4, 3, 55, 55, 0);
 
 
 
@@ -452,10 +452,10 @@ INSERT INTO files_upload (id, file_name) VALUES (58, 'file58.jpg');
 INSERT INTO files_upload (id, file_name) VALUES (59, 'file59.jpg');
 
 -- add few products
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (56, 'PlayStation 4', 1279, 5, 5, 56, 56, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (57, 'Xbox 360', 799, 5, 6, 57, 57, 1);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (58, 'Xbox ONE', 1299, 5, 6, 58, 58, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (59, 'Xbox ONE S', 1599, 5, 6, 59, 59, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (56, 'PlayStation 4', 1279, 5, 5, 56, 56, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (57, 'Xbox 360', 799, 5, 6, 57, 57, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (58, 'Xbox ONE', 1299, 5, 6, 58, 58, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (59, 'Xbox ONE S', 1599, 5, 6, 59, 59, 3);
 
 
 
@@ -498,11 +498,11 @@ INSERT INTO files_upload (id, file_name) VALUES (63, 'file63.jpg');
 INSERT INTO files_upload (id, file_name) VALUES (64, 'file64.jpg');
 
 -- add few products
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (60, 'Watch', 3749, 6, 1, 60, 60, 5);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (61, 'Watch 2', 3749, 6, 1, 61, 61, 1);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (62, 'Watch Sport', 1699, 6, 1, 62, 62, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (63, 'Gear S2', 999, 6, 2, 63, 63, 0);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (64, 'SmartWatch 3', 649, 6, 5, 64, 64, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (60, 'Watch', 3749, 6, 1, 60, 60, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (61, 'Watch 2', 3749, 6, 1, 61, 61, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (62, 'Watch Sport', 1699, 6, 1, 62, 62, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (63, 'Gear S2', 999, 6, 2, 63, 63, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (64, 'SmartWatch 3', 649, 6, 5, 64, 64, 3);
 
 
 
@@ -514,32 +514,54 @@ INSERT INTO files_upload (id, file_name) VALUES (64, 'file64.jpg');
 
 
 
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
-#
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
-#
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (107, 'abc', 1000, 3, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (108, 'klm', 2000, 3, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (109, 'xyz', 3000, 3, 4);
-#
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (110, 'abc', 1000, 4, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (111, 'klm', 2000, 4, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (112, 'xyz', 3000, 4, 4);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (113, 'abc', 1000, 5, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (114, 'klm', 2000, 5, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (115, 'xyz', 3000, 5, 4);
-#
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (116, 'abc', 1000, 6, 2);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (117, 'klm', 2000, 6, 3);
-# INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (118, 'xyz', 3000, 6, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (107, 'abc', 1000, 3, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (108, 'klm', 2000, 3, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (109, 'xyz', 3000, 3, 4);
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (110, 'abc', 1000, 4, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (111, 'klm', 2000, 4, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (112, 'xyz', 3000, 4, 4);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (113, 'abc', 1000, 5, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (114, 'klm', 2000, 5, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (115, 'xyz', 3000, 5, 4);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (116, 'abc', 1000, 6, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (117, 'klm', 2000, 6, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (118, 'xyz', 3000, 6, 4);
+
+
+
+-- ----------------------------------------------
+-- add few countries
+INSERT INTO country (id, name) VALUES (1, 'Polska');
+INSERT INTO country (id, name) VALUES (2, 'Niemcy');
+INSERT INTO country (id, name) VALUES (3, 'Czechy');
+INSERT INTO country (id, name) VALUES (4, 'Slowacja');
+INSERT INTO country (id, name) VALUES (5, 'Litwa');
+
+-- add few cities
+INSERT INTO city (id, name, country_id) VALUES (1, 'Warszawa', 1);
+INSERT INTO city (id, name, country_id) VALUES (2, 'Krakow', 1);
+INSERT INTO city (id, name, country_id) VALUES (3, 'Gdansk', 1);
+
+-- add few addresses
+INSERT INTO address (id, street, street_number, door_number, zip_code, city_id) VALUES (1, 'Koszycka', '6A', '25', '01-446', 1);
+INSERT INTO address (id, street, street_number, door_number, zip_code, city_id) VALUES (2, 'Tyszkiewicza', '28', '3', '01-182', 1);
+INSERT INTO address (id, street, street_number, zip_code, city_id) VALUES (3, 'Syta', '50', '01-446', 1);
+INSERT INTO address (id, street, street_number, door_number, zip_code, city_id) VALUES (4, 'Krowoderska', '61', '12', '31-141', 2);
+INSERT INTO address (id, street, street_number, zip_code, city_id) VALUES (5, 'Osiedlowa', '10B', '31-964', 2);
 
 
 
@@ -550,9 +572,21 @@ INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, numbe
 INSERT INTO customer (id, first_name, last_name, birth_date, phone_number, number_of_orders) VALUES (3, 'Radek', 'Ccc', STR_TO_DATE('21-03-1999', '%d-%m-%Y'), '333444555', 0);
 
 -- add few accounts
-INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (1, 'aaa', '111', true, 'a1@gamil.com', STR_TO_DATE('21-03-2007 05:31:55', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 1);
-INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (2, 'bbb', '222', true, 'b2@gamil.com', STR_TO_DATE('14-11-2008 20:22:31', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 2);
-INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (3, 'ccc', '333', true, 'c3@gamil.com', STR_TO_DATE('05-06-2009 11:44:07', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 3);
-INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (4, 'yyy', '888', true, 'y8@gamil.com', STR_TO_DATE('22-12-2015 16:24:00', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
-INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (5, 'zzz', '999', true, 'z9@gamil.com', STR_TO_DATE('01-01-2016 23:01:50', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
+INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (1, 'aaa', '111', true, 'a1@gmail.com', STR_TO_DATE('21-03-2007 05:31:55', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 1);
+INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (2, 'bbb', '222', true, 'b2@gmail.com', STR_TO_DATE('14-11-2008 20:22:31', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 2);
+INSERT INTO account (id, username, password, enabled, email, date_created, role, customer_id) VALUES (3, 'ccc', '333', true, 'c3@gmail.com', STR_TO_DATE('05-06-2009 11:44:07', '%d-%m-%Y %H:%i:%s'), 'ROLE_USER', 3);
+INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (4, 'yyy', '888', true, 'y8@gmail.com', STR_TO_DATE('22-12-2015 16:24:00', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
+INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (5, 'zzz', '999', true, 'z9@gmail.com', STR_TO_DATE('01-01-2016 23:01:50', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
+
+
+
+
+
+
+
+
+
+
+
+
 

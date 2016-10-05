@@ -28,6 +28,12 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List getRandomFewProducts() {
+        return productDao.getRandomFewProducts();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List getProductsByCategory(String category) {
         return productDao.getProductsByCategory(category);
     }
