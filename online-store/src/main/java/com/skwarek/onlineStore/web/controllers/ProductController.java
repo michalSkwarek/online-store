@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -56,8 +58,28 @@ public class ProductController {
 
         List<Product> products = productService.getAll();
         model.addAttribute("products", products);
+        List<Category> categories = categoryService.getAll();
+        model.addAttribute("categories", categories);
+        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        model.addAttribute("manufacturers", manufacturers);
         return "products/list";
     }
+
+    @RequestMapping(value = {"/list"})
+    public String showProducts(Model model, @RequestParam(value = "category") String[] categories,
+                               @RequestParam(value = "manufacturer") String[] manufacturers,
+                               @RequestParam(value = "fromPriceRange") String low,
+                               @RequestParam(value = "toPriceRange") String high,
+                               @RequestParam String priceOrder) {
+
+        List<Product> products = productService.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
+        if (products == null || products.isEmpty()) {
+            // TODO: 28.09.2016 Create alert
+        }
+        model.addAttribute("products", products);
+        return "/products/list";
+    }
+
 
     @RequestMapping("/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
