@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.order;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Michal on 25.09.2016.
@@ -24,6 +25,12 @@ public class Order {
 
     @JoinColumn(name = "shipping_detail_id")
     private ShippingDetail shippingDetail;
+
+    @Column(name = "date_created")
+    private Date dateCreated;
+
+    @Column(name = "status")
+    private String status;
 
     public Long getId() {
         return id;
@@ -55,5 +62,21 @@ public class Order {
 
     public void setShippingDetail(ShippingDetail shippingDetail) {
         this.shippingDetail = shippingDetail;
+    }
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
