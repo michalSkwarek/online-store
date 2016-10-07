@@ -15,28 +15,28 @@ public class ShippingDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String name;
+    private Long id;
 
-    @Column(name = "shipping_date")
-    private Date shippingDate;
+    @Column(name = "date_delivery")
+    private Date dateDelivery;
 
     @JoinColumn(name = "shipping_address")
     private Address shippingAddress;
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Date getShippingDate() {
-        return shippingDate;
+    public Date getDateDelivery() {
+        return dateDelivery;
     }
 
-    public void setShippingDate(Date shippingDate) {
-        this.shippingDate = shippingDate;
+    public void setDateDelivery(Date dateDelivery) {
+        this.dateDelivery = dateDelivery;
     }
 
     public Address getShippingAddress() {
