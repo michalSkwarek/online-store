@@ -605,3 +605,12 @@ INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_pric
 
 -- add few carts
 INSERT INTO cart (id, cart, cart_total_price) VALUES (1, 1, 4479);
+INSERT INTO cart (id, cart, cart_total_price) VALUES (2, 2, 8958);
+INSERT INTO cart (id, cart, cart_total_price) VALUES (3, 2, 3879);
+INSERT INTO cart (id, cart, cart_total_price) VALUES (4, 3, 7758);
+
+-- add few orders
+INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (1, 1, 1, 1, STR_TO_DATE('19-03-2016'), 'no');
+INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (2, 2, 1, 1, STR_TO_DATE('19-03-2016'), 'no');
+INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016'), 'yes');
+INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (4, 4, 3, 3, STR_TO_DATE('19-03-2016'), 'yes');
