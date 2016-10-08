@@ -590,3 +590,18 @@
 #
 #
 #
+
+-- add few shipping details
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (1, STR_TO_DATE('21-03-2016', '%d-%m-%Y'), 1);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (2, STR_TO_DATE('02-04-2016', '%d-%m-%Y'), 2);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (3, STR_TO_DATE('13-05-2016', '%d-%m-%Y'), 3);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (4, STR_TO_DATE('24-06-2016', '%d-%m-%Y'), 4);
+
+-- add few items
+INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (1, 1, 1, 1, 4479);
+INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (2, 1, 2, 2, 8958);
+INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (3, 2, 3, 1, 3879);
+INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (4, 3, 4, 2, 7758);
+
+-- add few carts
+INSERT INTO cart (id, cart, cart_total_price) VALUES (1, 1, 4479);

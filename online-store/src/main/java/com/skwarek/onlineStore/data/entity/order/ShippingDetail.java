@@ -20,7 +20,7 @@ public class ShippingDetail {
     @Column(name = "date_delivery")
     private Date dateDelivery;
 
-    @JoinColumn(name = "shipping_address")
+    @JoinColumn(name = "shipping_address_id")
     private Address shippingAddress;
 
     public Long getId() {
