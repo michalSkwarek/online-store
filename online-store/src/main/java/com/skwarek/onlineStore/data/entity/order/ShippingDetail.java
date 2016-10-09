@@ -20,6 +20,7 @@ public class ShippingDetail {
     @Column(name = "date_delivery")
     private Date dateDelivery;
 
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shipping_address_id")
     private Address shippingAddress;
 

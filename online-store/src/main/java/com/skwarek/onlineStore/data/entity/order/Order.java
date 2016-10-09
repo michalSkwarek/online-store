@@ -4,6 +4,7 @@ import com.skwarek.onlineStore.data.entity.user.Customer;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Michal on 25.09.2016.
@@ -17,12 +18,15 @@ public class Order {
     @Column(name = "id")
     private Long id;
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     @JoinColumn(name = "shipping_detail_id")
     private ShippingDetail shippingDetail;
 

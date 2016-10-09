@@ -1,7 +1,11 @@
 package com.skwarek.onlineStore.data.entity.user;
 
+import com.skwarek.onlineStore.data.entity.address.Address;
+import com.skwarek.onlineStore.data.entity.order.Order;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Michal on 23.09.2016.
@@ -24,9 +28,12 @@ public class Customer {
     @Column(name = "birth_date")
     private Date birthDate;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "billing_address_id")
-//    private Address billingAddress;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "billing_address_id")
+    private Address billingAddress;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -34,8 +41,8 @@ public class Customer {
     @Column(name = "number_of_orders")
     private Integer numberOfOrders;
 
-//    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
-//    private Account account;
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    private Account account;
 
     public Customer() { }
 
