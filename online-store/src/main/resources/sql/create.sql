@@ -10,21 +10,21 @@ INSERT INTO category (id, name) VALUES (6, 'Smartwatch');
 
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (1001, 'file1001.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1002, 'file1002.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1003, 'file1003.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1004, 'file1004.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1005, 'file1005.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (1001, 'file1001.jpg', load_file('/etc/images/logo/aaple.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1002, 'file1002.jpg', load_file('/etc/images/logo/samsung.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1003, 'file1003.jpg', load_file('/etc/images/logo/lenovo.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1004, 'file1004.jpg', load_file('/etc/images/logo/lg.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1005, 'file1005.jpg', load_file('/etc/images/logo/sony.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (1006, 'file1006.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1007, 'file1007.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1008, 'file1008.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1009, 'file1009.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1010, 'file1010.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (1006, 'file1006.jpg', load_file('/etc/images/logo/microsoft.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1007, 'file1007.jpg', load_file('/etc/images/logo/htc.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1008, 'file1008.jpg', load_file('/etc/images/logo/asus.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1009, 'file1009.jpg', load_file('/etc/images/logo/huawei.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1010, 'file1010.jpg', load_file('/etc/images/logo/hp.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (1011, 'file1011.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1012, 'file1012.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (1013, 'file1013.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (1011, 'file1011.jpg', load_file('/etc/images/logo/toshiba.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1012, 'file1012.jpg', load_file('/etc/images/logo/dell.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1013, 'file1013.jpg', load_file('/etc/images/logo/msi.jpg'));
 
 
 
@@ -162,41 +162,41 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, ba
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (30, 20, 16, 3, 16, 8, 2680, 2, 4, 13.0, 8.0, 6.4, 72.1, 144.9, 144);
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (1, 'file1.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (2, 'file12.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (3, 'file13.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (4, 'file14.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (5, 'file15.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (1, 'file1.jpg', load_file('/etc/images/smartphone/product-big,apple-iphone-7-plus.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (2, 'file2.jpg', load_file('/etc/images/smartphone/product-big,apple-iphone-7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (3, 'file3.jpg', load_file('/etc/images/smartphone/product-big,apple-iphone-6s-plus.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (4, 'file4.jpg', load_file('/etc/images/smartphone/product-big,apple-iphone-6s.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (5, 'file5.jpg', load_file('/etc/images/smartphone/product-big,apple-iphone-se.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (6, 'file16.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (7, 'file17.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (8, 'file18.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (9, 'file19.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (10, 'file10.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (6, 'file6.jpg', load_file('/etc/images/smartphone/product-big,samsung-galaxy-s7-edge.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (7, 'file7.jpg', load_file('/etc/images/smartphone/product-big,samsung-galaxy-s7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (8, 'file8.jpg', load_file('/etc/images/smartphone/product-big,samsung-galaxy-s6-edge.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (9, 'file9.jpg', load_file('/etc/images/smartphone/product-big,samsung-galaxy-s6.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (10, 'file10.jpg', load_file('/etc/images/smartphone/product-big,lenovo-moto-x-style.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (11, 'file11.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (12, 'file12.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (13, 'file13.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (14, 'file14.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (15, 'file15.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (11, 'file11.jpg', load_file('/etc/images/smartphone/product-big,lenovo-moto-x-play.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (12, 'file12.jpg', load_file('/etc/images/smartphone/product-big,lg-g5.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (13, 'file13.jpg', load_file('/etc/images/smartphone/product-big,lg-g4.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (14, 'file14.jpg', load_file('/etc/images/smartphone/product-big,lg-g3.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (15, 'file15.jpg', load_file('/etc/images/smartphone/product-big,sony-xperia-xz.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (16, 'file16.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (17, 'file17.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (18, 'file18.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (19, 'file19.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (20, 'file20.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (16, 'file16.jpg', load_file('/etc/images/smartphone/product-big,sony-xperia-x.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (17, 'file17.jpg', load_file('/etc/images/smartphone/product-big,microsoft-lumia-950-xl.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (18, 'file18.jpg', load_file('/etc/images/smartphone/product-big,microsoft-lumia-650.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (19, 'file19.jpg', load_file('/etc/images/smartphone/product-big,microsoft-lumia-640.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (20, 'file20.jpg', load_file('/etc/images/smartphone/product-big,microsoft-lumia-550.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (21, 'file21.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (22, 'file22.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (23, 'file23.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (24, 'file24.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (25, 'file25.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (21, 'file21.jpg', load_file('/etc/images/smartphone/product-big,htc-10-lifestyle.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (22, 'file22.jpg', load_file('/etc/images/smartphone/product-big,htc-one-a9-aero.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (23, 'file23.jpg', load_file('/etc/images/smartphone/product-big,htc-one-m8s.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (24, 'file24.jpg', load_file('/etc/images/smartphone/product-big,asus-zenfone-zoom.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (25, 'file25.jpg', load_file('/etc/images/smartphone/product-big,asus-zenfone-2.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (26, 'file26.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (27, 'file27.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (28, 'file28.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (29, 'file29.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (30, 'file30.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (26, 'file26.jpg', load_file('/etc/images/smartphone/product-big,asus-zenfone-max.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (27, 'file27.jpg', load_file('/etc/images/smartphone/product-big,huawei-p9-plus.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (28, 'file28.jpg', load_file('/etc/images/smartphone/product-big,huawei-p9.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (29, 'file29.jpg', load_file('/etc/images/smartphone/product-big,huawei-p9-lite.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (30, 'file30.jpg', load_file('/etc/images/smartphone/product-big,huawei-p8.jpg'));
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (1, 'iPhone 7 Plus', 4479, 1, 1, 1, 1, 10);
@@ -297,17 +297,17 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_main_camera, resolution_front_camera, thickness, width, height, weight) VALUES (40, 29, 12, 2, 1, 32, 19, 4800, 2, 8, 8.0, 2.0, 9, 140, 215, 380);
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (31, 'file31.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (32, 'file32.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (33, 'file33.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (34, 'file34.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (35, 'file35.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (31, 'file31.jpg', load_file('/etc/images/tablet/product-big,apple-new-ipad-pro.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (32, 'file32.jpg', load_file('/etc/images/tablet/product-big,apple-new-ipad-mini-4.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (33, 'file33.jpg', load_file('/etc/images/tablet/product-big,apple-ipad-air-2.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (34, 'file34.jpg', load_file('/etc/images/tablet/product-big,samsung-galaxy-tab-s2-97.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (35, 'file35.jpg', load_file('/etc/images/tablet/product-big,samsung-galaxy-tab-a-101.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (36, 'file36.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (37, 'file37.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (38, 'file38.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (39, 'file39.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (40, 'file40.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (36, 'file36.jpg', load_file('/etc/images/tablet/product-big,lenovo-yoga-tablet-3-pro.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (37, 'file37.jpg', load_file('/etc/images/tablet/product-big,lenovo-a10-70.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (38, 'file38.jpg', load_file('/etc/images/tablet/product-big,huawei-mediapad-t1-80.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (39, 'file39.jpg', load_file('/etc/images/tablet/product-big,hp-pro-slate-12.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (40, 'file40.jpg', load_file('/etc/images/tablet/product-big,hp-pro-408-g1.jpg'));
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (31, 'iPad Pro 9.7', 4299, 2, 1, 31, 31, 4);
@@ -382,17 +382,17 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory, display_id, battery_capacity, battery_type_id, os_id, resolution_webcam, thickness, width, height, weight) VALUES (50, 33, 25, 32, 2, 512, 27, 5000, 2, 15, 1.0, 287, 418, 21.8, 2.65);
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (41, 'file41.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (42, 'file42.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (43, 'file43.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (44, 'file44.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (45, 'file45.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (41, 'file41.jpg', load_file('/etc/images/notebook/product-big,apple-macbook-pro-i7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (42, 'file42.jpg', load_file('/etc/images/notebook/product-big,apple-macbook-air-i5.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (43, 'file43.jpg', load_file('/etc/images/notebook/product-big,toshiba-satellite-pro-a40-c-152-i5.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (44, 'file44.jpg', load_file('/etc/images/notebook/product-big,dell-xps-15-9550-i7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (45, 'file45.jpg', load_file('/etc/images/notebook/product-big,dell-inspiron-7559-i7.jpg'));
 
-INSERT INTO files_upload (id, file_name) VALUES (46, 'file46.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (47, 'file47.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (48, 'file48.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (49, 'file49.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (50, 'file50.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (46, 'file46.jpg', load_file('/etc/images/notebook/product-big,lenovo-thinkpad-p70-e3-1505m.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (47, 'file47.jpg', load_file('/etc/images/notebook/product-big,asus-g752vs-gc063t-32-i7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (48, 'file48.jpg', load_file('/etc/images/notebook/product-big,msi-gt73vr-6re-i7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (49, 'file49.jpg', load_file('/etc/images/notebook/product-big,msi-gt72-dominator-pro-i7.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (50, 'file50.jpg', load_file('/etc/images/notebook/product-big,msi-gs70-stealth-i7.jpg'));
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (41, 'MacBook Pro', 8649, 3, 1, 41, 41, 4);
@@ -432,11 +432,11 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (55, 40, 31, 8, 2, 256, 300, 15, 400, 106, 308, 5.9);
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (51, 'file51.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (52, 'file52.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (53, 'file53.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (54, 'file54.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (55, 'file55.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (51, 'file51.jpg', load_file('/etc/images/pc/product-big,hp-280-g1-mt-g3250.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (52, 'file52.jpg', load_file('/etc/images/pc/product-big,dell-vostro-3900-i3-4170.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (53, 'file53.jpg', load_file('/etc/images/pc/product-big,dell-xps-8900-i7-6700.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (54, 'file54.jpg', load_file('/etc/images/pc/product-big,lenovo-ideacentre-300-20-i3-6100.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (55, 'file55.jpg', load_file('/etc/images/pc/product-big,lenovo-ideacentre-700-25-i5-6400.jpg'));
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (51, '280 G1 MT', 1199, 4, 10, 51, 51, 0);
@@ -465,10 +465,10 @@ INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type_id, disk_memory, thickness, width, height, weight) VALUES (59, 41, 32, 8, 1, 1024, 274, 67, 333, 2.9);
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (56, 'file56.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (57, 'file57.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (58, 'file58.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (59, 'file59.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (56, 'file56.jpg', load_file('/etc/images/console/product-big,sony-playstation-4.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (57, 'file57.jpg', load_file('/etc/images/console/product-big,microsoft-xbox-360.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (58, 'file58.jpg', load_file('/etc/images/console/product-big,microsoft-xbox-one.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (59, 'file59.jpg', load_file('/etc/images/console/product-big,microsoft-xbox-one-s.jpg'));
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (56, 'PlayStation 4', 1279, 5, 5, 56, 56, 2);
@@ -510,11 +510,11 @@ INSERT INTO specifications (id, cpu_id, ram, disk_memory, display_id, battery_ca
 INSERT INTO specifications (id, cpu_id, ram, disk_memory, display_id, battery_capacity, battery_type_id, os_id, thickness, width, height, weight) VALUES (64, 45, 512, 4, 31, 420, 2, 18, 10, 36, 51, 45);
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name) VALUES (60, 'file60.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (61, 'file61.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (62, 'file62.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (63, 'file63.jpg');
-INSERT INTO files_upload (id, file_name) VALUES (64, 'file64.jpg');
+INSERT INTO files_upload (id, file_name, data) VALUES (60, 'file60.jpg', load_file('/etc/images/smartwatch/product-big,apple-watch.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (61, 'file61.jpg', load_file('/etc/images/smartwatch/product-big,apple-watch-2.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (62, 'file62.jpg', load_file('/etc/images/smartwatch/product-big,apple-watch-sport.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (63, 'file63.jpg', load_file('/etc/images/smartwatch/product-big,samsung-gear-s2.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (64, 'file64.jpg', load_file('/etc/images/smartwatch/product-big,sony-smartwatch-3.jpg'));
 
 -- add few products
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (60, 'Watch', 3749, 6, 1, 60, 60, 5);

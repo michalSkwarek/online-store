@@ -18,7 +18,7 @@ public class UploadFile {
     @Column(name = "file_name")
     private String fileName;
 
-    @Column(name = "data_name")
+    @Column(name = "data")
     @Lob
     private byte[] data;
 
