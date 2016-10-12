@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "cpu")
-public class CPU {
+public class CPU implements Serializable {
+
+    private static final long serialVersionUID = 4093259206949633786L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,10 +39,6 @@ public class CPU {
     private List<ProductSpecifications> specifications;
 
     public CPU() { }
-
-    public CPU(String model) {
-        this.model = model;
-    }
 
     public Long getId() {
         return id;
@@ -89,6 +88,14 @@ public class CPU {
         this.cache = cache;
     }
 
+    public List<ProductSpecifications> getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(List<ProductSpecifications> specifications) {
+        this.specifications = specifications;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,8 +109,7 @@ public class CPU {
         if (lowClockSpeed != null ? !lowClockSpeed.equals(cpu.lowClockSpeed) : cpu.lowClockSpeed != null) return false;
         if (highClockSpeed != null ? !highClockSpeed.equals(cpu.highClockSpeed) : cpu.highClockSpeed != null)
             return false;
-        if (cache != null ? !cache.equals(cpu.cache) : cpu.cache != null) return false;
-        return specifications != null ? specifications.equals(cpu.specifications) : cpu.specifications == null;
+        return cache != null ? cache.equals(cpu.cache) : cpu.cache == null;
 
     }
 
@@ -115,7 +121,6 @@ public class CPU {
         result = 31 * result + (lowClockSpeed != null ? lowClockSpeed.hashCode() : 0);
         result = 31 * result + (highClockSpeed != null ? highClockSpeed.hashCode() : 0);
         result = 31 * result + (cache != null ? cache.hashCode() : 0);
-        result = 31 * result + (specifications != null ? specifications.hashCode() : 0);
         return result;
     }
 

@@ -2,13 +2,16 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Locale;
 
 /**
  * Created by Michal on 27.09.2016.
  */
 @Embeddable
-public class Dimensions {
+public class Dimensions implements Serializable {
+
+    private static final long serialVersionUID = 8377272462893849544L;
 
     @Column(name = "thickness")
     private Double thickness;
@@ -20,12 +23,6 @@ public class Dimensions {
     private Double height;
 
     public Dimensions() { }
-
-    public Dimensions(Double thickness, Double width, Double height) {
-        this.thickness = thickness;
-        this.width = width;
-        this.height = height;
-    }
 
     public Double getThickness() {
         return thickness;

@@ -2,13 +2,16 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Locale;
 
 /**
  * Created by Michal on 27.09.2016.
  */
 @Embeddable
-public class Camera {
+public class Camera implements Serializable {
+
+    private static final long serialVersionUID = 3636964795025103911L;
 
     @Column(name = "resolution_main_camera")
     private Double resolutionMainCamera;
@@ -17,11 +20,6 @@ public class Camera {
     private Double resolutionFrontCamera;
 
     public Camera() { }
-
-    public Camera(Double resolutionMainCamera, Double resolutionFrontCamera) {
-        this.resolutionMainCamera = resolutionMainCamera;
-        this.resolutionFrontCamera = resolutionFrontCamera;
-    }
 
     public Double getResolutionMainCamera() {
         return resolutionMainCamera;

@@ -1,12 +1,15 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 27.09.2016.
  */
 @Embeddable
-public class Battery {
+public class Battery implements Serializable {
+
+    private static final long serialVersionUID = -6399133713133458317L;
 
     @Column(name = "battery_capacity")
     private Integer capacity;
@@ -16,10 +19,6 @@ public class Battery {
     private BatteryType batteryType;
 
     public Battery() { }
-
-    public Battery(Integer capacity) {
-        this.capacity = capacity;
-    }
 
     public Integer getCapacity() {
         return capacity;

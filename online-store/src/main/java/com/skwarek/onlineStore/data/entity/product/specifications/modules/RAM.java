@@ -1,12 +1,15 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 30.09.2016.
  */
 @Embeddable
-public class RAM {
+public class RAM implements Serializable {
+
+    private static final long serialVersionUID = 1012756462133620058L;
 
     @Column(name = "ram")
     private Integer value;
@@ -16,10 +19,6 @@ public class RAM {
     private MemoryType memoryType;
 
     public RAM() { }
-
-    public RAM(Integer value) {
-        this.value = value;
-    }
 
     public Integer getValue() {
         return value;

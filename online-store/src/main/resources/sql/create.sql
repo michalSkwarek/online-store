@@ -7,8 +7,6 @@ INSERT INTO category (id, name) VALUES (4, 'PC');
 INSERT INTO category (id, name) VALUES (5, 'Console');
 INSERT INTO category (id, name) VALUES (6, 'Smartwatch');
 
-
-
 -- add few graphics
 INSERT INTO files_upload (id, file_name, data) VALUES (1001, 'file1001.jpg', load_file('/etc/images/logo/apple.jpg'));
 INSERT INTO files_upload (id, file_name, data) VALUES (1002, 'file1002.jpg', load_file('/etc/images/logo/samsung.jpg'));
@@ -25,8 +23,6 @@ INSERT INTO files_upload (id, file_name, data) VALUES (1010, 'file1010.jpg', loa
 INSERT INTO files_upload (id, file_name, data) VALUES (1011, 'file1011.jpg', load_file('/etc/images/logo/toshiba.jpg'));
 INSERT INTO files_upload (id, file_name, data) VALUES (1012, 'file1012.jpg', load_file('/etc/images/logo/dell.jpg'));
 INSERT INTO files_upload (id, file_name, data) VALUES (1013, 'file1013.jpg', load_file('/etc/images/logo/msi.jpg'));
-
-
 
 -- add few manufacturers
 INSERT INTO manufacturer (id, brand, logo_id, website) VALUES (1, 'Apple', 1001, 'http://www.apple.com');
@@ -525,43 +521,6 @@ INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, produc
 
 
 
-
-
-
-
-
-
-
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
-
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
-
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (107, 'abc', 1000, 3, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (108, 'klm', 2000, 3, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (109, 'xyz', 3000, 3, 4);
-
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (110, 'abc', 1000, 4, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (111, 'klm', 2000, 4, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (112, 'xyz', 3000, 4, 4);
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (113, 'abc', 1000, 5, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (114, 'klm', 2000, 5, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (115, 'xyz', 3000, 5, 4);
-
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (116, 'abc', 1000, 6, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (117, 'klm', 2000, 6, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (118, 'xyz', 3000, 6, 4);
-
-
-
 -- ----------------------------------------------
 -- add few countries
 INSERT INTO country (id, name) VALUES (1, 'Polska');
@@ -629,3 +588,45 @@ INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, 
 INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (2, 2, 1, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'finished');
 INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'active');
 INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (4, 4, 3, 3, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'active');
+
+
+
+
+
+
+
+-- -----------------
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (107, 'abc', 1000, 3, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (108, 'klm', 2000, 3, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (109, 'xyz', 3000, 3, 4);
+
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (110, 'abc', 1000, 4, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (111, 'klm', 2000, 4, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (112, 'xyz', 3000, 4, 4);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (113, 'abc', 1000, 5, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (114, 'klm', 2000, 5, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (115, 'xyz', 3000, 5, 4);
+
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (116, 'abc', 1000, 6, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (117, 'klm', 2000, 6, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (118, 'xyz', 3000, 6, 4);
+
+
+
+
+
+

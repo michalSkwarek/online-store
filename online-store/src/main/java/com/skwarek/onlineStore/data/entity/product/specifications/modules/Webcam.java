@@ -2,22 +2,21 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Locale;
 
 /**
  * Created by Michal on 01.10.2016.
  */
 @Embeddable
-public class Webcam {
+public class Webcam implements Serializable {
+
+    private static final long serialVersionUID = -8355833593233695195L;
 
     @Column(name = "resolution_webcam")
     private Double resolutionWebcam;
 
     public Webcam() { }
-
-    public Webcam(Double resolutionWebcam) {
-        this.resolutionWebcam = resolutionWebcam;
-    }
 
     public Double getResolutionWebcam() {
         return resolutionWebcam;

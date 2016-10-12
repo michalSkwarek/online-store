@@ -33,55 +33,5 @@ public class Item {
 
     public Item() { }
 
-    public Item(Product product, Integer quantity) {
-        this.product = product;
-        this.quantity = quantity;
-        this.itemTotalPrice = product.getUnitPrice();
-    }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-        this.updateItemTotalPrice();
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-        this.updateItemTotalPrice();
-    }
-
-    public BigDecimal getItemTotalPrice() {
-        return itemTotalPrice;
-    }
-
-    public void setItemTotalPrice(BigDecimal itemTotalPrice) {
-        this.itemTotalPrice = itemTotalPrice;
-    }
-
-    public void updateItemTotalPrice() {
-        this.itemTotalPrice = this.product.getUnitPrice().multiply(new BigDecimal(this.quantity));
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 }

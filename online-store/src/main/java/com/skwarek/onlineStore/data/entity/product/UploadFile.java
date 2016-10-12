@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -8,7 +9,9 @@ import java.util.Arrays;
  */
 @Entity
 @Table(name = "files_upload")
-public class UploadFile {
+public class UploadFile implements Serializable {
+
+    private static final long serialVersionUID = -6730061102021221970L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

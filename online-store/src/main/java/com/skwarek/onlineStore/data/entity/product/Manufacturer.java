@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
@@ -8,7 +9,9 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "manufacturer")
-public class Manufacturer {
+public class Manufacturer implements Serializable {
+
+    private static final long serialVersionUID = 4000467198421318150L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +32,6 @@ public class Manufacturer {
     private Set<Product> products;
 
     public Manufacturer() { }
-
-    public Manufacturer(String brand, String website) {
-        this.brand = brand;
-        this.website = website;
-    }
 
     public Long getId() {
         return id;

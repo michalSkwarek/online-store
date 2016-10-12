@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.product;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -10,7 +11,9 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = -5140596610125871988L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

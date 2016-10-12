@@ -31,58 +31,5 @@ public class Cart {
         this.cartTotalPrice = new BigDecimal(0);
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public BigDecimal getCartTotalPrice() {
-        return cartTotalPrice;
-    }
-
-    public void setCartTotalPrice(BigDecimal cartTotalPrice) {
-        this.cartTotalPrice = cartTotalPrice;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public void addItem(Item item) {
-        if (items.contains(item)) {
-            Item existingItem = items.get(items.indexOf(item));
-            existingItem.setQuantity(existingItem.getQuantity() + item.getQuantity());
-            items.add(existingItem);
-        } else {
-            items.add(item);
-        }
-        updateCartTotalPrice();
-    }
-
-    public void removeItem(Item item) {
-        items.remove(item);
-        updateCartTotalPrice();
-    }
-
-    public void updateCartTotalPrice() {
-        cartTotalPrice = new BigDecimal(0);
-        for (Item item : items) {
-            cartTotalPrice = cartTotalPrice.add(item.getItemTotalPrice());
-        }
-    }
 }

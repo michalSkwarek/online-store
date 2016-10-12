@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Locale;
 
 /**
@@ -8,7 +9,9 @@ import java.util.Locale;
  */
 @Entity
 @Table(name = "display")
-public class Display {
+public class Display implements Serializable {
+
+    private static final long serialVersionUID = 3855891566724622672L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +26,6 @@ public class Display {
     private DisplayResolution displayResolution;
 
     public Display() { }
-
-    public Display(Double diagonal) {
-        this.diagonal = diagonal;
-    }
 
     private int calculationOfDensity() {
         Integer widthInPixels = displayResolution.getWidthInPixels();
