@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.order;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,9 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order implements Serializable {
+
+    private static final long serialVersionUID = -2642669941667644957L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -83,5 +86,44 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order)) return false;
+
+        Order order = (Order) o;
+
+        if (id != null ? !id.equals(order.id) : order.id != null) return false;
+        if (cart != null ? !cart.equals(order.cart) : order.cart != null) return false;
+        if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
+        if (shippingDetail != null ? !shippingDetail.equals(order.shippingDetail) : order.shippingDetail != null)
+            return false;
+        if (dateCreated != null ? !dateCreated.equals(order.dateCreated) : order.dateCreated != null) return false;
+        return status != null ? status.equals(order.status) : order.status == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (cart != null ? cart.hashCode() : 0);
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + (shippingDetail != null ? shippingDetail.hashCode() : 0);
+        result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "cart=" + cart +
+                ", customer=" + customer +
+                ", shippingDetail=" + shippingDetail +
+                ", dateCreated=" + dateCreated +
+                ", status=" + status +
+                '}';
     }
 }

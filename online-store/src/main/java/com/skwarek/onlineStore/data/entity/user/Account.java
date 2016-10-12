@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.entity.user;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,10 +9,11 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "account")
-public class Account {
+public class Account implements Serializable {
 
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_USER = "ROLE_USER";
+    private static final long serialVersionUID = -2035625372437413793L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,14 +44,6 @@ public class Account {
 
     public Account() { }
 
-    public Account(String username, String password, String email, Date dateCreated, Customer customer) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.dateCreated = dateCreated;
-        this.customer = customer;
-    }
-
     public Long getId() {
         return id;
     }
@@ -72,6 +66,14 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getEmail() {
@@ -106,11 +108,47 @@ public class Account {
         this.customer = customer;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Account)) return false;
+
+        Account account = (Account) o;
+
+        if (id != null ? !id.equals(account.id) : account.id != null) return false;
+        if (username != null ? !username.equals(account.username) : account.username != null) return false;
+        if (password != null ? !password.equals(account.password) : account.password != null) return false;
+        if (enabled != null ? !enabled.equals(account.enabled) : account.enabled != null) return false;
+        if (email != null ? !email.equals(account.email) : account.email != null) return false;
+        if (dateCreated != null ? !dateCreated.equals(account.dateCreated) : account.dateCreated != null) return false;
+        if (role != null ? !role.equals(account.role) : account.role != null) return false;
+        return customer != null ? customer.equals(account.customer) : account.customer == null;
+
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "username=" + username +
+                ", password=" + password +
+                ", enabled=" + enabled +
+                ", email=" + email +
+                ", dateCreated=" + dateCreated +
+                ", role=" + role +
+                ", customer=" + customer +
+                '}';
     }
 }
