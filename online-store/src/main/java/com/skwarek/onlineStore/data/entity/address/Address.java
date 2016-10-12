@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.address;
 
+import com.skwarek.onlineStore.data.entity.user.Customer;
+
 import javax.persistence.*;
 
 /**
@@ -30,8 +32,8 @@ public class Address {
     @JoinColumn(name = "city_id")
     private City city;
 
-//    @OneToOne(mappedBy = "billing_address", cascade = CascadeType.ALL)
-//    private Customer customer;
+    @OneToOne(mappedBy = "billingAddress", cascade = CascadeType.ALL)
+    private Customer customer;
 
     public Address() { }
 

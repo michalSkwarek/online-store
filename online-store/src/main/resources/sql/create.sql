@@ -10,7 +10,7 @@ INSERT INTO category (id, name) VALUES (6, 'Smartwatch');
 
 
 -- add few graphics
-INSERT INTO files_upload (id, file_name, data) VALUES (1001, 'file1001.jpg', load_file('/etc/images/logo/aaple.jpg'));
+INSERT INTO files_upload (id, file_name, data) VALUES (1001, 'file1001.jpg', load_file('/etc/images/logo/apple.jpg'));
 INSERT INTO files_upload (id, file_name, data) VALUES (1002, 'file1002.jpg', load_file('/etc/images/logo/samsung.jpg'));
 INSERT INTO files_upload (id, file_name, data) VALUES (1003, 'file1003.jpg', load_file('/etc/images/logo/lenovo.jpg'));
 INSERT INTO files_upload (id, file_name, data) VALUES (1004, 'file1004.jpg', load_file('/etc/images/logo/lg.jpg'));
@@ -597,29 +597,35 @@ INSERT INTO account (id, username, password, enabled, email, date_created, role,
 INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (4, 'yyy', '888', true, 'y8@gmail.com', STR_TO_DATE('22-12-2015 16:24:00', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
 INSERT INTO account (id, username, password, enabled, email, date_created, role) VALUES (5, 'zzz', '999', true, 'z9@gmail.com', STR_TO_DATE('01-01-2016 23:01:50', '%d-%m-%Y %H:%i:%s'), 'ROLE_ADMIN');
 
-#
-#
-# -- ----------------------------------------------
-# -- add few shipping details
-# INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (1, STR_TO_DATE('21-03-2016', '%d-%m-%Y'), 1);
-# INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (2, STR_TO_DATE('02-04-2016', '%d-%m-%Y'), 2);
-# INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (3, STR_TO_DATE('13-05-2016', '%d-%m-%Y'), 3);
-# INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (4, STR_TO_DATE('24-06-2016', '%d-%m-%Y'), 4);
-#
-# -- add few items
-# INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (1, 1, 1, 1, 4479);
-# INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (2, 1, 2, 2, 8958);
-# INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (3, 2, 3, 1, 3879);
-# INSERT INTO item (id, product_id, shipping_address_id, quantity, item_total_price) VALUES (4, 3, 4, 2, 7758);
-#
-# -- add few carts
-# INSERT INTO cart (id, cart, cart_total_price) VALUES (1, 1, 4479);
-# INSERT INTO cart (id, cart, cart_total_price) VALUES (2, 2, 8958);
-# INSERT INTO cart (id, cart, cart_total_price) VALUES (3, 2, 3879);
-# INSERT INTO cart (id, cart, cart_total_price) VALUES (4, 3, 7758);
-#
-# -- add few orders
-# INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (1, 1, 1, 1, STR_TO_DATE('19-03-2016'), 'no');
-# INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (2, 2, 1, 1, STR_TO_DATE('19-03-2016'), 'no');
-# INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016'), 'yes');
-# INSERT INTO cart (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (4, 4, 3, 3, STR_TO_DATE('19-03-2016'), 'yes');
+
+
+-- ----------------------------------------------
+-- add few shipping details
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (1, STR_TO_DATE('21-03-2016', '%d-%m-%Y'), 1);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (2, STR_TO_DATE('02-04-2016', '%d-%m-%Y'), 2);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (3, STR_TO_DATE('13-05-2016', '%d-%m-%Y'), 3);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (4, STR_TO_DATE('24-06-2016', '%d-%m-%Y'), 4);
+
+-- add few carts
+INSERT INTO cart (id, cart_total_price) VALUES (1, 13676);
+INSERT INTO cart (id, cart_total_price) VALUES (2, 18355);
+INSERT INTO cart (id, cart_total_price) VALUES (3, 8178);
+INSERT INTO cart (id, cart_total_price) VALUES (4, 16407);
+
+-- add few items
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (1, 1, 1, 4479, 1);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (2, 1, 2, 8958, 2);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (3, 2, 1, 3879, 3);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (4, 3, 2, 7758, 4);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (5, 6, 1, 3398, 1);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (6, 9, 2, 3998, 2);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (7, 31, 1, 4299, 3);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (8, 41, 1, 8649, 4);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (9, 42, 1, 5799, 1);
+INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (10, 45, 1, 5399, 2);
+
+-- add few orders
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (1, 1, 1, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'finished');
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (2, 2, 1, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'finished');
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'active');
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (4, 4, 3, 3, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'active');
