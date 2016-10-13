@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page session="true"%>
 <html>
 <body>
@@ -22,6 +23,8 @@
 				href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
+
+	<li><a href="<spring:url value="/admin/products/list" />">Admin products</a></li>
 
 </body>
 </html>

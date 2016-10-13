@@ -15,4 +15,9 @@ public class AccountServiceImpl extends GenericServiceImpl<Account, Long> implem
 
     @Autowired
     private AccountDao accountDao;
+
+    @Override
+    public Account getAccountByUsername(String username) {
+        return accountDao.getAccountByUsername(username);
+    }
 }

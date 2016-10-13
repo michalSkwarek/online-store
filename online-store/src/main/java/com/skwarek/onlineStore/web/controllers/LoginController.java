@@ -30,7 +30,7 @@ public class LoginController {
         return "/security/login";
     }
 
-    @RequestMapping(value = { "/welcome**" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
     public String defaultPage(Model model) {
 
         model.addAttribute("title", "Spring Security Login Form - Database Authentication");
@@ -48,7 +48,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String accesssDenied(Model model) {
+    public String accessDenied(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (!(auth instanceof AnonymousAuthenticationToken)) {

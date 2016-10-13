@@ -7,15 +7,8 @@
 </head>
 <body>
 
-    <div>
-        <h1>Online store</h1>
-        <ul>
-            <li><a href="<spring:url value="/welcome" />">Home page</a></li>
-            <li><a href="<spring:url value="/products/list" />">Products</a></li>
-            <li><a href="<spring:url value="/cart" />">Cart</a></li>
-            <li><a href="<spring:url value="/login" />">Sign in</a></li>
-        </ul>
-    </div>
+    <jsp:include page="_header.jsp" />
+    <jsp:include page="_menu.jsp" />
 
     <div>
         <h1>${welcome}</h1>
@@ -50,10 +43,7 @@
         </c:forEach>
     </div>
 
-
-    <div>
-        <p>&copy; Online store 2016</p>
-    </div>
+    <jsp:include page="_footer.jsp" />
 
 </body>
 </html>

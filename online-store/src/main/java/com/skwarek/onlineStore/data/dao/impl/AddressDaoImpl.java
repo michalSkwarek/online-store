@@ -15,6 +15,14 @@ import org.springframework.stereotype.Repository;
 public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements AddressDao {
 
     @Override
+    public Address getAddressByUsername(String username) {
+        Query getAddress = getSession().createQuery("from Address ad where ad.id = (from Account ac where ac.customer.billingAddress = :username)");
+        getAddress.setParameter("username", username);
+        getAddress.setMaxResults(1);
+        return (Address) getAddress.uniqueResult();
+    }
+
+    @Override
     public void createAddress(Address address) {
         Country country = getCountryFromDatabase(address);
         if (country != null) {

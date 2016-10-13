@@ -21,6 +21,12 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    @RequestMapping("/{username}")
+    public String getProductById(Model model, @PathVariable String username) {
+        model.addAttribute("account", accountService.getAccountByUsername(username));
+        return "accounts/accountData";
+    }
+
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String createAccount(Model model) {
 

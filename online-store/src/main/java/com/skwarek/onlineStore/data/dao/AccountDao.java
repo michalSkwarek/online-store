@@ -7,4 +7,6 @@ import com.skwarek.onlineStore.data.entity.user.Account;
  * Created by Michal on 04.10.2016.
  */
 public interface AccountDao extends GenericDao<Account, Long> {
+
+    Account getAccountByUsername(String username);
 }

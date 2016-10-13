@@ -8,6 +8,8 @@ import com.skwarek.onlineStore.data.entity.address.Address;
  */
 public interface AddressDao extends GenericDao<Address, Long> {
 
+    Address getAddressByUsername(String username);
+
     void createAddress(Address address);
 
     void updateAddress(Address address);

@@ -21,6 +21,12 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
+    @RequestMapping("/{username}")
+    public String getProductById(Model model, @PathVariable String username) {
+        model.addAttribute("address", addressService.getAddressByUsername(username));
+        return "addresses/addressData";
+    }
+
     @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
     public String createAddress(Model model) {
 

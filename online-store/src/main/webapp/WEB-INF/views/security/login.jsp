@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page session="true"%>
 <html>
 <head>
@@ -37,11 +38,14 @@
 				</tr>
 			</table>
 
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 		</form>
 	</div>
+
+	<a href="<spring:url value="/accounts/new" />">Create new account</a>
+
+	<a href="<spring:url value="/welcome" />">Go to home page</a>
 
 </body>
 </html>
