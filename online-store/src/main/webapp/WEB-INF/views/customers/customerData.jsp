@@ -12,18 +12,23 @@
 
         <ul>
             <li>
-                <label for="username">Username: </label>
-                <form:input path="username" id="username"/>
+                <label for="firstName">First name: </label>
+                <form:input path="firstName" id="firstName"/>
             </li>
 
             <li>
-                <label for="password">Password: </label>
-                <form:input path="password" id="password"/>
+                <label for="lastName">Last name: </label>
+                <form:input path="lastName" id="lastName"/>
             </li>
 
             <li>
-                <label for="email">Email: </label>
-                <form:input path="email" id="email"/>
+                <label for="birthDate">Birth date: </label>
+                <form:input path="birthDate" id="birthDate"/>
+            </li>
+
+            <li>
+                <label for="phoneNumber">Phone number: </label>
+                <form:input path="phoneNumber" id="phoneNumber"/>
             </li>
 
             <li>

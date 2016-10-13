@@ -16,7 +16,7 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
 
     @Override
     public Address getAddressByUsername(String username) {
-        Query getAddress = getSession().createQuery("from Address ad where ad.id = (from Account ac where ac.customer.billingAddress = :username)");
+        Query getAddress = getSession().createQuery("from Address ad where ad.customer.account.username = :username");
         getAddress.setParameter("username", username);
         getAddress.setMaxResults(1);
         return (Address) getAddress.uniqueResult();
