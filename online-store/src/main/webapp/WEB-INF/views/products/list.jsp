@@ -57,7 +57,7 @@
         <p>List of all products</p>
         <c:forEach items="${products}" var="product">
             <div>
-                <%--<img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />--%>
+                <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice}</p>
                 <p>${product.category.name}</p>

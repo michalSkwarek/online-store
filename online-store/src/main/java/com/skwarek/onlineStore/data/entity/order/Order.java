@@ -13,7 +13,7 @@ import java.util.Date;
 @Table(name = "orders")
 public class Order implements Serializable {
 
-    private static final long serialVersionUID = -2642669941667644957L;
+    private static final long serialVersionUID = -6774549650536053855L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,9 +34,6 @@ public class Order implements Serializable {
 
     @Column(name = "date_created")
     private Date dateCreated;
-
-    @Column(name = "status")
-    private String status;
 
     public Order() { }
 
@@ -80,14 +77,6 @@ public class Order implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -100,8 +89,7 @@ public class Order implements Serializable {
         if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
         if (shippingDetail != null ? !shippingDetail.equals(order.shippingDetail) : order.shippingDetail != null)
             return false;
-        if (dateCreated != null ? !dateCreated.equals(order.dateCreated) : order.dateCreated != null) return false;
-        return status != null ? status.equals(order.status) : order.status == null;
+        return dateCreated != null ? dateCreated.equals(order.dateCreated) : order.dateCreated == null;
 
     }
 
@@ -112,7 +100,6 @@ public class Order implements Serializable {
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
         result = 31 * result + (shippingDetail != null ? shippingDetail.hashCode() : 0);
         result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
     }
 
@@ -123,7 +110,6 @@ public class Order implements Serializable {
                 ", customer=" + customer +
                 ", shippingDetail=" + shippingDetail +
                 ", dateCreated=" + dateCreated +
-                ", status=" + status +
                 '}';
     }
 }

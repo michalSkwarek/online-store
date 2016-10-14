@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@page session="true"%>
+<%@ page session="true"%>
 <html>
 <head>
 <title>Login Page</title>
@@ -9,15 +9,15 @@
 
 	<h1>Spring Security Login Form (Database Authentication)</h1>
 
-	<div id="login-box">
+	<div>
 
 		<h3>Login with Username and Password</h3>
 
 		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
+			<div>${error}</div>
 		</c:if>
 		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
+			<div>${msg}</div>
 		</c:if>
 
 		<form name='loginForm'

@@ -8,46 +8,35 @@
         <h1>Online store</h1>
     </div>
 
-    <ul>
-        <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-            <li><a href="<spring:url value="/accounts/${pageContext.request.userPrincipal.name}" />">Account info</a></li>
-        </security:authorize>
-        <security:authorize  access="hasRole('ROLE_USER')">
-            <li><a href="<spring:url value="/customers/${pageContext.request.userPrincipal.name}" />">Customer info</a></li>
-        </security:authorize>
-        <security:authorize  access="hasRole('ROLE_USER')">
-            <li><a href="<spring:url value="/addresses/${pageContext.request.userPrincipal.name}" />">Address info</a></li>
-        </security:authorize>
-        <security:authorize  access="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-            <li><a href="<spring:url value="/login" />">Sign in</a></li>
-        </security:authorize>
-        <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+    <div>
+        <ul>
+            <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                <li><a href="<spring:url value="/accounts/${pageContext.request.userPrincipal.name}" />">Account info</a></li>
+            </security:authorize>
+            <security:authorize  access="hasRole('ROLE_USER')">
+                <li><a href="<spring:url value="/customers/${pageContext.request.userPrincipal.name}" />">Customer info</a></li>
+            </security:authorize>
+            <security:authorize  access="hasRole('ROLE_USER')">
+                <li><a href="<spring:url value="/addresses/${pageContext.request.userPrincipal.name}" />">Address info</a></li>
+            </security:authorize>
+            <security:authorize  access="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                <li><a href="<spring:url value="/login" />">Sign in</a></li>
+            </security:authorize>
+            <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
 
-            <c:url value="logout" var="logoutUrl" />
-            <form action="${logoutUrl}" method="post" id="logoutForm">
-                <input type="hidden" name="${_csrf.parameterName}"
-                       value="${_csrf.token}" />
-            </form>
-            <script>
-                function formSubmit() {
-                    document.getElementById("logoutForm").submit();
-                }
-            </script>
+                <c:url value="logout" var="logoutUrl" />
+                <form action="${logoutUrl}" method="post" id="logoutForm">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                </form>
+                <script>
+                    function formSubmit() {
+                        document.getElementById("logoutForm").submit();
+                    }
+                </script>
 
-            <a href="javascript:formSubmit()"> Logout</a>
-        </security:authorize>
-    </ul>
+                <li><a href="javascript:formSubmit()"> Logout</a></li>
+            </security:authorize>
+        </ul>
+    </div>
 
-    <%--<div>--%>
-        <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
-            <%--Hello--%>
-            <%--<a href="${pageContext.request.contextPath}/accountInfo">--%>
-                    <%--${pageContext.request.userPrincipal.name} </a>--%>
-            <%--<a href="${pageContext.request.contextPath}/logout">Logout</a>--%>
-
-        <%--</c:if>--%>
-        <%--<c:if test="${pageContext.request.userPrincipal.name == null}">--%>
-            <%--<a href="${pageContext.request.contextPath}/login">Login</a>--%>
-        <%--</c:if>--%>
-    <%--</div>--%>
 </div>

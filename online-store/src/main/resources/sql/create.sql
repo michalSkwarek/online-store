@@ -584,10 +584,10 @@ INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (9
 INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (10, 45, 1, 5399, 2);
 
 -- add few orders
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (1, 1, 1, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'finished');
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (2, 2, 2, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'finished');
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'active');
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created, status) VALUES (4, 4, 2, 3, STR_TO_DATE('19-03-2016', '%d-%m-%Y'), 'active');
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (1, 1, 1, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (2, 2, 2, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (4, 4, 2, 3, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
 
 
 

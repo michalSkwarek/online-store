@@ -27,7 +27,7 @@
         <p>Recommended for you</p>
         <c:forEach items="${products}" var="product">
             <div>
-                <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />
+                <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice}</p>
                 <a href="<spring:url value="/products/${product.id}" />">Details</a>
@@ -38,7 +38,7 @@
     <div>
         <p>Go to the manufacturer's store</p>
         <c:forEach items="${manufacturers}" var="manufacturer">
-            <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 5%" />
+            <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" style="width: 5%" />
             <a href="<spring:url value="${manufacturer.website}" />">${manufacturer.brand}</a>
         </c:forEach>
     </div>
