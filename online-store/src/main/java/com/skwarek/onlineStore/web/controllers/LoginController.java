@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by Michal on 04.10.2016.
@@ -47,7 +46,7 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
     public String accessDenied(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -57,7 +56,7 @@ public class LoginController {
 
             model.addAttribute("username", userDetail.getUsername());
         }
-        return "/security/403";
+        return "security/accessDenied";
     }
 }
 

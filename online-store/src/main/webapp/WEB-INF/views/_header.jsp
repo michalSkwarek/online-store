@@ -11,13 +11,7 @@
     <div>
         <ul>
             <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                <li><a href="<spring:url value="/accounts/${pageContext.request.userPrincipal.name}" />">Account info</a></li>
-            </security:authorize>
-            <security:authorize  access="hasRole('ROLE_USER')">
-                <li><a href="<spring:url value="/customers/${pageContext.request.userPrincipal.name}" />">Customer info</a></li>
-            </security:authorize>
-            <security:authorize  access="hasRole('ROLE_USER')">
-                <li><a href="<spring:url value="/addresses/${pageContext.request.userPrincipal.name}" />">Address info</a></li>
+                <li><a href="<spring:url value="/users/${pageContext.request.userPrincipal.name}" />">User data</a></li>
             </security:authorize>
             <security:authorize  access="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
                 <li><a href="<spring:url value="/login" />">Sign in</a></li>
