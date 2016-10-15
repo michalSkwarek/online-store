@@ -19,18 +19,10 @@ public class UserDataController {
     @Autowired
     private AccountService accountService;
 
-    @Autowired
-    private CustomerService customerService;
-
-    @Autowired
-    private AddressService addressService;
-
     @RequestMapping("/{username}")
     public String getUserData(Model model, @PathVariable String username) {
 
         model.addAttribute("account", accountService.getAccountByUsername(username));
-        model.addAttribute("customer", customerService.getCustomerByUsername(username));
-        model.addAttribute("address", addressService.getAddressByUsername(username));
         return "users/userData";
     }
 }

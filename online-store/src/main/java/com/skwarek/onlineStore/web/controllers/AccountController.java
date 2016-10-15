@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.web.controllers;
 
 import com.skwarek.onlineStore.data.entity.user.Account;
+import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,8 +41,9 @@ public class AccountController {
         account.setEnabled(true);
         account.setDateCreated(new Date());
         account.setRole(Account.ROLE_USER);
+//        account.setCustomer(new Customer());
         accountService.create(account);
-        return "redirect:/";
+        return "redirect:/customers/new";
     }
 
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
@@ -52,10 +54,10 @@ public class AccountController {
         return "accounts/accountData";
     }
 
-    @RequestMapping(value = { "/edit" }, method = RequestMethod.POST)
-    public String updateAccount(Account account) {
+    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
+    public String updateAccount(@PathVariable Long id, Account account) {
 
         accountService.update(account);
-        return "redirect:/";
+        return "redirect:/users/userData";
     }
 }

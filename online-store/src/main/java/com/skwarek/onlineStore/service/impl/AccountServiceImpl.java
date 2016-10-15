@@ -20,4 +20,9 @@ public class AccountServiceImpl extends GenericServiceImpl<Account, Long> implem
     public Account getAccountByUsername(String username) {
         return accountDao.getAccountByUsername(username);
     }
+
+    @Override
+    public Account getLastAccount() {
+        return accountDao.getLastAccount();
+    }
 }

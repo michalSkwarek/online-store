@@ -20,4 +20,9 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long> impl
     public Customer getCustomerByUsername(String username) {
         return customerDao.getCustomerByUsername(username);
     }
+
+    @Override
+    public Customer getLastCustomer() {
+        return customerDao.getLastCustomer();
+    }
 }

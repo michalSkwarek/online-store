@@ -522,17 +522,10 @@ INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, produc
 
 
 -- ----------------------------------------------
--- add few countries
-INSERT INTO country (id, name) VALUES (1, 'Polska');
-INSERT INTO country (id, name) VALUES (2, 'Niemcy');
-INSERT INTO country (id, name) VALUES (3, 'Czechy');
-INSERT INTO country (id, name) VALUES (4, 'Slowacja');
-INSERT INTO country (id, name) VALUES (5, 'Litwa');
-
 -- add few cities
-INSERT INTO city (id, name, country_id) VALUES (1, 'Warszawa', 1);
-INSERT INTO city (id, name, country_id) VALUES (2, 'Krakow', 1);
-INSERT INTO city (id, name, country_id) VALUES (3, 'Gdansk', 1);
+INSERT INTO city (id, name) VALUES (1, 'Warszawa');
+INSERT INTO city (id, name) VALUES (2, 'Krakow');
+INSERT INTO city (id, name) VALUES (3, 'Gdansk');
 
 -- add few addresses
 INSERT INTO address (id, street, street_number, door_number, zip_code, city_id) VALUES (1, 'Koszycka', '6A', '25', '01-446', 1);

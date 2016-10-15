@@ -1,6 +1,5 @@
 package com.skwarek.onlineStore.service;
 
-import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.service.generic.GenericService;
 
@@ -10,4 +9,6 @@ import com.skwarek.onlineStore.service.generic.GenericService;
 public interface AccountService extends GenericService<Account, Long> {
 
     Account getAccountByUsername(String username);
+
+    Account getLastAccount();
 }

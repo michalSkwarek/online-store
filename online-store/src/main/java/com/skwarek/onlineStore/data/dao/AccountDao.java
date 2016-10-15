@@ -9,4 +9,6 @@ import com.skwarek.onlineStore.data.entity.user.Account;
 public interface AccountDao extends GenericDao<Account, Long> {
 
     Account getAccountByUsername(String username);
+
+    Account getLastAccount();
 }

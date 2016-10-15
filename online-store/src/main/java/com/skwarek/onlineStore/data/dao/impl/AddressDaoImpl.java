@@ -4,7 +4,6 @@ import com.skwarek.onlineStore.data.dao.AddressDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.address.City;
-import com.skwarek.onlineStore.data.entity.address.Country;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -24,10 +23,6 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
 
     @Override
     public void createAddress(Address address) {
-        Country country = getCountryFromDatabase(address);
-        if (country != null) {
-            address.getCity().setCountry(country);
-        }
         City city = getCityFromDatabase(address);
         if (city != null) {
             address.setCity(city);
@@ -37,10 +32,6 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
 
     @Override
     public void updateAddress(Address address) {
-        Country country = getCountryFromDatabase(address);
-        if (country != null) {
-            address.getCity().setCountry(country);
-        }
         City city = getCityFromDatabase(address);
         if (city != null) {
             address.setCity(city);
@@ -60,12 +51,5 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
         findCityQuery.setParameter("name", address.getCity().getName());
         findCityQuery.setMaxResults(1);
         return (City) findCityQuery.uniqueResult();
-    }
-
-    private Country getCountryFromDatabase(Address address) {
-        Query findCountryQuery = getSession().createQuery("from Country where name = :name");
-        findCountryQuery.setParameter("name", address.getCity().getCountry().getName());
-        findCountryQuery.setMaxResults(1);
-        return (Country) findCountryQuery.uniqueResult();
     }
 }

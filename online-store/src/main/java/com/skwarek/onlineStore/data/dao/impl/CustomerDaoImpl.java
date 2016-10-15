@@ -19,4 +19,11 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer, Long> implements C
         getCustomer.setMaxResults(1);
         return (Customer) getCustomer.uniqueResult();
     }
+
+    @Override
+    public Customer getLastCustomer() {
+        Query getCustomer = getSession().createQuery("from Customer c order by c.id desc");
+        getCustomer.setMaxResults(1);
+        return (Customer) getCustomer.uniqueResult();
+    }
 }

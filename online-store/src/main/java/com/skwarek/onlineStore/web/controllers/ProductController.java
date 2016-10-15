@@ -3,25 +3,18 @@ package com.skwarek.onlineStore.web.controllers;
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
-import com.skwarek.onlineStore.data.entity.product.UploadFile;
-import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import com.skwarek.onlineStore.data.entity.product.specifications.SpecificationsFactory;
-import com.skwarek.onlineStore.service.*;
-import com.skwarek.onlineStore.web.editors.CategoryEditor;
-import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
-import com.skwarek.onlineStore.web.editors.ProductImageEditor;
-import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
+import com.skwarek.onlineStore.service.CategoryService;
+import com.skwarek.onlineStore.service.ManufacturerService;
+import com.skwarek.onlineStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -38,12 +31,6 @@ public class ProductController {
 
     @Autowired
     private ManufacturerService manufacturerService;
-
-    @Autowired
-    private ProductSpecificationsService productSpecificationsService;
-
-    @Autowired
-    private UploadFileService uploadFileService;
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String showProducts(Model model) {

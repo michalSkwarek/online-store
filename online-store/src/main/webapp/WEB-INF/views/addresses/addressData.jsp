@@ -35,12 +35,7 @@
                 <label for="city">City: </label>
                 <form:input path="city.name" id="city"/>
             </li>
-
-            <li>
-                <label for="country">Country: </label>
-                <form:input path="city.country.name" id="country"/>
-            </li>
-
+            
             <li>
                 <input type="submit" value="Save"/>
             </li>
@@ -48,7 +43,5 @@
 
     </form:form>
 
-    <br/>
-    Go back to <a href="<c:url value="/" />">List of all addresses</a>
 </body>
 </html>

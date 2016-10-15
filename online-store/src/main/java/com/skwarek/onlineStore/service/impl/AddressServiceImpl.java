@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Michal on 23.09.2016.
  */
@@ -38,4 +40,5 @@ public class AddressServiceImpl extends GenericServiceImpl<Address, Long> implem
     public boolean deleteAddress(Long id) {
         return addressDao.deleteAddress(id);
     }
+
 }

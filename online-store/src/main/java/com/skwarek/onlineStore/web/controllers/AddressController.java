@@ -1,7 +1,9 @@
 package com.skwarek.onlineStore.web.controllers;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
+import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.service.AddressService;
+import com.skwarek.onlineStore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ import java.util.List;
 @Controller
 @RequestMapping(value = { "/addresses" })
 public class AddressController {
+
+    @Autowired
+    private CustomerService customerService;
 
     @Autowired
     private AddressService addressService;
@@ -37,8 +42,10 @@ public class AddressController {
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
     public String addAddress(Address address) {
 
-        addressService.createAddress(address);
-        return "redirect:/";
+        Customer customer = customerService.getLastCustomer();
+        customer.setBillingAddress(address);
+        customerService.update(customer);
+        return "redirect:/welcome";
     }
 
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
@@ -52,14 +59,8 @@ public class AddressController {
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
     public String updateAddress(@PathVariable Long id, Address address) {
 
+        String username = addressService.read(id).getCustomer().getAccount().getUsername();
         addressService.updateAddress(address);
-        return "redirect:/";
-    }
-
-    @RequestMapping(value = { "/delete/{id}" }, method = RequestMethod.GET)
-    public String deleteAddress(@PathVariable Long id) {
-
-        addressService.deleteAddress(id);
-        return "redirect:/";
+        return "redirect:/users/" + username;
     }
 }

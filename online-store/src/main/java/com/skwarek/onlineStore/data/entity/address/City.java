@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "city")
 public class City implements Serializable {
 
-    private static final long serialVersionUID = 4027764760052208083L;
+    private static final long serialVersionUID = 3092911497439684126L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,6 @@ public class City implements Serializable {
 
     @Column(name = "name")
     private String name;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "country_id")
-    private Country country;
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
     private Set<Address> addresses;
@@ -46,14 +42,6 @@ public class City implements Serializable {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
     public Set<Address> getAddresses() {
         return addresses;
     }
@@ -71,7 +59,7 @@ public class City implements Serializable {
 
         if (id != null ? !id.equals(city.id) : city.id != null) return false;
         if (name != null ? !name.equals(city.name) : city.name != null) return false;
-        return country != null ? country.equals(city.country) : city.country == null;
+        return addresses != null ? addresses.equals(city.addresses) : city.addresses == null;
 
     }
 
@@ -79,7 +67,7 @@ public class City implements Serializable {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (addresses != null ? addresses.hashCode() : 0);
         return result;
     }
 
@@ -87,7 +75,6 @@ public class City implements Serializable {
     public String toString() {
         return "City{" +
                 "name=" + name +
-                ", country=" + country +
                 '}';
     }
 }

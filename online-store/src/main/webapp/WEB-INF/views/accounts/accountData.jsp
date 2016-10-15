@@ -26,6 +26,13 @@
                 <form:input path="email" id="email"/>
             </li>
 
+            <c:if test="${account.dateCreated != null}">
+                <li>
+                    <label for="dateCreated">Date created: </label>
+                    <form:input path="dateCreated" id="dateCreated"/>
+                </li>
+            </c:if>
+
             <li>
                 <input type="submit" value="Save"/>
             </li>

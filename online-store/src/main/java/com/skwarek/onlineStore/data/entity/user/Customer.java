@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.entity.user;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,6 +28,7 @@ public class Customer implements Serializable {
     private String lastName;
 
     @Column(name = "birth_date")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private Date birthDate;
 
     @OneToOne(cascade = CascadeType.ALL)

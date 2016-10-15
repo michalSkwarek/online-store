@@ -19,4 +19,11 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
         getAccount.setMaxResults(1);
         return (Account) getAccount.uniqueResult();
     }
+
+    @Override
+    public Account getLastAccount() {
+        Query getAccount = getSession().createQuery("from Account a order by a.id desc");
+        getAccount.setMaxResults(1);
+        return (Account) getAccount.uniqueResult();
+    }
 }

@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,18 +12,23 @@
 
             <ul>
                 <li>
-                    <label for="username">Username: </label>
-                    ${account}
+                    <label>Username: </label>
+                    ${account.username}
                 </li>
 
                 <li>
-                    <label for="password">Password: </label>
-                    <form:input path="password" id="password"/>
+                    <label>Password: </label>
+                    ${account.password}
                 </li>
 
                 <li>
-                    <label for="email">Email: </label>
-                    <form:input path="email" id="email"/>
+                    <label>Email: </label>
+                    ${account.email}
+                </li>
+
+                <li>
+                    <label>Date created: </label>
+                    ${account.dateCreated}
                 </li>
             </ul>
 
@@ -35,74 +38,70 @@
 
     <security:authorize  access="hasRole('ROLE_USER')">
         <h1>Customer data</h1>
-        <form:form method="post" modelAttribute="customer">
 
             <ul>
                 <li>
-                    <label for="firstName">First name: </label>
-                    <form:input path="firstName" id="firstName"/>
+                    <label>First name: </label>
+                    ${account.customer.firstName}
                 </li>
 
                 <li>
-                    <label for="lastName">Last name: </label>
-                    <form:input path="lastName" id="lastName"/>
+                    <label>Last name: </label>
+                    ${account.customer.lastName}
                 </li>
 
                 <li>
-                    <label for="birthDate">Birth date: </label>
-                    <form:input path="birthDate" id="birthDate"/>
+                    <label>Birth date: </label>
+                    ${account.customer.birthDate}
                 </li>
 
                 <li>
-                    <label for="phoneNumber">Phone number: </label>
-                    <form:input path="phoneNumber" id="phoneNumber"/>
+                    <label>Phone number: </label>
+                    ${account.customer.phoneNumber}
                 </li>
             </ul>
 
-            <a href="<spring:url value="/customers/edit/${customer.id}" />">Edit</a>
+            <a href="<spring:url value="/customers/edit/${account.customer.id}" />">Edit</a>
 
-        </form:form>
     </security:authorize>
 
     <security:authorize  access="hasRole('ROLE_USER')">
         <h1>Address data</h1>
-        <form:form method="post" modelAttribute="address">
 
             <ul>
                 <li>
-                    <label for="street">Street: </label>
-                    <form:input path="street" id="street"/>
+                    <label>Street: </label>
+                    ${account.customer.billingAddress.street}
                 </li>
 
                 <li>
-                    <label for="streetNumber">Street number: </label>
-                    <form:input path="streetNumber" id="streetNumber"/>
+                    <label>Street number: </label>
+                    ${account.customer.billingAddress.streetNumber}
                 </li>
 
                 <li>
-                    <label for="doorNumber">Door number: </label>
-                    <form:input path="doorNumber" id="doorNumber"/>
+                    <label>Door number: </label>
+                    ${account.customer.billingAddress.doorNumber}
                 </li>
 
                 <li>
-                    <label for="zipCode">Zip code: </label>
-                    <form:input path="zipCode" id="zipCode"/>
+                    <label>Zip code: </label>
+                    ${account.customer.billingAddress.zipCode}
                 </li>
 
                 <li>
-                    <label for="city">City: </label>
-                    <form:input path="city.name" id="city"/>
+                    <label>City: </label>
+                    ${account.customer.billingAddress.city.name}
                 </li>
 
                 <li>
-                    <label for="country">Country: </label>
-                    <form:input path="city.country.name" id="country"/>
+                    <label>Country: </label>
+                    ${account.customer.billingAddress.city.country.name}
                 </li>
             </ul>
 
-            <a href="<spring:url value="/addresses/edit/${address.id}" />">Edit</a>
+            <a href="<spring:url value="/addresses/edit/${account.customer.billingAddress.id}" />">Edit</a>
 
-        </form:form>
     </security:authorize>
 
     <a href="<spring:url value="/welcome" />">Go to home page</a>
