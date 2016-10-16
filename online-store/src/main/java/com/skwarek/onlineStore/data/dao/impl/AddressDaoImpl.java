@@ -15,7 +15,7 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
 
     @Override
     public Address getAddressByUsername(String username) {
-        Query getAddress = getSession().createQuery("from Address ad where ad.customer.account.username = :username");
+        Query getAddress = getSession().createQuery("from Address a where a.customer.account.username = :username");
         getAddress.setParameter("username", username);
         getAddress.setMaxResults(1);
         return (Address) getAddress.uniqueResult();
@@ -41,13 +41,13 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
 
     @Override
     public boolean deleteAddress(Long id) {
-        Query removeAddressQuery = getSession().createQuery("delete from Address where id = :id");
+        Query removeAddressQuery = getSession().createQuery("delete from Address a where a.id = :id");
         removeAddressQuery.setParameter("id", id);
         return removeAddressQuery.executeUpdate() > 0;
     }
 
     private City getCityFromDatabase(Address address) {
-        Query findCityQuery = getSession().createQuery("from City where name = :name");
+        Query findCityQuery = getSession().createQuery("from City c where c.name = :name");
         findCityQuery.setParameter("name", address.getCity().getName());
         findCityQuery.setMaxResults(1);
         return (City) findCityQuery.uniqueResult();

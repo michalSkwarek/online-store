@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.web.controllers;
 
+import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.service.AccountService;
@@ -42,26 +43,31 @@ public class CustomerController {
 
         customer.setNumberOfOrders(0);
         Account account = accountService.getLastAccount();
+        customerService.create(customer);
         account.setCustomer(customer);
         accountService.update(account);
         return "redirect:/addresses/new";
     }
 
-//    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
-//    public String getAddress(@PathVariable Long id, Model model) {
-//
-//        Address address = addressService.read(id);
-//        model.addAttribute("address", address);
-//        List countries = addressService.getAllCountries();
-//        model.addAttribute("countries", countries);
-//        return "addresses/addressData";
-//    }
-//
-//    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
-//    public String updateAddress(@PathVariable Long id, Address address) {
-//
-//        String username = addressService.read(id).getCustomer().getAccount().getUsername();
-//        addressService.updateAddress(address);
-//        return "redirect:/users/" + username;
-//    }
+    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
+    public String getAddress(@PathVariable Long id, Model model) {
+
+        Customer customer = customerService.read(id);
+        model.addAttribute("customer", customer);
+        return "customers/customerData";
+    }
+
+    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
+    public String updateAddress(@PathVariable Long id, Customer customer) {
+
+        Customer old = customerService.read(id);
+        old.setFirstName(customer.getFirstName());
+        old.setLastName(customer.getLastName());
+        old.setBirthDate(customer.getBirthDate());
+        old.setPhoneNumber(customer.getPhoneNumber());
+        customerService.update(old);
+
+        String username = customerService.read(id).getAccount().getUsername();
+        return "redirect:/users/" + username;
+    }
 }

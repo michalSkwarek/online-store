@@ -1,5 +1,8 @@
 package com.skwarek.onlineStore.data.entity.user;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -33,6 +36,7 @@ public class Account implements Serializable {
     private String email;
 
     @Column(name = "date_created")
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
     private Date dateCreated;
 
     @Column(name = "role")

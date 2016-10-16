@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
-
 /**
  * Created by Michal on 23.09.2016.
  */
@@ -43,6 +41,7 @@ public class AddressController {
     public String addAddress(Address address) {
 
         Customer customer = customerService.getLastCustomer();
+        addressService.createAddress(address);
         customer.setBillingAddress(address);
         customerService.update(customer);
         return "redirect:/welcome";
@@ -59,8 +58,9 @@ public class AddressController {
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
     public String updateAddress(@PathVariable Long id, Address address) {
 
-        String username = addressService.read(id).getCustomer().getAccount().getUsername();
         addressService.updateAddress(address);
+
+        String username = addressService.read(id).getCustomer().getAccount().getUsername();
         return "redirect:/users/" + username;
     }
 }

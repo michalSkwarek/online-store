@@ -41,7 +41,6 @@ public class AccountController {
         account.setEnabled(true);
         account.setDateCreated(new Date());
         account.setRole(Account.ROLE_USER);
-//        account.setCustomer(new Customer());
         accountService.create(account);
         return "redirect:/customers/new";
     }
@@ -57,7 +56,12 @@ public class AccountController {
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
     public String updateAccount(@PathVariable Long id, Account account) {
 
-        accountService.update(account);
-        return "redirect:/users/userData";
+        Account old = accountService.read(id);
+        old.setPassword(account.getPassword());
+        old.setEmail(account.getEmail());
+        accountService.update(old);
+
+        String username = accountService.read(id).getUsername();
+        return "redirect:/users/" + username;
     }
 }

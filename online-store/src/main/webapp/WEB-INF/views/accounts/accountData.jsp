@@ -13,7 +13,14 @@
         <ul>
             <li>
                 <label for="username">Username: </label>
-                <form:input path="username" id="username"/>
+                <c:choose>
+                    <c:when test="${account.username != null}">
+                        ${account.username}
+                    </c:when>
+                    <c:otherwise>
+                        <form:input path="username" id="username"/>
+                    </c:otherwise>
+                </c:choose>
             </li>
 
             <li>
@@ -29,7 +36,14 @@
             <c:if test="${account.dateCreated != null}">
                 <li>
                     <label for="dateCreated">Date created: </label>
-                    <form:input path="dateCreated" id="dateCreated"/>
+                    <c:choose>
+                        <c:when test="${account.dateCreated != null}">
+                            ${account.dateCreated}
+                        </c:when>
+                        <c:otherwise>
+                            <form:input path="dateCreated" id="dateCreated"/>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
             </c:if>
 

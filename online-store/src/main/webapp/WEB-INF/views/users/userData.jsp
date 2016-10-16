@@ -93,11 +93,6 @@
                     <label>City: </label>
                     ${account.customer.billingAddress.city.name}
                 </li>
-
-                <li>
-                    <label>Country: </label>
-                    ${account.customer.billingAddress.city.country.name}
-                </li>
             </ul>
 
             <a href="<spring:url value="/addresses/edit/${account.customer.billingAddress.id}" />">Edit</a>
