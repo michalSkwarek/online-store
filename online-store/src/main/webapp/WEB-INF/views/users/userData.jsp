@@ -64,7 +64,7 @@
                 </li>
             </ul>
 
-            <a href="<spring:url value="/customers/edit/${account.customer.id}" />">Edit</a>
+            <a href="<spring:url value="/customers/edit/${account.username}" />">Edit</a>
 
     </security:authorize>
 
@@ -98,7 +98,7 @@
                 </li>
             </ul>
 
-            <a href="<spring:url value="/addresses/edit/${account.customer.billingAddress.id}" />">Edit</a>
+            <a href="<spring:url value="/addresses/edit/${account.username}" />">Edit</a>
 
     </security:authorize>
 

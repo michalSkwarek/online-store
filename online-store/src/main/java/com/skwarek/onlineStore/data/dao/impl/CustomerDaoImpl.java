@@ -14,16 +14,16 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer, Long> implements C
 
     @Override
     public Customer getCustomerByUsername(String username) {
-        Query getCustomer = getSession().createQuery("from Customer c where c.account.username = :username");
-        getCustomer.setParameter("username", username);
-        getCustomer.setMaxResults(1);
-        return (Customer) getCustomer.uniqueResult();
+        Query getCustomerQuery = getSession().createQuery("from Customer c where c.account.username = :username");
+        getCustomerQuery.setParameter("username", username);
+        getCustomerQuery.setMaxResults(1);
+        return (Customer) getCustomerQuery.uniqueResult();
     }
 
     @Override
     public Customer getLastCustomer() {
-        Query getCustomer = getSession().createQuery("from Customer c order by c.id desc");
-        getCustomer.setMaxResults(1);
-        return (Customer) getCustomer.uniqueResult();
+        Query getCustomerQuery = getSession().createQuery("from Customer c order by c.id desc");
+        getCustomerQuery.setMaxResults(1);
+        return (Customer) getCustomerQuery.uniqueResult();
     }
 }

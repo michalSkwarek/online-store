@@ -26,8 +26,10 @@ public class CustomerController {
     private CustomerService customerService;
 
     @RequestMapping("/{username}")
-    public String getProductById(Model model, @PathVariable String username) {
-        model.addAttribute("customer", customerService.getCustomerByUsername(username));
+    public String getCustomerByUsername(@PathVariable String username, Model model) {
+
+        Customer customer = customerService.getCustomerByUsername(username);
+        model.addAttribute("customer", customer);
         return "customers/customerData";
     }
 
@@ -49,25 +51,23 @@ public class CustomerController {
         return "redirect:/addresses/new";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
-    public String getAddress(@PathVariable Long id, Model model) {
+    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.GET)
+    public String getAddress(@PathVariable String username, Model model) {
 
-        Customer customer = customerService.read(id);
+        Customer customer = customerService.getCustomerByUsername(username);
         model.addAttribute("customer", customer);
         return "customers/customerData";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
-    public String updateAddress(@PathVariable Long id, Customer customer) {
+    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.POST)
+    public String updateAddress(@PathVariable String username, Customer customer) {
 
-        Customer old = customerService.read(id);
+        Customer old = customerService.getCustomerByUsername(username);
         old.setFirstName(customer.getFirstName());
         old.setLastName(customer.getLastName());
         old.setBirthDate(customer.getBirthDate());
         old.setPhoneNumber(customer.getPhoneNumber());
         customerService.update(old);
-
-        String username = customerService.read(id).getAccount().getUsername();
         return "redirect:/users/" + username;
     }
 }
