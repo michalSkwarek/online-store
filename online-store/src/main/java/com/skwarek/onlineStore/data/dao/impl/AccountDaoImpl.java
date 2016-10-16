@@ -14,16 +14,16 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
 
     @Override
     public Account getAccountByUsername(String username) {
-        Query getAccount = getSession().createQuery("from Account a where a.username = :username");
-        getAccount.setParameter("username", username);
-        getAccount.setMaxResults(1);
-        return (Account) getAccount.uniqueResult();
+        Query getAccountQuery = getSession().createQuery("from Account a where a.username = :username");
+        getAccountQuery.setParameter("username", username);
+        getAccountQuery.setMaxResults(1);
+        return (Account) getAccountQuery.uniqueResult();
     }
 
     @Override
     public Account getLastAccount() {
-        Query getAccount = getSession().createQuery("from Account a order by a.id desc");
-        getAccount.setMaxResults(1);
-        return (Account) getAccount.uniqueResult();
+        Query getAccountQuery = getSession().createQuery("from Account a order by a.id desc");
+        getAccountQuery.setMaxResults(1);
+        return (Account) getAccountQuery.uniqueResult();
     }
 }

@@ -23,8 +23,10 @@ public class AccountController {
     private AccountService accountService;
 
     @RequestMapping("/{username}")
-    public String getProductById(Model model, @PathVariable String username) {
-        model.addAttribute("account", accountService.getAccountByUsername(username));
+    public String getAccountByUsername(@PathVariable String username, Model model) {
+
+        Account account = accountService.getAccountByUsername(username);
+        model.addAttribute("account", account);
         return "accounts/accountData";
     }
 
@@ -45,23 +47,21 @@ public class AccountController {
         return "redirect:/customers/new";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
-    public String getAccount(@PathVariable Long id, Model model) {
+    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.GET)
+    public String getAccount(@PathVariable String username, Model model) {
 
-        Account account = accountService.read(id);
+        Account account = accountService.getAccountByUsername(username);
         model.addAttribute("account", account);
         return "accounts/accountData";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
-    public String updateAccount(@PathVariable Long id, Account account) {
+    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.POST)
+    public String updateAccount(@PathVariable String username, Account account) {
 
-        Account old = accountService.read(id);
-        old.setPassword(account.getPassword());
-        old.setEmail(account.getEmail());
-        accountService.update(old);
-
-        String username = accountService.read(id).getUsername();
+        Account oldAccount = accountService.getAccountByUsername(username);
+        oldAccount.setPassword(account.getPassword());
+        oldAccount.setEmail(account.getEmail());
+        accountService.update(oldAccount);
         return "redirect:/users/" + username;
     }
 }

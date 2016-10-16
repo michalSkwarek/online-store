@@ -1,6 +1,5 @@
 package com.skwarek.onlineStore.data.entity.user;
 
-import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;

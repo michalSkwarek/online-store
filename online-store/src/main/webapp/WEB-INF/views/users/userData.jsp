@@ -7,6 +7,9 @@
 </head>
 <body>
 
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
+
     <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
         <h1>Account data</h1>
 
@@ -32,7 +35,7 @@
                 </li>
             </ul>
 
-            <a href="<spring:url value="/accounts/edit/${account.id}" />">Edit</a>
+            <a href="<spring:url value="/accounts/edit/${account.username}" />">Edit</a>
 
     </security:authorize>
 
@@ -99,7 +102,7 @@
 
     </security:authorize>
 
-    <a href="<spring:url value="/welcome" />">Go to home page</a>
+    <jsp:include page="../_footer.jsp" />
 
 </body>
 </html>

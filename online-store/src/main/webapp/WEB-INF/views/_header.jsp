@@ -18,7 +18,7 @@
             </security:authorize>
             <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
 
-                <c:url value="logout" var="logoutUrl" />
+                <c:url value="/logout" var="logoutUrl" />
                 <form action="${logoutUrl}" method="post" id="logoutForm">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
