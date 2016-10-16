@@ -25,7 +25,7 @@
                 </li>
 
                 <li>
-                    <label>Email: </label>
+                    <label>Email </label>
                     ${account.email}
                 </li>
 
