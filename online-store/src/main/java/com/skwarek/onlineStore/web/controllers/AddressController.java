@@ -25,8 +25,10 @@ public class AddressController {
     private AddressService addressService;
 
     @RequestMapping("/{username}")
-    public String getProductById(Model model, @PathVariable String username) {
-        model.addAttribute("address", addressService.getAddressByUsername(username));
+    public String getAddressByUsername(@PathVariable String username, Model model) {
+
+        Address address = addressService.getAddressByUsername(username);
+        model.addAttribute("address", address);
         return "addresses/addressData";
     }
 
@@ -47,20 +49,20 @@ public class AddressController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
-    public String getAddress(@PathVariable Long id, Model model) {
+    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.GET)
+    public String getAddress(@PathVariable String username, Model model) {
 
-        Address address = addressService.read(id);
+        Address address = addressService.getAddressByUsername(username);
         model.addAttribute("address", address);
         return "addresses/addressData";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
-    public String updateAddress(@PathVariable Long id, Address address) {
+    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.POST)
+    public String updateAddress(@PathVariable String username, Address address) {
 
+        Address oldAddress = addressService.getAddressByUsername(username);
+        address.setId(oldAddress.getId());
         addressService.updateAddress(address);
-
-        String username = addressService.read(id).getCustomer().getAccount().getUsername();
         return "redirect:/users/" + username;
     }
 }

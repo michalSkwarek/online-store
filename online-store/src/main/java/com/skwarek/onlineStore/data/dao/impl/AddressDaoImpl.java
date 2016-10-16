@@ -15,35 +15,29 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
 
     @Override
     public Address getAddressByUsername(String username) {
-        Query getAddress = getSession().createQuery("from Address a where a.customer.account.username = :username");
-        getAddress.setParameter("username", username);
-        getAddress.setMaxResults(1);
-        return (Address) getAddress.uniqueResult();
+        Query getAddressQuery = getSession().createQuery("from Address a where a.customer.account.username = :username");
+        getAddressQuery.setParameter("username", username);
+        getAddressQuery.setMaxResults(1);
+        return (Address) getAddressQuery.uniqueResult();
     }
 
     @Override
     public void createAddress(Address address) {
-        City city = getCityFromDatabase(address);
-        if (city != null) {
-            address.setCity(city);
-        }
+        setCityToAddress(address);
         create(address);
     }
 
     @Override
     public void updateAddress(Address address) {
+        setCityToAddress(address);
+        update(address);
+    }
+
+    private void setCityToAddress(Address address) {
         City city = getCityFromDatabase(address);
         if (city != null) {
             address.setCity(city);
         }
-        update(address);
-    }
-
-    @Override
-    public boolean deleteAddress(Long id) {
-        Query removeAddressQuery = getSession().createQuery("delete from Address a where a.id = :id");
-        removeAddressQuery.setParameter("id", id);
-        return removeAddressQuery.executeUpdate() > 0;
     }
 
     private City getCityFromDatabase(Address address) {

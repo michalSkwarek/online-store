@@ -35,10 +35,4 @@ public class AddressServiceImpl extends GenericServiceImpl<Address, Long> implem
     public void updateAddress(Address address) {
         addressDao.updateAddress(address);
     }
-
-    @Override
-    public boolean deleteAddress(Long id) {
-        return addressDao.deleteAddress(id);
-    }
-
 }

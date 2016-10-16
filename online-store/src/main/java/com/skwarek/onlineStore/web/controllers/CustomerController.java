@@ -1,6 +1,5 @@
 package com.skwarek.onlineStore.web.controllers;
 
-import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.service.AccountService;
@@ -62,12 +61,12 @@ public class CustomerController {
     @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.POST)
     public String updateAddress(@PathVariable String username, Customer customer) {
 
-        Customer old = customerService.getCustomerByUsername(username);
-        old.setFirstName(customer.getFirstName());
-        old.setLastName(customer.getLastName());
-        old.setBirthDate(customer.getBirthDate());
-        old.setPhoneNumber(customer.getPhoneNumber());
-        customerService.update(old);
+        Customer oldCustomer = customerService.getCustomerByUsername(username);
+        oldCustomer.setFirstName(customer.getFirstName());
+        oldCustomer.setLastName(customer.getLastName());
+        oldCustomer.setBirthDate(customer.getBirthDate());
+        oldCustomer.setPhoneNumber(customer.getPhoneNumber());
+        customerService.update(oldCustomer);
         return "redirect:/users/" + username;
     }
 }

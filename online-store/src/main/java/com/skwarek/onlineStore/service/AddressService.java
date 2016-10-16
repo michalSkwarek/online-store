@@ -15,7 +15,4 @@ public interface AddressService extends GenericService<Address, Long> {
     void createAddress(Address address);
 
     void updateAddress(Address address);
-
-    boolean deleteAddress(Long id);
-
 }
