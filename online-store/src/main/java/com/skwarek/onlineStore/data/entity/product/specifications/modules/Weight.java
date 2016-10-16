@@ -2,21 +2,20 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 27.09.2016.
  */
 @Embeddable
-public class Weight {
+public class Weight implements Serializable {
+
+    private static final long serialVersionUID = 7268529761943739781L;
 
     @Column(name = "weight")
     private Double value;
 
     public Weight() { }
-
-    public Weight(Double weight) {
-        this.value = weight;
-    }
 
     public Double getValue() {
         return value;
@@ -34,6 +33,7 @@ public class Weight {
         Weight weight = (Weight) o;
 
         return value != null ? value.equals(weight.value) : weight.value == null;
+
     }
 
     @Override

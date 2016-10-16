@@ -2,21 +2,20 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 30.09.2016.
  */
 @Embeddable
-public class Storage {
+public class Storage implements Serializable {
+
+    private static final long serialVersionUID = 7312755602066174729L;
 
     @Column(name = "disk_memory")
     private Integer diskMemory;
 
     public Storage() { }
-
-    public Storage(Integer diskMemory) {
-        this.diskMemory = diskMemory;
-    }
 
     public Integer getDiskMemory() {
         return diskMemory;

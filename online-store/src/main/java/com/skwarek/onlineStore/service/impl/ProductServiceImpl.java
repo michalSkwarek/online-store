@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -24,6 +25,12 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean deleteProduct(Long id) {
         return productDao.deleteProduct(id);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List getRandomFewProducts() {
+        return productDao.getRandomFewProducts();
     }
 
     @Override
@@ -49,4 +56,12 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     public List getSortedProductsOrderByUnitPriceDescending() {
         return productDao.getSortedProductsOrderByUnitPriceDescending();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
+        return productDao.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
+    }
+
+
 }

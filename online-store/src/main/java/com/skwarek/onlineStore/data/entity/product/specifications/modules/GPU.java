@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "gpu")
-public class GPU {
+public class GPU implements Serializable {
+
+    private static final long serialVersionUID = -2430778721526582057L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +34,6 @@ public class GPU {
     private List<ProductSpecifications> specifications;
 
     public GPU() { }
-
-    public GPU(String model) {
-        this.model = model;
-    }
 
     public Long getId() {
         return id;
@@ -85,7 +84,8 @@ public class GPU {
 
         if (id != null ? !id.equals(gpu.id) : gpu.id != null) return false;
         if (model != null ? !model.equals(gpu.model) : gpu.model != null) return false;
-        return specifications != null ? specifications.equals(gpu.specifications) : gpu.specifications == null;
+        if (memory != null ? !memory.equals(gpu.memory) : gpu.memory != null) return false;
+        return memoryType != null ? memoryType.equals(gpu.memoryType) : gpu.memoryType == null;
 
     }
 
@@ -93,7 +93,8 @@ public class GPU {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (model != null ? model.hashCode() : 0);
-        result = 31 * result + (specifications != null ? specifications.hashCode() : 0);
+        result = 31 * result + (memory != null ? memory.hashCode() : 0);
+        result = 31 * result + (memoryType != null ? memoryType.hashCode() : 0);
         return result;
     }
 

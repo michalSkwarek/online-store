@@ -8,10 +8,15 @@
     <h1>Product specifications</h1>
 
     <ul>
+        <li>Image:
+            <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />
+        </li>
         <li>Name: ${product.model}</li>
         <li>Unit price: ${product.unitPrice}</li>
         <li>Category: ${product.category.name}</li>
         <li>Manufacturer: ${product.manufacturer.brand}</li>
+        <li>Units in magazine: ${product.unitsInMagazine}</li>
+        <li>Availability: ${product.isAvailability()}</li>
     </ul>
 
     <h1>Details:</h1>

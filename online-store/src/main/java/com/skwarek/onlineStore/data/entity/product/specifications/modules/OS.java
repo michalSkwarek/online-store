@@ -1,13 +1,16 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 27.09.2016.
  */
 @Entity
 @Table(name = "os")
-public class OS {
+public class OS implements Serializable {
+
+    private static final long serialVersionUID = 6001672831050783364L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +25,12 @@ public class OS {
 
     public OS() { }
 
-    public OS(String name, String version) {
-        this.name = name;
-        this.version = version;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -50,6 +56,7 @@ public class OS {
 
         OS os = (OS) o;
 
+        if (id != null ? !id.equals(os.id) : os.id != null) return false;
         if (name != null ? !name.equals(os.name) : os.name != null) return false;
         return version != null ? version.equals(os.version) : os.version == null;
 
@@ -57,7 +64,8 @@ public class OS {
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (version != null ? version.hashCode() : 0);
         return result;
     }

@@ -8,7 +8,7 @@
 <body>
     <h1>Product data</h1>
 
-    <form:form method="post" modelAttribute="product">
+    <form:form method="post" modelAttribute="product" enctype="multipart/form-data">
 
         <ul>
             <li>
@@ -45,6 +45,24 @@
                     </c:if>
                     <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
                 </form:select>
+            </li>
+
+            <c:if test="${product.productImage == null}">
+                <li>
+                    <label for="productImage">Select image: </label>
+                    <input name="fileUpload" id="productImage" type="file"/>
+                </li>
+            </c:if>
+            <c:if test="${product.productImage != null}">
+                <li>
+                    <label>Image: </label>
+                    <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />
+                </li>
+            </c:if>
+
+            <li>
+                <label for="unitsInMagazine">Units in magazine: </label>
+                <form:input path="unitsInMagazine" id="unitsInMagazine"/>
             </li>
 
             <c:if test="${product.productSpecifications.id != null}">

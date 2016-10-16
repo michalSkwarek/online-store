@@ -1,13 +1,16 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 30.09.2016.
  */
 @Entity
 @Table(name = "battery_type")
-public class BatteryType {
+public class BatteryType implements Serializable {
+
+    private static final long serialVersionUID = -3487034908670442561L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,10 +21,6 @@ public class BatteryType {
     private String type;
 
     public BatteryType() { }
-
-    public BatteryType(String type) {
-        this.type = type;
-    }
 
     public Long getId() {
         return id;

@@ -1,31 +1,31 @@
-package com.skwarek.onlineStore.web.controller;
+package com.skwarek.onlineStore.web.controllers;
 
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
+import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.data.entity.product.specifications.SpecificationsFactory;
-import com.skwarek.onlineStore.service.CategoryService;
-import com.skwarek.onlineStore.service.ManufacturerService;
-import com.skwarek.onlineStore.service.ProductService;
-import com.skwarek.onlineStore.service.ProductSpecificationsService;
+import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editors.CategoryEditor;
 import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
+import com.skwarek.onlineStore.web.editors.ProductImageEditor;
 import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.List;
 
 /**
- * Created by Michal on 26.09.2016.
+ * Created by Michal on 12/10/16.
  */
 @Controller
-@RequestMapping(value = { "/products" })
-public class ProductController {
+@RequestMapping(value = { "/admin/products" })
+public class AdminProductController {
 
     @Autowired
     private ProductService productService;
@@ -39,10 +39,14 @@ public class ProductController {
     @Autowired
     private ProductSpecificationsService productSpecificationsService;
 
+    @Autowired
+    private UploadFileService uploadFileService;
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
+        binder.registerCustomEditor(UploadFile.class, new ProductImageEditor(uploadFileService));
         binder.registerCustomEditor(ProductSpecifications.class, new ProductSpecificationsEditor(productSpecificationsService));
     }
 
@@ -51,24 +55,13 @@ public class ProductController {
 
         List<Product> products = productService.getAll();
         model.addAttribute("products", products);
-        return "products/list";
+        List<Category> categories = categoryService.getAll();
+        model.addAttribute("categories", categories);
+        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        model.addAttribute("manufacturers", manufacturers);
+        return "products/adminList";
     }
 
-    @RequestMapping(value = {"/list/price/ascending"}, method = RequestMethod.GET)
-    public String showSortedProductsOrderByUnitPriceAscending(Model model) {
-
-        List products = productService.getSortedProductsOrderByUnitPriceAscending();
-        model.addAttribute("products", products);
-        return "/products/list";
-    }
-
-    @RequestMapping(value = {"/list/price/descending"}, method = RequestMethod.GET)
-    public String showSortedProductsOrderByUnitPriceDescending(Model model) {
-
-        List products = productService.getSortedProductsOrderByUnitPriceDescending();
-        model.addAttribute("products", products);
-        return "/products/list";
-    }
 
     @RequestMapping("/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
@@ -88,10 +81,18 @@ public class ProductController {
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String addProduct(Product product) {
+    public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload) {
+
+        if (fileUpload != null) {
+            UploadFile uploadFile = new UploadFile();
+            uploadFile.setFileName(fileUpload.getOriginalFilename());
+            uploadFile.setData(fileUpload.getBytes());
+            uploadFileService.create(uploadFile);
+            product.setProductImage(uploadFile);
+        }
 
         productService.create(product);
-        return "redirect:/products/list";
+        return "redirect:/admin/products/list";
     }
 
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
@@ -113,7 +114,7 @@ public class ProductController {
         Product product = productService.read(id);
         product.setProductSpecifications(specifications);
         productService.update(product);
-        return "redirect:/products/list";
+        return "redirect:/admin/products/list";
     }
 
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
@@ -128,56 +129,17 @@ public class ProductController {
         return "products/productData";
     }
 
-    //TODO
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Product product) {
 
         productService.update(product);
-        return "redirect:/products/list";
+        return "redirect:/admin/products/list";
     }
 
     @RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Long id) {
 
         productService.deleteProduct(id);
-        return "redirect:/products/list";
-    }
-
-    @RequestMapping(value = {"/category/select"}, method = RequestMethod.GET)
-    public String showProductsByCategoryGet(Model model) {
-
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        return "/products/productsByCategory";
-    }
-
-    @RequestMapping(value = {"/category/select"}, method = RequestMethod.POST)
-    public String showProductsByCategoryPost(@RequestParam String category, Model model) {
-
-        List products = productService.getProductsByCategory(category);
-        if (products == null || products.isEmpty()) {
-            // TODO: 28.09.2016 Create alert
-        }
-        model.addAttribute("products", products);
-        return "/products/list";
-    }
-
-    @RequestMapping(value = {"/manufacturer/select"}, method = RequestMethod.GET)
-    public String showProductsByManufacturerGet(Model model) {
-
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
-        return "/products/productsByManufacturer";
-    }
-
-    @RequestMapping(value = {"/manufacturer/select"}, method = RequestMethod.POST)
-    public String showProductsByManufacturerPost(@RequestParam String manufacturer, Model model) {
-
-        List products = productService.getProductsByManufacturer(manufacturer);
-        if (products == null || products.isEmpty()) {
-            // TODO: 28.09.2016 Create alert
-        }
-        model.addAttribute("products", products);
-        return "/products/list";
+        return "redirect:/admin/products/list";
     }
 }

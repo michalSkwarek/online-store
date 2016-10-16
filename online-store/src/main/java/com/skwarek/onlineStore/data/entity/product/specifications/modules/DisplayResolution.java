@@ -1,13 +1,16 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Michal on 01.10.2016.
  */
 @Entity
 @Table(name = "display_resolution")
-public class DisplayResolution {
+public class DisplayResolution implements Serializable {
+
+    private static final long serialVersionUID = 6353015847734462738L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
