@@ -1,11 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Address data form</title>
 </head>
 <body>
+
+    <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+        <jsp:include page="../_header.jsp" />
+        <jsp:include page="../_menu.jsp" />
+    </security:authorize>
+
     <h1>Address data</h1>
 
     <form:form method="post" modelAttribute="address">
@@ -42,6 +49,8 @@
         </ul>
 
     </form:form>
+
+    <jsp:include page="../_footer.jsp" />
 
 </body>
 </html>
