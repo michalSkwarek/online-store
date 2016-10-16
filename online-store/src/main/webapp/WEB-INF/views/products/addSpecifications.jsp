@@ -6,6 +6,10 @@
     <title>Add specifications</title>
 </head>
 <body>
+
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
+
     <h1>Add specifications to product</h1>
 
     <form:form method="post" modelAttribute="spec">
@@ -139,5 +143,8 @@
             </li>
         </ul>
     </form:form>
+
+    <jsp:include page="../_footer.jsp" />
+
 </body>
 </html>

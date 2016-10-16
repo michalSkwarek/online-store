@@ -5,11 +5,15 @@
     <title>Product specifications</title>
 </head>
 <body>
+
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
+
     <h1>Product specifications</h1>
 
     <ul>
         <li>Image:
-            <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />
+            <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
         </li>
         <li>Name: ${product.model}</li>
         <li>Unit price: ${product.unitPrice}</li>
@@ -74,15 +78,9 @@
             <li>Weight: ${product.productSpecifications.weight}</li>
         </c:if>
 
-
-
-        <%--<c:if test="${product.productSpecifications.powerSupply != null}">--%>
-            <%--<li>Power supply: ${product.productSpecifications.powerSupply}</li>--%>
-        <%--</c:if>--%>
-
     </ul>
 
-    <br/>
-    Go back to <a href="<c:url value="/products/list" />">List of all products</a>
+    <jsp:include page="../_footer.jsp" />
+
 </body>
 </html>

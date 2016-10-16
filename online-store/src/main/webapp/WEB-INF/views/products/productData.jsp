@@ -6,6 +6,10 @@
     <title>Product data form</title>
 </head>
 <body>
+
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
+
     <h1>Product data</h1>
 
     <form:form method="post" modelAttribute="product" enctype="multipart/form-data">
@@ -56,7 +60,7 @@
             <c:if test="${product.productImage != null}">
                 <li>
                     <label>Image: </label>
-                    <img src="<c:url value="/resources/images/my_image.jpg" />" alt="image" style="width: 25%" />
+                    <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                 </li>
             </c:if>
 
@@ -80,7 +84,7 @@
 
     </form:form>
 
-    <br/>
-    Go back to <a href="<c:url value="/products/list" />">List of all products</a>
+    <jsp:include page="../_footer.jsp" />
+
 </body>
 </html>
