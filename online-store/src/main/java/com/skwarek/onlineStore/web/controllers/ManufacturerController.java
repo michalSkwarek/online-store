@@ -1,13 +1,16 @@
 package com.skwarek.onlineStore.web.controllers;
 
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
+import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.service.ManufacturerService;
+import com.skwarek.onlineStore.service.UploadFileService;
+import com.skwarek.onlineStore.web.editors.ImageEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.List;
 
@@ -15,11 +18,19 @@ import java.util.List;
  * Created by Michal on 27.09.2016.
  */
 @Controller
-@RequestMapping(value = { "/manufacturers" })
+@RequestMapping(value = { "/admin/manufacturers" })
 public class ManufacturerController {
 
     @Autowired
     private ManufacturerService manufacturerService;
+
+    @Autowired
+    private UploadFileService uploadFileService;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(UploadFile.class, new ImageEditor(uploadFileService));
+    }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String showProducts(Model model) {
@@ -37,14 +48,22 @@ public class ManufacturerController {
     }
 
     @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
-    public String addManufacturer(Manufacturer manufacturer) {
+    public String addManufacturer(Manufacturer manufacturer, @RequestParam CommonsMultipartFile fileUpload) {
+
+        if (fileUpload != null) {
+            UploadFile uploadFile = new UploadFile();
+            uploadFile.setFileName(fileUpload.getOriginalFilename());
+            uploadFile.setData(fileUpload.getBytes());
+            uploadFileService.create(uploadFile);
+            manufacturer.setLogo(uploadFile);
+        }
 
         manufacturerService.create(manufacturer);
-        return "redirect:/manufacturers/list";
+        return "redirect:/admin/manufacturers/list";
     }
 
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
-    public String getProduct(@PathVariable Long id, Model model) {
+    public String getManufacturer(@PathVariable Long id, Model model) {
 
         Manufacturer manufacturer = manufacturerService.read(id);
         model.addAttribute("manufacturer", manufacturer);
@@ -52,16 +71,16 @@ public class ManufacturerController {
     }
 
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
-    public String updateProduct(@PathVariable Long id, Manufacturer manufacturer) {
+    public String updateManufacturer(@PathVariable Long id, Manufacturer manufacturer) {
 
         manufacturerService.update(manufacturer);
-        return "redirect:/manufacturers/list";
+        return "redirect:/admin/manufacturers/list";
     }
 
     @RequestMapping(value = { "/delete/{id}" }, method = RequestMethod.GET)
-    public String deleteProduct(@PathVariable Long id) {
+    public String deleteManufacturer(@PathVariable Long id) {
 
         manufacturerService.deleteManufacturer(id);
-        return "redirect:/manufacturers/list";
+        return "redirect:/admin/manufacturers/list";
     }
 }

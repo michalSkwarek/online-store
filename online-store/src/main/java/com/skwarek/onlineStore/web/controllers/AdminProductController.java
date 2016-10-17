@@ -9,7 +9,7 @@ import com.skwarek.onlineStore.data.entity.product.specifications.Specifications
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editors.CategoryEditor;
 import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
-import com.skwarek.onlineStore.web.editors.ProductImageEditor;
+import com.skwarek.onlineStore.web.editors.ImageEditor;
 import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,7 +46,7 @@ public class AdminProductController {
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
-        binder.registerCustomEditor(UploadFile.class, new ProductImageEditor(uploadFileService));
+        binder.registerCustomEditor(UploadFile.class, new ImageEditor(uploadFileService));
         binder.registerCustomEditor(ProductSpecifications.class, new ProductSpecificationsEditor(productSpecificationsService));
     }
 
@@ -95,28 +95,6 @@ public class AdminProductController {
         return "redirect:/admin/products/list";
     }
 
-    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
-    public String createSpec(@PathVariable Long id, Model model) {
-
-        String productCategory = productService.read(id).getCategory().getName();
-
-        SpecificationsFactory factory = new SpecificationsFactory();
-        ProductSpecifications specifications = factory.createSpecifications(productCategory);
-
-        model.addAttribute("spec", specifications);
-        return "products/addSpecifications";
-    }
-
-    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
-    public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
-
-        productSpecificationsService.create(specifications);
-        Product product = productService.read(id);
-        product.setProductSpecifications(specifications);
-        productService.update(product);
-        return "redirect:/admin/products/list";
-    }
-
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
     public String getProduct(@PathVariable Long id, Model model) {
 
@@ -140,6 +118,45 @@ public class AdminProductController {
     public String deleteProduct(@PathVariable Long id) {
 
         productService.deleteProduct(id);
+        return "redirect:/admin/products/list";
+    }
+
+
+
+    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
+    public String createSpec(@PathVariable Long id, Model model) {
+
+        String productCategory = productService.read(id).getCategory().getName();
+
+        SpecificationsFactory factory = new SpecificationsFactory();
+        ProductSpecifications specifications = factory.createSpecifications(productCategory);
+
+        model.addAttribute("spec", specifications);
+        return "products/addSpecifications";
+    }
+
+    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
+    public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
+
+        productSpecificationsService.create(specifications);
+        Product product = productService.read(id);
+        product.setProductSpecifications(specifications);
+        productService.update(product);
+        return "redirect:/admin/products/list";
+    }
+
+    @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.GET)
+    public String getSpec(@PathVariable Long id, Model model) {
+
+        ProductSpecifications specifications = productSpecificationsService.read(id);
+        model.addAttribute("spec", specifications);
+        return "products/addSpecifications";
+    }
+
+    @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.POST)
+    public String updateSpec(@PathVariable Long id, ProductSpecifications specifications) {
+
+        productSpecificationsService.update(specifications);
         return "redirect:/admin/products/list";
     }
 }

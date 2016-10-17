@@ -55,6 +55,7 @@
                 <p>${product.unitPrice}</p>
                 <p>${product.category.name}</p>
                 <a href="<spring:url value="/products/${product.id}" />">Details</a>
+                <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
             </div>
         </c:forEach>
     </div>

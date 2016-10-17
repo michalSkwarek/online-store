@@ -8,11 +8,11 @@ import java.beans.PropertyEditorSupport;
 /**
  * Created by Michal on 04.10.2016.
  */
-public class ProductImageEditor extends PropertyEditorSupport {
+public class ImageEditor extends PropertyEditorSupport {
 
         private UploadFileService uploadFileService;
 
-        public ProductImageEditor(UploadFileService uploadFileService) {
+        public ImageEditor(UploadFileService uploadFileService) {
             this.uploadFileService = uploadFileService;
         }
 

@@ -1,5 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,7 +12,16 @@
     <jsp:include page="../_header.jsp" />
     <jsp:include page="../_menu.jsp" />
 
-    <h1>Add specifications to product</h1>
+    <div>
+        <security:authorize  access="hasRole('ROLE_ADMIN')">
+            <ul>
+                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
+                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
+            </ul>
+        </security:authorize>
+    </div>
+
+    <h1>Product specifications</h1>
 
     <form:form method="post" modelAttribute="spec">
 
@@ -129,14 +140,6 @@
                     <form:input path="weight.value"/>
                 </li>
             </c:if>
-
-            <%--&lt;%&ndash;<c:if test="${spec.powerSupply != null}">&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<p>Power supply:</p>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<form:input path="powerSupply.power"/>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;</c:if>&ndash;%&gt;--%>
-
 
             <li>
                 <input type="submit" value="Save"/>

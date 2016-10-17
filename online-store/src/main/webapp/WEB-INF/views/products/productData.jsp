@@ -34,7 +34,7 @@
                     <c:if test="${product.category != null}">
                         <form:option value="${product.category.id}">${product.category.name}</form:option>
                     </c:if>
-                    <form:options items="${categories}" itemLabel="name" itemValue="id" />
+                    <%--<form:options items="${categories}" itemLabel="name" itemValue="id" />--%>
                 </form:select>
             </li>
 
@@ -47,7 +47,7 @@
                     <c:if test="${product.manufacturer != null}">
                         <form:option value="${product.manufacturer.id}">${product.manufacturer.brand}</form:option>
                     </c:if>
-                    <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
+                    <%--<form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>--%>
                 </form:select>
             </li>
 
@@ -72,7 +72,7 @@
             <c:if test="${product.productSpecifications.id != null}">
                 <li>
                     <label for="productSpecifications">Specifications: </label>
-                    <a href="/products/spec/${product.productSpecifications.id}">Edit</a>
+                    <a href="/admin/products/spec/${product.productSpecifications.id}">Edit</a>
                     <form:hidden path="productSpecifications.id" id="productSpecifications"/>
                 </li>
             </c:if>
@@ -80,6 +80,10 @@
             <li>
                 <input type="submit" value="Save"/>
             </li>
+
+            <input type="hidden"
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
         </ul>
 
     </form:form>

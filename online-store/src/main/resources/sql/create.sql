@@ -591,32 +591,32 @@ INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) 
 -- -----------------
 
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (101, 'abc', 1000, 1, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (102, 'klm', 2000, 1, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (103, 'xyz', 3000, 1, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (101, 'abc', 1000, 1, 2, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (102, 'klm', 2000, 1, 3, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (103, 'xyz', 3000, 1, 4, 3);
 
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (104, 'abc', 1000, 2, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (105, 'klm', 2000, 2, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (106, 'xyz', 3000, 2, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (104, 'abc', 1000, 2, 2, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (105, 'klm', 2000, 2, 3, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (106, 'xyz', 3000, 2, 4, 4);
 
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (107, 'abc', 1000, 3, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (108, 'klm', 2000, 3, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (109, 'xyz', 3000, 3, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (107, 'abc', 1000, 3, 2, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (108, 'klm', 2000, 3, 3, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (109, 'xyz', 3000, 3, 4, 2);
 
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (110, 'abc', 1000, 4, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (111, 'klm', 2000, 4, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (112, 'xyz', 3000, 4, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (110, 'abc', 1000, 4, 2, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (111, 'klm', 2000, 4, 3, 5);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (112, 'xyz', 3000, 4, 4, 2);
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (113, 'abc', 1000, 5, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (114, 'klm', 2000, 5, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (115, 'xyz', 3000, 5, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (113, 'abc', 1000, 5, 2, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (114, 'klm', 2000, 5, 3, 1);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (115, 'xyz', 3000, 5, 4, 3);
 
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (116, 'abc', 1000, 6, 2);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (117, 'klm', 2000, 6, 3);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id) VALUES (118, 'xyz', 3000, 6, 4);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (116, 'abc', 1000, 6, 2, 2);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (117, 'klm', 2000, 6, 3, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, units_in_magazine) VALUES (118, 'xyz', 3000, 6, 4, 2);
 
 
 

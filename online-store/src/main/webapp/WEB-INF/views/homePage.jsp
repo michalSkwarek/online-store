@@ -31,6 +31,7 @@
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice}</p>
                 <a href="<spring:url value="/products/${product.id}" />">Details</a>
+                <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
             </div>
         </c:forEach>
     </div>

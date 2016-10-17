@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,17 +21,17 @@
         <li>Unit price: ${product.unitPrice}</li>
         <li>Category: ${product.category.name}</li>
         <li>Manufacturer: ${product.manufacturer.brand}</li>
-        <li>Units in magazine: ${product.unitsInMagazine}</li>
-        <li>Availability: ${product.isAvailability()}</li>
+        <security:authorize  access="hasRole('ROLE_ADMIN')">
+            <li>Units in magazine: ${product.unitsInMagazine}</li>
+        </security:authorize>
+        <security:authorize  access="hasRole('ROLE_USER')">
+            <li>Availability: ${product.isAvailability()}</li>
+        </security:authorize>
     </ul>
 
     <h1>Details:</h1>
 
     <ul>
-        <c:if test="${product.productSpecifications.id != null}">
-            <li>Id: ${product.productSpecifications.id}</li>
-        </c:if>
-
         <c:if test="${product.productSpecifications.cpu != null}">
             <li>CPU: ${product.productSpecifications.cpu}</li>
         </c:if>
@@ -79,6 +81,12 @@
         </c:if>
 
     </ul>
+
+    <security:authorize  access="hasRole('ROLE_ADMIN')">
+        <a href="<spring:url value="/admin/products/spec/edit/${product.productSpecifications.id}" />">Edit specifications</a>
+    </security:authorize>
+
+    <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
 
     <jsp:include page="../_footer.jsp" />
 
