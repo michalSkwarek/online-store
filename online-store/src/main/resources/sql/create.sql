@@ -554,7 +554,7 @@ INSERT INTO account (id, username, password, enabled, email, date_created, role)
 -- ----------------------------------------------
 -- add few shipping details
 INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (1, STR_TO_DATE('21-03-2016', '%d-%m-%Y'), 1);
-INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (2, STR_TO_DATE('02-04-2016', '%d-%m-%Y'), 2);
+INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (2, STR_TO_DATE('03-04-2016', '%d-%m-%Y'), 2);
 INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (3, STR_TO_DATE('13-05-2016', '%d-%m-%Y'), 3);
 INSERT INTO shipping_detail (id, date_delivery, shipping_address_id) VALUES (4, STR_TO_DATE('24-06-2016', '%d-%m-%Y'), 4);
 
@@ -578,9 +578,9 @@ INSERT INTO item (id, product_id, quantity, item_total_price, cart_id) VALUES (1
 
 -- add few orders
 INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (1, 1, 1, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (2, 2, 2, 1, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (3, 3, 2, 2, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
-INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (4, 4, 2, 3, STR_TO_DATE('19-03-2016', '%d-%m-%Y'));
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (2, 2, 2, 1, STR_TO_DATE('01-04-2016', '%d-%m-%Y'));
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (3, 3, 2, 2, STR_TO_DATE('11-05-2016', '%d-%m-%Y'));
+INSERT INTO orders (id, cart_id, customer_id, shipping_detail_id, date_created) VALUES (4, 4, 2, 3, STR_TO_DATE('22-06-2016', '%d-%m-%Y'));
 
 
 

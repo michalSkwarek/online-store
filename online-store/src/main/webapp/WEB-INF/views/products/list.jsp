@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -55,7 +56,9 @@
                 <p>${product.unitPrice}</p>
                 <p>${product.category.name}</p>
                 <a href="<spring:url value="/products/${product.id}" />">Details</a>
-                <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
+                <security:authorize  access="!hasRole('ROLE_ADMIN')">
+                    <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
+                </security:authorize>
             </div>
         </c:forEach>
     </div>

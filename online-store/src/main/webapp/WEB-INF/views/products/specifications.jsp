@@ -95,7 +95,9 @@
         <a href="<spring:url value="/admin/products/spec/edit/${product.productSpecifications.id}" />">Edit specifications</a>
     </security:authorize>
 
-    <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
+    <security:authorize  access="!hasRole('ROLE_ADMIN')">
+        <a href="<spring:url value="/products/add/${product.id}" />">Add to cart</a>
+    </security:authorize>
 
     <jsp:include page="../_footer.jsp" />
 
