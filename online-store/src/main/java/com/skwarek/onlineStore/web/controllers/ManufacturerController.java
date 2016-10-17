@@ -58,6 +58,8 @@ public class ManufacturerController {
             manufacturer.setLogo(uploadFile);
         }
 
+        System.out.println(" dupa " + manufacturer);
+
         manufacturerService.create(manufacturer);
         return "redirect:/admin/manufacturers/list";
     }

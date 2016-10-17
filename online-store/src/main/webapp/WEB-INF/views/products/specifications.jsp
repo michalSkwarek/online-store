@@ -11,6 +11,15 @@
     <jsp:include page="../_header.jsp" />
     <jsp:include page="../_menu.jsp" />
 
+    <div>
+        <security:authorize  access="hasRole('ROLE_ADMIN')">
+            <ul>
+                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
+                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
+            </ul>
+        </security:authorize>
+    </div>
+
     <h1>Product specifications</h1>
 
     <ul>

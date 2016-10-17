@@ -15,14 +15,14 @@ public class ManufacturerDaoImpl extends GenericDaoImpl<Manufacturer, Long> impl
     @Override
     public boolean deleteManufacturer(Long id) {
 
-        Query manufacturerProductsQuery = getSession().createQuery("from Product where manufacturer.id = :id");
+        Query manufacturerProductsQuery = getSession().createQuery("from Product p where p.manufacturer.id = :id");
         manufacturerProductsQuery.setParameter("id", id);
 
         if (!manufacturerProductsQuery.list().isEmpty()) {
             return false;
         }
 
-        Query removeManufacturerQuery = getSession().createQuery("delete from Manufacturer where id = :id");
+        Query removeManufacturerQuery = getSession().createQuery("delete from Manufacturer m where m.id = :id");
         removeManufacturerQuery.setParameter("id", id);
         return removeManufacturerQuery.executeUpdate() > 0;
     }

@@ -52,6 +52,10 @@
             <li>
                 <input type="submit" value="Save"/>
             </li>
+
+            <%--<input type="hidden"--%>
+                   <%--name="${_csrf.parameterName}"--%>
+                   <%--value="${_csrf.token}"/>--%>
         </ul>
 
     </form:form>
