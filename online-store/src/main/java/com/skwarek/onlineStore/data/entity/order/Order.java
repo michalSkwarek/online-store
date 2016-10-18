@@ -20,8 +20,7 @@ public class Order implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cart_id")
+    @Embedded
     private Cart cart;
 
     @ManyToOne(cascade = CascadeType.ALL)

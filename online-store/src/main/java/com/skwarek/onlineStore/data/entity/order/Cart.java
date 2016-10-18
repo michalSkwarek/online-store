@@ -3,39 +3,29 @@ package com.skwarek.onlineStore.data.entity.order;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by Michal on 25.09.2016.
  */
-@Entity
-@Table(name = "cart")
+@Embeddable
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 2707354296322318547L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
+    @Transient
     private List<Item> items;
 
     @Column(name = "cart_total_price")
     private BigDecimal cartTotalPrice;
 
-    @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL)
+    @Transient
     private Order order;
 
-    public Cart() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Cart() {
+        items = new LinkedList<>();
+        cartTotalPrice = new BigDecimal(0);
     }
 
     public List<Item> getItems() {
@@ -62,6 +52,31 @@ public class Cart implements Serializable {
         this.order = order;
     }
 
+    public void addItemToCart(Item item) {
+        if (items.contains(item)) {
+            int index = items.indexOf(item);
+            Item existingItem = items.get(index);
+            items.remove(item);
+            existingItem.setQuantity(existingItem.getQuantity() + 1);
+            items.add(item);
+        } else {
+            items.add(item);
+        }
+        updateGrandTotal();
+    }
+
+    public void removeItemFromCart(Item item) {
+        items.remove(item);
+        updateGrandTotal();
+    }
+
+    public void updateGrandTotal() {
+        cartTotalPrice = new BigDecimal(0);
+        for (Item item : items) {
+            cartTotalPrice = cartTotalPrice.add(item.getItemTotalPrice());
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,7 +84,6 @@ public class Cart implements Serializable {
 
         Cart cart = (Cart) o;
 
-        if (id != null ? !id.equals(cart.id) : cart.id != null) return false;
         if (items != null ? !items.equals(cart.items) : cart.items != null) return false;
         return cartTotalPrice != null ? cartTotalPrice.equals(cart.cartTotalPrice) : cart.cartTotalPrice == null;
 
@@ -77,8 +91,7 @@ public class Cart implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (items != null ? items.hashCode() : 0);
+        int result = items != null ? items.hashCode() : 0;
         result = 31 * result + (cartTotalPrice != null ? cartTotalPrice.hashCode() : 0);
         return result;
     }
@@ -86,10 +99,8 @@ public class Cart implements Serializable {
     @Override
     public String toString() {
         return "Cart{" +
-                "id=" + id +
                 ", items=" + items +
                 ", cartTotalPrice=" + cartTotalPrice +
-                ", order=" + order +
                 '}';
     }
 }

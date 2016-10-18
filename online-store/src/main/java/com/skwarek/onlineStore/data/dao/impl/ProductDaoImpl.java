@@ -18,12 +18,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     public boolean deleteProduct(Long id) {
-        Query productItemsQuery = getSession().createQuery("from Item i where i.product.id = :id");
-        productItemsQuery.setParameter("id", id);
-
-        if (!productItemsQuery.list().isEmpty()) {
-            return false;
-        }
+//        Query productItemsQuery = getSession().createQuery("from Item i where i.product.id = :id");
+//        productItemsQuery.setParameter("id", id);
+//
+//        if (!productItemsQuery.list().isEmpty()) {
+//            return false;
+//        }
 
         Query removeProductQuery = getSession().createQuery("delete from Product p where p.id = :id");
         removeProductQuery.setParameter("id", id);
