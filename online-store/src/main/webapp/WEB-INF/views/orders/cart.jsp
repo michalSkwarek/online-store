@@ -13,7 +13,7 @@
     <jsp:include page="../_menu.jsp" />
 
     <div>
-        <security:authorize  access="hasRole('ROLE_ADMIN')">
+        <security:authorize access="hasRole('ROLE_ADMIN')">
             <ul>
                 <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
                 <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
@@ -29,7 +29,7 @@
 
     <form:form method="post" modelAttribute="cart">
 
-        <c:forEach items="${cart.items}" var="item" varStatus="status">
+        <c:forEach items="${cart.items}" var="item" varStatus="varStatus" >
             <ul>
                 <li>
                     <img src="/productImages/${item.product.id}" alt="product" style="width: 10%" />
@@ -57,7 +57,7 @@
 
                 <li>
                     <label for="quantity">Quantity: </label>
-                    <form:input path="items[${status.index}].quantity" id="quantity"/>
+                    <form:input path="items[${varStatus.index}].quantity" id="quantity"/>
                 </li>
 
                 <li>
@@ -73,7 +73,7 @@
 
         <c:if test="${cart.cartTotalPrice != 0}">
             <li>
-                <input type="submit" value="Update">
+                <input type="submit" value="Update"/>
             </li>
         </c:if>
 
@@ -84,6 +84,19 @@
     </form:form>
 
     <h1>Total: ${cart.cartTotalPrice} PLN</h1>
+
+    <div>
+        <security:authorize access="!hasRole('ROLE_USER')">
+            <ul>
+                <li><a href="<spring:url value="/login" />">Enter shipping address (You must login first)</a></li>
+            </ul>
+        </security:authorize>
+        <security:authorize access="hasRole('ROLE_USER')">
+            <ul>
+                <li><a href="<spring:url value="/cart/address/${pageContext.request.userPrincipal.name}" />">Enter shipping address</a></li>
+            </ul>
+        </security:authorize>
+    </div>
 
     <jsp:include page="../_footer.jsp" />
 

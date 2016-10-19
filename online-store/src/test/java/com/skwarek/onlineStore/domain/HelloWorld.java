@@ -57,7 +57,6 @@ public class HelloWorld {
 
         System.out.println(" === " + cart);
 
-        cart.removeItemFromCart(item);
         System.out.println(" === " + cart);
 
         Address address = new Address();

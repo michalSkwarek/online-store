@@ -1,17 +1,16 @@
 package com.skwarek.onlineStore.web.controllers;
 
+import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.order.Cart;
 import com.skwarek.onlineStore.data.entity.order.Item;
 import com.skwarek.onlineStore.data.entity.product.Product;
+import com.skwarek.onlineStore.service.AddressService;
 import com.skwarek.onlineStore.service.ProductService;
 import com.skwarek.onlineStore.web.editors.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +23,9 @@ public class CartController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private AddressService addressService;
 
     @RequestMapping(value = { "/buy" })
     public String buyProduct(HttpServletRequest request, @RequestParam Long id, Model model) {
@@ -44,9 +46,7 @@ public class CartController {
 
         Product product = productService.read(id);
         Cart cart = Utils.getCartInSession(request);
-        Item item = new Item();
-        item.setProduct(product);
-        cart.removeItemFromCart(item);
+        cart.removeItemFromCart(product);
 
         model.addAttribute("cart", cart);
         return "redirect:/cart/myCart";
@@ -63,12 +63,27 @@ public class CartController {
     @RequestMapping(value = { "/myCart" }, method = RequestMethod.POST)
     public String cartUpdateQuantity(HttpServletRequest request, Cart cart) {
 
-        System.out.println(" dupa " + cart);
+        System.out.println(" dupa1 " + cart);
         Cart cartInfo = Utils.getCartInSession(request);
-        System.out.println(" dupa " + cartInfo);
+        System.out.println(" dupa2 " + cartInfo);
         cartInfo = cart;
 
         // Redirect to shoppingCart page.
         return "redirect:/cart/myCart";
+    }
+
+    @RequestMapping(value = { "/address/{username}" }, method = RequestMethod.GET)
+    public String getAddress(@PathVariable String username, HttpServletRequest request, Cart cart, Model model) {
+
+        Address shippingAddress = addressService.getAddressByUsername(username);
+        model.addAttribute("address", shippingAddress);
+        return "addresses/addressData";
+    }
+
+    @RequestMapping(value = { "/address/{username}" }, method = RequestMethod.POST)
+    public String confirmShippingAddress(@PathVariable String username, Model model, Address address) {
+
+        Address shippingAddress = address;
+        return "orders/confirm";
     }
 }

@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.order;
 
+import com.skwarek.onlineStore.data.entity.product.Product;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -67,9 +69,9 @@ public class Cart implements Serializable {
         updateGrandTotal();
     }
 
-    public void removeItemFromCart(Item item) {
+    public void removeItemFromCart(Product product) {
         for (Item itemInCart : items) {
-            if (itemInCart.equals(item)) {
+            if (itemInCart.getProduct().equals(product)) {
                 items.remove(itemInCart);
             }
         }
