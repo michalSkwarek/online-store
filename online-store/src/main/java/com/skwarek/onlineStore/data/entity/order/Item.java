@@ -58,18 +58,13 @@ public class Item implements Serializable {
 
         Item item = (Item) o;
 
-        if (product != null ? !product.equals(item.product) : item.product != null) return false;
-        if (quantity != null ? !quantity.equals(item.quantity) : item.quantity != null) return false;
-        return itemTotalPrice != null ? itemTotalPrice.equals(item.itemTotalPrice) : item.itemTotalPrice == null;
+        return product != null ? product.equals(item.product) : item.product == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = product != null ? product.hashCode() : 0;
-        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
-        result = 31 * result + (itemTotalPrice != null ? itemTotalPrice.hashCode() : 0);
-        return result;
+        return product != null ? product.hashCode() : 0;
     }
 
     @Override

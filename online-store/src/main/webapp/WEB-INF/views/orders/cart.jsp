@@ -23,7 +23,11 @@
 
     <h1>Product data</h1>
 
-    <form:form method="post" modelAttribute="cart" enctype="multipart/form-data">
+    <c:if test="${cart.cartTotalPrice == 0}">
+        <p>This cart is empty</p>
+    </c:if>
+
+    <form:form method="post" modelAttribute="cart">
 
         <c:forEach items="${cart.items}" var="item" varStatus="status">
             <ul>
@@ -62,14 +66,20 @@
                 </li>
 
                 <li>
-                    <input type="submit" value="Update">
-                </li>
-
-                <li>
-                    <a href="<spring:url value="/products/list" />">Continue buy</a>
+                    <a href="<spring:url value="/cart/deleteProduct?id=${item.product.id}" />">Delete from cart</a>
                 </li>
             </ul>
         </c:forEach>
+
+        <c:if test="${cart.cartTotalPrice != 0}">
+            <li>
+                <input type="submit" value="Update">
+            </li>
+        </c:if>
+
+        <li>
+            <a href="<spring:url value="/products/list" />">Continue buy</a>
+        </li>
 
     </form:form>
 

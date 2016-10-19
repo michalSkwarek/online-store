@@ -3,8 +3,10 @@ package com.skwarek.onlineStore.data.entity.order;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Michal on 25.09.2016.
@@ -54,11 +56,11 @@ public class Cart implements Serializable {
 
     public void addItemToCart(Item item) {
         if (items.contains(item)) {
-            int index = items.indexOf(item);
-            Item existingItem = items.get(index);
-            items.remove(item);
-            existingItem.setQuantity(existingItem.getQuantity() + 1);
-            items.add(item);
+            for (Item itemInCart : items) {
+                if (itemInCart.equals(item)) {
+                    itemInCart.setQuantity(itemInCart.getQuantity() + 1);
+                }
+            }
         } else {
             items.add(item);
         }
@@ -66,7 +68,11 @@ public class Cart implements Serializable {
     }
 
     public void removeItemFromCart(Item item) {
-        items.remove(item);
+        for (Item itemInCart : items) {
+            if (itemInCart.equals(item)) {
+                items.remove(itemInCart);
+            }
+        }
         updateGrandTotal();
     }
 
