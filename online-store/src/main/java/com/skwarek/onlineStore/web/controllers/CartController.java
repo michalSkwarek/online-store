@@ -3,12 +3,12 @@ package com.skwarek.onlineStore.web.controllers;
 import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.order.Cart;
 import com.skwarek.onlineStore.data.entity.order.Item;
+import com.skwarek.onlineStore.data.entity.order.Order;
 import com.skwarek.onlineStore.data.entity.order.ShippingDetail;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.user.Account;
-import com.skwarek.onlineStore.service.AccountService;
-import com.skwarek.onlineStore.service.AddressService;
-import com.skwarek.onlineStore.service.ProductService;
+import com.skwarek.onlineStore.data.entity.user.Customer;
+import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editors.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Michal on 18/10/2016.
@@ -29,6 +31,12 @@ public class CartController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private ShipppingDetailService shipppingDetailService;
 
     @RequestMapping(value = { "/buy" })
     public String buyProduct(HttpServletRequest request, @RequestParam Long id, Model model) {
@@ -75,7 +83,7 @@ public class CartController {
         return "redirect:/cart/myCart";
     }
 
-    @RequestMapping(value = { "/address/{username}" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/{username}/address" }, method = RequestMethod.GET)
     public String getAddress(@PathVariable String username, HttpServletRequest request, Cart cart, Model model) {
 
         Address billingAddress = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
@@ -83,11 +91,11 @@ public class CartController {
         return "addresses/addressData";
     }
 
-    @RequestMapping(value = { "/address/{username}" }, method = RequestMethod.POST)
+    @RequestMapping(value = { "/{username}/address" }, method = RequestMethod.POST)
     public String confirmShippingAddress(@PathVariable String username, Address address) {
 
         Address shippingAddress = address;
-        return "redirect:/cart/confirm";
+        return "redirect:/cart/" + username + "/confirm";
     }
 
     @RequestMapping(value = { "/{username}/confirm" }, method = RequestMethod.GET)
@@ -105,11 +113,28 @@ public class CartController {
     @RequestMapping(value = { "/{username}/confirm" }, method = RequestMethod.POST)
     public String saveOrder(@PathVariable String username, HttpServletRequest request, Cart cart, Address shippingAddress) {
 
-//        CartService.save(cart);
-//        ShippingDetailService
-//        Address shippingAddress = addressService.getAddressByUsername(username);
-//        model.addAttribute("address", shippingAddress);
-        return "orders/confirm";
+        ShippingDetail shippingDetail = new ShippingDetail();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 2);
+        shippingDetail.setDateDelivery(calendar.getTime());
+        shippingDetail.setShippingAddress(shippingAddress);
+        shipppingDetailService.create(shippingDetail);
+
+        Order order = new Order();
+        order.setCart(cart);
+        Customer customer = accountService.getAccountByUsername(username).getCustomer();
+        order.setCustomer(customer);
+        order.setShippingDetail(shippingDetail);
+        order.setDateCreated(new Date());
+        orderService.create(order);
+        return "redirect:/cart/" + username + "/thanks";
+    }
+
+    @RequestMapping(value = { "/{username}/thanks" })
+    public String thanks(@PathVariable String username, Model model) {
+
+        model.addAttribute("customer", username);
+        return "orders/thanks";
     }
 
     @RequestMapping(value = { "/{username}/confirm/cancel" })

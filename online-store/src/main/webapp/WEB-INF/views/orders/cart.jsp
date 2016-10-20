@@ -93,7 +93,7 @@
         </security:authorize>
         <security:authorize access="hasRole('ROLE_USER')">
             <ul>
-                <li><a href="<spring:url value="/cart/address/${pageContext.request.userPrincipal.name}" />">Enter shipping address</a></li>
+                <li><a href="<spring:url value="/cart/${pageContext.request.userPrincipal.name}/address" />">Enter shipping address</a></li>
             </ul>
         </security:authorize>
     </div>
