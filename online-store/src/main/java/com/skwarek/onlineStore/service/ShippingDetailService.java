@@ -6,6 +6,6 @@ import com.skwarek.onlineStore.service.generic.GenericService;
 /**
  * Created by Michal on 20/10/2016.
  */
-public interface ShipppingDetailService extends GenericService<ShippingDetail, Long> {
+public interface ShippingDetailService extends GenericService<ShippingDetail, Long> {
 
 }

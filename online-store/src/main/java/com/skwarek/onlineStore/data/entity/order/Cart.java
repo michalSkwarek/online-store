@@ -1,14 +1,15 @@
 package com.skwarek.onlineStore.data.entity.order;
 
+import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.product.Product;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Michal on 25.09.2016.
@@ -16,7 +17,7 @@ import java.util.Set;
 @Embeddable
 public class Cart implements Serializable {
 
-    private static final long serialVersionUID = 2707354296322318547L;
+    private static final long serialVersionUID = 3671166502648631028L;
 
     @Transient
     private List<Item> items;
@@ -26,6 +27,9 @@ public class Cart implements Serializable {
 
     @Transient
     private Order order;
+
+    @Transient
+    private Address cartAddress;
 
     public Cart() {
         items = new LinkedList<>();
@@ -54,6 +58,14 @@ public class Cart implements Serializable {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public Address getCartAddress() {
+        return cartAddress;
+    }
+
+    public void setCartAddress(Address cartAddress) {
+        this.cartAddress = cartAddress;
     }
 
     public void addItemToCart(Item item) {

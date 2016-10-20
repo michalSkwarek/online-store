@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.controllers;
+package com.skwarek.onlineStore.web.controller;
 
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

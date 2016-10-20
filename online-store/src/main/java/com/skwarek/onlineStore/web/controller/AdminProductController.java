@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.controllers;
+package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
@@ -7,10 +7,10 @@ import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.data.entity.product.specifications.SpecificationsFactory;
 import com.skwarek.onlineStore.service.*;
-import com.skwarek.onlineStore.web.editors.CategoryEditor;
-import com.skwarek.onlineStore.web.editors.ManufacturerEditor;
-import com.skwarek.onlineStore.web.editors.ImageEditor;
-import com.skwarek.onlineStore.web.editors.ProductSpecificationsEditor;
+import com.skwarek.onlineStore.web.editor.CategoryEditor;
+import com.skwarek.onlineStore.web.editor.ManufacturerEditor;
+import com.skwarek.onlineStore.web.editor.ImageEditor;
+import com.skwarek.onlineStore.web.editor.ProductSpecificationsEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

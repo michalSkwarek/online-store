@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.controllers;
+package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.order.Cart;
@@ -9,7 +9,7 @@ import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.service.*;
-import com.skwarek.onlineStore.web.editors.Utils;
+import com.skwarek.onlineStore.web.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,10 +33,13 @@ public class CartController {
     private AccountService accountService;
 
     @Autowired
+    private CustomerService customerService;
+
+    @Autowired
     private OrderService orderService;
 
     @Autowired
-    private ShipppingDetailService shipppingDetailService;
+    private ShippingDetailService shippingDetailService;
 
     @RequestMapping(value = { "/buy" })
     public String buyProduct(HttpServletRequest request, @RequestParam Long id, Model model) {
@@ -84,7 +87,7 @@ public class CartController {
     }
 
     @RequestMapping(value = { "/{username}/address" }, method = RequestMethod.GET)
-    public String getAddress(@PathVariable String username, HttpServletRequest request, Cart cart, Model model) {
+    public String getAddress(@PathVariable String username, Model model) {
 
         Address billingAddress = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", billingAddress);
@@ -92,9 +95,10 @@ public class CartController {
     }
 
     @RequestMapping(value = { "/{username}/address" }, method = RequestMethod.POST)
-    public String confirmShippingAddress(@PathVariable String username, Address address) {
+    public String confirmShippingAddress(@PathVariable String username, HttpServletRequest request, Address address) {
 
-        Address shippingAddress = address;
+        Cart cart = Utils.getCartInSession(request);
+        cart.setCartAddress(address);
         return "redirect:/cart/" + username + "/confirm";
     }
 
@@ -105,20 +109,22 @@ public class CartController {
         model.addAttribute("account", account);
         Cart cart = Utils.getCartInSession(request);
         model.addAttribute("cart", cart);
-//        Address shippingAddress = addressService.getAddressByUsername(username);
-//        model.addAttribute("address", shippingAddress);
-        return "orders/" + username + "/confirm";
+        Address shippingAddress = cart.getCartAddress();
+        model.addAttribute("shippingAddress", shippingAddress);
+        return "orders/confirm";
     }
 
     @RequestMapping(value = { "/{username}/confirm" }, method = RequestMethod.POST)
-    public String saveOrder(@PathVariable String username, HttpServletRequest request, Cart cart, Address shippingAddress) {
+    public String saveOrder(@PathVariable String username, HttpServletRequest request) {
+
+        Cart cart = Utils.getCartInSession(request);
 
         ShippingDetail shippingDetail = new ShippingDetail();
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 2);
         shippingDetail.setDateDelivery(calendar.getTime());
-        shippingDetail.setShippingAddress(shippingAddress);
-        shipppingDetailService.create(shippingDetail);
+        shippingDetail.setShippingAddress(cart.getCartAddress());
+        shippingDetailService.create(shippingDetail);
 
         Order order = new Order();
         order.setCart(cart);
@@ -127,6 +133,10 @@ public class CartController {
         order.setShippingDetail(shippingDetail);
         order.setDateCreated(new Date());
         orderService.create(order);
+
+        customer.setNumberOfOrders(customer.getNumberOfOrders() + 1);
+        customerService.update(customer);
+
         return "redirect:/cart/" + username + "/thanks";
     }
 
@@ -137,15 +147,10 @@ public class CartController {
         return "orders/thanks";
     }
 
-    @RequestMapping(value = { "/{username}/confirm/cancel" })
-    public String cancelOrder(@PathVariable String username, HttpServletRequest request, Model model) {
+    @RequestMapping(value = { "/cancel" })
+    public String cancelOrder(HttpServletRequest request) {
 
-        Account account = accountService.getAccountByUsername(username);
-        model.addAttribute("account", account);
-        Cart cart = Utils.getCartInSession(request);
-        model.addAttribute("cart", cart);
-//        Address shippingAddress = addressService.getAddressByUsername(username);
-//        model.addAttribute("address", shippingAddress);
-        return "orders/confirm";
+        Utils.removeCartInSession(request);
+        return "orders/cancel";
     }
 }

@@ -1,10 +1,10 @@
-package com.skwarek.onlineStore.web.controllers;
+package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.UploadFileService;
-import com.skwarek.onlineStore.web.editors.ImageEditor;
+import com.skwarek.onlineStore.web.editor.ImageEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

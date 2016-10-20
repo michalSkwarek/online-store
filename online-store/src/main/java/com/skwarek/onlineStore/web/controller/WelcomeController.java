@@ -1,20 +1,16 @@
-package com.skwarek.onlineStore.web.controllers;
+package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
-import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.service.CategoryService;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.awt.*;
 import java.util.List;
 
 /**

@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.editors;
+package com.skwarek.onlineStore.web.editor;
 
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.service.ManufacturerService;

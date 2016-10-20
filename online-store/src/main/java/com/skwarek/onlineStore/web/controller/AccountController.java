@@ -1,7 +1,6 @@
-package com.skwarek.onlineStore.web.controllers;
+package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.user.Account;
-import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

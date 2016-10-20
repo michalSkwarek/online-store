@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.web.editors;
+package com.skwarek.onlineStore.web;
 
 import com.skwarek.onlineStore.data.entity.order.Cart;
 
@@ -23,13 +23,4 @@ public class Utils {
     public static void removeCartInSession(HttpServletRequest request) {
         request.getSession().removeAttribute("myCart");
     }
-
-    public static void storeLastOrderedCartInSession(HttpServletRequest request, Cart cart) {
-        request.getSession().setAttribute("lastOrderedCart", cart);
-    }
-
-    public static Cart getLastOrderedCartInSession(HttpServletRequest request) {
-        return (Cart) request.getSession().getAttribute("lastOrderedCart");
-    }
-
 }
