@@ -1,4 +1,6 @@
-package com.skwarek.onlineStore.data.entity.product.specifications;
+package com.skwarek.onlineStore.data.model.product.specifications;
+
+import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 
 /**
  * Created by Michal on 29.09.2016.

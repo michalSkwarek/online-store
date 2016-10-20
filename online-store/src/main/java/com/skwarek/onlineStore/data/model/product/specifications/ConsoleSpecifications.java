@@ -1,19 +1,18 @@
-package com.skwarek.onlineStore.data.entity.product.specifications;
+package com.skwarek.onlineStore.data.model.product.specifications;
 
+import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 
 /**
  * Created by Michal on 27.09.2016.
  */
-public class PCSpecifications extends ProductSpecifications {
+public class ConsoleSpecifications extends ProductSpecifications {
 
-    public PCSpecifications() {
+    public ConsoleSpecifications() {
         setCpu(new CPU());
         setGpu(new GPU());
         setRam(new RAM());
         setStorage(new Storage());
-        setPowerSupply(new PowerSupply());
-        setOs(new OS());
         setDimensions(new Dimensions());
         setWeight(new Weight());
     }

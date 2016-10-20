@@ -1,13 +1,14 @@
-package com.skwarek.onlineStore.data.entity.product.specifications;
+package com.skwarek.onlineStore.data.model.product.specifications;
 
+import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 
 /**
- * Created by Michal on 01.10.2016.
+ * Created by Michal on 27.09.2016.
  */
-public class NotebookSpecifications extends ProductSpecifications {
+public class SmartphoneSpecifications extends ProductSpecifications {
 
-    public NotebookSpecifications() {
+    public SmartphoneSpecifications() {
         setCpu(new CPU());
         setGpu(new GPU());
         setRam(new RAM());
@@ -15,7 +16,7 @@ public class NotebookSpecifications extends ProductSpecifications {
         setDisplay(new Display());
         setBattery(new Battery());
         setOs(new OS());
-        setWebcam(new Webcam());
+        setCamera(new Camera());
         setDimensions(new Dimensions());
         setWeight(new Weight());
     }
