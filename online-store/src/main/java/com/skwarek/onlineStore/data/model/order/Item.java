@@ -1,16 +1,13 @@
-package com.skwarek.onlineStore.data.entity.order;
+package com.skwarek.onlineStore.data.model.order;
 
 import com.skwarek.onlineStore.data.entity.product.Product;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
  * Created by Michal on 25.09.2016.
 */
-public class Item implements Serializable {
-
-    private static final long serialVersionUID = -3635351022469956195L;
+public class Item {
 
     private Product product;
 
@@ -59,7 +56,6 @@ public class Item implements Serializable {
         Item item = (Item) o;
 
         return product != null ? product.equals(item.product) : item.product == null;
-
     }
 
     @Override

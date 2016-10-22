@@ -1,15 +1,9 @@
 package com.skwarek.onlineStore.data.entity.order;
 
-import com.skwarek.onlineStore.data.entity.address.Address;
-import com.skwarek.onlineStore.data.entity.product.Product;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Michal on 25.09.2016.
@@ -17,32 +11,12 @@ import java.util.List;
 @Embeddable
 public class Cart implements Serializable {
 
-    private static final long serialVersionUID = 3671166502648631028L;
-
-    @Transient
-    private List<Item> items;
+    private static final long serialVersionUID = 401268856627610843L;
 
     @Column(name = "cart_total_price")
     private BigDecimal cartTotalPrice;
 
-    @Transient
-    private Order order;
-
-    @Transient
-    private Address cartAddress;
-
-    public Cart() {
-        items = new LinkedList<>();
-        cartTotalPrice = new BigDecimal(0);
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
+    public Cart() { }
 
     public BigDecimal getCartTotalPrice() {
         return cartTotalPrice;
@@ -52,51 +26,6 @@ public class Cart implements Serializable {
         this.cartTotalPrice = cartTotalPrice;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Address getCartAddress() {
-        return cartAddress;
-    }
-
-    public void setCartAddress(Address cartAddress) {
-        this.cartAddress = cartAddress;
-    }
-
-    public void addItemToCart(Item item) {
-        if (items.contains(item)) {
-            for (Item itemInCart : items) {
-                if (itemInCart.equals(item)) {
-                    itemInCart.setQuantity(itemInCart.getQuantity() + 1);
-                }
-            }
-        } else {
-            items.add(item);
-        }
-        updateGrandTotal();
-    }
-
-    public void removeItemFromCart(Product product) {
-        for (Item itemInCart : items) {
-            if (itemInCart.getProduct().equals(product)) {
-                items.remove(itemInCart);
-            }
-        }
-        updateGrandTotal();
-    }
-
-    public void updateGrandTotal() {
-        cartTotalPrice = new BigDecimal(0);
-        for (Item item : items) {
-            cartTotalPrice = cartTotalPrice.add(item.getItemTotalPrice());
-        }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,22 +33,18 @@ public class Cart implements Serializable {
 
         Cart cart = (Cart) o;
 
-        if (items != null ? !items.equals(cart.items) : cart.items != null) return false;
         return cartTotalPrice != null ? cartTotalPrice.equals(cart.cartTotalPrice) : cart.cartTotalPrice == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = items != null ? items.hashCode() : 0;
-        result = 31 * result + (cartTotalPrice != null ? cartTotalPrice.hashCode() : 0);
-        return result;
+        return cartTotalPrice != null ? cartTotalPrice.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "Cart{" +
-                ", items=" + items +
                 ", cartTotalPrice=" + cartTotalPrice +
                 '}';
     }

@@ -12,6 +12,7 @@
 
     <h1>Dear, ${customer}</h1>
     <h2>Thank you for Order</h2>
+    <h3>You must wait 2 days to delivery.</h3>
 
     <jsp:include page="../_footer.jsp" />
 

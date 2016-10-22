@@ -103,7 +103,6 @@ public class Address implements Serializable {
 
         Address address = (Address) o;
 
-        if (id != null ? !id.equals(address.id) : address.id != null) return false;
         if (street != null ? !street.equals(address.street) : address.street != null) return false;
         if (streetNumber != null ? !streetNumber.equals(address.streetNumber) : address.streetNumber != null)
             return false;
@@ -115,8 +114,7 @@ public class Address implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (street != null ? street.hashCode() : 0);
+        int result = street != null ? street.hashCode() : 0;
         result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
         result = 31 * result + (doorNumber != null ? doorNumber.hashCode() : 0);
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);

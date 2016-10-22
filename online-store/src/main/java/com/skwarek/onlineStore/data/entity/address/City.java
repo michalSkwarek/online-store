@@ -57,18 +57,13 @@ public class City implements Serializable {
 
         City city = (City) o;
 
-        if (id != null ? !id.equals(city.id) : city.id != null) return false;
-        if (name != null ? !name.equals(city.name) : city.name != null) return false;
-        return addresses != null ? addresses.equals(city.addresses) : city.addresses == null;
+        return name != null ? name.equals(city.name) : city.name == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (addresses != null ? addresses.hashCode() : 0);
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 
     @Override

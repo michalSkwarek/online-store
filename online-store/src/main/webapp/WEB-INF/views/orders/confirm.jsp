@@ -60,7 +60,7 @@
                 </li>
             </ul>
 
-            <c:forEach items="${cart.items}" var="item" varStatus="varStatus" >
+            <c:forEach items="${cart.items}" var="item">
                 <ul>
                     <li>
                         <label>Model: </label>
@@ -102,7 +102,7 @@
 
     </form:form>
 
-    <h3><a href="<spring:url value="/cart/cancel" />">Cancel</a></h3>
+    <h3><a href="<spring:url value="/order/cancel" />">Cancel</a></h3>
 
     <jsp:include page="../_footer.jsp" />
 

@@ -47,8 +47,8 @@
                 </li>
 
                 <li>
-                    <label for="quantity">Quantity: </label>
-                    <form:input path="items[${varStatus.index}].quantity" id="quantity"/>
+                    <label>Quantity: </label>
+                    <input type="text" name="quantity" value="${item.quantity}">
                 </li>
 
                 <li>
@@ -57,7 +57,7 @@
                 </li>
 
                 <li>
-                    <a href="<spring:url value="/cart/deleteProduct?id=${item.product.id}" />">Delete from cart</a>
+                    <a href="<spring:url value="/order/deleteProduct?id=${item.product.id}" />">Delete from cart</a>
                 </li>
             </ul>
         </c:forEach>
@@ -84,7 +84,7 @@
         </security:authorize>
         <security:authorize access="hasRole('ROLE_USER')">
             <ul>
-                <li><a href="<spring:url value="/cart/${pageContext.request.userPrincipal.name}/address" />">Enter shipping address</a></li>
+                <li><a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/address" />">Enter shipping address</a></li>
             </ul>
         </security:authorize>
     </div>

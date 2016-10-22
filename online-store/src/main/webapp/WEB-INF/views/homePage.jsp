@@ -33,7 +33,7 @@
                 <p>${product.unitPrice}</p>
                 <a href="<spring:url value="/products/${product.id}" />">Details</a>
                 <security:authorize  access="!hasRole('ROLE_ADMIN')">
-                    <a href="<spring:url value="/cart/buy?id=${product.id}" />">Add to cart</a>
+                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />">Add to cart</a>
                 </security:authorize>
             </div>
         </c:forEach>

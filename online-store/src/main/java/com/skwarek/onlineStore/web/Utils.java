@@ -1,6 +1,6 @@
 package com.skwarek.onlineStore.web;
 
-import com.skwarek.onlineStore.data.entity.order.Cart;
+import com.skwarek.onlineStore.data.model.order.CartModel;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,18 +9,18 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class Utils {
 
-    public static Cart getCartInSession(HttpServletRequest request) {
+    public static CartModel getCartModelInSession(HttpServletRequest request) {
 
-        Cart cart = (Cart) request.getSession().getAttribute("myCart");
+        CartModel cartModel = (CartModel) request.getSession().getAttribute("cart");
 
-        if (cart == null) {
-            cart = new Cart();
-            request.getSession().setAttribute("myCart", cart);
+        if (cartModel == null) {
+            cartModel = new CartModel();
+            request.getSession().setAttribute("cart", cartModel);
         }
-        return cart;
+        return cartModel;
     }
 
-    public static void removeCartInSession(HttpServletRequest request) {
-        request.getSession().removeAttribute("myCart");
+    public static void removeCartModelInSession(HttpServletRequest request) {
+        request.getSession().removeAttribute("cart");
     }
 }

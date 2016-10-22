@@ -2,12 +2,13 @@ package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.order.Cart;
-import com.skwarek.onlineStore.data.entity.order.Item;
 import com.skwarek.onlineStore.data.entity.order.Order;
 import com.skwarek.onlineStore.data.entity.order.ShippingDetail;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
+import com.skwarek.onlineStore.data.model.order.CartModel;
+import com.skwarek.onlineStore.data.model.order.Item;
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,8 +25,8 @@ import java.util.Date;
  * Created by Michal on 18/10/2016.
  */
 @Controller
-@RequestMapping(value = { "/cart/" })
-public class CartController {
+@RequestMapping(value = { "/order" })
+public class OrderController {
 
     @Autowired
     private ProductService productService;
@@ -36,54 +38,53 @@ public class CartController {
     private CustomerService customerService;
 
     @Autowired
+    private AddressService addressService;
+
+    @Autowired
     private OrderService orderService;
 
     @Autowired
     private ShippingDetailService shippingDetailService;
 
-    @RequestMapping(value = { "/buy" })
-    public String buyProduct(HttpServletRequest request, @RequestParam Long id, Model model) {
+    @RequestMapping(value = { "/addProduct" })
+    public String addProductToCart(HttpServletRequest request, @RequestParam Long id, Model model) {
 
         Product product = productService.read(id);
-        Cart cart = Utils.getCartInSession(request);
         Item item = new Item();
         item.setProduct(product);
         item.setQuantity(1);
+        CartModel cart = Utils.getCartModelInSession(request);
         cart.addItemToCart(item);
 
         model.addAttribute("cart", cart);
-        return "redirect:/cart/myCart";
+        return "redirect:/order/myCart";
     }
 
     @RequestMapping(value = { "/deleteProduct" })
     public String deleteProductFromCart(HttpServletRequest request, @RequestParam Long id, Model model) {
 
         Product product = productService.read(id);
-        Cart cart = Utils.getCartInSession(request);
+        CartModel cart = Utils.getCartModelInSession(request);
         cart.removeItemFromCart(product);
 
         model.addAttribute("cart", cart);
-        return "redirect:/cart/myCart";
+        return "redirect:/order/myCart";
     }
 
     @RequestMapping(value = { "/myCart" }, method = RequestMethod.GET)
     public String getCart(HttpServletRequest request, Model model) {
 
-        Cart cart = Utils.getCartInSession(request);
+        CartModel cart = Utils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
         return "orders/cart";
     }
 
     @RequestMapping(value = { "/myCart" }, method = RequestMethod.POST)
-    public String cartUpdateQuantity(HttpServletRequest request, Cart cart) {
+    public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities) {
 
-        System.out.println(" dupa1 " + cart);
-        Cart cartInfo = Utils.getCartInSession(request);
-        System.out.println(" dupa2 " + cartInfo);
-        cartInfo = cart;
-
-        // Redirect to shoppingCart page.
-        return "redirect:/cart/myCart";
+        CartModel cartInfo = Utils.getCartModelInSession(request);
+        cartInfo.updateQuantity(quantities);
+        return "redirect:/order/myCart";
     }
 
     @RequestMapping(value = { "/{username}/address" }, method = RequestMethod.GET)
@@ -97,9 +98,9 @@ public class CartController {
     @RequestMapping(value = { "/{username}/address" }, method = RequestMethod.POST)
     public String confirmShippingAddress(@PathVariable String username, HttpServletRequest request, Address address) {
 
-        Cart cart = Utils.getCartInSession(request);
+        CartModel cart = Utils.getCartModelInSession(request);
         cart.setCartAddress(address);
-        return "redirect:/cart/" + username + "/confirm";
+        return "redirect:/order/" + username + "/confirm";
     }
 
     @RequestMapping(value = { "/{username}/confirm" }, method = RequestMethod.GET)
@@ -107,7 +108,7 @@ public class CartController {
 
         Account account = accountService.getAccountByUsername(username);
         model.addAttribute("account", account);
-        Cart cart = Utils.getCartInSession(request);
+        CartModel cart = Utils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
         Address shippingAddress = cart.getCartAddress();
         model.addAttribute("shippingAddress", shippingAddress);
@@ -117,17 +118,28 @@ public class CartController {
     @RequestMapping(value = { "/{username}/confirm" }, method = RequestMethod.POST)
     public String saveOrder(@PathVariable String username, HttpServletRequest request) {
 
-        Cart cart = Utils.getCartInSession(request);
+        CartModel cart = Utils.getCartModelInSession(request);
+
+//        Address billingAddress = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
+        Address shippingAddress = cart.getCartAddress();
+        addressService.create(shippingAddress);
+//        if (billingAddress.equals(shippingAddress)) {
+//            shippingAddress = billingAddress;
+//        } else {
+//            addressService.createAddress(shippingAddress);
+//        }
 
         ShippingDetail shippingDetail = new ShippingDetail();
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 2);
         shippingDetail.setDateDelivery(calendar.getTime());
-        shippingDetail.setShippingAddress(cart.getCartAddress());
+        shippingDetail.setShippingAddress(shippingAddress);
         shippingDetailService.create(shippingDetail);
 
         Order order = new Order();
-        order.setCart(cart);
+        Cart cartEntity = new Cart();
+        cartEntity.setCartTotalPrice(cart.getCartTotalPrice());
+        order.setCart(cartEntity);
         Customer customer = accountService.getAccountByUsername(username).getCustomer();
         order.setCustomer(customer);
         order.setShippingDetail(shippingDetail);
@@ -137,7 +149,8 @@ public class CartController {
         customer.setNumberOfOrders(customer.getNumberOfOrders() + 1);
         customerService.update(customer);
 
-        return "redirect:/cart/" + username + "/thanks";
+        Utils.removeCartModelInSession(request);
+        return "redirect:/order/" + username + "/thanks";
     }
 
     @RequestMapping(value = { "/{username}/thanks" })
@@ -150,7 +163,7 @@ public class CartController {
     @RequestMapping(value = { "/cancel" })
     public String cancelOrder(HttpServletRequest request) {
 
-        Utils.removeCartInSession(request);
+        Utils.removeCartModelInSession(request);
         return "orders/cancel";
     }
 }

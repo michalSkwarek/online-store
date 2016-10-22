@@ -7,8 +7,8 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -18,13 +18,6 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     public boolean deleteProduct(Long id) {
-//        Query productItemsQuery = getSession().createQuery("from Item i where i.product.id = :id");
-//        productItemsQuery.setParameter("id", id);
-//
-//        if (!productItemsQuery.list().isEmpty()) {
-//            return false;
-//        }
-
         Query removeProductQuery = getSession().createQuery("delete from Product p where p.id = :id");
         removeProductQuery.setParameter("id", id);
         return removeProductQuery.executeUpdate() > 0;
@@ -39,27 +32,27 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     public List getProductsByCategory(String category) {
-        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product where category.name = :name");
+        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product p where p.category.name = :name");
         listOfProductsByCategoryQuery.setParameter("name", category);
         return listOfProductsByCategoryQuery.list();
     }
 
     @Override
     public List getProductsByManufacturer(String manufacturer) {
-        Query listOfProductsByManufacturerQuery = getSession().createQuery("from Product where manufacturer.brand = :brand");
+        Query listOfProductsByManufacturerQuery = getSession().createQuery("from Product p where p.manufacturer.brand = :brand");
         listOfProductsByManufacturerQuery.setParameter("brand", manufacturer);
         return listOfProductsByManufacturerQuery.list();
     }
 
     @Override
     public List getSortedProductsOrderByUnitPriceAscending() {
-        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product order by unitPrice asc");
+        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product p order by p.unitPrice asc");
         return listOfProductsByCategoryQuery.list();
     }
 
     @Override
     public List getSortedProductsOrderByUnitPriceDescending() {
-        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product order by unitPrice desc");
+        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product p order by p.unitPrice desc");
         return listOfProductsByCategoryQuery.list();
     }
 
@@ -88,7 +81,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         if (!low.equalsIgnoreCase("") && !high.equalsIgnoreCase("")) {
             BigDecimal lowPrice = BigDecimal.valueOf(Double.parseDouble(low));
             BigDecimal highPrice = BigDecimal.valueOf(Double.parseDouble(high));
-            Query listOfProductsQuery = getSession().createQuery("from Product where unitPrice > :lowPrice and unitPrice < :highPrice");
+            Query listOfProductsQuery = getSession().createQuery("from Product p where p.unitPrice > :lowPrice and p.unitPrice < :highPrice");
             listOfProductsQuery.setBigDecimal("lowPrice", lowPrice);
             listOfProductsQuery.setBigDecimal("highPrice", highPrice);
             return listOfProductsQuery.list();
@@ -100,9 +93,9 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     public List getSortedProducts(String priceOrder) {
         Query sortedListOfProductsQuery;
         if (priceOrder.equalsIgnoreCase("asc")) {
-            sortedListOfProductsQuery = getSession().createQuery("from Product order by unitPrice asc");
+            sortedListOfProductsQuery = getSession().createQuery("from Product p order by p.unitPrice asc");
         } else {
-            sortedListOfProductsQuery = getSession().createQuery("from Product order by unitPrice desc");
+            sortedListOfProductsQuery = getSession().createQuery("from Product p order by p.unitPrice desc");
         }
         return sortedListOfProductsQuery.list();
     }

@@ -96,7 +96,7 @@
     </security:authorize>
 
     <security:authorize  access="!hasRole('ROLE_ADMIN')">
-        <a href="<spring:url value="/cart/buy?id=${product.id}" />">Add to cart</a>
+        <a href="<spring:url value="/order/addProduct?id=${product.id}" />">Add to cart</a>
     </security:authorize>
 
     <jsp:include page="../_footer.jsp" />
