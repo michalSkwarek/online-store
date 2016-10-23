@@ -45,6 +45,10 @@
                     <p>GPU:</p>
                     <label for="model">Model: </label>
                     <form:input path="gpu.model" id="model"/>
+                    <label for="memory">Memory: </label>
+                    <form:input path="gpu.memory" id="memory"/>
+                    <label for="memoryType">Memory type: </label>
+                    <form:input path="gpu.memoryType.type" id="memoryType"/>
                 </li>
             </c:if>
 

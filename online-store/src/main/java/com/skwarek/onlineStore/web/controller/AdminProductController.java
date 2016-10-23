@@ -138,7 +138,7 @@ public class AdminProductController {
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
     public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
-        productSpecificationsService.create(specifications);
+        productSpecificationsService.createSpecifications(specifications);
         Product product = productService.read(id);
         product.setProductSpecifications(specifications);
         productService.update(product);
@@ -156,7 +156,7 @@ public class AdminProductController {
     @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.POST)
     public String updateSpec(@PathVariable Long id, ProductSpecifications specifications) {
 
-        productSpecificationsService.update(specifications);
+        productSpecificationsService.updateSpecifications(specifications);
         return "redirect:/admin/products/list";
     }
 }

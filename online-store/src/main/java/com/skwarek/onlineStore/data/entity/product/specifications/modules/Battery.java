@@ -14,9 +14,8 @@ public class Battery implements Serializable {
     @Column(name = "battery_capacity")
     private Integer capacity;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "battery_type_id")
-    private BatteryType batteryType;
+    @Column(name = "battery_type")
+    private String type;
 
     public Battery() { }
 
@@ -28,12 +27,12 @@ public class Battery implements Serializable {
         this.capacity = capacity;
     }
 
-    public BatteryType getBatteryType() {
-        return batteryType;
+    public String getType() {
+        return type;
     }
 
-    public void setBatteryType(BatteryType batteryType) {
-        this.batteryType = batteryType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
@@ -44,19 +43,19 @@ public class Battery implements Serializable {
         Battery battery = (Battery) o;
 
         if (capacity != null ? !capacity.equals(battery.capacity) : battery.capacity != null) return false;
-        return batteryType != null ? batteryType.equals(battery.batteryType) : battery.batteryType == null;
+        return type != null ? type.equals(battery.type) : battery.type == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = capacity != null ? capacity.hashCode() : 0;
-        result = 31 * result + (batteryType != null ? batteryType.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return capacity + " mAh, " + batteryType;
+        return capacity + " mAh, " + type;
     }
 }

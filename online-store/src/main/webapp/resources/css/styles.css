@@ -1,6 +1,43 @@
-body {
-    font-family: Arial Verdana, sans-serif;
-    color: red;
-    background-color: beige;
-    font-size: 100%;
-}
+/*body {*/
+    /*width: 960px;*/
+    /*font-family: Arial Verdana, sans-serif;*/
+    /*color: red;*/
+    /*background-color: beige;*/
+    /*font-size: 100%;*/
+/*}*/
+
+/*.main {*/
+    /*width: 960px;*/
+    /*float: left;*/
+/*}*/
+
+/*.select {*/
+    /*width: 160px;*/
+/*}*/
+
+
+/*.box-container {*/
+    /*!*display: inline;*!*/
+    /*width: 800px;*/
+    /*float: left;*/
+    /*!*position: fixed;*!*/
+    /*!*position: static;*!*/
+/*}*/
+
+/*.box-product {*/
+    /*width: 180px;*/
+    /*height: 180px;*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
+    /*border: 1px solid blue;*/
+    /*float: left;*/
+/*}*/
+
+/*.manufacturer-box {*/
+    /*width: 80px;*/
+    /*height: 80px;*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
+    /*border: 1px solid blue;*/
+    /*float: left;*/
+/*}*/

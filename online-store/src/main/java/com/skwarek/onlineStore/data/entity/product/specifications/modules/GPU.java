@@ -26,9 +26,8 @@ public class GPU implements Serializable {
     @Column(name = "memory")
     private Integer memory;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "memory_type_id")
-    private MemoryType memoryType;
+    @Column(name = "memory_type")
+    private String type;
 
     @OneToMany(mappedBy = "gpu", cascade = CascadeType.ALL)
     private List<ProductSpecifications> specifications;
@@ -59,12 +58,12 @@ public class GPU implements Serializable {
         this.memory = memory;
     }
 
-    public MemoryType getMemoryType() {
-        return memoryType;
+    public String getType() {
+        return type;
     }
 
-    public void setMemoryType(MemoryType memoryType) {
-        this.memoryType = memoryType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public List<ProductSpecifications> getSpecifications() {
@@ -82,19 +81,17 @@ public class GPU implements Serializable {
 
         GPU gpu = (GPU) o;
 
-        if (id != null ? !id.equals(gpu.id) : gpu.id != null) return false;
         if (model != null ? !model.equals(gpu.model) : gpu.model != null) return false;
         if (memory != null ? !memory.equals(gpu.memory) : gpu.memory != null) return false;
-        return memoryType != null ? memoryType.equals(gpu.memoryType) : gpu.memoryType == null;
+        return type != null ? type.equals(gpu.type) : gpu.type == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (model != null ? model.hashCode() : 0);
+        int result = model != null ? model.hashCode() : 0;
         result = 31 * result + (memory != null ? memory.hashCode() : 0);
-        result = 31 * result + (memoryType != null ? memoryType.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
 
@@ -102,6 +99,6 @@ public class GPU implements Serializable {
     public String toString() {
         return model +
                 ((memory == null) ? "" : " " + memory + " GB") +
-                ((memoryType == null) ? "" : " " + memoryType);
+                ((type == null) ? "" : " " + type);
     }
 }

@@ -8,7 +8,9 @@ import java.util.List;
 /**
  * Created by Michal on 29.09.2016.
  */
-public interface ProducSpecificationsDao extends GenericDao<ProductSpecifications, Long> {
+public interface ProductSpecificationsDao extends GenericDao<ProductSpecifications, Long> {
 
-    List getAllDisplays();
+    void createSpecifications(ProductSpecifications productSpecifications);
+
+    void updateSpecifications(ProductSpecifications productSpecifications);
 }

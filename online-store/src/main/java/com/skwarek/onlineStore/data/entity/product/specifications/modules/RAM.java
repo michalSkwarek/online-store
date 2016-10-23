@@ -14,9 +14,8 @@ public class RAM implements Serializable {
     @Column(name = "ram")
     private Integer value;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "memory_type_id")
-    private MemoryType memoryType;
+    @Column(name = "memory_type")
+    private String type;
 
     public RAM() { }
 
@@ -28,12 +27,12 @@ public class RAM implements Serializable {
         this.value = value;
     }
 
-    public MemoryType getMemoryType() {
-        return memoryType;
+    public String getType() {
+        return type;
     }
 
-    public void setMemoryType(MemoryType memoryType) {
-        this.memoryType = memoryType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
@@ -44,20 +43,20 @@ public class RAM implements Serializable {
         RAM ram = (RAM) o;
 
         if (value != null ? !value.equals(ram.value) : ram.value != null) return false;
-        return memoryType != null ? memoryType.equals(ram.memoryType) : ram.memoryType == null;
+        return type != null ? type.equals(ram.type) : ram.type == null;
 
     }
 
     @Override
     public int hashCode() {
         int result = value != null ? value.hashCode() : 0;
-        result = 31 * result + (memoryType != null ? memoryType.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return value + ((value > 500) ? " MB" : " GB") +
-                ((memoryType == null) ? "" : " " + memoryType);
+                ((type == null) ? "" : " " + type);
     }
 }
