@@ -23,11 +23,10 @@
 
     <h1>Manufacturer data</h1>
 
-    <%--<form:form action="./new?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="manufacturer" enctype="multipart/form-data">--%>
+    <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="manufacturer" enctype="multipart/form-data">
 
-    <form:form method="post" modelAttribute="manufacturer" enctype="multipart/form-data">
+        <ul>
 
-    <ul>
             <li>
                 <label for="brand">Name: </label>
                 <form:input path="brand" id="brand"/>
@@ -48,6 +47,9 @@
                 <li>
                     <label>Logo: </label>
                     <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" style="width: 10%" />
+                    <form:hidden path="logo.id" />
+                    <form:hidden path="logo.fileName" />
+                    <form:hidden path="logo.data" />
                 </li>
             </c:if>
 
@@ -55,9 +57,6 @@
                 <input type="submit" value="Save"/>
             </li>
 
-            <%--<input type="hidden"--%>
-                   <%--name="${_csrf.parameterName}"--%>
-                   <%--value="${_csrf.token}"/>--%>
         </ul>
 
     </form:form>

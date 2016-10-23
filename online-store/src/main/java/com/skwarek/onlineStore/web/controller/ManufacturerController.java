@@ -27,11 +27,6 @@ public class ManufacturerController {
     @Autowired
     private UploadFileService uploadFileService;
 
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(UploadFile.class, new ImageEditor(uploadFileService));
-    }
-
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
     public String showProducts(Model model) {
 
@@ -57,8 +52,6 @@ public class ManufacturerController {
             uploadFileService.create(uploadFile);
             manufacturer.setLogo(uploadFile);
         }
-
-        System.out.println(" dupa " + manufacturer);
 
         manufacturerService.create(manufacturer);
         return "redirect:/admin/manufacturers/list";

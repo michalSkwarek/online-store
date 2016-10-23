@@ -23,7 +23,7 @@
 
     <h1>Product data</h1>
 
-    <form:form method="post" modelAttribute="product" enctype="multipart/form-data">
+    <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="product" enctype="multipart/form-data">
 
         <ul>
             <li>
@@ -42,9 +42,6 @@
                     <c:if test="${product.category == null}">
                         <form:option value="${product.category.id}"> -- select -- </form:option>
                     </c:if>
-                    <%--<c:if test="${product.category != null}">--%>
-                        <%--<form:option value="${product.category.id}">${product.category.name}</form:option>--%>
-                    <%--</c:if>--%>
                     <form:options items="${categories}" itemLabel="name" itemValue="id" />
                 </form:select>
             </li>
@@ -55,9 +52,6 @@
                     <c:if test="${product.manufacturer == null}">
                         <form:option value="${product.manufacturer.id}"> -- select -- </form:option>
                     </c:if>
-                    <%--<c:if test="${product.manufacturer != null}">--%>
-                        <%--<form:option value="${product.manufacturer.id}">${product.manufacturer.brand}</form:option>--%>
-                    <%--</c:if>--%>
                     <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
                 </form:select>
             </li>
@@ -72,6 +66,9 @@
                 <li>
                     <label>Image: </label>
                     <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
+                    <form:hidden path="productImage.id" />
+                    <form:hidden path="productImage.fileName" />
+                    <form:hidden path="productImage.data" />
                 </li>
             </c:if>
 
@@ -82,9 +79,9 @@
 
             <c:if test="${product.productSpecifications.id != null}">
                 <li>
-                    <label for="productSpecifications">Specifications: </label>
+                    <label>Specifications: </label>
                     <a href="/admin/products/spec/edit/${product.productSpecifications.id}">Edit</a>
-                    <form:hidden path="productSpecifications.id" id="productSpecifications"/>
+                    <form:hidden path="productSpecifications.id"/>
                 </li>
             </c:if>
 
@@ -92,9 +89,6 @@
                 <input type="submit" value="Save"/>
             </li>
 
-            <%--<input type="hidden"--%>
-                   <%--name="${_csrf.parameterName}"--%>
-                   <%--value="${_csrf.token}"/>--%>
         </ul>
 
     </form:form>

@@ -46,8 +46,6 @@ public class AdminProductController {
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
-        binder.registerCustomEditor(UploadFile.class, new ImageEditor(uploadFileService));
-        binder.registerCustomEditor(ProductSpecifications.class, new ProductSpecificationsEditor(productSpecificationsService));
     }
 
     @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
@@ -110,6 +108,11 @@ public class AdminProductController {
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Product product) {
 
+        System.out.println("dupa + " + product.getProductSpecifications());
+        ProductSpecifications productSpecifications = productSpecificationsService.read(product.getProductSpecifications().getId());
+        System.out.println("dupa + " + productSpecifications);
+//        product.setProductSpecifications(productSpecifications);
+        System.out.println("dupa + " + product.getProductSpecifications());
         productService.update(product);
         return "redirect:/admin/products/list";
     }
