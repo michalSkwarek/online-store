@@ -17,8 +17,8 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
 
     @Override
     public void createSpecifications(ProductSpecifications productSpecifications) {
-        setCPUToSpecifications(productSpecifications);
-//        setGPUToSpecifications(productSpecifications);
+//        setCPUToSpecifications(productSpecifications);
+        setGPUToSpecifications(productSpecifications);
 //        setDisplayToSpecifications(productSpecifications);
 //        setOSToSpecifications(productSpecifications);
         create(productSpecifications);
@@ -42,28 +42,27 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
 
     private CPU getCPUFromDatabase(CPU cpu) {
         Query query = getSession().createQuery("from CPU c where c.model = :model and c.numberOfCores = :numberOfCores and " +
-                "c.lowClockSpeed = :lowClockSpeed and c.highClockSpeed = :highClockSpeed and c.cache = :cache");
+                "c.lowClockSpeed = :lowClockSpeed and c.highClockSpeed = " + cpu.getHighClockSpeed() + " and c.cache = " + cpu.getCache());
+
         query.setParameter("model", cpu.getModel());
         query.setParameter("numberOfCores", cpu.getNumberOfCores());
-        query.setParameter("lowClockSpeed", cpu.getModel());
-        query.setParameter("highClockSpeed", cpu.getModel());
-        query.setParameter("cache", cpu.getModel());
+        query.setParameter("lowClockSpeed", cpu.getLowClockSpeed());
         query.setMaxResults(1);
         return (CPU) query.uniqueResult();
     }
 
     private void setGPUToSpecifications(ProductSpecifications productSpecifications) {
         GPU gpu = getGPUFromDatabase(productSpecifications.getGpu());
+        System.out.println("dupa " + productSpecifications.getGpu());
+        System.out.println("dupa " + gpu);
         if (gpu != null) {
             productSpecifications.setGpu(gpu);
         }
     }
 
     private GPU getGPUFromDatabase(GPU gpu) {
-        Query query = getSession().createQuery("from GPU g where g.model = :model and g.memory = :memory and " +
-                "g.memoryType.type = :type");
-        query.setParameter("model", gpu.getModel());
-        query.setParameter("memory", gpu.getMemory());
+        Query query = getSession().createQuery("from GPU g where g.model = :model and g.memory = " + gpu.getMemory() +
+                " and g.type = " + (gpu.getType().equals("") ? null : ":type)"));
         query.setParameter("type", gpu.getType());
         query.setMaxResults(1);
         return (GPU) query.uniqueResult();

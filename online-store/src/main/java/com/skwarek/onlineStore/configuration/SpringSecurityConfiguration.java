@@ -41,6 +41,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
-                .csrf();
+                .csrf().disable();
     }
 }

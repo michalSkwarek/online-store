@@ -23,9 +23,11 @@
 
     <h1>Manufacturer data</h1>
 
+    <%--<form:form action="./new?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="manufacturer" enctype="multipart/form-data">--%>
+
     <form:form method="post" modelAttribute="manufacturer" enctype="multipart/form-data">
 
-        <ul>
+    <ul>
             <li>
                 <label for="brand">Name: </label>
                 <form:input path="brand" id="brand"/>

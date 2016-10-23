@@ -37,6 +37,8 @@
                     <form:input path="cpu.lowClockSpeed" id="lowClockSpeed"/>
                     <label for="highClockSpeed">High clock speed: </label>
                     <form:input path="cpu.highClockSpeed" id="highClockSpeed"/>
+                    <label for="cache">Cache: </label>
+                    <form:input path="cpu.cache" id="cache"/>
                 </li>
             </c:if>
 
@@ -48,7 +50,7 @@
                     <label for="memory">Memory: </label>
                     <form:input path="gpu.memory" id="memory"/>
                     <label for="memoryType">Memory type: </label>
-                    <form:input path="gpu.memoryType.type" id="memoryType"/>
+                    <form:input path="gpu.type" id="memoryType"/>
                 </li>
             </c:if>
 
@@ -58,7 +60,7 @@
                     <label for="value">Value: </label>
                     <form:input path="ram.value" id="value"/>
                     <label for="type">Type: </label>
-                    <form:input path="ram.memoryType.type" id="type"/>
+                    <form:input path="ram.type" id="type"/>
                 </li>
             </c:if>
 
@@ -88,7 +90,7 @@
                     <label for="capacity">Capacity: </label>
                     <form:input path="battery.capacity" id="capacity"/>
                     <label for="type">Type: </label>
-                    <form:input path="battery.batteryType.type" id="type"/>
+                    <form:input path="battery.type" id="type"/>
                 </li>
             </c:if>
 
