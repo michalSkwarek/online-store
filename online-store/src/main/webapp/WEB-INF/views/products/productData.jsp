@@ -64,7 +64,6 @@
             </c:if>
             <c:if test="${product.productImage != null}">
                 <li>
-                    <label>Image: </label>
                     <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                     <form:hidden path="productImage.id" />
                 </li>
@@ -75,7 +74,7 @@
                 <form:input path="unitsInMagazine" id="unitsInMagazine"/>
             </li>
 
-            <c:if test="${product.productSpecifications.id != null}">
+            <c:if test="${product.productSpecifications != null}">
                 <li>
                     <label>Specifications: </label>
                     <a href="/admin/products/spec/edit/${product.productSpecifications.id}">Edit</a>

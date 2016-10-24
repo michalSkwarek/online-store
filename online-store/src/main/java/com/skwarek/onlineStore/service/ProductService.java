@@ -13,6 +13,8 @@ public interface ProductService extends GenericService<Product, Long> {
 
     boolean deleteProduct(Long id);
 
+    void updateProduct(Product product);
+
     List getRandomFewProducts();
 
     List getProductsByCategory(String category);
@@ -25,5 +27,5 @@ public interface ProductService extends GenericService<Product, Long> {
 
     List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
 
-    void updateProduct(Product product);
+
 }

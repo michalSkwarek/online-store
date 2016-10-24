@@ -92,7 +92,11 @@
     </ul>
 
     <security:authorize  access="hasRole('ROLE_ADMIN')">
-        <a href="<spring:url value="/admin/products/spec/edit/${product.productSpecifications.id}" />">Edit specifications</a>
+        <c:if test="${product.productSpecifications != null}">
+            <li>
+                <a href="<spring:url value="/admin/products/spec/edit/${product.productSpecifications.id}" />">Edit specifications</a>
+            </li>
+        </c:if>
     </security:authorize>
 
     <security:authorize  access="!hasRole('ROLE_ADMIN')">

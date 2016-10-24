@@ -33,7 +33,6 @@
                 <td>Unit price</td>
                 <td>Category</td>
                 <td>Brand</td>
-                <td>Website</td>
                 <td>Specifications</td>
                 <td>Add specifications</td>
                 <td>Update</td>
@@ -45,7 +44,6 @@
                     <td>${product.unitPrice}</td>
                     <td>${product.category.name}</td>
                     <td>${product.manufacturer.brand}</td>
-                    <td>${product.manufacturer.website}</td>
                     <td><a href="/products/${product.id}">Specifications</a></td>
                     <td>
                         <c:if test="${product.productSpecifications == null}">

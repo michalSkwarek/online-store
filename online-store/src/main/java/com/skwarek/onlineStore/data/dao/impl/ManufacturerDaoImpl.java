@@ -4,6 +4,7 @@ import com.skwarek.onlineStore.data.dao.ManufacturerDao;
 import com.skwarek.onlineStore.data.dao.UploadFileDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
+import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,10 @@ public class ManufacturerDaoImpl extends GenericDaoImpl<Manufacturer, Long> impl
 
     @Override
     public void updateManufacturer(Manufacturer manufacturer) {
-        manufacturer.setLogo(uploadFileDao.read(manufacturer.getLogo().getId()));
+        if (manufacturer.getLogo() != null) {
+            UploadFile logo = uploadFileDao.read(manufacturer.getLogo().getId());
+            manufacturer.setLogo(logo);
+        }
         update(manufacturer);
     }
 }

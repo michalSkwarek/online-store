@@ -28,6 +28,11 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     }
 
     @Override
+    public void updateProduct(Product product) {
+        productDao.updateProduct(product);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List getRandomFewProducts() {
         return productDao.getRandomFewProducts();
@@ -63,10 +68,6 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
         return productDao.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
     }
 
-    @Override
-    public void updateProduct(Product product) {
-        productDao.updateProduct(product);
-    }
 
 
 }

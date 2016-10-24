@@ -5,6 +5,8 @@ import com.skwarek.onlineStore.data.dao.ProductSpecificationsDao;
 import com.skwarek.onlineStore.data.dao.UploadFileDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.product.Product;
+import com.skwarek.onlineStore.data.entity.product.UploadFile;
+import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -30,6 +32,19 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         Query removeProductQuery = getSession().createQuery("delete from Product p where p.id = :id");
         removeProductQuery.setParameter("id", id);
         return removeProductQuery.executeUpdate() > 0;
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        if (product.getProductImage() != null) {
+            UploadFile productImage = uploadFileDao.read(product.getProductImage().getId());
+            product.setProductImage(productImage);
+        }
+        if (product.getProductSpecifications() != null) {
+            ProductSpecifications productSpecifications = productSpecificationsDao.read(product.getProductSpecifications().getId());
+            product.setProductSpecifications(productSpecifications);
+        }
+        update(product);
     }
 
     @Override
@@ -125,10 +140,4 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         return sortedListOfProducts;
     }
 
-    @Override
-    public void updateProduct(Product product) {
-        product.setProductImage(uploadFileDao.read(product.getProductImage().getId()));
-        product.setProductSpecifications(productSpecificationsDao.read(product.getProductSpecifications().getId()));
-        getSession().update(product);
-    }
 }

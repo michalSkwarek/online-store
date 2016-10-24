@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Michal on 27.09.2016.
  */
 @Controller
-@RequestMapping(value = { "/admin/manufacturers" })
+@RequestMapping(value = "/admin/manufacturers")
 public class AdminManufacturerController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class AdminManufacturerController {
     @Autowired
     private UploadFileService uploadFileService;
 
-    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
         List<Manufacturer> manufacturers = manufacturerService.getAll();
@@ -36,14 +36,14 @@ public class AdminManufacturerController {
         return "manufacturers/list";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createManufacturer(Model model) {
 
         model.addAttribute("manufacturer", new Manufacturer());
         return "manufacturers/manufacturerData";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addManufacturer(Manufacturer manufacturer, @RequestParam CommonsMultipartFile fileUpload) {
 
         if (fileUpload != null) {
@@ -58,7 +58,7 @@ public class AdminManufacturerController {
         return "redirect:/admin/manufacturers/list";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getManufacturer(@PathVariable Long id, Model model) {
 
         Manufacturer manufacturer = manufacturerService.read(id);
@@ -66,14 +66,14 @@ public class AdminManufacturerController {
         return "manufacturers/manufacturerData";
     }
 
-    @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateManufacturer(@PathVariable Long id, Manufacturer manufacturer) {
 
         manufacturerService.updateManufacturer(manufacturer);
         return "redirect:/admin/manufacturers/list";
     }
 
-    @RequestMapping(value = { "/delete/{id}" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteManufacturer(@PathVariable Long id) {
 
         manufacturerService.deleteManufacturer(id);

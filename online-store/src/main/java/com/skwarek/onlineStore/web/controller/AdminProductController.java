@@ -60,9 +60,9 @@ public class AdminProductController {
         return "products/adminList";
     }
 
-
     @RequestMapping("/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
+
         model.addAttribute("product", productService.read(id));
         return "products/specifications";
     }
@@ -119,10 +119,10 @@ public class AdminProductController {
         return "redirect:/admin/products/list";
     }
 
-
+//----------------------------------------------------------------------------------------------------------------------
 
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
-    public String createSpec(@PathVariable Long id, Model model) {
+    public String createSpecifications(@PathVariable Long id, Model model) {
 
         String productCategory = productService.read(id).getCategory().getName();
 
@@ -134,7 +134,7 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
-    public String addSpecToProduct(@PathVariable Long id, ProductSpecifications specifications) {
+    public String addSpecificationsToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
         productSpecificationsService.createSpecifications(specifications);
         Product product = productService.read(id);
@@ -144,7 +144,7 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.GET)
-    public String getSpec(@PathVariable Long id, Model model) {
+    public String getSpecifications(@PathVariable Long id, Model model) {
 
         ProductSpecifications specifications = productSpecificationsService.read(id);
         model.addAttribute("spec", specifications);
@@ -152,7 +152,7 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.POST)
-    public String updateSpec(@PathVariable Long id, ProductSpecifications specifications) {
+    public String updateSpecifications(@PathVariable Long id, ProductSpecifications specifications) {
 
         productSpecificationsService.updateSpecifications(specifications);
         return "redirect:/admin/products/list";

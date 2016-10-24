@@ -13,6 +13,13 @@ public interface ProductDao extends GenericDao<Product, Long> {
 
     boolean deleteProduct(Long id);
 
+    void updateProduct(Product product);
+
+
+
+
+
+
     List getRandomFewProducts();
 
     List getProductsByCategory(String category);
@@ -32,6 +39,4 @@ public interface ProductDao extends GenericDao<Product, Long> {
     List getSortedProducts(String priceOrder);
 
     List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
-
-    void updateProduct(Product product);
 }
