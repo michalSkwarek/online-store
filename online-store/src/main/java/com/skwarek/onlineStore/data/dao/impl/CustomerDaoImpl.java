@@ -24,12 +24,6 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer, Long> implements C
     private AddressDao addressDao;
 
     @Override
-    public Customer getCustomerByUsername(String username) {
-        Account account = accountDao.getAccountByUsername(username);
-        return account.getCustomer();
-    }
-
-    @Override
     public Customer getLastCustomer() {
         Query getCustomerQuery = getSession().createQuery("from Customer c order by c.id desc");
         getCustomerQuery.setMaxResults(1);

@@ -26,7 +26,7 @@ public class AddressController {
     @RequestMapping(value = "/{username}")
     public String getAddressByUsername(@PathVariable String username, Model model) {
 
-        Address address = addressService.getAddressByUsername(username);
+        Address address = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", address);
         return "addresses/addressData";
     }

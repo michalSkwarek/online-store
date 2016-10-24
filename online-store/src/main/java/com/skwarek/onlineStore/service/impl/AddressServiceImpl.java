@@ -20,11 +20,6 @@ public class AddressServiceImpl extends GenericServiceImpl<Address, Long> implem
     private AddressDao addressDao;
 
     @Override
-    public Address getAddressByUsername(String username) {
-        return addressDao.getAddressByUsername(username);
-    }
-
-    @Override
     public void createAddress(Address address) {
         addressDao.createAddress(address);
     }

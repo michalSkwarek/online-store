@@ -17,11 +17,6 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long> impl
     private CustomerDao customerDao;
 
     @Override
-    public Customer getCustomerByUsername(String username) {
-        return customerDao.getCustomerByUsername(username);
-    }
-
-    @Override
     public void createCustomer(Customer customer) {
         customer.setNumberOfOrders(0);
         customerDao.createCustomer(customer);

@@ -8,8 +8,6 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  */
 public interface AddressService extends GenericService<Address, Long> {
 
-    Address getAddressByUsername(String username);
-
     void createAddress(Address address);
 
     void updateAddress(Address address);

@@ -26,7 +26,7 @@ public class CustomerController {
     @RequestMapping(value = "/{username}")
     public String getCustomerByUsername(@PathVariable String username, Model model) {
 
-        Customer customer = customerService.getCustomerByUsername(username);
+        Customer customer = accountService.getAccountByUsername(username).getCustomer();
         model.addAttribute("customer", customer);
         return "customers/customerData";
     }

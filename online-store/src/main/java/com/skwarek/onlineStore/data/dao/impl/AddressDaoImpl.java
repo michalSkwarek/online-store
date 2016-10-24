@@ -20,12 +20,6 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
     private CustomerDao customerDao;
 
     @Override
-    public Address getAddressByUsername(String username) {
-        Customer customer = customerDao.getCustomerByUsername(username);
-        return customer.getBillingAddress();
-    }
-
-    @Override
     public void createAddress(Address address) {
         setCityToAddress(address);
         Customer customer = customerDao.getLastCustomer();
