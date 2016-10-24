@@ -1,10 +1,13 @@
 package com.skwarek.onlineStore.data.dao.impl;
 
 import com.skwarek.onlineStore.data.dao.AddressDao;
+import com.skwarek.onlineStore.data.dao.CustomerDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.address.City;
+import com.skwarek.onlineStore.data.entity.user.Customer;
 import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,18 +16,21 @@ import org.springframework.stereotype.Repository;
 @Repository("addressDao")
 public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements AddressDao {
 
+    @Autowired
+    private CustomerDao customerDao;
+
     @Override
     public Address getAddressByUsername(String username) {
-        Query getAddressQuery = getSession().createQuery("from Address a where a.customer.account.username = :username");
-        getAddressQuery.setParameter("username", username);
-        getAddressQuery.setMaxResults(1);
-        return (Address) getAddressQuery.uniqueResult();
+        Customer customer = customerDao.getCustomerByUsername(username);
+        return customer.getBillingAddress();
     }
 
     @Override
     public void createAddress(Address address) {
         setCityToAddress(address);
-        create(address);
+        Customer customer = customerDao.getLastCustomer();
+        customer.setBillingAddress(address);
+        customerDao.update(customer);
     }
 
     @Override

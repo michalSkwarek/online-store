@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "city")
 public class City implements Serializable {
 
-    private static final long serialVersionUID = 3092911497439684126L;
+    private static final long serialVersionUID = 5069818134083630076L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,6 @@ public class City implements Serializable {
 
     @Column(name = "name")
     private String name;
-
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    private Set<Address> addresses;
 
     public City() { }
 
@@ -40,14 +37,6 @@ public class City implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
     }
 
     @Override

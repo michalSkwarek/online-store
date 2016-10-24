@@ -10,5 +10,7 @@ public interface CustomerService extends GenericService<Customer, Long> {
 
     Customer getCustomerByUsername(String username);
 
-    Customer getLastCustomer();
+    void createCustomer(Customer customer);
+
+    void updateCustomer(Customer customer);
 }

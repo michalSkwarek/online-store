@@ -35,9 +35,6 @@ public class Address implements Serializable {
     @JoinColumn(name = "city_id")
     private City city;
 
-    @OneToOne(mappedBy = "billingAddress", cascade = CascadeType.ALL)
-    private Customer customer;
-
     public Address() { }
 
     public Long getId() {
@@ -69,7 +66,7 @@ public class Address implements Serializable {
     }
 
     public void setDoorNumber(String doorNumber) {
-        this.doorNumber = doorNumber;
+        this.doorNumber = (doorNumber.equals("") ? null : doorNumber);
     }
 
     public String getZipCode() {
@@ -86,14 +83,6 @@ public class Address implements Serializable {
 
     public void setCity(City city) {
         this.city = city;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     @Override

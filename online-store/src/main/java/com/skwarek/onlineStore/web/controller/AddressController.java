@@ -1,9 +1,8 @@
 package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
-import com.skwarek.onlineStore.data.entity.user.Customer;
+import com.skwarek.onlineStore.service.AccountService;
 import com.skwarek.onlineStore.service.AddressService;
-import com.skwarek.onlineStore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AddressController {
 
     @Autowired
-    private CustomerService customerService;
+    private AccountService accountService;
 
     @Autowired
     private AddressService addressService;
@@ -42,17 +41,14 @@ public class AddressController {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addAddress(Address address) {
 
-        Customer customer = customerService.getLastCustomer();
         addressService.createAddress(address);
-        customer.setBillingAddress(address);
-        customerService.update(customer);
         return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
     public String getAddress(@PathVariable String username, Model model) {
 
-        Address address = addressService.getAddressByUsername(username);
+        Address address = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", address);
         return "addresses/addressData";
     }
@@ -60,8 +56,6 @@ public class AddressController {
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
     public String updateAddress(@PathVariable String username, Address address) {
 
-        Address oldAddress = addressService.getAddressByUsername(username);
-        address.setId(oldAddress.getId());
         addressService.updateAddress(address);
         return "redirect:/users/" + username;
     }

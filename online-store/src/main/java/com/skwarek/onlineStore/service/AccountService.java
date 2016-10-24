@@ -10,5 +10,7 @@ public interface AccountService extends GenericService<Account, Long> {
 
     Account getAccountByUsername(String username);
 
-    Account getLastAccount();
+    void createAccount(Account account);
+
+    void updateAccount(Account account);
 }

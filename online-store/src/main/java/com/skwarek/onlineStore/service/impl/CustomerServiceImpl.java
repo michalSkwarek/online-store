@@ -22,7 +22,13 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long> impl
     }
 
     @Override
-    public Customer getLastCustomer() {
-        return customerDao.getLastCustomer();
+    public void createCustomer(Customer customer) {
+        customer.setNumberOfOrders(0);
+        customerDao.createCustomer(customer);
+    }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        customerDao.updateCustomer(customer);
     }
 }

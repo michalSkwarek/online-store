@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Date;
-
 /**
  * Created by Michal on 04.10.2016.
  */
@@ -39,10 +37,7 @@ public class AccountController {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addAccount(Account account) {
 
-        account.setEnabled(true);
-        account.setDateCreated(new Date());
-        account.setRole(Account.ROLE_USER);
-        accountService.create(account);
+        accountService.createAccount(account);
         return "redirect:/customers/new";
     }
 
@@ -57,10 +52,7 @@ public class AccountController {
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
     public String updateAccount(@PathVariable String username, Account account) {
 
-        Account oldAccount = accountService.getAccountByUsername(username);
-        oldAccount.setPassword(account.getPassword());
-        oldAccount.setEmail(account.getEmail());
-        accountService.update(oldAccount);
+        accountService.updateAccount(account);
         return "redirect:/users/" + username;
     }
 }

@@ -11,4 +11,6 @@ public interface AccountDao extends GenericDao<Account, Long> {
     Account getAccountByUsername(String username);
 
     Account getLastAccount();
+
+    void updateAccount(Account account);
 }

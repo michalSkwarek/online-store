@@ -41,7 +41,7 @@ public class Customer implements Serializable {
     @Column(name = "number_of_orders")
     private Integer numberOfOrders;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @Transient
     private Account account;
 
     public Customer() { }
@@ -117,27 +117,19 @@ public class Customer implements Serializable {
 
         Customer customer = (Customer) o;
 
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
         if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
         if (lastName != null ? !lastName.equals(customer.lastName) : customer.lastName != null) return false;
         if (birthDate != null ? !birthDate.equals(customer.birthDate) : customer.birthDate != null) return false;
-        if (billingAddress != null ? !billingAddress.equals(customer.billingAddress) : customer.billingAddress != null)
-            return false;
-        if (phoneNumber != null ? !phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber != null)
-            return false;
-        return numberOfOrders != null ? numberOfOrders.equals(customer.numberOfOrders) : customer.numberOfOrders == null;
+        return phoneNumber != null ? phoneNumber.equals(customer.phoneNumber) : customer.phoneNumber == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        int result = firstName != null ? firstName.hashCode() : 0;
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
-        result = 31 * result + (billingAddress != null ? billingAddress.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (numberOfOrders != null ? numberOfOrders.hashCode() : 0);
         return result;
     }
 
