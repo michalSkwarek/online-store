@@ -20,4 +20,9 @@ public class ManufacturerServiceImpl extends GenericServiceImpl<Manufacturer, Lo
     public boolean deleteManufacturer(Long id) {
         return manufacturerDao.deleteManufacturer(id);
     }
+
+    @Override
+    public void updateManufacturer(Manufacturer manufacturer) {
+        manufacturerDao.updateManufacturer(manufacturer);
+    }
 }

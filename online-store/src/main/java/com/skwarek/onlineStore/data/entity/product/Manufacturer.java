@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "manufacturer")
 public class Manufacturer implements Serializable {
 
-    private static final long serialVersionUID = 4000467198421318150L;
+    private static final long serialVersionUID = 5047475650285780050L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +28,8 @@ public class Manufacturer implements Serializable {
     @Column(name = "website")
     private String website;
 
-//    @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
-//    private Set<Product> products;
+    @Transient
+    private Set<Product> products;
 
     public Manufacturer() { }
 
@@ -65,13 +65,13 @@ public class Manufacturer implements Serializable {
         this.website = website;
     }
 
-//    public Set<Product> getProducts() {
-//        return products;
-//    }
-//
-//    public void setProducts(Set<Product> products) {
-//        this.products = products;
-//    }
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -80,16 +80,16 @@ public class Manufacturer implements Serializable {
 
         Manufacturer that = (Manufacturer) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (brand != null ? !brand.equals(that.brand) : that.brand != null) return false;
+        if (logo != null ? !logo.equals(that.logo) : that.logo != null) return false;
         return website != null ? website.equals(that.website) : that.website == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (brand != null ? brand.hashCode() : 0);
+        int result = brand != null ? brand.hashCode() : 0;
+        result = 31 * result + (logo != null ? logo.hashCode() : 0);
         result = 31 * result + (website != null ? website.hashCode() : 0);
         return result;
     }
