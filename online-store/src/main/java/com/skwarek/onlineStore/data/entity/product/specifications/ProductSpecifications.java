@@ -60,8 +60,8 @@ public class ProductSpecifications implements Serializable {
     @Embedded
     private Weight weight;
 
-    @OneToOne(mappedBy = "productSpecifications", cascade = CascadeType.ALL)
-    private Product product;
+//    @OneToOne(mappedBy = "productSpecifications", cascade = CascadeType.ALL)
+//    private Product product;
 
     public ProductSpecifications() { }
 
@@ -169,13 +169,13 @@ public class ProductSpecifications implements Serializable {
         this.weight = weight;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+//    public Product getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(Product product) {
+//        this.product = product;
+//    }
 
     @Override
     public boolean equals(Object o) {

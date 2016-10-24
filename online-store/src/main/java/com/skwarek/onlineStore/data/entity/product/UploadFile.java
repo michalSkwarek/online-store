@@ -25,8 +25,8 @@ public class UploadFile implements Serializable {
     @Lob
     private byte[] data;
 
-	@OneToOne(mappedBy = "productImage", cascade = CascadeType.ALL)
-	private Product product;
+//	@OneToOne(mappedBy = "productImage", cascade = CascadeType.ALL)
+//	private Product product;
     
     public UploadFile() { }
 
@@ -54,13 +54,13 @@ public class UploadFile implements Serializable {
         this.data = data;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+//    public Product getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(Product product) {
+//        this.product = product;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -87,7 +87,6 @@ public class UploadFile implements Serializable {
     public String toString() {
         return "UploadFile{" +
                 "fileName=" + fileName +
-                ", product=" + product +
                 '}';
     }
 }

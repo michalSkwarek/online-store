@@ -6,7 +6,9 @@
     <ul>
         <li><a href="<spring:url value="/welcome" />">Home page</a></li>
         <li><a href="<spring:url value="/products/list" />">Products</a></li>
-        <li><a href="<spring:url value="/order/myCart" />">Cart</a></li>
+        <security:authorize  access="!hasRole('ROLE_ADMIN')">
+            <li><a href="<spring:url value="/order/myCart" />">Cart</a></li>
+        </security:authorize>
         <security:authorize  access="hasRole('ROLE_ADMIN')">
             <li><a href="<spring:url value="/admin/products/list" />">Admin page</a></li>
         </security:authorize>

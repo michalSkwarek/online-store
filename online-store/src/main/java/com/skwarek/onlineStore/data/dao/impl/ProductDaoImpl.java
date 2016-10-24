@@ -1,9 +1,12 @@
 package com.skwarek.onlineStore.data.dao.impl;
 
 import com.skwarek.onlineStore.data.dao.ProductDao;
+import com.skwarek.onlineStore.data.dao.ProductSpecificationsDao;
+import com.skwarek.onlineStore.data.dao.UploadFileDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -15,6 +18,12 @@ import java.util.List;
  */
 @Repository("productDao")
 public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements ProductDao {
+
+    @Autowired
+    private ProductSpecificationsDao productSpecificationsDao;
+
+    @Autowired
+    private UploadFileDao uploadFileDao;
 
     @Override
     public boolean deleteProduct(Long id) {
@@ -114,5 +123,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         sortedListOfProducts.retainAll(productsByFilter);
 
         return sortedListOfProducts;
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        product.setProductImage(uploadFileDao.read(product.getProductImage().getId()));
+        product.setProductSpecifications(productSpecificationsDao.read(product.getProductSpecifications().getId()));
+        getSession().update(product);
     }
 }

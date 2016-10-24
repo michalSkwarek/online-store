@@ -68,6 +68,8 @@ public class ManufacturerController {
     @RequestMapping(value = { "/edit/{id}" }, method = RequestMethod.POST)
     public String updateManufacturer(@PathVariable Long id, Manufacturer manufacturer) {
 
+        UploadFile logo = uploadFileService.read(manufacturer.getLogo().getId());
+        manufacturer.setLogo(logo);
         manufacturerService.update(manufacturer);
         return "redirect:/admin/manufacturers/list";
     }

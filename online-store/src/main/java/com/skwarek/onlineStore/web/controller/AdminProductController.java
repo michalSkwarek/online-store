@@ -108,12 +108,7 @@ public class AdminProductController {
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Product product) {
 
-        System.out.println("dupa + " + product.getProductSpecifications());
-        ProductSpecifications productSpecifications = productSpecificationsService.read(product.getProductSpecifications().getId());
-        System.out.println("dupa + " + productSpecifications);
-//        product.setProductSpecifications(productSpecifications);
-        System.out.println("dupa + " + product.getProductSpecifications());
-        productService.update(product);
+        productService.updateProduct(product);
         return "redirect:/admin/products/list";
     }
 

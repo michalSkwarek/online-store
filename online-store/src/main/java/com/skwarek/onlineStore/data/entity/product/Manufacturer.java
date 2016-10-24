@@ -28,8 +28,8 @@ public class Manufacturer implements Serializable {
     @Column(name = "website")
     private String website;
 
-    @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
-    private Set<Product> products;
+//    @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
+//    private Set<Product> products;
 
     public Manufacturer() { }
 
@@ -65,13 +65,13 @@ public class Manufacturer implements Serializable {
         this.website = website;
     }
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
+//    public Set<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(Set<Product> products) {
+//        this.products = products;
+//    }
 
     @Override
     public boolean equals(Object o) {

@@ -24,4 +24,6 @@ public interface ProductService extends GenericService<Product, Long> {
     List getSortedProductsOrderByUnitPriceDescending();
 
     List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
+
+    void updateProduct(Product product);
 }

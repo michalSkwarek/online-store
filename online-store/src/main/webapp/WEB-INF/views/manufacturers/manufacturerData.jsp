@@ -48,8 +48,6 @@
                     <label>Logo: </label>
                     <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" style="width: 10%" />
                     <form:hidden path="logo.id" />
-                    <form:hidden path="logo.fileName" />
-                    <form:hidden path="logo.data" />
                 </li>
             </c:if>
 

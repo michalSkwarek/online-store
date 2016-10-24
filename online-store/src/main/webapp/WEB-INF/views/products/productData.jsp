@@ -67,8 +67,6 @@
                     <label>Image: </label>
                     <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                     <form:hidden path="productImage.id" />
-                    <form:hidden path="productImage.fileName" />
-                    <form:hidden path="productImage.data" />
                 </li>
             </c:if>
 
