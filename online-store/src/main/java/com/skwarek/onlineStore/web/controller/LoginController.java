@@ -30,7 +30,7 @@ public class LoginController {
         return "/security/login";
     }
 
-    @RequestMapping(value = { "/hello" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloPage() {
 
         return "/security/hello";

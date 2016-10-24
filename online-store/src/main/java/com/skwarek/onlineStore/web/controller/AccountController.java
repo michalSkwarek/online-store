@@ -15,13 +15,13 @@ import java.util.Date;
  * Created by Michal on 04.10.2016.
  */
 @Controller
-@RequestMapping(value = { "/accounts" })
+@RequestMapping(value = "/accounts")
 public class AccountController {
 
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping("/{username}")
+    @RequestMapping(value = "/{username}")
     public String getAccountByUsername(@PathVariable String username, Model model) {
 
         Account account = accountService.getAccountByUsername(username);
@@ -29,14 +29,14 @@ public class AccountController {
         return "accounts/accountData";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createAccount(Model model) {
 
         model.addAttribute("account", new Account());
         return "accounts/accountData";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addAccount(Account account) {
 
         account.setEnabled(true);
@@ -46,7 +46,7 @@ public class AccountController {
         return "redirect:/customers/new";
     }
 
-    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
     public String getAccount(@PathVariable String username, Model model) {
 
         Account account = accountService.getAccountByUsername(username);
@@ -54,7 +54,7 @@ public class AccountController {
         return "accounts/accountData";
     }
 
-    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.POST)
+    @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
     public String updateAccount(@PathVariable String username, Account account) {
 
         Account oldAccount = accountService.getAccountByUsername(username);

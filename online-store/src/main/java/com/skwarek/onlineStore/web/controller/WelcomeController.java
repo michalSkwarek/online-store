@@ -23,10 +23,10 @@ public class WelcomeController {
     private CategoryService categoryService;
 
     @Autowired
-    private ProductService productService;
+    private ManufacturerService manufacturerService;
 
     @Autowired
-    private ManufacturerService manufacturerService;
+    private ProductService productService;
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcome(Model model) {
@@ -36,11 +36,11 @@ public class WelcomeController {
         List<Category> categories = categoryService.getAll();
         model.addAttribute("categories", categories);
 
-        List products = productService.getRandomFewProducts();
-        model.addAttribute("products", products);
-
         List<Manufacturer> manufacturers = manufacturerService.getAll();
         model.addAttribute("manufacturers", manufacturers);
+
+        List products = productService.getRandomFewProducts();
+        model.addAttribute("products", products);
 
         return "homePage";
     }

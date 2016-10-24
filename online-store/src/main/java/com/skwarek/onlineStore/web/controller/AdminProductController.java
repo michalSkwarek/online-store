@@ -24,7 +24,7 @@ import java.util.List;
  * Created by Michal on 12/10/16.
  */
 @Controller
-@RequestMapping(value = { "/admin/products" })
+@RequestMapping(value = "/admin/products")
 public class AdminProductController {
 
     @Autowired
@@ -48,7 +48,7 @@ public class AdminProductController {
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
     }
 
-    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
         List<Product> products = productService.getAll();
@@ -60,14 +60,14 @@ public class AdminProductController {
         return "products/adminList";
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
 
         model.addAttribute("product", productService.read(id));
         return "products/specifications";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createProduct(Model model) {
 
         model.addAttribute("product", new Product());
@@ -78,7 +78,7 @@ public class AdminProductController {
         return "products/productData";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload) {
 
         if (fileUpload != null) {
@@ -93,7 +93,7 @@ public class AdminProductController {
         return "redirect:/admin/products/list";
     }
 
-    @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getProduct(@PathVariable Long id, Model model) {
 
         Product product = productService.read(id);
@@ -105,14 +105,14 @@ public class AdminProductController {
         return "products/productData";
     }
 
-    @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, Product product) {
 
         productService.updateProduct(product);
         return "redirect:/admin/products/list";
     }
 
-    @RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Long id) {
 
         productService.deleteProduct(id);
@@ -121,7 +121,7 @@ public class AdminProductController {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/spec/{id}", method = RequestMethod.GET)
     public String createSpecifications(@PathVariable Long id, Model model) {
 
         String productCategory = productService.read(id).getCategory().getName();
@@ -133,7 +133,7 @@ public class AdminProductController {
         return "products/addSpecifications";
     }
 
-    @RequestMapping(value = {"/spec/{id}"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/spec/{id}", method = RequestMethod.POST)
     public String addSpecificationsToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
         productSpecificationsService.createSpecifications(specifications);
@@ -143,7 +143,7 @@ public class AdminProductController {
         return "redirect:/admin/products/list";
     }
 
-    @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.GET)
     public String getSpecifications(@PathVariable Long id, Model model) {
 
         ProductSpecifications specifications = productSpecificationsService.read(id);
@@ -151,7 +151,7 @@ public class AdminProductController {
         return "products/addSpecifications";
     }
 
-    @RequestMapping(value = {"/spec/edit/{id}"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.POST)
     public String updateSpecifications(@PathVariable Long id, ProductSpecifications specifications) {
 
         productSpecificationsService.updateSpecifications(specifications);

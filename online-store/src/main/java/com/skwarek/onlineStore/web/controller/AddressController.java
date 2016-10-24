@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by Michal on 23.09.2016.
  */
 @Controller
-@RequestMapping(value = { "/addresses" })
+@RequestMapping(value = "/addresses")
 public class AddressController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping("/{username}")
+    @RequestMapping(value = "/{username}")
     public String getAddressByUsername(@PathVariable String username, Model model) {
 
         Address address = addressService.getAddressByUsername(username);
@@ -32,14 +32,14 @@ public class AddressController {
         return "addresses/addressData";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createAddress(Model model) {
 
         model.addAttribute("address", new Address());
         return "addresses/addressData";
     }
 
-    @RequestMapping(value = {"/new"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addAddress(Address address) {
 
         Customer customer = customerService.getLastCustomer();
@@ -49,7 +49,7 @@ public class AddressController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
     public String getAddress(@PathVariable String username, Model model) {
 
         Address address = addressService.getAddressByUsername(username);
@@ -57,7 +57,7 @@ public class AddressController {
         return "addresses/addressData";
     }
 
-    @RequestMapping(value = { "/edit/{username}" }, method = RequestMethod.POST)
+    @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
     public String updateAddress(@PathVariable String username, Address address) {
 
         Address oldAddress = addressService.getAddressByUsername(username);

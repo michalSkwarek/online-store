@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Michal on 14/10/16.
  */
 @Controller
-@RequestMapping(value = { "/users" })
+@RequestMapping(value = "/users")
 public class UserDataController {
 
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping("/{username}")
+    @RequestMapping(value = "/{username}")
     public String getUserData(Model model, @PathVariable String username) {
 
         model.addAttribute("account", accountService.getAccountByUsername(username));
