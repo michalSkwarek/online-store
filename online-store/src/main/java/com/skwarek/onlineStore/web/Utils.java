@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 public class Utils {
 
     public static CartModel getCartModelInSession(HttpServletRequest request) {
-
         CartModel cartModel = (CartModel) request.getSession().getAttribute("cart");
-
         if (cartModel == null) {
             cartModel = new CartModel();
             request.getSession().setAttribute("cart", cartModel);

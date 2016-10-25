@@ -20,7 +20,7 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
     private CustomerDao customerDao;
 
     @Override
-    public void createAddress(Address address) {
+    public void createBillingAddress(Address address) {
         setCityToAddress(address);
         Customer customer = customerDao.getLastCustomer();
         customer.setBillingAddress(address);
@@ -28,9 +28,15 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
     }
 
     @Override
-    public void updateAddress(Address address) {
+    public void updateBillingAddress(Address address) {
         setCityToAddress(address);
         update(address);
+    }
+
+    @Override
+    public void createShippingAddress(Address address) {
+        setCityToAddress(address);
+        create(address);
     }
 
     private void setCityToAddress(Address address) {

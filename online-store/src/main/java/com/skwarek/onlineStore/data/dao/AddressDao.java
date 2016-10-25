@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface AddressDao extends GenericDao<Address, Long> {
 
-    void createAddress(Address address);
+    void createBillingAddress(Address address);
 
-    void updateAddress(Address address);
+    void updateBillingAddress(Address address);
+
+    void createShippingAddress(Address address);
 }

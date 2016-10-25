@@ -8,4 +8,5 @@ import com.skwarek.onlineStore.data.entity.order.Order;
  */
 public interface OrderDao extends GenericDao<Order, Long> {
 
+    void createOrder(Order order);
 }

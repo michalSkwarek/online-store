@@ -20,12 +20,17 @@ public class AddressServiceImpl extends GenericServiceImpl<Address, Long> implem
     private AddressDao addressDao;
 
     @Override
-    public void createAddress(Address address) {
-        addressDao.createAddress(address);
+    public void createBillingAddress(Address address) {
+        addressDao.createBillingAddress(address);
     }
 
     @Override
-    public void updateAddress(Address address) {
-        addressDao.updateAddress(address);
+    public void updateBillingAddress(Address address) {
+        addressDao.updateBillingAddress(address);
+    }
+
+    @Override
+    public void createShippingAddress(Address address) {
+        addressDao.createShippingAddress(address);
     }
 }

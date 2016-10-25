@@ -9,8 +9,6 @@ import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsF
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editor.CategoryEditor;
 import com.skwarek.onlineStore.web.editor.ManufacturerEditor;
-import com.skwarek.onlineStore.web.editor.ImageEditor;
-import com.skwarek.onlineStore.web.editor.ProductSpecificationsEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

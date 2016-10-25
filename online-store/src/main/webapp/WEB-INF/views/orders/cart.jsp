@@ -76,18 +76,20 @@
 
     <h1>Total: ${cart.cartTotalPrice} PLN</h1>
 
-    <div>
-        <security:authorize access="!hasRole('ROLE_USER')">
-            <ul>
-                <li><a href="<spring:url value="/login" />">Enter shipping address (You must login first)</a></li>
-            </ul>
-        </security:authorize>
-        <security:authorize access="hasRole('ROLE_USER')">
-            <ul>
-                <li><a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/address" />">Enter shipping address</a></li>
-            </ul>
-        </security:authorize>
-    </div>
+    <c:if test="${cart.cartTotalPrice != 0}">
+        <div>
+            <security:authorize access="!hasRole('ROLE_USER')">
+                <ul>
+                    <li><a href="<spring:url value="/login" />">Enter shipping address (You must login first)</a></li>
+                </ul>
+            </security:authorize>
+            <security:authorize access="hasRole('ROLE_USER')">
+                <ul>
+                    <li><a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/address" />">Enter shipping address</a></li>
+                </ul>
+            </security:authorize>
+        </div>
+    </c:if>
 
     <jsp:include page="../_footer.jsp" />
 

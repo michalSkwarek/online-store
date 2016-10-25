@@ -41,7 +41,7 @@ public class AddressController {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addAddress(Address address) {
 
-        addressService.createAddress(address);
+        addressService.createBillingAddress(address);
         return "redirect:/welcome";
     }
 
@@ -56,7 +56,7 @@ public class AddressController {
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
     public String updateAddress(@PathVariable String username, Address address) {
 
-        addressService.updateAddress(address);
+        addressService.updateBillingAddress(address);
         return "redirect:/users/" + username;
     }
 }

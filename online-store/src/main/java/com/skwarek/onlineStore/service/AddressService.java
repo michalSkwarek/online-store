@@ -8,7 +8,9 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  */
 public interface AddressService extends GenericService<Address, Long> {
 
-    void createAddress(Address address);
+    void createBillingAddress(Address address);
 
-    void updateAddress(Address address);
+    void updateBillingAddress(Address address);
+
+    void createShippingAddress(Address address);
 }
