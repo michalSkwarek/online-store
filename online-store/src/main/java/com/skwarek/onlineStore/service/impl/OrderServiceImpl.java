@@ -15,6 +15,8 @@ import com.skwarek.onlineStore.service.OrderService;
 import com.skwarek.onlineStore.service.generic.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,6 +25,7 @@ import java.util.Date;
  * Created by Michal on 20/10/2016.
  */
 @Service("orderService")
+@Transactional(propagation = Propagation.REQUIRED)
 public class OrderServiceImpl extends GenericServiceImpl<Order, Long> implements OrderService {
 
     @Autowired
