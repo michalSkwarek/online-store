@@ -51,10 +51,7 @@ public class AdminProductController {
 
         List<Product> products = productService.getAll();
         model.addAttribute("products", products);
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
+        addAllCategoriesAndManufacturersToModel(model);
         return "products/adminList";
     }
 
@@ -69,10 +66,7 @@ public class AdminProductController {
     public String createProduct(Model model) {
 
         model.addAttribute("product", new Product());
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
+        addAllCategoriesAndManufacturersToModel(model);
         return "products/productData";
     }
 
@@ -96,10 +90,7 @@ public class AdminProductController {
 
         Product product = productService.read(id);
         model.addAttribute("product", product);
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
+        addAllCategoriesAndManufacturersToModel(model);
         return "products/productData";
     }
 
@@ -115,6 +106,13 @@ public class AdminProductController {
 
         productService.deleteProduct(id);
         return "redirect:/admin/products/list";
+    }
+
+    private void addAllCategoriesAndManufacturersToModel(Model model) {
+        List<Category> categoriesAll = categoryService.getAll();
+        model.addAttribute("categories", categoriesAll);
+        List<Manufacturer> manufacturersAll = manufacturerService.getAll();
+        model.addAttribute("manufacturers", manufacturersAll);
     }
 
 //----------------------------------------------------------------------------------------------------------------------
