@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Michal on 20/10/2016.
@@ -36,6 +37,12 @@ public class OrderServiceImpl extends GenericServiceImpl<Order, Long> implements
 
     @Autowired
     private AddressService addressService;
+
+    @Override
+    @Transactional(readOnly = true)
+    public List getCustomerOrders(Customer customer) {
+        return orderDao.getCustomerOrders(customer);
+    }
 
     @Override
     public void addProductToCart(Product product, CartModel cart) {
