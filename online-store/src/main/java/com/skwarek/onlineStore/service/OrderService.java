@@ -7,10 +7,14 @@ import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.data.model.order.CartModel;
 import com.skwarek.onlineStore.service.generic.GenericService;
 
+import java.util.List;
+
 /**
  * Created by Michal on 20/10/2016.
  */
 public interface OrderService extends GenericService<Order, Long> {
+
+    List getCustomerOrders(Customer customer);
 
     void addProductToCart(Product product, CartModel cart);
 

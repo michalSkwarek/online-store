@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
+import com.skwarek.onlineStore.data.entity.order.Order;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Michal on 18/10/2016.
@@ -32,6 +34,15 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @RequestMapping(value = "/{username}/list")
+    public String showOrders(@PathVariable String username, Model model) {
+
+        Customer customer = accountService.getAccountByUsername(username).getCustomer();
+        List orders = orderService.getCustomerOrders(customer);
+        model.addAttribute("orders", orders);
+        return "orders/list";
+    }
 
     @RequestMapping(value = "/addProduct")
     public String addProductToCart(HttpServletRequest request, @RequestParam Long id, Model model) {

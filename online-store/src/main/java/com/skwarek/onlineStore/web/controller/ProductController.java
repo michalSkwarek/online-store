@@ -20,7 +20,7 @@ import java.util.List;
  * Created by Michal on 26.09.2016.
  */
 @Controller
-@RequestMapping(value = { "/products" })
+@RequestMapping(value = "/products")
 public class ProductController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class ProductController {
     @Autowired
     private ManufacturerService manufacturerService;
 
-    @RequestMapping(value = {"/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
         List<Product> products = productService.getAll();
@@ -44,7 +44,7 @@ public class ProductController {
         return "products/list";
     }
 
-    @RequestMapping(value = {"/list"})
+    @RequestMapping(value = "/list")
     public String showProducts(Model model, @RequestParam(value = "category") String[] categories,
                                @RequestParam(value = "manufacturer") String[] manufacturers,
                                @RequestParam(value = "fromPriceRange") String low,
@@ -60,13 +60,13 @@ public class ProductController {
     }
 
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
         model.addAttribute("product", productService.read(id));
         return "products/specifications";
     }
 
-    @RequestMapping(value = {"/category/{category}"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/category/{category}", method = RequestMethod.GET)
     public String showProductsByCategory(Model model, @PathVariable String category) {
 
         List products = productService.getProductsByCategory(category);
@@ -74,7 +74,7 @@ public class ProductController {
         return "/products/list";
     }
 
-    @RequestMapping(value = {"/manufacturer/{manufacturer}"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/manufacturer/{manufacturer}", method = RequestMethod.GET)
     public String showProductsByManufacturer(Model model, @PathVariable String manufacturer) {
 
         List products = productService.getProductsByManufacturer(manufacturer);
@@ -82,7 +82,7 @@ public class ProductController {
         return "/products/list";
     }
 
-    @RequestMapping(value = {"/list/price/ascending"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/list/price/ascending", method = RequestMethod.GET)
     public String showSortedProductsOrderByUnitPriceAscending(Model model) {
 
         List products = productService.getSortedProductsOrderByUnitPriceAscending();
@@ -90,7 +90,7 @@ public class ProductController {
         return "/products/list";
     }
 
-    @RequestMapping(value = {"/list/price/descending"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/list/price/descending", method = RequestMethod.GET)
     public String showSortedProductsOrderByUnitPriceDescending(Model model) {
 
         List products = productService.getSortedProductsOrderByUnitPriceDescending();
@@ -98,7 +98,7 @@ public class ProductController {
         return "/products/list";
     }
 
-    @RequestMapping(value = {"/category/select"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/category/select", method = RequestMethod.GET)
     public String showProductsByCategoryGet(Model model) {
 
         List<Category> categories = categoryService.getAll();
@@ -106,7 +106,7 @@ public class ProductController {
         return "/products/productsByCategory";
     }
 
-    @RequestMapping(value = {"/category/select"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/category/select", method = RequestMethod.POST)
     public String showProductsByCategoryPost(@RequestParam String category, Model model) {
 
         List products = productService.getProductsByCategory(category);
@@ -117,7 +117,7 @@ public class ProductController {
         return "/products/list";
     }
 
-    @RequestMapping(value = {"/manufacturer/select"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/manufacturer/select", method = RequestMethod.GET)
     public String showProductsByManufacturerGet(Model model) {
 
         List<Manufacturer> manufacturers = manufacturerService.getAll();
@@ -125,7 +125,7 @@ public class ProductController {
         return "/products/productsByManufacturer";
     }
 
-    @RequestMapping(value = {"/manufacturer/select"}, method = RequestMethod.POST)
+    @RequestMapping(value = "/manufacturer/select", method = RequestMethod.POST)
     public String showProductsByManufacturerPost(@RequestParam String manufacturer, Model model) {
 
         List products = productService.getProductsByManufacturer(manufacturer);
