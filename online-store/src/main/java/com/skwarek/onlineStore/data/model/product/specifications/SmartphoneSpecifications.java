@@ -9,15 +9,15 @@ import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 public class SmartphoneSpecifications extends ProductSpecifications {
 
     public SmartphoneSpecifications() {
-        setCpu(new CPU());
+//        setCpu(new CPU());
         setGpu(new GPU());
-        setRam(new RAM());
-        setStorage(new Storage());
-        setDisplay(new Display());
-        setBattery(new Battery());
-        setOs(new OS());
-        setCamera(new Camera());
-        setDimensions(new Dimensions());
-        setWeight(new Weight());
+//        setRam(new RAM());
+//        setStorage(new Storage());
+//        setDisplay(new Display());
+//        setBattery(new Battery());
+//        setOs(new OS());
+//        setCamera(new Camera());
+//        setDimensions(new Dimensions());
+//        setWeight(new Weight());
     }
 }

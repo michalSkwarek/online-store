@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "cpu")
 public class CPU implements Serializable {
 
-    private static final long serialVersionUID = 4093259206949633786L;
+    private static final long serialVersionUID = 5680465249008221885L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +31,6 @@ public class CPU implements Serializable {
 
     @Column(name = "high_clock_speed")
     private Double highClockSpeed;
-
-    @Column(name = "cache")
-    private Integer cache;
 
     @OneToMany(mappedBy = "cpu", cascade = CascadeType.ALL)
     private List<ProductSpecifications> specifications;
@@ -80,14 +77,6 @@ public class CPU implements Serializable {
         this.highClockSpeed = highClockSpeed;
     }
 
-    public Integer getCache() {
-        return cache;
-    }
-
-    public void setCache(Integer cache) {
-        this.cache = cache;
-    }
-
     public List<ProductSpecifications> getSpecifications() {
         return specifications;
     }
@@ -103,32 +92,26 @@ public class CPU implements Serializable {
 
         CPU cpu = (CPU) o;
 
-        if (id != null ? !id.equals(cpu.id) : cpu.id != null) return false;
         if (model != null ? !model.equals(cpu.model) : cpu.model != null) return false;
         if (numberOfCores != null ? !numberOfCores.equals(cpu.numberOfCores) : cpu.numberOfCores != null) return false;
         if (lowClockSpeed != null ? !lowClockSpeed.equals(cpu.lowClockSpeed) : cpu.lowClockSpeed != null) return false;
-        if (highClockSpeed != null ? !highClockSpeed.equals(cpu.highClockSpeed) : cpu.highClockSpeed != null)
-            return false;
-        return cache != null ? cache.equals(cpu.cache) : cpu.cache == null;
+        return highClockSpeed != null ? highClockSpeed.equals(cpu.highClockSpeed) : cpu.highClockSpeed == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (model != null ? model.hashCode() : 0);
+        int result = model != null ? model.hashCode() : 0;
         result = 31 * result + (numberOfCores != null ? numberOfCores.hashCode() : 0);
         result = 31 * result + (lowClockSpeed != null ? lowClockSpeed.hashCode() : 0);
         result = 31 * result + (highClockSpeed != null ? highClockSpeed.hashCode() : 0);
-        result = 31 * result + (cache != null ? cache.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return model + "\n(" + numberOfCores + "-core, " +
+        return model + " (" + numberOfCores + "-core, " +
                 lowClockSpeed + " GHz" +
-                ((highClockSpeed == null) ? "" : " - " + highClockSpeed + " GHz") +
-                ((cache == null) ? "" : ", " + cache + " MB cache") + ")";
+                ((highClockSpeed == null) ? "" : " - " + highClockSpeed + " GHz") + ")";
     }
 }

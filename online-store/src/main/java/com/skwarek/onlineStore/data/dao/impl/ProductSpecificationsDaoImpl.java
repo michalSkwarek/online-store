@@ -27,7 +27,7 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
     @Override
     public void updateSpecifications(ProductSpecifications productSpecifications) {
 //        setCPUToSpecifications(productSpecifications);
-//        setGPUToSpecifications(productSpecifications);
+        setGPUToSpecifications(productSpecifications);
 //        setDisplayToSpecifications(productSpecifications);
 //        setOSToSpecifications(productSpecifications);
         update(productSpecifications);
@@ -41,20 +41,16 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
     }
 
     private CPU getCPUFromDatabase(CPU cpu) {
-        Query query = getSession().createQuery("from CPU c where c.model = :model and c.numberOfCores = :numberOfCores and " +
-                "c.lowClockSpeed = :lowClockSpeed and c.highClockSpeed = " + cpu.getHighClockSpeed() + " and c.cache = " + cpu.getCache());
-
-        query.setParameter("model", cpu.getModel());
-        query.setParameter("numberOfCores", cpu.getNumberOfCores());
-        query.setParameter("lowClockSpeed", cpu.getLowClockSpeed());
-        query.setMaxResults(1);
+        Query query = getSession().createSQLQuery("SELECT * FROM cpu AS c WHERE c.model = '" + cpu.getModel() + "'" +
+                " and c.number_of_cores = " + cpu.getNumberOfCores() +
+                " and c.low_clock_speed = " + cpu.getLowClockSpeed() +
+                " and c.high_clock_speed" + ((cpu.getHighClockSpeed() == null) ? " IS NULL" : (" = " + cpu.getHighClockSpeed())) +
+                " limit 1").addEntity(CPU.class);
         return (CPU) query.uniqueResult();
     }
 
     private void setGPUToSpecifications(ProductSpecifications productSpecifications) {
         GPU gpu = getGPUFromDatabase(productSpecifications.getGpu());
-        System.out.println("dupa " + productSpecifications.getGpu());
-        System.out.println("dupa " + gpu);
         if (gpu != null) {
             productSpecifications.setGpu(gpu);
         }
@@ -62,24 +58,11 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
 
     private GPU getGPUFromDatabase(GPU gpu) {
         Query query = getSession().createQuery("from GPU g where g.model = :model and g.memory = " + gpu.getMemory() +
-                " and g.type = " + (gpu.getType().equals("") ? null : ":type)"));
+                " and g.type = :type");
+        query.setParameter("model", gpu.getModel());
         query.setParameter("type", gpu.getType());
         query.setMaxResults(1);
         return (GPU) query.uniqueResult();
-    }
-
-    private void setMemoryTypeToSpecifications(ProductSpecifications productSpecifications) {
-        RAM ram = getMemoryTypeFromDatabase(productSpecifications.getRam());
-        if (ram != null) {
-            productSpecifications.setRam(ram);
-        }
-    }
-
-    private RAM getMemoryTypeFromDatabase(RAM ram) {
-        Query query = getSession().createQuery("from MemoryType m where m.type = :type");
-        query.setParameter("type", ram.getType());
-        query.setMaxResults(1);
-        return (RAM) query.uniqueResult();
     }
 
     private void setDisplayToSpecifications(ProductSpecifications productSpecifications) {

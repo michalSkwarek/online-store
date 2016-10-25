@@ -345,12 +345,12 @@ INSERT INTO gpu (id, model, memory, memory_type) VALUES (27, 'NVIDIA GeForce GTX
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (28, 'NVIDIA GeForce GTX 980M', 4, 'GDDR5');
 
 -- add few cpu
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (30, 'Intel Core i7-4770HQ', 4, 2.2, 3.4, 6);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (31, 'Intel Core i5-5250U', 2, 1.6, 2.7, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (32, 'Intel Core i5-6200U', 2, 2.3, 2.8, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (33, 'Intel Core i7-6700HQ', 4, 2.6, 3.5, 6);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (34, 'Intel Xeon E3-1505M v5', 4, 2.8, 3.7, 8);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (35, 'Intel Core i7-6820HK', 4, 2.7, 3.6, 8);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (30, 'Intel Core i7-4770HQ', 4, 2.2, 3.4);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (31, 'Intel Core i5-5250U', 2, 1.6, 2.7);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (32, 'Intel Core i5-6200U', 2, 2.3, 2.8);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (33, 'Intel Core i7-6700HQ', 4, 2.6, 3.5);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (34, 'Intel Xeon E3-1505M v5', 4, 2.8, 3.7);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (35, 'Intel Core i7-6820HK', 4, 2.7, 3.6);
 
 -- add few specifications
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (41, 30, 22, 16, 'DDR3', 256, 21, 6960, 'Li-ion', 11, 1.0, 247, 359, 18, 2.05);
@@ -402,11 +402,11 @@ INSERT INTO gpu (id, model, memory, memory_type) VALUES (30, 'AMD Radeon R9 370'
 INSERT INTO gpu (id, model) VALUES (31, 'Intel HD Graphics 530');
 
 -- add few cpu
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (36, 'Intel Pentium G3250', 2, 3.2, NULL, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (37, 'Intel Core i3-4170', 2, 3.7, NULL, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (38, 'Intel Core i7-6700', 4, 3.4, 4.0, 8);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (39, 'Intel Core i5-6400', 4, 2.7, 3.3, 6);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (40, 'Intel Core i3-6100', 2, 3.7, NULL, 3);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (36, 'Intel Pentium G3250', 2, 3.2, NULL);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (37, 'Intel Core i3-4170', 2, 3.7, NULL);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (38, 'Intel Core i7-6700', 4, 3.4, 4.0);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (39, 'Intel Core i5-6400', 4, 2.7, 3.3);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (40, 'Intel Core i3-6100', 2, 3.7, NULL);
 
 -- add few specifications
 INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (51, 36, 12, 4, 'DDR3', 512, 180, 13, 355, 165, 359, 7);

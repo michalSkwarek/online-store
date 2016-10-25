@@ -63,7 +63,7 @@ public class GPU implements Serializable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = (type.equals("") ? null : type);
     }
 
     public List<ProductSpecifications> getSpecifications() {

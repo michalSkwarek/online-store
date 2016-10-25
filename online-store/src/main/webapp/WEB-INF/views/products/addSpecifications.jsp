@@ -37,8 +37,6 @@
                     <form:input path="cpu.lowClockSpeed" id="lowClockSpeed"/>
                     <label for="highClockSpeed">High clock speed: </label>
                     <form:input path="cpu.highClockSpeed" id="highClockSpeed"/>
-                    <label for="cache">Cache: </label>
-                    <form:input path="cpu.cache" id="cache"/>
                 </li>
             </c:if>
 
