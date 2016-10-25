@@ -12,7 +12,7 @@
     <jsp:include page="../_header.jsp" />
     <jsp:include page="../_menu.jsp" />
 
-    <form:form>
+    <form:form method="post">
 
         <div>
             <p>Select categories:</p>
@@ -31,11 +31,11 @@
 
             <p>Select price range:</p>
             <label>
-                Od: <input type="text" name="fromPriceRange">
-                Do: <input type="text" name="toPriceRange">
+                From: <input type="text" name="fromPriceRange">
+                To: <input type="text" name="toPriceRange">
             </label>
 
-            <p>Select order:</p>
+            <p>Select price order:</p>
             <label>
                 <input type="radio" name="priceOrder" value="asc" checked>Ascending
                 <input type="radio" name="priceOrder" value="desc">Descending

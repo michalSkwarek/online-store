@@ -69,20 +69,8 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Override
-    public List getSortedProductsOrderByUnitPriceAscending() {
-        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product p order by p.unitPrice asc");
-        return listOfProductsByCategoryQuery.list();
-    }
-
-    @Override
-    public List getSortedProductsOrderByUnitPriceDescending() {
-        Query listOfProductsByCategoryQuery = getSession().createQuery("from Product p order by p.unitPrice desc");
-        return listOfProductsByCategoryQuery.list();
-    }
-
-    @Override
     @SuppressWarnings("unchecked")
-    public List<Product> getProductsByCategoriesFilter(String[] categories) {
+    public List getProductsByCategoriesFilter(String[] categories) {
         List<Product> productsByCategories = new ArrayList<>();
         for (String category : categories) {
             productsByCategories.addAll(this.getProductsByCategory(category));
@@ -92,7 +80,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Product> getProductsByManufacturersFilter(String[] manufacturers) {
+    public List getProductsByManufacturersFilter(String[] manufacturers) {
         List<Product> productsByManufacturers = new ArrayList<>();
         for (String manufacturer : manufacturers) {
             productsByManufacturers.addAll(this.getProductsByManufacturer(manufacturer));
@@ -101,43 +89,55 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Override
-    public List getProductsByPriceFilter(String low, String high) {
-        if (!low.equalsIgnoreCase("") && !high.equalsIgnoreCase("")) {
-            BigDecimal lowPrice = BigDecimal.valueOf(Double.parseDouble(low));
-            BigDecimal highPrice = BigDecimal.valueOf(Double.parseDouble(high));
-            Query listOfProductsQuery = getSession().createQuery("from Product p where p.unitPrice > :lowPrice and p.unitPrice < :highPrice");
-            listOfProductsQuery.setBigDecimal("lowPrice", lowPrice);
-            listOfProductsQuery.setBigDecimal("highPrice", highPrice);
-            return listOfProductsQuery.list();
+    public List getProductsByPriceFilter(String low, String high, String priceOrder) {
+        if (!low.equals("") && !high.equals("")) {
+            return getProductsByPriceFilterWithLowAndHighParams(low, high, priceOrder);
+        } else if (!low.equals("") && high.equals("")) {
+            return getProductsByPriceFilterWithLowParam(low, priceOrder);
+        } else if (low.equals("") && !high.equals("")) {
+            return  getProductsByPriceFilterWithHighParam(high, priceOrder);
+        } else {
+            return getProductsByPriceFilterWithoutLowAndHighParams(priceOrder);
         }
-        return null;
     }
 
-    @Override
-    public List getSortedProducts(String priceOrder) {
-        Query sortedListOfProductsQuery;
-        if (priceOrder.equalsIgnoreCase("asc")) {
-            sortedListOfProductsQuery = getSession().createQuery("from Product p order by p.unitPrice asc");
-        } else {
-            sortedListOfProductsQuery = getSession().createQuery("from Product p order by p.unitPrice desc");
-        }
-        return sortedListOfProductsQuery.list();
+    private List getProductsByPriceFilterWithLowAndHighParams(String low, String high, String priceOrder) {
+        BigDecimal lowPrice = BigDecimal.valueOf(Double.parseDouble(low));
+        BigDecimal highPrice = BigDecimal.valueOf(Double.parseDouble(high));
+        Query listOfProductsQuery = getSession().createQuery("from Product p where p.unitPrice > :lowPrice " +
+                "and p.unitPrice < :highPrice order by p.unitPrice " + priceOrder);
+        listOfProductsQuery.setBigDecimal("lowPrice", lowPrice);
+        listOfProductsQuery.setBigDecimal("highPrice", highPrice);
+        return listOfProductsQuery.list();
+    }
+
+    private List getProductsByPriceFilterWithLowParam(String low, String priceOrder) {
+        BigDecimal lowPrice = BigDecimal.valueOf(Double.parseDouble(low));
+        Query listOfProductsQuery = getSession().createQuery("from Product p where p.unitPrice > :lowPrice " +
+                "order by p.unitPrice " + priceOrder);
+        listOfProductsQuery.setBigDecimal("lowPrice", lowPrice);
+        return listOfProductsQuery.list();
+    }
+
+    private List getProductsByPriceFilterWithHighParam(String high, String priceOrder) {
+        BigDecimal highPrice = BigDecimal.valueOf(Double.parseDouble(high));
+        Query listOfProductsQuery = getSession().createQuery("from Product p where p.unitPrice < :highPrice " +
+                "order by p.unitPrice " + priceOrder);
+        listOfProductsQuery.setBigDecimal("highPrice", highPrice);
+        return listOfProductsQuery.list();
+    }
+
+    private List getProductsByPriceFilterWithoutLowAndHighParams(String priceOrder) {
+        Query listOfProductsQuery = getSession().createQuery("from Product p order by p.unitPrice " + priceOrder);
+        return listOfProductsQuery.list();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
-        List<Product> productsByFilter = this.getProductsByCategoriesFilter(categories);
-        productsByFilter.retainAll(this.getProductsByManufacturersFilter(manufacturers));
-        List productsByPriceFilter = this.getProductsByPriceFilter(low, high);
-        if (productsByPriceFilter != null) {
-            productsByFilter.retainAll(productsByPriceFilter);
-        }
-
-        List<Product> sortedListOfProducts = this.getSortedProducts(priceOrder);
-        sortedListOfProducts.retainAll(productsByFilter);
-
-        return sortedListOfProducts;
+        List<Product> listOfProducts = this.getProductsByPriceFilter(low, high, priceOrder);
+        listOfProducts.retainAll(this.getProductsByCategoriesFilter(categories));
+        listOfProducts.retainAll(this.getProductsByManufacturersFilter(manufacturers));
+        return listOfProducts;
     }
-
 }

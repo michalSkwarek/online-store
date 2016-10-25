@@ -15,28 +15,17 @@ public interface ProductDao extends GenericDao<Product, Long> {
 
     void updateProduct(Product product);
 
-
-
-
-
-
     List getRandomFewProducts();
 
     List getProductsByCategory(String category);
 
     List getProductsByManufacturer(String manufacturer);
 
-    List getSortedProductsOrderByUnitPriceAscending();
+    List getProductsByCategoriesFilter(String[] categories);
 
-    List getSortedProductsOrderByUnitPriceDescending();
+    List getProductsByManufacturersFilter(String[] manufacturers);
 
-    List<Product> getProductsByCategoriesFilter(String[] categories);
-
-    List<Product> getProductsByManufacturersFilter(String[] manufacturers);
-
-    List getProductsByPriceFilter(String low, String high);
-
-    List getSortedProducts(String priceOrder);
+    List getProductsByPriceFilter(String low, String high, String priceOrder);
 
     List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
 }

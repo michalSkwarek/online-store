@@ -46,28 +46,7 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
 
     @Override
     @Transactional(readOnly = true)
-    public List getProductsByManufacturer(String manufacturer) {
-        return productDao.getProductsByManufacturer(manufacturer);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List getSortedProductsOrderByUnitPriceAscending() {
-        return productDao.getSortedProductsOrderByUnitPriceAscending();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public List getSortedProductsOrderByUnitPriceDescending() {
-        return productDao.getSortedProductsOrderByUnitPriceDescending();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
         return productDao.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
     }
-
-
-
 }
