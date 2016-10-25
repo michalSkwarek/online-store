@@ -7,4 +7,5 @@ import com.skwarek.onlineStore.data.entity.product.UploadFile;
  * Created by Michal on 03.10.2016.
  */
 public interface UploadFileDao extends GenericDao<UploadFile, Long> {
+
 }
