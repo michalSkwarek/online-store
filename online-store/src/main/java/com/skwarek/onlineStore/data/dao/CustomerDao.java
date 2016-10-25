@@ -8,7 +8,9 @@ import com.skwarek.onlineStore.data.entity.user.Customer;
  */
 public interface CustomerDao extends GenericDao<Customer, Long> {
 
-    Customer getCustomerByUsername(String username);
-
     Customer getLastCustomer();
+
+    void createCustomer(Customer customer);
+
+    void updateCustomer(Customer customer);
 }

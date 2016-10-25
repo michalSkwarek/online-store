@@ -8,7 +8,7 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  */
 public interface CustomerService extends GenericService<Customer, Long> {
 
-    Customer getCustomerByUsername(String username);
+    void createCustomer(Customer customer);
 
-    Customer getLastCustomer();
+    void updateCustomer(Customer customer);
 }

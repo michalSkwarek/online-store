@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "city")
 public class City implements Serializable {
 
-    private static final long serialVersionUID = 3092911497439684126L;
+    private static final long serialVersionUID = 5069818134083630076L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +20,6 @@ public class City implements Serializable {
 
     @Column(name = "name")
     private String name;
-
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    private Set<Address> addresses;
 
     public City() { }
 
@@ -42,14 +39,6 @@ public class City implements Serializable {
         this.name = name;
     }
 
-    public Set<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,18 +46,13 @@ public class City implements Serializable {
 
         City city = (City) o;
 
-        if (id != null ? !id.equals(city.id) : city.id != null) return false;
-        if (name != null ? !name.equals(city.name) : city.name != null) return false;
-        return addresses != null ? addresses.equals(city.addresses) : city.addresses == null;
+        return name != null ? name.equals(city.name) : city.name == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (addresses != null ? addresses.hashCode() : 0);
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 
     @Override

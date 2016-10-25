@@ -20,8 +20,7 @@ public class Order implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cart_id")
+    @Embedded
     private Cart cart;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -84,7 +83,6 @@ public class Order implements Serializable {
 
         Order order = (Order) o;
 
-        if (id != null ? !id.equals(order.id) : order.id != null) return false;
         if (cart != null ? !cart.equals(order.cart) : order.cart != null) return false;
         if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
         if (shippingDetail != null ? !shippingDetail.equals(order.shippingDetail) : order.shippingDetail != null)
@@ -95,8 +93,7 @@ public class Order implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (cart != null ? cart.hashCode() : 0);
+        int result = cart != null ? cart.hashCode() : 0;
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
         result = 31 * result + (shippingDetail != null ? shippingDetail.hashCode() : 0);
         result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);

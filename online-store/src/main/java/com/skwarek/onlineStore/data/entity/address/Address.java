@@ -35,9 +35,6 @@ public class Address implements Serializable {
     @JoinColumn(name = "city_id")
     private City city;
 
-    @OneToOne(mappedBy = "billingAddress", cascade = CascadeType.ALL)
-    private Customer customer;
-
     public Address() { }
 
     public Long getId() {
@@ -69,7 +66,7 @@ public class Address implements Serializable {
     }
 
     public void setDoorNumber(String doorNumber) {
-        this.doorNumber = doorNumber;
+        this.doorNumber = (doorNumber.equals("") ? null : doorNumber);
     }
 
     public String getZipCode() {
@@ -88,14 +85,6 @@ public class Address implements Serializable {
         this.city = city;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -103,7 +92,6 @@ public class Address implements Serializable {
 
         Address address = (Address) o;
 
-        if (id != null ? !id.equals(address.id) : address.id != null) return false;
         if (street != null ? !street.equals(address.street) : address.street != null) return false;
         if (streetNumber != null ? !streetNumber.equals(address.streetNumber) : address.streetNumber != null)
             return false;
@@ -115,8 +103,7 @@ public class Address implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (street != null ? street.hashCode() : 0);
+        int result = street != null ? street.hashCode() : 0;
         result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
         result = 31 * result + (doorNumber != null ? doorNumber.hashCode() : 0);
         result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);

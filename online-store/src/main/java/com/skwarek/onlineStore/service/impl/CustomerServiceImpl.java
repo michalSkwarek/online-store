@@ -6,23 +6,27 @@ import com.skwarek.onlineStore.service.CustomerService;
 import com.skwarek.onlineStore.service.generic.GenericServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Michal on 13/10/16.
  */
 @Service("customerService")
+@Transactional(propagation = Propagation.REQUIRED)
 public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long> implements CustomerService {
 
     @Autowired
     private CustomerDao customerDao;
 
     @Override
-    public Customer getCustomerByUsername(String username) {
-        return customerDao.getCustomerByUsername(username);
+    public void createCustomer(Customer customer) {
+        customer.setNumberOfOrders(0);
+        customerDao.createCustomer(customer);
     }
 
     @Override
-    public Customer getLastCustomer() {
-        return customerDao.getLastCustomer();
+    public void updateCustomer(Customer customer) {
+        customerDao.updateCustomer(customer);
     }
 }

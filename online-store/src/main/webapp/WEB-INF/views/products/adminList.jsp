@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,27 +8,35 @@
 </head>
 <body>
 
-<div>
-    <h1>Online store</h1>
-    <ul>
-        <li><a href="<spring:url value="/welcome" />">Home page</a></li>
-        <li><a href="<spring:url value="/products/list" />">Products</a></li>
-        <li><a href="<spring:url value="/login" />">Sign in</a></li>
-    </ul>
-</div>
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
+
+    <div>
+        <security:authorize  access="hasRole('ROLE_ADMIN')">
+            <ul>
+                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
+                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
+            </ul>
+        </security:authorize>
+    </div>
+
+    <div>
+        <a href="<spring:url value="/admin/products/new" />">Add new product</a>
+    </div>
+
+    <h1>List of all products</h1>
 
     <div>
         <table>
             <tr>
-                <td>MODEL</td>
-                <td>UNIT_PRICE</td>
-                <td>NAME</td>
-                <td>BRAND</td>
-                <td>WEBSITE</td>
-                <td>SPECIFICATIONS</td>
-                <td>ADD SPEC</td>
-                <td>UPDATE</td>
-                <td>DELETE</td>
+                <td>Model</td>
+                <td>Unit price</td>
+                <td>Category</td>
+                <td>Brand</td>
+                <td>Specifications</td>
+                <td>Add specifications</td>
+                <td>Update</td>
+                <td>Delete</td>
             </tr>
             <c:forEach items="${products}" var="product">
                 <tr>
@@ -35,7 +44,6 @@
                     <td>${product.unitPrice}</td>
                     <td>${product.category.name}</td>
                     <td>${product.manufacturer.brand}</td>
-                    <td>${product.manufacturer.website}</td>
                     <td><a href="/products/${product.id}">Specifications</a></td>
                     <td>
                         <c:if test="${product.productSpecifications == null}">
@@ -49,9 +57,7 @@
         </table>
     </div>
 
-    <div>
-        <p>&copy; Online store 2016</p>
-    </div>
+    <jsp:include page="../_footer.jsp" />
 
 </body>
 </html>

@@ -1,12 +1,27 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Add specifications</title>
 </head>
 <body>
-    <h1>Add specifications to product</h1>
+
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
+
+    <div>
+        <security:authorize  access="hasRole('ROLE_ADMIN')">
+            <ul>
+                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
+                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
+            </ul>
+        </security:authorize>
+    </div>
+
+    <h1>Product specifications</h1>
 
     <form:form method="post" modelAttribute="spec">
 
@@ -22,6 +37,8 @@
                     <form:input path="cpu.lowClockSpeed" id="lowClockSpeed"/>
                     <label for="highClockSpeed">High clock speed: </label>
                     <form:input path="cpu.highClockSpeed" id="highClockSpeed"/>
+                    <label for="cache">Cache: </label>
+                    <form:input path="cpu.cache" id="cache"/>
                 </li>
             </c:if>
 
@@ -30,6 +47,10 @@
                     <p>GPU:</p>
                     <label for="model">Model: </label>
                     <form:input path="gpu.model" id="model"/>
+                    <label for="memory">Memory: </label>
+                    <form:input path="gpu.memory" id="memory"/>
+                    <label for="memoryType">Memory type: </label>
+                    <form:input path="gpu.type" id="memoryType"/>
                 </li>
             </c:if>
 
@@ -39,7 +60,7 @@
                     <label for="value">Value: </label>
                     <form:input path="ram.value" id="value"/>
                     <label for="type">Type: </label>
-                    <form:input path="ram.memoryType.type" id="type"/>
+                    <form:input path="ram.type" id="type"/>
                 </li>
             </c:if>
 
@@ -69,7 +90,7 @@
                     <label for="capacity">Capacity: </label>
                     <form:input path="battery.capacity" id="capacity"/>
                     <label for="type">Type: </label>
-                    <form:input path="battery.batteryType.type" id="type"/>
+                    <form:input path="battery.type" id="type"/>
                 </li>
             </c:if>
 
@@ -126,18 +147,13 @@
                 </li>
             </c:if>
 
-            <%--&lt;%&ndash;<c:if test="${spec.powerSupply != null}">&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<li>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<p>Power supply:</p>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<form:input path="powerSupply.power"/>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;</li>&ndash;%&gt;--%>
-            <%--&lt;%&ndash;</c:if>&ndash;%&gt;--%>
-
-
             <li>
                 <input type="submit" value="Save"/>
             </li>
         </ul>
     </form:form>
+
+    <jsp:include page="../_footer.jsp" />
+
 </body>
 </html>

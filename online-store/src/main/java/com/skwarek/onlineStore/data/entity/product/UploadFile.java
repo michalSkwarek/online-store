@@ -11,7 +11,7 @@ import java.util.Arrays;
 @Table(name = "files_upload")
 public class UploadFile implements Serializable {
 
-    private static final long serialVersionUID = -6730061102021221970L;
+    private static final long serialVersionUID = 4817526488251095234L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +25,6 @@ public class UploadFile implements Serializable {
     @Lob
     private byte[] data;
 
-	@OneToOne(mappedBy = "productImage", cascade = CascadeType.ALL)
-	private Product product;
-    
     public UploadFile() { }
 
     public long getId() {
@@ -54,14 +51,6 @@ public class UploadFile implements Serializable {
         this.data = data;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,7 +58,6 @@ public class UploadFile implements Serializable {
 
         UploadFile that = (UploadFile) o;
 
-        if (id != that.id) return false;
         if (fileName != null ? !fileName.equals(that.fileName) : that.fileName != null) return false;
         return Arrays.equals(data, that.data);
 
@@ -77,8 +65,7 @@ public class UploadFile implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (fileName != null ? fileName.hashCode() : 0);
+        int result = fileName != null ? fileName.hashCode() : 0;
         result = 31 * result + Arrays.hashCode(data);
         return result;
     }
@@ -87,7 +74,6 @@ public class UploadFile implements Serializable {
     public String toString() {
         return "UploadFile{" +
                 "fileName=" + fileName +
-                ", product=" + product +
                 '}';
     }
 }

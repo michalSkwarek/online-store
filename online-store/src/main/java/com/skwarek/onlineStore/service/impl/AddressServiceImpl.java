@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 /**
  * Created by Michal on 23.09.2016.
  */
@@ -22,17 +20,17 @@ public class AddressServiceImpl extends GenericServiceImpl<Address, Long> implem
     private AddressDao addressDao;
 
     @Override
-    public Address getAddressByUsername(String username) {
-        return addressDao.getAddressByUsername(username);
+    public void createBillingAddress(Address address) {
+        addressDao.createBillingAddress(address);
     }
 
     @Override
-    public void createAddress(Address address) {
-        addressDao.createAddress(address);
+    public void updateBillingAddress(Address address) {
+        addressDao.updateBillingAddress(address);
     }
 
     @Override
-    public void updateAddress(Address address) {
-        addressDao.updateAddress(address);
+    public void createShippingAddress(Address address) {
+        addressDao.createShippingAddress(address);
     }
 }

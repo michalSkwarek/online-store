@@ -1,6 +1,5 @@
 package com.skwarek.onlineStore.data.entity.product.specifications;
 
-import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "specifications")
 public class ProductSpecifications implements Serializable {
 
-    private static final long serialVersionUID = 7014373562838948235L;
+    private static final long serialVersionUID = 4870579911098474262L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,9 +58,6 @@ public class ProductSpecifications implements Serializable {
 
     @Embedded
     private Weight weight;
-
-    @OneToOne(mappedBy = "productSpecifications", cascade = CascadeType.ALL)
-    private Product product;
 
     public ProductSpecifications() { }
 
@@ -169,14 +165,6 @@ public class ProductSpecifications implements Serializable {
         this.weight = weight;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -184,7 +172,6 @@ public class ProductSpecifications implements Serializable {
 
         ProductSpecifications that = (ProductSpecifications) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (cpu != null ? !cpu.equals(that.cpu) : that.cpu != null) return false;
         if (gpu != null ? !gpu.equals(that.gpu) : that.gpu != null) return false;
         if (ram != null ? !ram.equals(that.ram) : that.ram != null) return false;
@@ -202,8 +189,7 @@ public class ProductSpecifications implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (cpu != null ? cpu.hashCode() : 0);
+        int result = cpu != null ? cpu.hashCode() : 0;
         result = 31 * result + (gpu != null ? gpu.hashCode() : 0);
         result = 31 * result + (ram != null ? ram.hashCode() : 0);
         result = 31 * result + (storage != null ? storage.hashCode() : 0);

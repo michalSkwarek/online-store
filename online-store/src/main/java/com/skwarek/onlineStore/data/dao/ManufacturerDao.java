@@ -9,4 +9,6 @@ import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 public interface ManufacturerDao extends GenericDao<Manufacturer, Long> {
 
     boolean deleteManufacturer(Long id);
+
+    void updateManufacturer(Manufacturer manufacturer);
 }

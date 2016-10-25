@@ -60,7 +60,6 @@ public class ShippingDetail implements Serializable {
 
         ShippingDetail that = (ShippingDetail) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (dateDelivery != null ? !dateDelivery.equals(that.dateDelivery) : that.dateDelivery != null) return false;
         return shippingAddress != null ? shippingAddress.equals(that.shippingAddress) : that.shippingAddress == null;
 
@@ -68,8 +67,7 @@ public class ShippingDetail implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (dateDelivery != null ? dateDelivery.hashCode() : 0);
+        int result = dateDelivery != null ? dateDelivery.hashCode() : 0;
         result = 31 * result + (shippingAddress != null ? shippingAddress.hashCode() : 0);
         return result;
     }
@@ -77,7 +75,6 @@ public class ShippingDetail implements Serializable {
     @Override
     public String toString() {
         return "ShippingDetail{" +
-                "id=" + id +
                 ", dateDelivery=" + dateDelivery +
                 ", shippingAddress=" + shippingAddress +
                 '}';

@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "manufacturer")
 public class Manufacturer implements Serializable {
 
-    private static final long serialVersionUID = 4000467198421318150L;
+    private static final long serialVersionUID = 5047475650285780050L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class Manufacturer implements Serializable {
     @Column(name = "website")
     private String website;
 
-    @OneToMany(mappedBy = "manufacturer", cascade = CascadeType.ALL)
+    @Transient
     private Set<Product> products;
 
     public Manufacturer() { }
@@ -80,21 +80,17 @@ public class Manufacturer implements Serializable {
 
         Manufacturer that = (Manufacturer) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (brand != null ? !brand.equals(that.brand) : that.brand != null) return false;
         if (logo != null ? !logo.equals(that.logo) : that.logo != null) return false;
-        if (website != null ? !website.equals(that.website) : that.website != null) return false;
-        return products != null ? products.equals(that.products) : that.products == null;
+        return website != null ? website.equals(that.website) : that.website == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (brand != null ? brand.hashCode() : 0);
+        int result = brand != null ? brand.hashCode() : 0;
         result = 31 * result + (logo != null ? logo.hashCode() : 0);
         result = 31 * result + (website != null ? website.hashCode() : 0);
-        result = 31 * result + (products != null ? products.hashCode() : 0);
         return result;
     }
 

@@ -26,11 +26,12 @@ public class ApplicationContextConfiguration {
         return viewResolver;
     }
 
-    @Bean
-    public CommonsMultipartResolver getCommonsMultipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(20971520); // 20MB
-        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
-        return multipartResolver;
-    }
+    //problem - see xml config
+//    @Bean
+//    public CommonsMultipartResolver getCommonsMultipartResolver() {
+//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(20971520); // 20MB
+//        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
+//        return multipartResolver;
+//    }
 }

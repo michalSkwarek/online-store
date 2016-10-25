@@ -31,7 +31,7 @@
 
 			<table>
 				<tr>
-					<td>User: </td>
+					<td>Username: </td>
 					<td><input type="text" name="username"></td>
 				</tr>
 				<tr>
@@ -45,9 +45,26 @@
 				</tr>
 			</table>
 
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-
 		</form:form>
+
+		<table>
+			<p>Example</p>
+			<tr>
+				<th></th>
+				<th>Username</th>
+				<th>Password</th>
+			</tr>
+			<tr>
+				<td>User:</td>
+				<td>aaa</td>
+				<td>111</td>
+			</tr>
+			<tr>
+				<td>Admin:</td>
+				<td>zzz</td>
+				<td>999</td>
+			</tr>
+		</table>
 
 	</div>
 

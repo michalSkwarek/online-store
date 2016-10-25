@@ -7,4 +7,8 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  * Created by Michal on 29.09.2016.
  */
 public interface ProductSpecificationsService extends GenericService<ProductSpecifications, Long> {
+
+    void createSpecifications(ProductSpecifications productSpecifications);
+
+    void updateSpecifications(ProductSpecifications productSpecifications);
 }

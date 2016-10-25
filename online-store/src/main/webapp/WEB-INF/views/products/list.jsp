@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,15 +9,8 @@
 </head>
 <body>
 
-    <div>
-        <h1>Online store</h1>
-        <ul>
-            <li><a href="<spring:url value="/welcome" />">Home page</a></li>
-            <li><a href="<spring:url value="/products/list" />">Products</a></li>
-            <li><a href="<spring:url value="/cart" />">Cart</a></li>
-            <li><a href="<spring:url value="/login" />">Sign in</a></li>
-        </ul>
-    </div>
+    <jsp:include page="../_header.jsp" />
+    <jsp:include page="../_menu.jsp" />
 
     <form:form>
 
@@ -62,13 +56,14 @@
                 <p>${product.unitPrice}</p>
                 <p>${product.category.name}</p>
                 <a href="<spring:url value="/products/${product.id}" />">Details</a>
+                <security:authorize  access="!hasRole('ROLE_ADMIN')">
+                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />">Add to cart</a>
+                </security:authorize>
             </div>
         </c:forEach>
     </div>
 
-    <div>
-        <p>&copy; Online store 2016</p>
-    </div>
+    <jsp:include page="../_footer.jsp" />
 
 </body>
 </html>

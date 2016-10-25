@@ -16,52 +16,58 @@ import java.util.Map;
  * Created by Michal on 26.09.2016.
  */
 @Service("productService")
+@Transactional(propagation = Propagation.REQUIRED)
 public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implements ProductService {
 
     @Autowired
     private ProductDao productDao;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
     public boolean deleteProduct(Long id) {
         return productDao.deleteProduct(id);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    public void updateProduct(Product product) {
+        productDao.updateProduct(product);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List getRandomFewProducts() {
         return productDao.getRandomFewProducts();
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     public List getProductsByCategory(String category) {
         return productDao.getProductsByCategory(category);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     public List getProductsByManufacturer(String manufacturer) {
         return productDao.getProductsByManufacturer(manufacturer);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     public List getSortedProductsOrderByUnitPriceAscending() {
         return productDao.getSortedProductsOrderByUnitPriceAscending();
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     public List getSortedProductsOrderByUnitPriceDescending() {
         return productDao.getSortedProductsOrderByUnitPriceDescending();
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+    @Transactional(readOnly = true)
     public List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
         return productDao.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
     }
+
 
 
 }

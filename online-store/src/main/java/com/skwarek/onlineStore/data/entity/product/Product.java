@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Table(name = "product")
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = -5140596610125871988L;
+    private static final long serialVersionUID = -2379568691831188780L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -111,10 +111,6 @@ public class Product implements Serializable {
         this.unitsInMagazine = unitsInMagazine;
     }
 
-    public Boolean isAvailability() {
-        return unitsInMagazine != 0;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -122,7 +118,6 @@ public class Product implements Serializable {
 
         Product product = (Product) o;
 
-        if (id != null ? !id.equals(product.id) : product.id != null) return false;
         if (model != null ? !model.equals(product.model) : product.model != null) return false;
         if (unitPrice != null ? !unitPrice.equals(product.unitPrice) : product.unitPrice != null) return false;
         if (category != null ? !category.equals(product.category) : product.category != null) return false;
@@ -138,8 +133,7 @@ public class Product implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (model != null ? model.hashCode() : 0);
+        int result = model != null ? model.hashCode() : 0;
         result = 31 * result + (unitPrice != null ? unitPrice.hashCode() : 0);
         result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);

@@ -13,6 +13,13 @@ public interface ProductDao extends GenericDao<Product, Long> {
 
     boolean deleteProduct(Long id);
 
+    void updateProduct(Product product);
+
+
+
+
+
+
     List getRandomFewProducts();
 
     List getProductsByCategory(String category);

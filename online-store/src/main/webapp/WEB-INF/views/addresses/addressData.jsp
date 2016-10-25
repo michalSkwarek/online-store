@@ -17,6 +17,8 @@
 
     <form:form method="post" modelAttribute="address">
 
+        <form:hidden path="id"/>
+
         <ul>
             <li>
                 <label for="street">Street: </label>

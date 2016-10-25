@@ -21,7 +21,7 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @Transient
     private Set<Product> products;
 
     public Category() { }
@@ -57,18 +57,13 @@ public class Category implements Serializable {
 
         Category category = (Category) o;
 
-        if (id != null ? !id.equals(category.id) : category.id != null) return false;
-        if (name != null ? !name.equals(category.name) : category.name != null) return false;
-        return products != null ? products.equals(category.products) : category.products == null;
+        return name != null ? name.equals(category.name) : category.name == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (products != null ? products.hashCode() : 0);
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 
     @Override
