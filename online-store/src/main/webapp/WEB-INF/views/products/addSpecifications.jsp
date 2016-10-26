@@ -76,9 +76,9 @@
                     <label for="diagonal">Diagonal: </label>
                     <form:input path="display.diagonal" id="diagonal"/>
                     <label for="widthInPixels">Width in pixels: </label>
-                    <form:input path="display.displayResolution.widthInPixels" id="widthInPixels"/>
+                    <form:input path="display.widthInPixels" id="widthInPixels"/>
                     <label for="heightInPixels">Height in pixels: </label>
-                    <form:input path="display.displayResolution.heightInPixels" id="heightInPixels"/>
+                    <form:input path="display.heightInPixels" id="heightInPixels"/>
                 </li>
             </c:if>
 
