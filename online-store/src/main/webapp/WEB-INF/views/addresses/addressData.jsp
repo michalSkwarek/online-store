@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,44 +14,67 @@
         <jsp:include page="../_menu.jsp" />
     </security:authorize>
 
-    <h1>Address data</h1>
+    <section>
+        <form:form modelAttribute="address" method="post">
+            <fieldset>
+                <legend>
+                    <spring:message code="addressData.messages.addressData" />
+                </legend>
 
-    <form:form method="post" modelAttribute="address">
+                <form:hidden path="id" />
 
-        <form:hidden path="id"/>
+                <div>
+                    <label for="street">
+                        <spring:message code="address.details.street.label" />
+                    </label>
+                    <div>
+                        <form:input path="street" id="street" />
+                    </div>
+                </div>
 
-        <ul>
-            <li>
-                <label for="street">Street: </label>
-                <form:input path="street" id="street"/>
-            </li>
+                <div>
+                    <label for="streetNumber">
+                        <spring:message code="address.details.streetNumber.label" />
+                    </label>
+                    <div>
+                        <form:input path="streetNumber" id="streetNumber" />
+                    </div>
+                </div>
 
-            <li>
-                <label for="streetNumber">Street number: </label>
-                <form:input path="streetNumber" id="streetNumber"/>
-            </li>
+                <div>
+                    <label for="doorNumber">
+                        <spring:message code="address.details.doorNumber.label" />
+                    </label>
+                    <div>
+                        <form:input path="doorNumber" id="doorNumber" />
+                    </div>
+                </div>
 
-            <li>
-                <label for="doorNumber">Door number: </label>
-                <form:input path="doorNumber" id="doorNumber"/>
-            </li>
+                <div>
+                    <label for="zipCode">
+                        <spring:message code="address.details.zipCode.label" />
+                    </label>
+                    <div>
+                        <form:input path="zipCode" id="zipCode" />
+                    </div>
+                </div>
 
-            <li>
-                <label for="zipCode">Zip code: </label>
-                <form:input path="zipCode" id="zipCode"/>
-            </li>
+                <div>
+                    <label for="city">
+                        <spring:message code="address.details.city.label" />
+                    </label>
+                    <div>
+                        <form:input path="city.name" id="city" />
+                    </div>
+                </div>
 
-            <li>
-                <label for="city">City: </label>
-                <form:input path="city.name" id="city"/>
-            </li>
-            
-            <li>
-                <input type="submit" value="Save"/>
-            </li>
-        </ul>
+                <div>
+                    <input type="submit" value="<spring:message code="save" />" />
+                </div>
 
-    </form:form>
+            </fieldset>
+        </form:form>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 

@@ -334,17 +334,17 @@ INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) 
 INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (35, 'Intel Core i7-6820HK', 4, 2.7, 3.6);
 
 -- add few specifications
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (41, 30, 22, 16, 'DDR3', 256, 21, 6960, 'Li-ion', 11, 1.0, 247, 359, 18, 2.05);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (42, 31, 23, 8, 'DDR3', 256, 22, 6960, 'Li-ion', 12, 1.0, 227, 325, 17, 1.35);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (43, 32, 24, 8, 'DDR3', 512, 23, 5000, 'Li-poly', 13, 2.0, 244, 340, 23.9, 1.95);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (44, 33, 25, 16, 'DDR4', 512, 24, 7260, 'Li-poly', 14, 1.0, 235, 357, 17, 1.78);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (45, 33, 25, 16, 'DDR4', 512, 25, 6400, 'Li-ion', 14, 1.0, 265, 383, 25.3, 2.6);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (41, 30, 22, 16, 'DDR3', 256, 'SSD', 21, 6960, 'Li-ion', 11, 1.0, 247, 359, 18, 2.05);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (42, 31, 23, 8, 'DDR3', 256, 'SSD', 22, 6960, 'Li-ion', 12, 1.0, 227, 325, 17, 1.35);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (43, 32, 24, 8, 'DDR3', 500, 'HDD', 23, 5000, 'Li-poly', 13, 2.0, 244, 340, 23.9, 1.95);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (44, 33, 25, 16, 'DDR4', 512, 'SSD', 24, 7260, 'Li-poly', 14, 1.0, 235, 357, 17, 1.78);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (45, 33, 25, 16, 'DDR4', 512, 'SSD', 25, 6400, 'Li-ion', 14, 1.0, 265, 383, 25.3, 2.6);
 
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (46, 34, 26, 16, 'DDR4', 512, 26, 6400, 'Li-ion', 13, 1.0, 276, 416, 34.2, 3.3);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (47, 33, 27, 32, 'DDR4', 1024, 27, 6000, 'Li-ion', 15, 1.0, 322, 416, 39, 4);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (48, 35, 27, 32, 'DDR4', 512, 27, 6000, 'Li-ion', 15, 2.0, 287, 428, 49, 3.9);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (49, 33, 28, 16, 'DDR4', 1024, 27, 7500, 'Li-ion', 15, 2.0, 294, 428, 48, 3.8);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (50, 33, 25, 32, 'DDR4', 512, 27, 5000, 'Li-poly', 15, 1.0, 287, 418, 21.8, 2.65);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (46, 34, 26, 16, 'DDR4', 512, 'SSD', 26, 6400, 'Li-ion', 13, 1.0, 276, 416, 34.2, 3.3);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (47, 33, 27, 32, 'DDR4', 1000, 'HDD', 27, 6000, 'Li-ion', 15, 1.0, 322, 416, 39, 4);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (48, 35, 27, 32, 'DDR4', 1000, 'HDD', 27, 6000, 'Li-ion', 15, 2.0, 287, 428, 49, 3.9);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (49, 33, 28, 16, 'DDR4', 1000, 'HDD', 27, 7500, 'Li-ion', 15, 2.0, 294, 428, 48, 3.8);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (50, 33, 25, 32, 'DDR4', 512, 'SSD', 27, 5000, 'Li-poly', 15, 1.0, 287, 418, 21.8, 2.65);
 
 -- add few graphics
 INSERT INTO files_upload (id, file_name, data) VALUES (41, 'file41.jpg', load_file('/etc/images/notebook/product-big,apple-macbook-pro-i7.jpg'));
@@ -390,11 +390,11 @@ INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) 
 INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (40, 'Intel Core i3-6100', 2, 3.7, NULL);
 
 -- add few specifications
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (51, 36, 12, 4, 'DDR3', 512, 180, 13, 355, 165, 359, 7);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (52, 37, 29, 4, 'DDR3', 512, 300, 13, 441, 175, 360, 10);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (53, 38, 30, 16, 'DDR4', 256, 460, 14, 445, 185, 405, 13.8);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (54, 39, 31, 16, 'DDR4', 256, 400, 15, 560, 270, 588, 7);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (55, 40, 31, 8, 'DDR4', 256, 300, 15, 400, 106, 308, 5.9);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (51, 36, 12, 4, 'DDR3', 500, 'HDD', 180, 13, 355, 165, 359, 7);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (52, 37, 29, 4, 'DDR3', 500, 'HDD', 300, 13, 441, 175, 360, 10);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (53, 38, 30, 16, 'DDR4', 2000, 'HDD', 460, 14, 445, 185, 405, 13.8);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (54, 39, 31, 16, 'DDR4', 1000, 'HDD', 400, 15, 560, 270, 588, 7);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (55, 40, 31, 8, 'DDR4', 256, 'SSD', 300, 15, 400, 106, 308, 5.9);
 
 -- add few graphics
 INSERT INTO files_upload (id, file_name, data) VALUES (51, 'file51.jpg', load_file('/etc/images/pc/product-big,hp-280-g1-mt-g3250.jpg'));

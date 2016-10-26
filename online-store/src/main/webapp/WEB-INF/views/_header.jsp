@@ -33,6 +33,10 @@
 
                 <li><a href="javascript:formSubmit()"> Logout</a></li>
             </security:authorize>
+
+            <li>
+                <a href="?language=pl" >pl</a> | <a href="?language=en">en</a>
+            </li>
         </ul>
     </div>
 

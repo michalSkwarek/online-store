@@ -67,6 +67,8 @@
                     <p>Storage:</p>
                     <label for="diskMemory">Disk memory: </label>
                     <form:input path="storage.diskMemory" id="diskMemory"/>
+                    <label for="type">Type: </label>
+                    <form:input path="storage.type" id="type"/>
                 </li>
             </c:if>
 

@@ -1,10 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Account data form</title>
+    <title>Account data</title>
 </head>
 <body>
 
@@ -13,69 +14,89 @@
         <jsp:include page="../_menu.jsp" />
     </security:authorize>
 
-    <h1>Account data</h1>
+    <section>
+        <form:form modelAttribute="account" method="post">
+            <fieldset>
+                <legend>
+                    <spring:message code="accountData.messages.accountData" />
+                </legend>
 
-    <form:form method="post" modelAttribute="account">
+                <form:hidden path="id" />
 
-        <form:hidden path="id"/>
+                <div>
+                    <label for="username">
+                        <spring:message code="account.details.username.label" />
+                    </label>
+                    <div>
+                        <c:choose>
+                            <c:when test="${account.username != null}">
+                                ${account.username}
+                                <form:hidden path="username" id="username" />
+                            </c:when>
+                            <c:otherwise>
+                                <form:input path="username" id="username" />
+                                <%--<form:errors path="username" />--%>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </div>
 
-        <ul>
-            <li>
-                <label for="username">Username: </label>
-                <c:choose>
-                    <c:when test="${account.username != null}">
-                        ${account.username}
-                        <form:hidden path="username" id="username"/>
-                    </c:when>
-                    <c:otherwise>
-                        <form:input path="username" id="username"/>
-                    </c:otherwise>
-                </c:choose>
-            </li>
+                <div>
+                    <label for="password">
+                        <spring:message code="account.details.password.label" />
+                    </label>
+                    <div>
+                        <form:input path="password" id="password" />
+                    </div>
+                </div>
 
-            <li>
-                <label for="password">Password: </label>
-                <form:input path="password" id="password"/>
-            </li>
+                <c:if test="${account.enabled != null}">
+                    <form:hidden path="enabled" />
+                </c:if>
 
-            <c:if test="${account.enabled != null}">
-                <form:hidden path="enabled"/>
-            </c:if>
+                <div>
+                    <label for="email">
+                        <spring:message code="account.details.email.label" />
+                    </label>
+                    <div>
+                        <form:input path="email" id="email" />
+                    </div>
+                </div>
 
-            <li>
-                <label for="email">Email: </label>
-                <form:input path="email" id="email"/>
-            </li>
+                <c:if test="${account.dateCreated != null}">
+                    <div>
+                        <label for="dateCreated">
+                            <spring:message code="account.details.dateCreated.label" />
+                        </label>
+                        <div>
+                            <c:choose>
+                                <c:when test="${account.dateCreated != null}">
+                                    ${account.dateCreated}
+                                    <form:hidden path="dateCreated" id="dateCreated" />
+                                </c:when>
+                                <c:otherwise>
+                                    <form:input path="dateCreated" id="dateCreated" />
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </div>
+                </c:if>
 
-            <c:if test="${account.dateCreated != null}">
-                <li>
-                    <label for="dateCreated">Date created: </label>
-                    <c:choose>
-                        <c:when test="${account.dateCreated != null}">
-                            ${account.dateCreated}
-                            <form:hidden path="dateCreated" id="dateCreated"/>
-                        </c:when>
-                        <c:otherwise>
-                            <form:input path="dateCreated" id="dateCreated"/>
-                        </c:otherwise>
-                    </c:choose>
-                </li>
-            </c:if>
+                <c:if test="${account.role != null}">
+                    <form:hidden path="role" />
+                </c:if>
 
-            <c:if test="${account.role != null}">
-                <form:hidden path="role"/>
-            </c:if>
+                <c:if test="${account.customer != null}">
+                    <form:hidden path="customer.id" />
+                </c:if>
 
-            <c:if test="${account.customer != null}">
-                <form:hidden path="customer.id"/>
-            </c:if>
+                <div>
+                    <input type="submit" value="<spring:message code="save" />" />
+                </div>
 
-            <li>
-                <input type="submit" value="Save"/>
-            </li>
-        </ul>
-
-    </form:form>
+            </fieldset>
+        </form:form>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 
