@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.service.impl;
 
 import com.skwarek.onlineStore.data.dao.ProductSpecificationsDao;
+import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.service.ProductSpecificationsService;
 import com.skwarek.onlineStore.service.generic.GenericServiceImpl;
@@ -20,8 +21,8 @@ public class ProductSpecificationsServiceImpl extends GenericServiceImpl<Product
     private ProductSpecificationsDao productSpecificationsDao;
 
     @Override
-    public void createSpecifications(ProductSpecifications productSpecifications) {
-        productSpecificationsDao.createSpecifications(productSpecifications);
+    public void createSpecifications(ProductSpecifications productSpecifications, Product product) {
+        productSpecificationsDao.createSpecifications(productSpecifications, product);
     }
 
     @Override

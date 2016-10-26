@@ -1,13 +1,17 @@
 package com.skwarek.onlineStore.data.dao.impl;
 
+import com.skwarek.onlineStore.data.dao.ProductDao;
 import com.skwarek.onlineStore.data.dao.ProductSpecificationsDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
+import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
+import com.skwarek.onlineStore.data.entity.product.specifications.modules.CPU;
+import com.skwarek.onlineStore.data.entity.product.specifications.modules.Display;
+import com.skwarek.onlineStore.data.entity.product.specifications.modules.GPU;
+import com.skwarek.onlineStore.data.entity.product.specifications.modules.OS;
 import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Created by Michal on 29.09.2016.
@@ -15,22 +19,36 @@ import java.util.List;
 @Repository("productSpecificationsDao")
 public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecifications, Long> implements ProductSpecificationsDao {
 
+    @Autowired
+    private ProductDao productDao;
+
     @Override
-    public void createSpecifications(ProductSpecifications productSpecifications) {
-//        setCPUToSpecifications(productSpecifications);
-        setGPUToSpecifications(productSpecifications);
-//        setDisplayToSpecifications(productSpecifications);
-//        setOSToSpecifications(productSpecifications);
+    public void createSpecifications(ProductSpecifications productSpecifications, Product product) {
+        setExistingData(productSpecifications);
         create(productSpecifications);
+        product.setProductSpecifications(productSpecifications);
+        productDao.updateProduct(product);
     }
 
     @Override
     public void updateSpecifications(ProductSpecifications productSpecifications) {
-//        setCPUToSpecifications(productSpecifications);
-        setGPUToSpecifications(productSpecifications);
-//        setDisplayToSpecifications(productSpecifications);
-//        setOSToSpecifications(productSpecifications);
+        setExistingData(productSpecifications);
         update(productSpecifications);
+    }
+
+    private void setExistingData(ProductSpecifications productSpecifications) {
+        if (productSpecifications.getCpu() != null) {
+            setCPUToSpecifications(productSpecifications);
+        }
+        if (productSpecifications.getGpu() != null) {
+            setGPUToSpecifications(productSpecifications);
+        }
+        if (productSpecifications.getDisplay() != null) {
+            setDisplayToSpecifications(productSpecifications);
+        }
+        if (productSpecifications.getOs() != null) {
+            setOSToSpecifications(productSpecifications);
+        }
     }
 
     private void setCPUToSpecifications(ProductSpecifications productSpecifications) {
@@ -42,10 +60,10 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
 
     private CPU getCPUFromDatabase(CPU cpu) {
         Query query = getSession().createSQLQuery("SELECT * FROM cpu AS c WHERE c.model = '" + cpu.getModel() + "'" +
-                " and c.number_of_cores = " + cpu.getNumberOfCores() +
-                " and c.low_clock_speed = " + cpu.getLowClockSpeed() +
-                " and c.high_clock_speed" + ((cpu.getHighClockSpeed() == null) ? " IS NULL" : (" = " + cpu.getHighClockSpeed())) +
-                " limit 1").addEntity(CPU.class);
+                " AND c.number_of_cores = " + cpu.getNumberOfCores() +
+                " AND c.low_clock_speed = " + cpu.getLowClockSpeed() +
+                " AND c.high_clock_speed" + ((cpu.getHighClockSpeed() == null) ? " IS NULL" : (" = " + cpu.getHighClockSpeed())) +
+                " LIMIT 1").addEntity(CPU.class);
         return (CPU) query.uniqueResult();
     }
 
@@ -57,11 +75,10 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
     }
 
     private GPU getGPUFromDatabase(GPU gpu) {
-        Query query = getSession().createQuery("from GPU g where g.model = :model and g.memory = " + gpu.getMemory() +
-                " and g.type = :type");
-        query.setParameter("model", gpu.getModel());
-        query.setParameter("type", gpu.getType());
-        query.setMaxResults(1);
+        Query query = getSession().createSQLQuery("SELECT * FROM gpu AS g WHERE g.model = '" + gpu.getModel() + "'" +
+                " AND g.memory" + ((gpu.getMemory() == null) ? " IS NULL" : (" = " + gpu.getMemory())) +
+                " AND g.memory_type" + ((gpu.getType() == null) ? " IS NULL" : (" = '" + gpu.getType()) + "'") +
+                " LIMIT 1").addEntity(GPU.class);
         return (GPU) query.uniqueResult();
     }
 
@@ -73,12 +90,10 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
     }
 
     private Display getDisplayFromDatabase(Display display) {
-        Query query = getSession().createQuery("from Display d where g.diagonal = :diagonal " +
-                "and g.displayResolution.widthInPixels = :widthInPixels and d.displayResolution.heightInPixels = :heightInPixels");
-        query.setParameter("diagonal", display.getDiagonal());
-        query.setParameter("widthInPixels", display.getDisplayResolution().getWidthInPixels());
-        query.setParameter("heightInPixels", display.getDisplayResolution().getHeightInPixels());
-        query.setMaxResults(1);
+        Query query = getSession().createSQLQuery("SELECT * FROM display d where d.diagonal = " + display.getDiagonal() +
+                " AND d.width_in_pixels = " + display.getWidthInPixels() +
+                " AND d.height_in_pixels = " + display.getHeightInPixels() +
+                " LIMIT 1").addEntity(Display.class);
         return (Display) query.uniqueResult();
     }
 
@@ -90,10 +105,9 @@ public class ProductSpecificationsDaoImpl extends GenericDaoImpl<ProductSpecific
     }
 
     private OS getOSFromDatabase(OS os) {
-        Query query = getSession().createQuery("from OS o where o.name = :name and o.version = :version");
-        query.setParameter("name", os.getName());
-        query.setParameter("version", os.getVersion());
-        query.setMaxResults(1);
+        Query query = getSession().createSQLQuery("SELECT * FROM os AS o WHERE o.name = '" + os.getName() + "'" +
+                " AND o.version = '" + os.getVersion() + "'" +
+                " LIMIT 1").addEntity(OS.class);
         return (OS) query.uniqueResult();
     }
 }

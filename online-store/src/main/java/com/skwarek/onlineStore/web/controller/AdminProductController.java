@@ -121,10 +121,8 @@ public class AdminProductController {
     public String createSpecifications(@PathVariable Long id, Model model) {
 
         String productCategory = productService.read(id).getCategory().getName();
-
         SpecificationsFactory factory = new SpecificationsFactory();
         ProductSpecifications specifications = factory.createSpecifications(productCategory);
-
         model.addAttribute("spec", specifications);
         return "products/addSpecifications";
     }
@@ -132,10 +130,8 @@ public class AdminProductController {
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.POST)
     public String addSpecificationsToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
-        productSpecificationsService.createSpecifications(specifications);
         Product product = productService.read(id);
-        product.setProductSpecifications(specifications);
-        productService.update(product);
+        productSpecificationsService.createSpecifications(specifications, product);
         return "redirect:/admin/products/list";
     }
 

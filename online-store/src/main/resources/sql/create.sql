@@ -54,27 +54,20 @@ INSERT INTO os (id, name, version) VALUES (6, 'Android', '4.4 KitKat');
 INSERT INTO os (id, name, version) VALUES (7, 'Windows', '10 Mobile');
 INSERT INTO os (id, name, version) VALUES (8, 'Windows', '8.1');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (1, 1920, 1080);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (2, 1334, 750);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (3, 1136, 640);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (4, 2560, 1440);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (5, 1280, 720);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (1, 5.5, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (2, 4.7, 2);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (3, 4, 3);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (4, 5.5, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (5, 5.1, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (6, 5.7, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (7, 5.3, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (8, 5.2, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (9, 5, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (10, 5, 5);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (11, 4.7, 5);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (12, 5.2, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (13, 5.5, 5);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (1, 5.5, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (2, 4.7, 1334, 750);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (3, 4, 1136, 640);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (4, 5.5, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (5, 5.1, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (6, 5.7, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (7, 5.3, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (8, 5.2, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (9, 5, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (10, 5, 1280, 720);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (11, 4.7, 1280, 720);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (12, 5.2, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (13, 5.5, 1280, 720);
 
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (1, 'PowerVR GT7600');
@@ -236,21 +229,14 @@ INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, produc
 INSERT INTO os (id, name, version) VALUES (9, 'Android', '4.2 Jelly Bean');
 INSERT INTO os (id, name, version) VALUES (10, 'Android', '4.3 Jelly Bean');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (6, 2048, 1536);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (7, 1920, 1200);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (8, 2560, 1600);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (9, 1280, 800);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (10, 1600, 1200);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (14, 9.7, 6);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (15, 7.9, 6);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (16, 10.1, 7);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (17, 10.1, 8);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (18, 10.1, 9);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (19, 8, 9);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (20, 12.3, 10);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (14, 9.7, 2048, 1536);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (15, 7.9, 2048, 1536);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (16, 10.1, 1920, 1200);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (17, 10.1, 2560, 1600);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (18, 10.1, 1280, 800);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (19, 8, 1280, 800);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (20, 12.3, 1600, 1200);
 
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (17, 'PowerVR Series 7XT');
@@ -321,19 +307,14 @@ INSERT INTO os (id, name, version) VALUES (13, 'Windows', '7 Professional');
 INSERT INTO os (id, name, version) VALUES (14, 'Windows', '10 Pro');
 INSERT INTO os (id, name, version) VALUES (15, 'Windows', '10 Home');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (11, 2880, 1800);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (12, 1440, 900);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (13, 3840, 2160);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (21, 15.4, 11);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (22, 13.3, 12);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (23, 14, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (24, 15.6, 13);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (25, 15.6, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (26, 17.3, 13);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (27, 17.3, 1);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (21, 15.4, 2880, 1800);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (22, 13.3, 1440, 900);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (23, 14, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (24, 15.6, 3840, 2160);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (25, 15.6, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (26, 17.3, 3840, 2160);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (27, 17.3, 1920, 1080);
 
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (22, 'Intel Iris Pro Graphics');
@@ -470,16 +451,11 @@ INSERT INTO os (id, name, version) VALUES (16, 'Apple', 'watchOS');
 INSERT INTO os (id, name, version) VALUES (17, 'Linux', 'Tizen');
 INSERT INTO os (id, name, version) VALUES (18, 'Android', 'Wear');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (14, 272, 340);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (15, 312, 390);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (16, 320, 320);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (28, 1.3, 14);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (29, 1.5, 15);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (30, 1.2, 16);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (31, 1.8, 16);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (28, 1.3, 272, 340);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (29, 1.5, 312, 390);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (30, 1.2, 320, 320);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (31, 1.8, 320, 320);
 
 -- add few cpu
 INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (43, 'Apple S1', 1, 0.52, NULL);
