@@ -3,16 +3,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Account data form</title>
+    <title>Account data</title>
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
+    </section>
 
     <section>
         <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-            <h1><spring:message code="accountData.messages.accountData" /></h1>
+            <div>
+                <h1><spring:message code="accountData.messages.accountData" /></h1>
+            </div>
 
             <div>
                 <label>
@@ -42,13 +48,17 @@
                     ${account.dateCreated}
             </div>
 
-            <a href="<spring:url value="/accounts/edit/${account.username}" />"><spring:message code="edit" /></a>
+            <div>
+                <a href="<spring:url value="/accounts/edit/${account.username}" />"><spring:message code="edit" /></a>
+            </div>
         </security:authorize>
     </section>
 
     <section>
         <security:authorize  access="hasRole('ROLE_USER')">
-            <h1><spring:message code="customerData.messages.customerData" /></h1>
+            <div>
+                <h1><spring:message code="customerData.messages.customerData" /></h1>
+            </div>
 
             <div>
                 <label>
@@ -78,13 +88,17 @@
                     ${account.customer.phoneNumber}
             </div>
 
-            <a href="<spring:url value="/customers/edit/${account.username}" />"><spring:message code="edit" /></a>
+            <div>
+                <a href="<spring:url value="/customers/edit/${account.username}" />"><spring:message code="edit" /></a>
+            </div>
         </security:authorize>
     </section>
 
     <section>
         <security:authorize  access="hasRole('ROLE_USER')">
-            <h1><spring:message code="addressData.messages.addressData" /></h1>
+            <div>
+                <h1><spring:message code="addressData.messages.addressData" /></h1>
+            </div>
 
             <div>
                 <label>
@@ -121,7 +135,9 @@
                     ${account.customer.billingAddress.city.name}
             </div>
 
-            <a href="<spring:url value="/addresses/edit/${account.username}" />"><spring:message code="edit" /></a>
+            <div>
+                <a href="<spring:url value="/addresses/edit/${account.username}" />"><spring:message code="edit" /></a>
+            </div>
         </security:authorize>
     </section>
 

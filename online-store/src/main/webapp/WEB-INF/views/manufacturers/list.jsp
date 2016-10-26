@@ -8,42 +8,47 @@
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
-
-    <div>
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
         <security:authorize  access="hasRole('ROLE_ADMIN')">
-            <ul>
-                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
-                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
-            </ul>
+            <div>
+                <a href="<spring:url value="/admin/products/list" />"><spring:message code="products" /></a>
+                <a href="<spring:url value="/admin/manufacturers/list" />"><spring:message code="manufacturers" /></a>
+            </div>
         </security:authorize>
-    </div>
+    </section>
 
-    <div>
-        <a href="<spring:url value="/admin/manufacturers/new" />">Add new manufacturer</a>
-    </div>
+    <section>
+        <div>
+            <a href="<spring:url value="/admin/manufacturers/new" />"><spring:message code="manufacturersList.message.addNewManufacturers" /></a>
+        </div>
 
-    <h1>List of all manufacturers</h1>
+        <div>
+            <h1><spring:message code="manufacturersList.message.allManufacturers" /></h1>
+        </div>
 
-    <div>
-        <table>
-            <tr>
-                <td>Brand</td>
-                <td>Website</td>
-                <td>Update</td>
-                <td>Delete</td>
-            </tr>
-            <c:forEach items="${manufacturers}" var="manufacturer">
+        <div>
+            <table>
                 <tr>
-                    <td>${manufacturer.brand}</td>
-                    <td><a href="${manufacturer.website}">${manufacturer.website}</a></td>
-                    <td><a href="/admin/manufacturers/edit/${manufacturer.id}">Edit</a></td>
-                    <td><a href="/admin/manufacturers/delete/${manufacturer.id}">Delete</a></td>
+                    <td><spring:message code="manufacturer.details.brand.label" /></td>
+                    <td><spring:message code="manufacturer.details.website.label" /></td>
+                    <td><spring:message code="edit" /></td>
+                    <td><spring:message code="delete" /></td>
                 </tr>
-            </c:forEach>
-        </table>
-    </div>
+                <c:forEach items="${manufacturers}" var="manufacturer">
+                    <tr>
+                        <td>${manufacturer.brand}</td>
+                        <td><a href="${manufacturer.website}">${manufacturer.website}</a></td>
+                        <td><a href="/admin/manufacturers/edit/${manufacturer.id}"><spring:message code="edit" /></a></td>
+                        <td><a href="/admin/manufacturers/delete/${manufacturer.id}"><spring:message code="delete" /></a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 

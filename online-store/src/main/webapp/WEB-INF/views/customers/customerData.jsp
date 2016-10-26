@@ -5,14 +5,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Customer data form</title>
+    <title>Customer data</title>
 </head>
 <body>
 
-    <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-        <jsp:include page="../_header.jsp" />
-        <jsp:include page="../_menu.jsp" />
-    </security:authorize>
+    <section>
+        <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+            <div>
+                <jsp:include page="../_header.jsp" />
+                <jsp:include page="../_menu.jsp" />
+            </div>
+        </security:authorize>
+    </section>
 
     <section>
         <form:form modelAttribute="customer" method="post">
