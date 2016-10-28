@@ -50,7 +50,6 @@ public class ProductController {
 
         List<Product> products = productService.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
         if (products == null || products.isEmpty()) {
-            model.addAttribute("error", "Product list is empty");
             return "/error";
         }
         model.addAttribute("products", products);

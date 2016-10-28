@@ -9,86 +9,92 @@
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
 
-    <div>
-        <security:authorize  access="hasRole('ROLE_ADMIN')">
-            <ul>
-                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
-                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
-            </ul>
-        </security:authorize>
-    </div>
+        <div>
+            <security:authorize  access="hasRole('ROLE_ADMIN')">
+                <div>
+                    <a href="<spring:url value="/admin/products/list" />"><spring:message code="products" /></a>
+                    <a href="<spring:url value="/admin/manufacturers/list" />"><spring:message code="manufacturers" /></a>
+                </div>
+            </security:authorize>
+        </div>
+    </section>
 
-    <h1>Product data</h1>
+    <section>
+        <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="product" enctype="multipart/form-data">
+            <fieldset>
+                <legend>
+                    <spring:message code="productData.messages.productData" />
+                </legend>
 
-    <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="product" enctype="multipart/form-data">
+                <div>
+                    <label for="model"><spring:message code="product.details.model.label" /></label>
+                    <form:input path="model" id="model"/>
+                </div>
 
-        <ul>
-            <li>
-                <label for="model">Name: </label>
-                <form:input path="model" id="model"/>
-            </li>
+                <div>
+                    <label for="unitPrice"><spring:message code="product.details.unitPrice.label" /></label>
+                    <form:input path="unitPrice" id="unitPrice"/>
+                </div>
 
-            <li>
-                <label for="unitPrice">Unit price: </label>
-                <form:input path="unitPrice" id="unitPrice"/>
-            </li>
+                <div>
+                    <label for="category-select"><spring:message code="product.details.category.label" /></label>
+                    <form:select path="category" id="category-select">
+                        <c:if test="${product.category == null}">
+                            <form:option value="${product.category.id}"> -- <spring:message code="productData.message.select" /> -- </form:option>
+                        </c:if>
+                        <form:options items="${categories}" itemLabel="name" itemValue="id" />
+                    </form:select>
+                </div>
 
-            <li>
-                <label for="category-select">Category: </label>
-                <form:select path="category" id="category-select">
-                    <c:if test="${product.category == null}">
-                        <form:option value="${product.category.id}"> -- select -- </form:option>
-                    </c:if>
-                    <form:options items="${categories}" itemLabel="name" itemValue="id" />
-                </form:select>
-            </li>
+                <div>
+                    <label for="manufacturer-select"><spring:message code="product.details.manufacturer.label" /></label>
+                    <form:select path="manufacturer" id="manufacturer-select">
+                        <c:if test="${product.manufacturer == null}">
+                            <form:option value="${product.manufacturer.id}"> -- <spring:message code="productData.message.select" /> -- </form:option>
+                        </c:if>
+                        <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
+                    </form:select>
+                </div>
 
-            <li>
-                <label for="manufacturer-select">Manufacturer: </label>
-                <form:select path="manufacturer" id="manufacturer-select">
-                    <c:if test="${product.manufacturer == null}">
-                        <form:option value="${product.manufacturer.id}"> -- select -- </form:option>
-                    </c:if>
-                    <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
-                </form:select>
-            </li>
+                <c:if test="${product.productImage == null}">
+                    <div>
+                        <label for="productImage"><spring:message code="product.details.productImage.label" /></label>
+                        <input name="fileUpload" id="productImage" type="file"/>
+                    </div>
+                </c:if>
+                <c:if test="${product.productImage != null}">
+                    <div>
+                        <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
+                        <form:hidden path="productImage.id" />
+                    </div>
+                </c:if>
 
-            <c:if test="${product.productImage == null}">
-                <li>
-                    <label for="productImage">Select image: </label>
-                    <input name="fileUpload" id="productImage" type="file"/>
-                </li>
-            </c:if>
-            <c:if test="${product.productImage != null}">
-                <li>
-                    <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
-                    <form:hidden path="productImage.id" />
-                </li>
-            </c:if>
+                <div>
+                    <label for="unitsInMagazine"><spring:message code="product.details.unitsInMagazine.label" /></label>
+                    <form:input path="unitsInMagazine" id="unitsInMagazine"/>
+                </div>
 
-            <li>
-                <label for="unitsInMagazine">Units in magazine: </label>
-                <form:input path="unitsInMagazine" id="unitsInMagazine"/>
-            </li>
+                <c:if test="${product.productSpecifications != null}">
+                    <div>
+                        <label><spring:message code="product.details.specifications.label" /></label>
+                        <a href="/admin/products/spec/edit/${product.productSpecifications.id}"><spring:message code="edit" /></a>
+                        <form:hidden path="productSpecifications.id"/>
+                    </div>
+                </c:if>
 
-            <c:if test="${product.productSpecifications != null}">
-                <li>
-                    <label>Specifications: </label>
-                    <a href="/admin/products/spec/edit/${product.productSpecifications.id}">Edit</a>
-                    <form:hidden path="productSpecifications.id"/>
-                </li>
-            </c:if>
+                <div>
+                    <input type="submit" value="<spring:message code="save" />" />
+                </div>
 
-            <li>
-                <input type="submit" value="Save"/>
-            </li>
-
-        </ul>
-
-    </form:form>
+            </fieldset>
+        </form:form>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 
