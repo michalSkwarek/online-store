@@ -9,59 +9,74 @@
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
+    </section>
 
-    <form:form method="post">
+    <section>
+        <form:form method="post">
+
+            <div>
+                <div>
+                    <p><spring:message code="productsList.message.selectCategories" /></p>
+                    <c:forEach items="${categories}" var="category">
+                        <label>
+                            <input type="checkbox" name="category" value="${category.name}">${category.name}
+                        </label>
+                    </c:forEach>
+                </div>
+
+                <div>
+                    <p><spring:message code="productsList.message.selectManufacturers" /></p>
+                    <c:forEach items="${manufacturers}" var="manufacturer" >
+                        <label>
+                            <input type="checkbox" name="manufacturer" value="${manufacturer.brand}">${manufacturer.brand}
+                        </label>
+                    </c:forEach>
+                </div>
+
+                <div>
+                    <p><spring:message code="productsList.message.selectPriceRange" /></p>
+                    <label>
+                        <spring:message code="productsList.from" /> <input type="text" name="fromPriceRange">
+                        <spring:message code="productsList.to" /> <input type="text" name="toPriceRange">
+                    </label>
+                </div>
+
+                <div>
+                    <p><spring:message code="productsList.message.selectPriceOrder" /></p>
+                    <label>
+                        <input type="radio" name="priceOrder" value="asc" checked><spring:message code="productsList.message.selectPriceOrder.ascending" />
+                        <input type="radio" name="priceOrder" value="desc"><spring:message code="productsList.message.selectPriceOrder.descending" />
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <input type="submit" value="<spring:message code="submit" />" />
+            </div>
+
+        </form:form>
 
         <div>
-            <p>Select categories:</p>
-            <c:forEach items="${categories}" var="category" >
-                <label>
-                    <input type="checkbox" name="category" value="${category.name}">${category.name}
-                </label>
+            <p><spring:message code="productsList.message.allProducts" /></p>
+            <c:forEach items="${products}" var="product">
+                <div>
+                    <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
+                    <p>${product.manufacturer.brand} ${product.model}</p>
+                    <p>${product.unitPrice}</p>
+                    <p>${product.category.name}</p>
+                    <a href="<spring:url value="/products/${product.id}" />"><spring:message code="products.details" /></a>
+                    <security:authorize  access="!hasRole('ROLE_ADMIN')">
+                        <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.addToCart" /></a>
+                    </security:authorize>
+                </div>
             </c:forEach>
-
-            <p>Select manufacturers:</p>
-            <c:forEach items="${manufacturers}" var="manufacturer" >
-                <label>
-                    <input type="checkbox" name="manufacturer" value="${manufacturer.brand}">${manufacturer.brand}
-                </label>
-            </c:forEach>
-
-            <p>Select price range:</p>
-            <label>
-                From: <input type="text" name="fromPriceRange">
-                To: <input type="text" name="toPriceRange">
-            </label>
-
-            <p>Select price order:</p>
-            <label>
-                <input type="radio" name="priceOrder" value="asc" checked>Ascending
-                <input type="radio" name="priceOrder" value="desc">Descending
-            </label>
         </div>
-
-        <br/>
-        <input type="submit" value="Submit"/>
-
-    </form:form>
-
-    <div>
-        <p>List of all products</p>
-        <c:forEach items="${products}" var="product">
-            <div>
-                <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
-                <p>${product.manufacturer.brand} ${product.model}</p>
-                <p>${product.unitPrice}</p>
-                <p>${product.category.name}</p>
-                <a href="<spring:url value="/products/${product.id}" />">Details</a>
-                <security:authorize  access="!hasRole('ROLE_ADMIN')">
-                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />">Add to cart</a>
-                </security:authorize>
-            </div>
-        </c:forEach>
-    </div>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 
