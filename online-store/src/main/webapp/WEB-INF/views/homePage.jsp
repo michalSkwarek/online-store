@@ -8,15 +8,17 @@
 </head>
 <body>
 
-    <jsp:include page="_header.jsp" />
-    <jsp:include page="_menu.jsp" />
-
     <div>
-        <h1>${welcome}</h1>
+        <jsp:include page="_header.jsp" />
+        <jsp:include page="_menu.jsp" />
     </div>
 
     <div>
-        <p>Categories</p>
+        <h1><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h1>
+    </div>
+
+    <div>
+        <p><spring:message code="products" /></p>
         <ul>
             <c:forEach items="${categories}" var="category">
                 <a href="<spring:url value="/products/category/${category.name}" />">${category.name}</a>
@@ -25,22 +27,22 @@
     </div>
 
     <div>
-        <p>Recommended for you</p>
+        <p><spring:message code="homePage.message.recommendedForYou" /></p>
         <c:forEach items="${products}" var="product">
             <div>
                 <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice}</p>
-                <a href="<spring:url value="/products/${product.id}" />">Details</a>
+                <a href="<spring:url value="/products/${product.id}" />"><spring:message code="products.details" /></a>
                 <security:authorize  access="!hasRole('ROLE_ADMIN')">
-                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />">Add to cart</a>
+                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.addToCart" /></a>
                 </security:authorize>
             </div>
         </c:forEach>
     </div>
 
     <div>
-        <p>Go to the manufacturer's store</p>
+        <p><spring:message code="homePage.message.goToTheManufacturersStore" /></p>
         <c:forEach items="${manufacturers}" var="manufacturer">
             <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" style="width: 5%" />
             <a href="<spring:url value="${manufacturer.website}" />">${manufacturer.brand}</a>
