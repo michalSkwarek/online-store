@@ -11,7 +11,7 @@ import java.util.Locale;
 @Table(name = "display")
 public class Display implements Serializable {
 
-    private static final long serialVersionUID = 3855891566724622672L;
+    private static final long serialVersionUID = 574478679360415794L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,17 +21,13 @@ public class Display implements Serializable {
     @Column(name = "diagonal")
     private Double diagonal;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "display_resolution_id")
-    private DisplayResolution displayResolution;
+    @Column(name = "width_in_pixels")
+    private Integer widthInPixels;
+
+    @Column(name = "height_in_pixels")
+    private Integer heightInPixels;
 
     public Display() { }
-
-    private int calculationOfDensity() {
-        Integer widthInPixels = displayResolution.getWidthInPixels();
-        Integer heightInPixels = displayResolution.getHeightInPixels();
-        return (int) Math.round(Math.sqrt(widthInPixels * widthInPixels + heightInPixels * heightInPixels) / diagonal);
-    }
 
     public Long getId() {
         return id;
@@ -49,12 +45,24 @@ public class Display implements Serializable {
         this.diagonal = diagonal;
     }
 
-    public DisplayResolution getDisplayResolution() {
-        return displayResolution;
+    public Integer getWidthInPixels() {
+        return widthInPixels;
     }
 
-    public void setDisplayResolution(DisplayResolution displayResolution) {
-        this.displayResolution = displayResolution;
+    public void setWidthInPixels(Integer widthInPixels) {
+        this.widthInPixels = widthInPixels;
+    }
+
+    public Integer getHeightInPixels() {
+        return heightInPixels;
+    }
+
+    public void setHeightInPixels(Integer heightInPixels) {
+        this.heightInPixels = heightInPixels;
+    }
+
+    private int calculationOfDensity() {
+        return (int) Math.round(Math.sqrt(widthInPixels * widthInPixels + heightInPixels * heightInPixels) / diagonal);
     }
 
     @Override
@@ -64,24 +72,25 @@ public class Display implements Serializable {
 
         Display display = (Display) o;
 
-        if (id != null ? !id.equals(display.id) : display.id != null) return false;
         if (diagonal != null ? !diagonal.equals(display.diagonal) : display.diagonal != null) return false;
-        return displayResolution != null ? displayResolution.equals(display.displayResolution) : display.displayResolution == null;
+        if (widthInPixels != null ? !widthInPixels.equals(display.widthInPixels) : display.widthInPixels != null)
+            return false;
+        return heightInPixels != null ? heightInPixels.equals(display.heightInPixels) : display.heightInPixels == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (diagonal != null ? diagonal.hashCode() : 0);
-        result = 31 * result + (displayResolution != null ? displayResolution.hashCode() : 0);
+        int result = diagonal != null ? diagonal.hashCode() : 0;
+        result = 31 * result + (widthInPixels != null ? widthInPixels.hashCode() : 0);
+        result = 31 * result + (heightInPixels != null ? heightInPixels.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return String.format(Locale.US, "%.1f", diagonal) +
-                "\", with " + displayResolution +
+                "\", with " + widthInPixels + " \u00D7 " + heightInPixels +
                 " resolution at " + calculationOfDensity() + "ppi";
     }
 }

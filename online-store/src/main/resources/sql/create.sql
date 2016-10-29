@@ -54,27 +54,20 @@ INSERT INTO os (id, name, version) VALUES (6, 'Android', '4.4 KitKat');
 INSERT INTO os (id, name, version) VALUES (7, 'Windows', '10 Mobile');
 INSERT INTO os (id, name, version) VALUES (8, 'Windows', '8.1');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (1, 1920, 1080);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (2, 1334, 750);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (3, 1136, 640);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (4, 2560, 1440);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (5, 1280, 720);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (1, 5.5, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (2, 4.7, 2);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (3, 4, 3);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (4, 5.5, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (5, 5.1, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (6, 5.7, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (7, 5.3, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (8, 5.2, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (9, 5, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (10, 5, 5);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (11, 4.7, 5);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (12, 5.2, 4);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (13, 5.5, 5);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (1, 5.5, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (2, 4.7, 1334, 750);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (3, 4, 1136, 640);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (4, 5.5, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (5, 5.1, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (6, 5.7, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (7, 5.3, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (8, 5.2, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (9, 5, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (10, 5, 1280, 720);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (11, 4.7, 1280, 720);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (12, 5.2, 2560, 1440);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (13, 5.5, 1280, 720);
 
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (1, 'PowerVR GT7600');
@@ -236,21 +229,14 @@ INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, produc
 INSERT INTO os (id, name, version) VALUES (9, 'Android', '4.2 Jelly Bean');
 INSERT INTO os (id, name, version) VALUES (10, 'Android', '4.3 Jelly Bean');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (6, 2048, 1536);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (7, 1920, 1200);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (8, 2560, 1600);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (9, 1280, 800);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (10, 1600, 1200);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (14, 9.7, 6);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (15, 7.9, 6);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (16, 10.1, 7);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (17, 10.1, 8);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (18, 10.1, 9);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (19, 8, 9);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (20, 12.3, 10);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (14, 9.7, 2048, 1536);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (15, 7.9, 2048, 1536);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (16, 10.1, 1920, 1200);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (17, 10.1, 2560, 1600);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (18, 10.1, 1280, 800);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (19, 8, 1280, 800);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (20, 12.3, 1600, 1200);
 
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (17, 'PowerVR Series 7XT');
@@ -321,19 +307,14 @@ INSERT INTO os (id, name, version) VALUES (13, 'Windows', '7 Professional');
 INSERT INTO os (id, name, version) VALUES (14, 'Windows', '10 Pro');
 INSERT INTO os (id, name, version) VALUES (15, 'Windows', '10 Home');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (11, 2880, 1800);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (12, 1440, 900);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (13, 3840, 2160);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (21, 15.4, 11);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (22, 13.3, 12);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (23, 14, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (24, 15.6, 13);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (25, 15.6, 1);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (26, 17.3, 13);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (27, 17.3, 1);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (21, 15.4, 2880, 1800);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (22, 13.3, 1440, 900);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (23, 14, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (24, 15.6, 3840, 2160);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (25, 15.6, 1920, 1080);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (26, 17.3, 3840, 2160);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (27, 17.3, 1920, 1080);
 
 -- add few gpu
 INSERT INTO gpu (id, model) VALUES (22, 'Intel Iris Pro Graphics');
@@ -345,25 +326,25 @@ INSERT INTO gpu (id, model, memory, memory_type) VALUES (27, 'NVIDIA GeForce GTX
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (28, 'NVIDIA GeForce GTX 980M', 4, 'GDDR5');
 
 -- add few cpu
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (30, 'Intel Core i7-4770HQ', 4, 2.2, 3.4, 6);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (31, 'Intel Core i5-5250U', 2, 1.6, 2.7, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (32, 'Intel Core i5-6200U', 2, 2.3, 2.8, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (33, 'Intel Core i7-6700HQ', 4, 2.6, 3.5, 6);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (34, 'Intel Xeon E3-1505M v5', 4, 2.8, 3.7, 8);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (35, 'Intel Core i7-6820HK', 4, 2.7, 3.6, 8);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (30, 'Intel Core i7-4770HQ', 4, 2.2, 3.4);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (31, 'Intel Core i5-5250U', 2, 1.6, 2.7);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (32, 'Intel Core i5-6200U', 2, 2.3, 2.8);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (33, 'Intel Core i7-6700HQ', 4, 2.6, 3.5);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (34, 'Intel Xeon E3-1505M v5', 4, 2.8, 3.7);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (35, 'Intel Core i7-6820HK', 4, 2.7, 3.6);
 
 -- add few specifications
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (41, 30, 22, 16, 'DDR3', 256, 21, 6960, 'Li-ion', 11, 1.0, 247, 359, 18, 2.05);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (42, 31, 23, 8, 'DDR3', 256, 22, 6960, 'Li-ion', 12, 1.0, 227, 325, 17, 1.35);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (43, 32, 24, 8, 'DDR3', 512, 23, 5000, 'Li-poly', 13, 2.0, 244, 340, 23.9, 1.95);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (44, 33, 25, 16, 'DDR4', 512, 24, 7260, 'Li-poly', 14, 1.0, 235, 357, 17, 1.78);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (45, 33, 25, 16, 'DDR4', 512, 25, 6400, 'Li-ion', 14, 1.0, 265, 383, 25.3, 2.6);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (41, 30, 22, 16, 'DDR3', 256, 'SSD', 21, 6960, 'Li-ion', 11, 1.0, 247, 359, 18, 2.05);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (42, 31, 23, 8, 'DDR3', 256, 'SSD', 22, 6960, 'Li-ion', 12, 1.0, 227, 325, 17, 1.35);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (43, 32, 24, 8, 'DDR3', 500, 'HDD', 23, 5000, 'Li-poly', 13, 2.0, 244, 340, 23.9, 1.95);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (44, 33, 25, 16, 'DDR4', 512, 'SSD', 24, 7260, 'Li-poly', 14, 1.0, 235, 357, 17, 1.78);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (45, 33, 25, 16, 'DDR4', 512, 'SSD', 25, 6400, 'Li-ion', 14, 1.0, 265, 383, 25.3, 2.6);
 
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (46, 34, 26, 16, 'DDR4', 512, 26, 6400, 'Li-ion', 13, 1.0, 276, 416, 34.2, 3.3);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (47, 33, 27, 32, 'DDR4', 1024, 27, 6000, 'Li-ion', 15, 1.0, 322, 416, 39, 4);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (48, 35, 27, 32, 'DDR4', 512, 27, 6000, 'Li-ion', 15, 2.0, 287, 428, 49, 3.9);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (49, 33, 28, 16, 'DDR4', 1024, 27, 7500, 'Li-ion', 15, 2.0, 294, 428, 48, 3.8);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (50, 33, 25, 32, 'DDR4', 512, 27, 5000, 'Li-poly', 15, 1.0, 287, 418, 21.8, 2.65);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (46, 34, 26, 16, 'DDR4', 512, 'SSD', 26, 6400, 'Li-ion', 13, 1.0, 276, 416, 34.2, 3.3);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (47, 33, 27, 32, 'DDR4', 1000, 'HDD', 27, 6000, 'Li-ion', 15, 1.0, 322, 416, 39, 4);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (48, 35, 27, 32, 'DDR4', 1000, 'HDD', 27, 6000, 'Li-ion', 15, 2.0, 287, 428, 49, 3.9);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (49, 33, 28, 16, 'DDR4', 1000, 'HDD', 27, 7500, 'Li-ion', 15, 2.0, 294, 428, 48, 3.8);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, display_id, battery_capacity, battery_type, os_id, resolution_webcam, thickness, width, height, weight) VALUES (50, 33, 25, 32, 'DDR4', 512, 'SSD', 27, 5000, 'Li-poly', 15, 1.0, 287, 418, 21.8, 2.65);
 
 -- add few graphics
 INSERT INTO files_upload (id, file_name, data) VALUES (41, 'file41.jpg', load_file('/etc/images/notebook/product-big,apple-macbook-pro-i7.jpg'));
@@ -402,18 +383,18 @@ INSERT INTO gpu (id, model, memory, memory_type) VALUES (30, 'AMD Radeon R9 370'
 INSERT INTO gpu (id, model) VALUES (31, 'Intel HD Graphics 530');
 
 -- add few cpu
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (36, 'Intel Pentium G3250', 2, 3.2, NULL, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (37, 'Intel Core i3-4170', 2, 3.7, NULL, 3);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (38, 'Intel Core i7-6700', 4, 3.4, 4.0, 8);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (39, 'Intel Core i5-6400', 4, 2.7, 3.3, 6);
-INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed, cache) VALUES (40, 'Intel Core i3-6100', 2, 3.7, NULL, 3);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (36, 'Intel Pentium G3250', 2, 3.2, NULL);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (37, 'Intel Core i3-4170', 2, 3.7, NULL);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (38, 'Intel Core i7-6700', 4, 3.4, 4.0);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (39, 'Intel Core i5-6400', 4, 2.7, 3.3);
+INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (40, 'Intel Core i3-6100', 2, 3.7, NULL);
 
 -- add few specifications
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (51, 36, 12, 4, 'DDR3', 512, 180, 13, 355, 165, 359, 7);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (52, 37, 29, 4, 'DDR3', 512, 300, 13, 441, 175, 360, 10);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (53, 38, 30, 16, 'DDR4', 256, 460, 14, 445, 185, 405, 13.8);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (54, 39, 31, 16, 'DDR4', 256, 400, 15, 560, 270, 588, 7);
-INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, power_supply, os_id, thickness, width, height, weight) VALUES (55, 40, 31, 8, 'DDR4', 256, 300, 15, 400, 106, 308, 5.9);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (51, 36, 12, 4, 'DDR3', 500, 'HDD', 180, 13, 355, 165, 359, 7);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (52, 37, 29, 4, 'DDR3', 500, 'HDD', 300, 13, 441, 175, 360, 10);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (53, 38, 30, 16, 'DDR4', 2000, 'HDD', 460, 14, 445, 185, 405, 13.8);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (54, 39, 31, 16, 'DDR4', 1000, 'HDD', 400, 15, 560, 270, 588, 7);
+INSERT INTO specifications (id, cpu_id, gpu_id, ram, memory_type, disk_memory, disk_type, power_supply, os_id, thickness, width, height, weight) VALUES (55, 40, 31, 8, 'DDR4', 256, 'SSD', 300, 15, 400, 106, 308, 5.9);
 
 -- add few graphics
 INSERT INTO files_upload (id, file_name, data) VALUES (51, 'file51.jpg', load_file('/etc/images/pc/product-big,hp-280-g1-mt-g3250.jpg'));
@@ -470,16 +451,11 @@ INSERT INTO os (id, name, version) VALUES (16, 'Apple', 'watchOS');
 INSERT INTO os (id, name, version) VALUES (17, 'Linux', 'Tizen');
 INSERT INTO os (id, name, version) VALUES (18, 'Android', 'Wear');
 
--- add few display resolutions
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (14, 272, 340);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (15, 312, 390);
-INSERT INTO display_resolution (id, width_in_pixels, height_in_pixels) VALUES (16, 320, 320);
-
 -- add few displays
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (28, 1.3, 14);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (29, 1.5, 15);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (30, 1.2, 16);
-INSERT INTO display (id, diagonal, display_resolution_id) VALUES (31, 1.8, 16);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (28, 1.3, 272, 340);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (29, 1.5, 312, 390);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (30, 1.2, 320, 320);
+INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (31, 1.8, 320, 320);
 
 -- add few cpu
 INSERT INTO cpu (id, model, number_of_cores, low_clock_speed, high_clock_speed) VALUES (43, 'Apple S1', 1, 0.52, NULL);

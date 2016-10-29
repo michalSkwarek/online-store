@@ -8,54 +8,61 @@
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
+        <div>
+            <security:authorize  access="hasRole('ROLE_ADMIN')">
+                <div>
+                    <a href="<spring:url value="/admin/products/list" />"><spring:message code="products" /></a>
+                    <a href="<spring:url value="/admin/manufacturers/list" />"><spring:message code="manufacturers" /></a>
+                </div>
+            </security:authorize>
+        </div>
+    </section>
 
-    <div>
-        <security:authorize  access="hasRole('ROLE_ADMIN')">
-            <ul>
-                <li><a href="<spring:url value="/admin/products/list" />">Products</a></li>
-                <li><a href="<spring:url value="/admin/manufacturers/list" />">Manufacturers</a></li>
-            </ul>
-        </security:authorize>
-    </div>
+    <section>
+        <div>
+            <a href="<spring:url value="/admin/products/new" />"><spring:message code="products.message.addNewProducts" /></a>
+        </div>
 
-    <div>
-        <a href="<spring:url value="/admin/products/new" />">Add new product</a>
-    </div>
+        <div>
+            <h1><spring:message code="products.message.allProducts" /></h1>
+        </div>
 
-    <h1>List of all products</h1>
-
-    <div>
-        <table>
-            <tr>
-                <td>Model</td>
-                <td>Unit price</td>
-                <td>Category</td>
-                <td>Brand</td>
-                <td>Specifications</td>
-                <td>Add specifications</td>
-                <td>Update</td>
-                <td>Delete</td>
-            </tr>
-            <c:forEach items="${products}" var="product">
+        <div>
+            <table>
                 <tr>
-                    <td>${product.model}</td>
-                    <td>${product.unitPrice}</td>
-                    <td>${product.category.name}</td>
-                    <td>${product.manufacturer.brand}</td>
-                    <td><a href="/products/${product.id}">Specifications</a></td>
-                    <td>
-                        <c:if test="${product.productSpecifications == null}">
-                            <a href="<c:url value="/admin/products/spec/${product.id}"/>">Add</a>
-                        </c:if>
-                    </td>
-                    <td><a href="/admin/products/edit/${product.id}">Edit</a></td>
-                    <td><a href="/admin/products/delete/${product.id}">Delete</a></td>
+                    <td><spring:message code="product.details.model.label" /></td>
+                    <td><spring:message code="product.details.unitPrice.label" /></td>
+                    <td><spring:message code="product.details.category.label" /></td>
+                    <td><spring:message code="manufacturer.details.brand.label" /></td>
+                    <td><spring:message code="product.details.specifications.label" /></td>
+                    <td><spring:message code="products.message.addSpecifications" /></td>
+                    <td><spring:message code="edit" /></td>
+                    <td><spring:message code="delete" /></td>
                 </tr>
-            </c:forEach>
-        </table>
-    </div>
+                <c:forEach items="${products}" var="product">
+                    <tr>
+                        <td>${product.model}</td>
+                        <td>${product.unitPrice}</td>
+                        <td>${product.category.name}</td>
+                        <td>${product.manufacturer.brand}</td>
+                        <td><a href="/products/${product.id}"><spring:message code="product.details.specifications.label" /></a></td>
+                        <td>
+                            <c:if test="${product.productSpecifications == null}">
+                                <a href="<c:url value="/admin/products/spec/${product.id}"/>"><spring:message code="products.message.add" /></a>
+                            </c:if>
+                        </td>
+                        <td><a href="/admin/products/edit/${product.id}"><spring:message code="edit" /></a></td>
+                        <td><a href="/admin/products/delete/${product.id}"><spring:message code="delete" /></a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 

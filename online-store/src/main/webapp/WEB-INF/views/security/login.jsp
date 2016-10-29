@@ -9,66 +9,78 @@
 </head>
 <body>
 
-	<jsp:include page="../_header.jsp" />
-	<jsp:include page="../_menu.jsp" />
+	<section>
+		<div>
+			<jsp:include page="../_header.jsp" />
+			<jsp:include page="../_menu.jsp" />
+		</div>
+	</section>
 
-	<h1>Access authentication</h1>
+	<section>
+		<div>
+			<h1><spring:message code="security.message.accessAuthentication" /></h1>
+		</div>
 
-	<div>
-
-		<c:if test="${not empty error}">
+		<div>
 			<div>
-				${error}
+				<c:if test="${error == true}">
+					<div>
+							<p><spring:message code="security.message.invalidUsernameAndPassword" /></p>
+					</div>
+				</c:if>
+				<c:if test="${message == true}">
+					<div>
+							<p><spring:message code="security.message.youHaveBeenLoggedOutSuccessfully" /></p>
+					</div>
+				</c:if>
 			</div>
-		</c:if>
-		<c:if test="${not empty message}">
+
 			<div>
-				${message}
+				<form:form method="post">
+					<table>
+						<tr>
+							<td><spring:message code="account.details.username.label" />: </td>
+							<td><input type="text" name="username"></td>
+						</tr>
+						<tr>
+							<td><spring:message code="account.details.password.label" />: </td>
+							<td><input type="password" name="password" /></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" value="<spring:message code="submit" />"/>
+							</td>
+						</tr>
+					</table>
+				</form:form>
 			</div>
-		</c:if>
 
-		<form:form method="post">
+			<div>
+				<table>
+					<p><spring:message code="example" /></p>
+					<tr>
+						<th></th>
+						<th><spring:message code="account.details.username.label" /></th>
+						<th><spring:message code="account.details.password.label" /></th>
+					</tr>
+					<tr>
+						<td>User:</td>
+						<td>aaa</td>
+						<td>111</td>
+					</tr>
+					<tr>
+						<td>Admin:</td>
+						<td>zzz</td>
+						<td>999</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 
-			<table>
-				<tr>
-					<td>Username: </td>
-					<td><input type="text" name="username"></td>
-				</tr>
-				<tr>
-					<td>Password: </td>
-					<td><input type="password" name="password" /></td>
-				</tr>
-				<tr>
-					<td>
-						<input type="submit" value="Submit"/>
-					</td>
-				</tr>
-			</table>
-
-		</form:form>
-
-		<table>
-			<p>Example</p>
-			<tr>
-				<th></th>
-				<th>Username</th>
-				<th>Password</th>
-			</tr>
-			<tr>
-				<td>User:</td>
-				<td>aaa</td>
-				<td>111</td>
-			</tr>
-			<tr>
-				<td>Admin:</td>
-				<td>zzz</td>
-				<td>999</td>
-			</tr>
-		</table>
-
-	</div>
-
-	<a href="<spring:url value="/accounts/new" />">Create new account</a>
+		<div>
+			<a href="<spring:url value="/accounts/new" />"><spring:message code="security.message.createNewAccount" /></a>
+		</div>
+	</section>
 
 	<jsp:include page="../_footer.jsp" />
 

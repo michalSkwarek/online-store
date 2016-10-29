@@ -9,100 +9,110 @@
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
+    </section>
 
-    <h1>Confirm order</h1>
+    <section>
+        <form:form method="post">
+            <fieldset>
+                <legend>
+                    <spring:message code="orders.message.confirmOrder" />
+                </legend>
 
-    <form:form method="post">
+                <security:authorize  access="hasRole('ROLE_USER')">
+                    <div>
+                        <label><spring:message code="customer.details.firstName.label" /></label>
+                            ${account.customer.firstName}
+                    </div>
 
-        <security:authorize  access="hasRole('ROLE_USER')">
+                    <div>
+                        <label><spring:message code="customer.details.lastName.label" /></label>
+                            ${account.customer.lastName}
+                    </div>
 
-            <ul>
-                <li>
-                    <label>First name: </label>
-                        ${account.customer.firstName}
-                </li>
+                    <div>
+                        <label><spring:message code="customer.details.phoneNumber.label" /></label>
+                            ${account.customer.phoneNumber}
+                    </div>
 
-                <li>
-                    <label>Last name: </label>
-                        ${account.customer.lastName}
-                </li>
+                    <div>
+                        <label><spring:message code="address.details.street.label" /></label>
+                            ${shippingAddress.street}
+                    </div>
 
-                <li>
-                    <label>Phone number: </label>
-                        ${account.customer.phoneNumber}
-                </li>
+                    <div>
+                        <label><spring:message code="address.details.streetNumber.label" /></label>
+                            ${shippingAddress.streetNumber}
+                    </div>
 
-                <li>
-                    <label>Street: </label>
-                        ${shippingAddress.street}
-                </li>
+                    <div>
+                        <label><spring:message code="address.details.doorNumber.label" /></label>
+                            ${shippingAddress.doorNumber}
+                    </div>
 
-                <li>
-                    <label>Street number: </label>
-                        ${shippingAddress.streetNumber}
-                </li>
+                    <div>
+                        <label><spring:message code="address.details.zipCode.label" /></label>
+                            ${shippingAddress.zipCode}
+                    </div>
 
-                <li>
-                    <label>Door number: </label>
-                        ${shippingAddress.doorNumber}
-                </li>
+                    <div>
+                        <label><spring:message code="address.details.city.label" /></label>
+                            ${shippingAddress.city.name}
+                    </div>
 
-                <li>
-                    <label>Zip code: </label>
-                        ${shippingAddress.zipCode}
-                </li>
+                    <div>
+                        <c:forEach items="${cart.items}" var="item">
+                            <div>
+                                <label><spring:message code="product.details.model.label" /></label>
+                                    ${item.product.model}
+                            </div>
 
-                <li>
-                    <label>City: </label>
-                        ${shippingAddress.city.name}
-                </li>
-            </ul>
+                            <div>
+                                <label><spring:message code="product.details.unitPrice.label" /></label>
+                                    ${item.product.unitPrice}
+                            </div>
 
-            <c:forEach items="${cart.items}" var="item">
-                <ul>
-                    <li>
-                        <label>Model: </label>
-                            ${item.product.model}
-                    </li>
+                            <div>
+                                <label><spring:message code="product.details.category.label" /></label>
+                                    ${item.product.category.name}
+                            </div>
 
-                    <li>
-                        <label>Unit price: </label>
-                            ${item.product.unitPrice}
-                    </li>
+                            <div>
+                                <label><spring:message code="product.details.manufacturer.label" /></label>
+                                    ${item.product.manufacturer.brand}
+                            </div>
 
-                    <li>
-                        <label>Category: </label>
-                            ${item.product.category.name}
-                    </li>
+                            <div>
+                                <label><spring:message code="item.details.quantity.label" /></label>
+                                    ${item.quantity}
+                            </div>
 
-                    <li>
-                        <label>Manufacturer: </label>
-                            ${item.product.manufacturer.brand}
-                    </li>
+                            <div>
+                                <label><spring:message code="item.details.totalPrice.label" /></label>
+                                    ${item.itemTotalPrice}
+                            </div>
+                        </c:forEach>
+                    </div>
+                </security:authorize>
 
-                    <li>
-                        <label>Quantity: </label>
-                            ${item.quantity}
-                    </li>
+                <div>
+                    <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
+                </div>
 
-                    <li>
-                        <label>Total price: </label>
-                            ${item.itemTotalPrice}
-                    </li>
-                </ul>
-            </c:forEach>
+                <div>
+                    <input type="submit" value="<spring:message code="confirm" />">
+                </div>
+            </fieldset>
+        </form:form>
 
-        </security:authorize>
-
-        <h1>Total: ${cart.cartTotalPrice} PLN</h1>
-
-        <h3><input type="submit" value="Confirm"></h3>
-
-    </form:form>
-
-    <h3><a href="<spring:url value="/order/cancel" />">Cancel</a></h3>
+        <div>
+            <a href="<spring:url value="/order/cancel" />"><spring:message code="cancel" /></a>
+        </div>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 

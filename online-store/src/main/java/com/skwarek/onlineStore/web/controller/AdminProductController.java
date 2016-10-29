@@ -51,10 +51,7 @@ public class AdminProductController {
 
         List<Product> products = productService.getAll();
         model.addAttribute("products", products);
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
+        addAllCategoriesAndManufacturersToModel(model);
         return "products/adminList";
     }
 
@@ -69,10 +66,7 @@ public class AdminProductController {
     public String createProduct(Model model) {
 
         model.addAttribute("product", new Product());
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
+        addAllCategoriesAndManufacturersToModel(model);
         return "products/productData";
     }
 
@@ -96,10 +90,7 @@ public class AdminProductController {
 
         Product product = productService.read(id);
         model.addAttribute("product", product);
-        List<Category> categories = categoryService.getAll();
-        model.addAttribute("categories", categories);
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
-        model.addAttribute("manufacturers", manufacturers);
+        addAllCategoriesAndManufacturersToModel(model);
         return "products/productData";
     }
 
@@ -117,16 +108,21 @@ public class AdminProductController {
         return "redirect:/admin/products/list";
     }
 
+    private void addAllCategoriesAndManufacturersToModel(Model model) {
+        List<Category> categoriesAll = categoryService.getAll();
+        model.addAttribute("categories", categoriesAll);
+        List<Manufacturer> manufacturersAll = manufacturerService.getAll();
+        model.addAttribute("manufacturers", manufacturersAll);
+    }
+
 //----------------------------------------------------------------------------------------------------------------------
 
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.GET)
     public String createSpecifications(@PathVariable Long id, Model model) {
 
         String productCategory = productService.read(id).getCategory().getName();
-
         SpecificationsFactory factory = new SpecificationsFactory();
         ProductSpecifications specifications = factory.createSpecifications(productCategory);
-
         model.addAttribute("spec", specifications);
         return "products/addSpecifications";
     }
@@ -134,10 +130,8 @@ public class AdminProductController {
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.POST)
     public String addSpecificationsToProduct(@PathVariable Long id, ProductSpecifications specifications) {
 
-        productSpecificationsService.createSpecifications(specifications);
         Product product = productService.read(id);
-        product.setProductSpecifications(specifications);
-        productService.update(product);
+        productSpecificationsService.createSpecifications(specifications, product);
         return "redirect:/admin/products/list";
     }
 

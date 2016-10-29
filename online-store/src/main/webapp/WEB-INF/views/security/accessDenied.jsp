@@ -1,24 +1,35 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
 	<title>Access denied</title>
 </head>
 <body>
 
-	<jsp:include page="../_header.jsp" />
-	<jsp:include page="../_menu.jsp" />
+	<div>
+		<jsp:include page="../_header.jsp" />
+		<jsp:include page="../_menu.jsp" />
+	</div>
 
-	<h1>Access is denied</h1>
+	<div>
+		<div>
+			<h1><spring:message code="security.message.accessIsDenied" /></h1>
+		</div>
 
-	<c:choose>
-		<c:when test="${empty username}">
-			<h2>You do not have permission to access this page!</h2>
-		</c:when>
-		<c:otherwise>
-			<h2>Dear ${username}</h2>
-			<p>You do not have permission to access this page!</p>
-		</c:otherwise>
-	</c:choose>
+		<c:choose>
+			<c:when test="${empty username}">
+				<div>
+					<h2><spring:message code="security.message.userPermission" />!</h2>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div>
+					<h2><spring:message code="orders.message.dear" />, ${username}</h2>
+					<h2><spring:message code="security.message.userPermission" />!</h2>
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
 	<jsp:include page="../_footer.jsp" />
 

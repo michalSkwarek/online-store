@@ -111,6 +111,10 @@ public class Product implements Serializable {
         this.unitsInMagazine = unitsInMagazine;
     }
 
+    public boolean isAvailability() {
+        return unitsInMagazine != 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.user;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class Account implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Size(min = 3, max = 10, message = "{Size.Account.username.validation}")
     @Column(name = "username")
     private String username;
 

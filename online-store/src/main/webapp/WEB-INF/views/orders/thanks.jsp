@@ -7,12 +7,16 @@
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <div>
+        <jsp:include page="../_header.jsp" />
+        <jsp:include page="../_menu.jsp" />
+    </div>
 
-    <h1>Dear, ${customer}</h1>
-    <h2>Thank you for Order</h2>
-    <h3>You must wait 2 days to delivery.</h3>
+    <div>
+        <h1><spring:message code="orders.message.dear" />, ${customer}</h1>
+        <h1><spring:message code="orders.message.thankYouForOrder" /></h1>
+        <h2><spring:message code="orders.message.youMustWait2DaysToDelivery" /></h2>
+    </div>
 
     <jsp:include page="../_footer.jsp" />
 

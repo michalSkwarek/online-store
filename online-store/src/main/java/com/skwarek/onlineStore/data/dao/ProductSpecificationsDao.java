@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.dao;
 
 import com.skwarek.onlineStore.data.dao.generic.GenericDao;
+import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public interface ProductSpecificationsDao extends GenericDao<ProductSpecifications, Long> {
 
-    void createSpecifications(ProductSpecifications productSpecifications);
+    void createSpecifications(ProductSpecifications productSpecifications, Product product);
 
     void updateSpecifications(ProductSpecifications productSpecifications);
 }

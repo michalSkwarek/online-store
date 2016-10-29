@@ -3,104 +3,143 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Account data form</title>
+    <title>Account data</title>
 </head>
 <body>
 
-    <jsp:include page="../_header.jsp" />
-    <jsp:include page="../_menu.jsp" />
+    <section>
+        <div>
+            <jsp:include page="../_header.jsp" />
+            <jsp:include page="../_menu.jsp" />
+        </div>
+    </section>
 
-    <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-        <h1>Account data</h1>
+    <section>
+        <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+            <div>
+                <h1><spring:message code="accounts.messages.accountData" /></h1>
+            </div>
 
-            <ul>
-                <li>
-                    <label>Username: </label>
+            <div>
+                <label>
+                    <spring:message code="account.details.username.label" />
+                </label>
                     ${account.username}
-                </li>
+            </div>
 
-                <li>
-                    <label>Password: </label>
+            <div>
+                <label>
+                    <spring:message code="account.details.password.label" />
+                </label>
                     ${account.password}
-                </li>
+            </div>
 
-                <li>
-                    <label>Email: </label>
+            <div>
+                <label>
+                    <spring:message code="account.details.email.label" />
+                </label>
                     ${account.email}
-                </li>
+            </div>
 
-                <li>
-                    <label>Date created: </label>
+            <div>
+                <label>
+                    <spring:message code="account.details.dateCreated.label" />
+                </label>
                     ${account.dateCreated}
-                </li>
-            </ul>
+            </div>
 
-            <a href="<spring:url value="/accounts/edit/${account.username}" />">Edit</a>
+            <div>
+                <a href="<spring:url value="/accounts/edit/${account.username}" />"><spring:message code="edit" /></a>
+            </div>
+        </security:authorize>
+    </section>
 
-    </security:authorize>
+    <section>
+        <security:authorize  access="hasRole('ROLE_USER')">
+            <div>
+                <h1><spring:message code="customers.messages.customerData" /></h1>
+            </div>
 
-    <security:authorize  access="hasRole('ROLE_USER')">
-        <h1>Customer data</h1>
-
-            <ul>
-                <li>
-                    <label>First name: </label>
+            <div>
+                <label>
+                    <spring:message code="customer.details.firstName.label" />
+                </label>
                     ${account.customer.firstName}
-                </li>
+            </div>
 
-                <li>
-                    <label>Last name: </label>
+            <div>
+                <label>
+                    <spring:message code="customer.details.lastName.label" />
+                </label>
                     ${account.customer.lastName}
-                </li>
+            </div>
 
-                <li>
-                    <label>Birth date: </label>
+            <div>
+                <label>
+                    <spring:message code="customer.details.birthDate.label" />
+                </label>
                     ${account.customer.birthDate}
-                </li>
+            </div>
 
-                <li>
-                    <label>Phone number: </label>
+            <div>
+                <label>
+                    <spring:message code="customer.details.phoneNumber.label" />
+                </label>
                     ${account.customer.phoneNumber}
-                </li>
-            </ul>
+            </div>
 
-            <a href="<spring:url value="/customers/edit/${account.username}" />">Edit</a>
+            <div>
+                <a href="<spring:url value="/customers/edit/${account.username}" />"><spring:message code="edit" /></a>
+            </div>
+        </security:authorize>
+    </section>
 
-    </security:authorize>
+    <section>
+        <security:authorize  access="hasRole('ROLE_USER')">
+            <div>
+                <h1><spring:message code="addresses.messages.addressData" /></h1>
+            </div>
 
-    <security:authorize  access="hasRole('ROLE_USER')">
-        <h1>Address data</h1>
-
-            <ul>
-                <li>
-                    <label>Street: </label>
+            <div>
+                <label>
+                    <spring:message code="address.details.street.label" />
+                </label>
                     ${account.customer.billingAddress.street}
-                </li>
+            </div>
 
-                <li>
-                    <label>Street number: </label>
+            <div>
+                <label>
+                    <spring:message code="address.details.streetNumber.label" />
+                </label>
                     ${account.customer.billingAddress.streetNumber}
-                </li>
+            </div>
 
-                <li>
-                    <label>Door number: </label>
+            <div>
+                <label>
+                    <spring:message code="address.details.doorNumber.label" />
+                </label>
                     ${account.customer.billingAddress.doorNumber}
-                </li>
+            </div>
 
-                <li>
-                    <label>Zip code: </label>
+            <div>
+                <label>
+                    <spring:message code="address.details.zipCode.label" />
+                </label>
                     ${account.customer.billingAddress.zipCode}
-                </li>
+            </div>
 
-                <li>
-                    <label>City: </label>
+            <div>
+                <label>
+                    <spring:message code="address.details.city.label" />
+                </label>
                     ${account.customer.billingAddress.city.name}
-                </li>
-            </ul>
+            </div>
 
-            <a href="<spring:url value="/addresses/edit/${account.username}" />">Edit</a>
-
-    </security:authorize>
+            <div>
+                <a href="<spring:url value="/addresses/edit/${account.username}" />"><spring:message code="edit" /></a>
+            </div>
+        </security:authorize>
+    </section>
 
     <jsp:include page="../_footer.jsp" />
 
