@@ -31,53 +31,7 @@ public class HelloWorld {
 
     @Test
     public void myTest() {
-        Product product = productService.read(1L);
-        System.out.println(" dupa1 ");
 
-        Item item = new Item();
-        item.setProduct(product);
-        item.setQuantity(1);
-        System.out.println(" === " + item);
-        System.out.println(" === " + item.getQuantity());
-        System.out.println(" === " + item.getItemTotalPrice());
-//        item.setQuantity(3);
-//        System.out.println(" === ");
-//        System.out.println(" === " + item.getQuantity());
-//        System.out.println(" === " + item.getItemTotalPrice());
-
-        CartModel cart = new CartModel();
-        cart.addItemToCart(item);
-        System.out.println(" === " + cart.getCartTotalPrice());
-
-        Product product2 = productService.read(2L);
-        Item item2 = new Item();
-        item2.setProduct(product2);
-        item2.setQuantity(2);
-        cart.addItemToCart(item2);
-        System.out.println(" === " + cart.getCartTotalPrice());
-
-        System.out.println(" === " + cart);
-
-        System.out.println(" === " + cart);
-
-        Address address = new Address();
-        address.setStreet("Gorzno Kolonia");
-        address.setDoorNumber("14B");
-        address.setZipCode("08-404");
-        City city = new City();
-        city.setName("Gorzno");
-        address.setCity(city);
-        System.out.println(address);
-
-        ShippingDetail shippingDetails = new ShippingDetail();
-        shippingDetails.setDateDelivery(new Date(2000, 0, 1));
-        shippingDetails.setShippingAddress(address);
-        System.out.println(shippingDetails);
-
-        Order order = new Order();
-//        order.setCart(cart);
-        order.setShippingDetail(shippingDetails);
-        System.out.println(order);
 
 
 
