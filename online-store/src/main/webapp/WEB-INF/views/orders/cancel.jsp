@@ -12,7 +12,7 @@
     </div>
 
     <div>
-        <h1><spring:message code="cancel.message.yourOrderWasCancelled" /></h1>
+        <h1><spring:message code="orders.message.yourOrderWasCancelled" /></h1>
     </div>
 
     <jsp:include page="../_footer.jsp" />

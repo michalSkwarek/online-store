@@ -28,7 +28,7 @@
         <form:form modelAttribute="spec" method="post">
             <fieldset>
                 <legend>
-                    <spring:message code="specificationsData.messages.specificationsData" />
+                    <spring:message code="products.message.specificationsData" />
                 </legend>
 
                 <c:if test="${spec.cpu != null}">

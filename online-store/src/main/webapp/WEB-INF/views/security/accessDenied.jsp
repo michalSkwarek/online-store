@@ -24,7 +24,7 @@
 			</c:when>
 			<c:otherwise>
 				<div>
-					<h2><spring:message code="thanks.message.dear" />, ${username}</h2>
+					<h2><spring:message code="orders.message.dear" />, ${username}</h2>
 					<h2><spring:message code="security.message.userPermission" />!</h2>
 				</div>
 			</c:otherwise>

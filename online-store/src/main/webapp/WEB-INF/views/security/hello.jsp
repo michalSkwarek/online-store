@@ -19,7 +19,7 @@
 		<div>
 			<c:if test="${pageContext.request.userPrincipal.name != null}">
 				<div>
-					<h1><spring:message code="thanks.message.dear" />, ${pageContext.request.userPrincipal.name}</h1>
+					<h1><spring:message code="orders.message.dear" />, ${pageContext.request.userPrincipal.name}</h1>
 				</div>
 
 				<sec:authorize access="hasRole('ROLE_USER')">

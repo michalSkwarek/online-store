@@ -25,11 +25,11 @@
 
     <section>
         <div>
-            <a href="<spring:url value="/admin/products/new" />"><spring:message code="productsList.message.addNewProducts" /></a>
+            <a href="<spring:url value="/admin/products/new" />"><spring:message code="products.message.addNewProducts" /></a>
         </div>
 
         <div>
-            <h1><spring:message code="productsList.message.allProducts" /></h1>
+            <h1><spring:message code="products.message.allProducts" /></h1>
         </div>
 
         <div>
@@ -40,7 +40,7 @@
                     <td><spring:message code="product.details.category.label" /></td>
                     <td><spring:message code="manufacturer.details.brand.label" /></td>
                     <td><spring:message code="product.details.specifications.label" /></td>
-                    <td><spring:message code="adminList.message.addSpecifications" /></td>
+                    <td><spring:message code="products.message.addSpecifications" /></td>
                     <td><spring:message code="edit" /></td>
                     <td><spring:message code="delete" /></td>
                 </tr>
@@ -53,7 +53,7 @@
                         <td><a href="/products/${product.id}"><spring:message code="product.details.specifications.label" /></a></td>
                         <td>
                             <c:if test="${product.productSpecifications == null}">
-                                <a href="<c:url value="/admin/products/spec/${product.id}"/>"><spring:message code="adminList.message.add" /></a>
+                                <a href="<c:url value="/admin/products/spec/${product.id}"/>"><spring:message code="products.message.add" /></a>
                             </c:if>
                         </td>
                         <td><a href="/admin/products/edit/${product.id}"><spring:message code="edit" /></a></td>

@@ -23,11 +23,11 @@
 
     <section>
         <div>
-            <a href="<spring:url value="/admin/manufacturers/new" />"><spring:message code="manufacturersList.message.addNewManufacturers" /></a>
+            <a href="<spring:url value="/admin/manufacturers/new" />"><spring:message code="manufacturers.message.addNewManufacturers" /></a>
         </div>
 
         <div>
-            <h1><spring:message code="manufacturersList.message.allManufacturers" /></h1>
+            <h1><spring:message code="manufacturers.message.allManufacturers" /></h1>
         </div>
 
         <div>

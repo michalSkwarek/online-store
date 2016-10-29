@@ -13,9 +13,9 @@
     </div>
 
     <div>
-        <h1><spring:message code="thanks.message.dear" />, ${customer}</h1>
-        <h1><spring:message code="thanks.message.thankYouForOrder" /></h1>
-        <h2><spring:message code="thanks.message.youMustWait2DaysToDelivery" /></h2>
+        <h1><spring:message code="orders.message.dear" />, ${customer}</h1>
+        <h1><spring:message code="orders.message.thankYouForOrder" /></h1>
+        <h2><spring:message code="orders.message.youMustWait2DaysToDelivery" /></h2>
     </div>
 
     <jsp:include page="../_footer.jsp" />

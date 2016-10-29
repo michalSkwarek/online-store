@@ -17,7 +17,7 @@
     <section>
         <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
             <div>
-                <h1><spring:message code="accountData.messages.accountData" /></h1>
+                <h1><spring:message code="accounts.messages.accountData" /></h1>
             </div>
 
             <div>
@@ -57,7 +57,7 @@
     <section>
         <security:authorize  access="hasRole('ROLE_USER')">
             <div>
-                <h1><spring:message code="customerData.messages.customerData" /></h1>
+                <h1><spring:message code="customers.messages.customerData" /></h1>
             </div>
 
             <div>
@@ -97,7 +97,7 @@
     <section>
         <security:authorize  access="hasRole('ROLE_USER')">
             <div>
-                <h1><spring:message code="addressData.messages.addressData" /></h1>
+                <h1><spring:message code="addresses.messages.addressData" /></h1>
             </div>
 
             <div>

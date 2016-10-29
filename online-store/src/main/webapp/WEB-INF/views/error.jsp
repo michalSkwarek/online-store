@@ -9,7 +9,7 @@
     <jsp:include page="_menu.jsp" />
 
     <div>
-        <h1><spring:message code="error" /></h1>
+        <h1><spring:message code="error.message.productListIsEmpty" /></h1>
     </div>
 
     <jsp:include page="_footer.jsp" />

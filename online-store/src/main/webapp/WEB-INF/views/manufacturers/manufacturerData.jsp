@@ -26,7 +26,7 @@
         <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="manufacturer" enctype="multipart/form-data">
             <fieldset>
                 <legend>
-                    <spring:message code="manufacturerData.messages.manufacturerData" />
+                    <spring:message code="manufacturers.messages.manufacturerData" />
                 </legend>
 
                 <div>

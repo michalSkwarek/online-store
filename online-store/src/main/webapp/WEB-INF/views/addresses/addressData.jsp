@@ -22,7 +22,7 @@
         <form:form modelAttribute="address" method="post">
             <fieldset>
                 <legend>
-                    <spring:message code="addressData.messages.addressData" />
+                    <spring:message code="addresses.messages.addressData" />
                 </legend>
 
                 <form:hidden path="id" />

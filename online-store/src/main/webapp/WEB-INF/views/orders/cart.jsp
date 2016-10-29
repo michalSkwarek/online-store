@@ -18,7 +18,7 @@
 
     <section>
         <div>
-            <spring:message code="productData.messages.productData" />
+            <spring:message code="products.messages.productData" />
         </div>
 
         <c:if test="${cart.cartTotalPrice == 0}">

@@ -22,7 +22,7 @@
         <form:form modelAttribute="customer" method="post">
             <fieldset>
                 <legend>
-                    <spring:message code="customerData.messages.customerData" />
+                    <spring:message code="customers.messages.customerData" />
                 </legend>
 
                 <form:hidden path="id" />

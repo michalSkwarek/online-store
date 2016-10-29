@@ -22,7 +22,7 @@
         <form:form modelAttribute="account" method="post">
             <fieldset>
                 <legend>
-                    <spring:message code="accountData.messages.accountData" />
+                    <spring:message code="accounts.messages.accountData" />
                 </legend>
 
                 <form:hidden path="id" />

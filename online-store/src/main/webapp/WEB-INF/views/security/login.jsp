@@ -30,7 +30,7 @@
 				</c:if>
 				<c:if test="${message == true}">
 					<div>
-							<p><spring:message code="security.message.youHaveveBeenLoggedOutSuccessfully" /></p>
+							<p><spring:message code="security.message.youHaveBeenLoggedOutSuccessfully" /></p>
 					</div>
 				</c:if>
 			</div>

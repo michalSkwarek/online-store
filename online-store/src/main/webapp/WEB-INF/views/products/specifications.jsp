@@ -57,7 +57,7 @@
         </div>
 
         <div>
-            <spring:message code="products.details" />
+            <spring:message code="products.message.details" />
         </div>
 
         <div>
@@ -141,7 +141,7 @@
                 <c:if test="${product.productSpecifications != null}">
                     <div>
                         <a href="<spring:url value="/admin/products/spec/edit/${product.productSpecifications.id}" />">
-                            <spring:message code="adminList.message.editSpecifications" />
+                            <spring:message code="products.message.editSpecifications" />
                         </a>
                     </div>
                 </c:if>
@@ -149,7 +149,7 @@
 
             <security:authorize  access="!hasRole('ROLE_ADMIN')">
                 <div>
-                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.addToCart" /></a>
+                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.message.addToCart" /></a>
                 </div>
             </security:authorize>
         </div>

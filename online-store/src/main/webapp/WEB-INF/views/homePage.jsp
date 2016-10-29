@@ -33,9 +33,9 @@
                 <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice}</p>
-                <a href="<spring:url value="/products/${product.id}" />"><spring:message code="products.details" /></a>
+                <a href="<spring:url value="/products/${product.id}" />"><spring:message code="products.message.details" /></a>
                 <security:authorize  access="!hasRole('ROLE_ADMIN')">
-                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.addToCart" /></a>
+                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.message.addToCart" /></a>
                 </security:authorize>
             </div>
         </c:forEach>
