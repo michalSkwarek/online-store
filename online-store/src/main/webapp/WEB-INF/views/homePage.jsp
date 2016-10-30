@@ -2,28 +2,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Online store</title>
-</head>
-<body>
 
-    <div>
-        <jsp:include page="_header.jsp" />
-        <jsp:include page="_menu.jsp" />
-    </div>
-
+<section>
     <div>
         <h1><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h1>
     </div>
 
     <div>
         <p><spring:message code="products" /></p>
-        <ul>
+        <div>
             <c:forEach items="${categories}" var="category">
                 <a href="<spring:url value="/products/category/${category.name}" />">${category.name}</a>
             </c:forEach>
-        </ul>
+        </div>
     </div>
 
     <div>
@@ -48,8 +39,4 @@
             <a href="<spring:url value="${manufacturer.website}" />">${manufacturer.brand}</a>
         </c:forEach>
     </div>
-
-    <jsp:include page="_footer.jsp" />
-
-</body>
-</html>
+</section>

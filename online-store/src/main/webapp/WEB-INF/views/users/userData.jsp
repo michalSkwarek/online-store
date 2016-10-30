@@ -1,21 +1,10 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Account data</title>
-</head>
-<body>
 
-    <section>
+<section>
+    <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
         <div>
-            <jsp:include page="../_header.jsp" />
-            <jsp:include page="../_menu.jsp" />
-        </div>
-    </section>
-
-    <section>
-        <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
             <div>
                 <h1><spring:message code="accounts.messages.accountData" /></h1>
             </div>
@@ -51,11 +40,11 @@
             <div>
                 <a href="<spring:url value="/accounts/edit/${account.username}" />"><spring:message code="edit" /></a>
             </div>
-        </security:authorize>
-    </section>
+        </div>
+    </security:authorize>
 
-    <section>
-        <security:authorize  access="hasRole('ROLE_USER')">
+    <security:authorize  access="hasRole('ROLE_USER')">
+        <div>
             <div>
                 <h1><spring:message code="customers.messages.customerData" /></h1>
             </div>
@@ -91,11 +80,11 @@
             <div>
                 <a href="<spring:url value="/customers/edit/${account.username}" />"><spring:message code="edit" /></a>
             </div>
-        </security:authorize>
-    </section>
+        </div>
+    </security:authorize>
 
-    <section>
-        <security:authorize  access="hasRole('ROLE_USER')">
+    <security:authorize  access="hasRole('ROLE_USER')">
+        <div>
             <div>
                 <h1><spring:message code="addresses.messages.addressData" /></h1>
             </div>
@@ -138,10 +127,6 @@
             <div>
                 <a href="<spring:url value="/addresses/edit/${account.username}" />"><spring:message code="edit" /></a>
             </div>
-        </security:authorize>
-    </section>
-
-    <jsp:include page="../_footer.jsp" />
-
-</body>
-</html>
+        </div>
+    </security:authorize>
+</section>

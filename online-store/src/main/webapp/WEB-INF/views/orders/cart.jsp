@@ -3,30 +3,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>My cart</title>
-</head>
-<body>
 
-    <section>
+<section>
+    <div>
+        <spring:message code="orders.message.myCart" />
+    </div>
+
+    <c:if test="${cart.cartTotalPrice == 0}">
         <div>
-            <jsp:include page="../_header.jsp" />
-            <jsp:include page="../_menu.jsp" />
+            <p><spring:message code="orders.message.thisCartIsEmpty" /></p>
         </div>
-    </section>
+    </c:if>
 
-    <section>
-        <div>
-            <spring:message code="products.messages.productData" />
-        </div>
-
-        <c:if test="${cart.cartTotalPrice == 0}">
-            <div>
-                <p><spring:message code="orders.message.thisCartIsEmpty" /></p>
-            </div>
-        </c:if>
-
+    <div>
         <form:form method="post" modelAttribute="cart">
             <c:forEach items="${cart.items}" var="item" varStatus="varStatus">
                 <div>
@@ -78,10 +67,11 @@
                 <a href="<spring:url value="/products/list" />"><spring:message code="orders.message.continueBuy" /></a>
             </div>
         </form:form>
-    </section>
+    </div>
 
-
-    <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
+    <div>
+        <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
+    </div>
 
     <c:if test="${cart.cartTotalPrice != 0}">
         <div>
@@ -100,8 +90,4 @@
             </security:authorize>
         </div>
     </c:if>
-
-    <jsp:include page="../_footer.jsp" />
-
-</body>
-</html>
+</section>
