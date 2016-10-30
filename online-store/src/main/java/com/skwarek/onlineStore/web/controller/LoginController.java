@@ -27,13 +27,13 @@ public class LoginController {
         if (logout != null) {
             model.addAttribute("message", true);
         }
-        return "/security/login";
+        return "security/login";
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloPage() {
 
-        return "/security/hello";
+        return "security/hello";
     }
 
     @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)

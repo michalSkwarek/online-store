@@ -5,10 +5,6 @@
 
 <section>
     <div>
-        <h1>Online store</h1>
-    </div>
-
-    <div>
         <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
             <div>
                 <a href="<spring:url value="/users/${pageContext.request.userPrincipal.name}" />"><spring:message code="header.message.userData" /></a>
@@ -45,5 +41,4 @@
             <a href="?language=pl" >pl</a> | <a href="?language=en">en</a>
         </div>
     </div>
-
 </section>
