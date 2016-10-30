@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -40,14 +41,13 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-    //problem - see xml config
-//    @Bean
-//    public CommonsMultipartResolver getCommonsMultipartResolver() {
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//        multipartResolver.setMaxUploadSize(20971520); // 20MB
-//        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
-//        return multipartResolver;
-//    }
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(20971520); // 20MB
+        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
+        return multipartResolver;
+    }
 
     @Bean
     public MessageSource messageSource() {
