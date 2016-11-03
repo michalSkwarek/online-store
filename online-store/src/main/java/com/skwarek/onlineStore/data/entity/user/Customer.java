@@ -1,11 +1,11 @@
 package com.skwarek.onlineStore.data.entity.user;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Michal on 23.09.2016.
@@ -14,22 +14,25 @@ import java.util.Date;
 @Table(name = "customer")
 public class Customer implements Serializable {
 
-    private static final long serialVersionUID = 592672578811477659L;
+    private static final long serialVersionUID = -188553511107544419L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{Customer.firstName.validation.notEmpty}")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotEmpty(message = "{Customer.lastName.validation.notEmpty}")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotEmpty(message = "{Customer.birthDate.validation.notEmpty}")
+    @Pattern(regexp = "[0-9]{4}-[0-9]{2}-[0-9]{2}", message = "{Customer.birthDate.validation.pattern}")
     @Column(name = "birth_date")
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date birthDate;
+    private String birthDate;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "billing_address_id")
@@ -70,11 +73,11 @@ public class Customer implements Serializable {
         this.lastName = lastName;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

@@ -2,7 +2,6 @@ package com.skwarek.onlineStore.data.entity.address;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 /**
  * Created by Michal on 23.09.2016.

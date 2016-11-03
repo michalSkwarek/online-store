@@ -19,6 +19,7 @@
                 </label>
                 <div>
                     <form:input path="street" id="street" />
+                    <form:errors path="street" />
                 </div>
             </div>
 
@@ -28,6 +29,7 @@
                 </label>
                 <div>
                     <form:input path="streetNumber" id="streetNumber" />
+                    <form:errors path="streetNumber" />
                 </div>
             </div>
 
@@ -46,6 +48,7 @@
                 </label>
                 <div>
                     <form:input path="zipCode" id="zipCode" />
+                    <form:errors path="zipCode" />
                 </div>
             </div>
 

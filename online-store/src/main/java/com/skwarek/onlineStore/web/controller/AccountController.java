@@ -41,6 +41,7 @@ public class AccountController {
     public String addAccount(@Valid Account account, BindingResult result) {
 
         if (result.hasErrors()) {
+            account.setUsername(null);
             return "accounts/accountData";
         }
 
@@ -57,7 +58,11 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
-    public String updateAccount(@PathVariable String username, Account account) {
+    public String updateAccount(@PathVariable String username, @Valid Account account, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "accounts/accountData";
+        }
 
         accountService.updateAccount(account);
         return "redirect:/users/" + username;

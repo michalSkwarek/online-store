@@ -19,6 +19,7 @@
                 </label>
                 <div>
                     <form:input path="firstName" id="firstName" />
+                    <form:errors path="firstName" />
                 </div>
             </div>
 
@@ -28,6 +29,7 @@
                 </label>
                 <div>
                     <form:input path="lastName" id="lastName" />
+                    <form:errors path="lastName" />
                 </div>
             </div>
 
@@ -37,6 +39,7 @@
                 </label>
                 <div>
                     <form:input path="birthDate" id="birthDate" />
+                    <form:errors path="birthDate" />
                 </div>
             </div>
 

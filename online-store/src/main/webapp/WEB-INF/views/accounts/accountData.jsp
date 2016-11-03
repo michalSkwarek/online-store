@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<section>
+<section class="form">
     <form:form modelAttribute="account" method="post">
         <fieldset>
             <legend>
@@ -13,8 +13,8 @@
 
             <form:hidden path="id" />
 
-            <div>
-                <label for="username">
+            <div class="box">
+                <label for="username" class="title">
                     <spring:message code="account.details.username.label" />
                 </label>
                 <div>
@@ -24,19 +24,22 @@
                             <form:hidden path="username" id="username" />
                         </c:when>
                         <c:otherwise>
-                            <form:input path="username" id="username" />
-                            <%--<form:errors path="username" />--%>
+                            <div>
+                                <form:input path="username" id="username" />
+                                <form:errors path="username" />
+                            </div>
                         </c:otherwise>
                     </c:choose>
                 </div>
             </div>
 
-            <div>
-                <label for="password">
+            <div class="box">
+                <label for="password" class="title">
                     <spring:message code="account.details.password.label" />
                 </label>
                 <div>
                     <form:input path="password" id="password" />
+                    <form:errors path="password" />
                 </div>
             </div>
 
@@ -45,17 +48,18 @@
             </c:if>
 
             <div>
-                <label for="email">
+                <label for="email" class="title">
                     <spring:message code="account.details.email.label" />
                 </label>
                 <div>
                     <form:input path="email" id="email" />
+                    <form:errors path="email" />
                 </div>
             </div>
 
             <c:if test="${account.dateCreated != null}">
-                <div>
-                    <label for="dateCreated">
+                <div class="box">
+                    <label for="dateCreated" class="title">
                         <spring:message code="account.details.dateCreated.label" />
                     </label>
                     <div>
