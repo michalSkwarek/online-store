@@ -4,24 +4,35 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<section>
+<section class="form">
     <form:form modelAttribute="spec" method="post">
         <fieldset>
-            <legend>
+            <legend style="background-color: aqua">
                 <spring:message code="products.message.specificationsData" />
             </legend>
 
             <c:if test="${spec.cpu != null}">
-                <div>
-                    <p><spring:message code="specifications.details.cpu.label" /></p>
-                    <label for="model"><spring:message code="specifications.details.cpu.model.label" /></label>
-                    <form:input path="cpu.model" id="model"/>
-                    <label for="numberOfCores"><spring:message code="specifications.details.cpu.numberOfCores.label" /></label>
-                    <form:input path="cpu.numberOfCores" id="numberOfCores"/>
-                    <label for="lowClockSpeed"><spring:message code="specifications.details.cpu.lowClockSpeed.label" /></label>
-                    <form:input path="cpu.lowClockSpeed" id="lowClockSpeed"/>
-                    <label for="highClockSpeed"><spring:message code="specifications.details.cpu.highClockSpeed.label" /></label>
-                    <form:input path="cpu.highClockSpeed" id="highClockSpeed"/>
+                <div class="box">
+                    <%--<p><spring:message code="specifications.details.cpu.label" /></p>--%>
+                    <%--<div class="error">--%>
+                        <%--<form:errors path="username" />--%>
+                    <%--</div>--%>
+                    <label for="model" class="title"><spring:message code="specifications.details.cpu.model.label" /></label>
+                    <div><form:input path="cpu.model" id="model" cssClass="field" /></div>
+                    <%--<label for="model"><spring:message code="specifications.details.cpu.model.label" /></label>--%>
+                    <%--<form:input path="cpu.model" id="model"/>--%>
+                    <%--<label for="numberOfCores" class="title"><spring:message code="specifications.details.cpu.numberOfCores.label" /></label>--%>
+                    <%--<div><form:input path="cpu.numberOfCores" id="numberOfCores" cssClass="field" /></div>--%>
+                    <%--<label for="numberOfCores"><spring:message code="specifications.details.cpu.numberOfCores.label" /></label>--%>
+                    <%--<form:input path="cpu.numberOfCores" id="numberOfCores"/>--%>
+                    <%--<label for="lowClockSpeed" class="title"><spring:message code="specifications.details.cpu.lowClockSpeed.label" /></label>--%>
+                    <%--<div><form:input path="cpu.lowClockSpeed" id="lowClockSpeed" cssClass="field" /></div>--%>
+                    <%--<label for="lowClockSpeed"><spring:message code="specifications.details.cpu.lowClockSpeed.label" /></label>--%>
+                    <%--<form:input path="cpu.lowClockSpeed" id="lowClockSpeed"/>--%>
+                    <%--<label for="highClockSpeed" class="title"><spring:message code="specifications.details.cpu.highClockSpeed.label" /></label>--%>
+                    <%--<div><form:input path="cpu.highClockSpeed" id="highClockSpeed" cssClass="field" /></div>--%>
+                    <%--<label for="highClockSpeed"><spring:message code="specifications.details.cpu.highClockSpeed.label" /></label>--%>
+                    <%--<form:input path="cpu.highClockSpeed" id="highClockSpeed"/>--%>
                 </div>
             </c:if>
 

@@ -4,7 +4,7 @@
 <%@ page session="true"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<section>
+<section class="login">
 	<div>
 		<h1><spring:message code="security.message.accessAuthentication" /></h1>
 	</div>
@@ -12,12 +12,12 @@
 	<div>
 		<div>
 			<c:if test="${error == true}">
-				<div>
+				<div class="wrong">
 					<p><spring:message code="security.message.invalidUsernameAndPassword" /></p>
 				</div>
 			</c:if>
 			<c:if test="${message == true}">
-				<div>
+				<div class="info">
 					<p><spring:message code="security.message.youHaveBeenLoggedOutSuccessfully" /></p>
 				</div>
 			</c:if>

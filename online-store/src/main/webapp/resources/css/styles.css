@@ -33,7 +33,7 @@ body {
     padding: 0;
     margin: 0;
 }
-.title {
+.form .title {
     width: 100%;
     padding: 0;
 }
@@ -67,6 +67,54 @@ body {
     background-color: #45a049;
 }
 
+.specifications {
+    width: 600px;
+    margin: auto;
+    background-color: white;
+    line-height: 1.6em;
+    border: 1px solid #4C0050;
+    border-radius: 10px;
+    padding: 20px;
+}
+.description {
+    color: red;
+    text-align: center;
+    font-style: italic;
+    font-size: 150%;
+    padding: 20px 0;
+}
+.specifications .title {
+    width: 100px;
+    float: left;
+    text-align: right;
+    padding-right: 10px;
+}
+.data {
+    width: 100%;
+    padding: 0;
+    color: brown;
+}
+
+.box p {
+    color: blueviolet;
+}
+
+.login {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    background-color: white;
+    line-height: 1.6em;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+.wrong {
+    color: red;
+}
+.info {
+    color: dodgerblue;
+}
 
 
 

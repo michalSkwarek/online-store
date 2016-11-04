@@ -45,7 +45,7 @@
                 <div>
                     <form:select path="category" id="category-select">
                         <c:if test="${product.category == null}">
-                            <form:option value="${product.category.id}"> -- <spring:message code="productData.message.select" /> -- </form:option>
+                            <form:option value="${product.category.id}"> -- <spring:message code="products.message.select" /> -- </form:option>
                         </c:if>
                         <form:options items="${categories}" itemLabel="name" itemValue="id" />
                     </form:select>
@@ -62,7 +62,7 @@
                 <div>
                     <form:select path="manufacturer" id="manufacturer-select">
                         <c:if test="${product.manufacturer == null}">
-                            <form:option value="${product.manufacturer.id}"> -- <spring:message code="productData.message.select" /> -- </form:option>
+                            <form:option value="${product.manufacturer.id}"> -- <spring:message code="products.message.select" /> -- </form:option>
                         </c:if>
                         <form:options items="${manufacturers}" itemLabel="brand" itemValue="id"/>
                     </form:select>
