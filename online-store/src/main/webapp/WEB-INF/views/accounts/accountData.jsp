@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section class="form">
@@ -14,19 +15,23 @@
             <form:hidden path="id" />
 
             <div class="box">
+                <div class="error">
+                    <form:errors path="username" />
+                </div>
                 <label for="username" class="title">
                     <spring:message code="account.details.username.label" />
                 </label>
                 <div>
                     <c:choose>
                         <c:when test="${account.username != null}">
-                            ${account.username}
+                            <div class="field">
+                                ${account.username}
+                            </div>
                             <form:hidden path="username" id="username" />
                         </c:when>
                         <c:otherwise>
                             <div>
-                                <form:input path="username" id="username" />
-                                <form:errors path="username" />
+                                <form:input path="username" id="username" cssClass="field" />
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -34,12 +39,14 @@
             </div>
 
             <div class="box">
+                <div class="error">
+                    <form:errors path="password" />
+                </div>
                 <label for="password" class="title">
                     <spring:message code="account.details.password.label" />
                 </label>
                 <div>
-                    <form:input path="password" id="password" />
-                    <form:errors path="password" />
+                    <form:input path="password" id="password" cssClass="field" />
                 </div>
             </div>
 
@@ -47,13 +54,15 @@
                 <form:hidden path="enabled" />
             </c:if>
 
-            <div>
+            <div class="box">
+                <div class="error">
+                    <form:errors path="email" />
+                </div>
                 <label for="email" class="title">
                     <spring:message code="account.details.email.label" />
                 </label>
                 <div>
-                    <form:input path="email" id="email" />
-                    <form:errors path="email" />
+                    <form:input path="email" id="email" cssClass="field" />
                 </div>
             </div>
 
@@ -65,7 +74,9 @@
                     <div>
                         <c:choose>
                             <c:when test="${account.dateCreated != null}">
-                                ${account.dateCreated}
+                                <div class="field">
+                                    <fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${account.dateCreated}" />
+                                </div>
                                 <form:hidden path="dateCreated" id="dateCreated" />
                             </c:when>
                             <c:otherwise>

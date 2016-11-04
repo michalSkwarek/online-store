@@ -1,8 +1,11 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import com.skwarek.onlineStore.web.validator.Model;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -20,16 +23,23 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Long id;
 
+//    @Model
+    @NotEmpty(message = "{Product.model.validation.notEmpty}")
     @Column(name = "model")
     private String model;
 
+    @Min(value = 0, message = "{Product.unitPrice.validation.min}")
+    @Digits(integer = 8, fraction = 2, message = "{Product.unitPrice.validation.digits}")
+    @NotNull(message = "{Product.unitPrice.validation.notNull}")
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
+    @NotNull(message = "{Product.category.validation.notNull}")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @NotNull(message = "{Product.manufacturer.validation.notNull}")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
@@ -42,6 +52,8 @@ public class Product implements Serializable {
     @JoinColumn(name = "specifications_id")
     private ProductSpecifications productSpecifications;
 
+    @Min(value = 0, message = "{Product.unitsInMagazine.validation.min}")
+    @NotNull(message = "{Product.unitsInMagazine.validation.notNull}")
     @Column(name = "units_in_magazine")
     private Long unitsInMagazine;
 

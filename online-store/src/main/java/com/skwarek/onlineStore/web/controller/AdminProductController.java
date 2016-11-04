@@ -12,10 +12,12 @@ import com.skwarek.onlineStore.web.editor.ManufacturerEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -71,15 +73,17 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload) {
+    public String addProduct(@Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
-        if (fileUpload != null) {
-            UploadFile uploadFile = new UploadFile();
-            uploadFile.setFileName(fileUpload.getOriginalFilename());
-            uploadFile.setData(fileUpload.getBytes());
-            uploadFileService.create(uploadFile);
-            product.setProductImage(uploadFile);
+        if (fileUpload.isEmpty() || result.hasErrors()) {
+            return "products/productData";
         }
+
+        UploadFile uploadFile = new UploadFile();
+        uploadFile.setFileName(fileUpload.getOriginalFilename());
+        uploadFile.setData(fileUpload.getBytes());
+        uploadFileService.create(uploadFile);
+        product.setProductImage(uploadFile);
 
         productService.create(product);
         return "redirect:/admin/products/list";
@@ -95,7 +99,11 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable Long id, Product product) {
+    public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "products/productData";
+        }
 
         productService.updateProduct(product);
         return "redirect:/admin/products/list";

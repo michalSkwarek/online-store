@@ -17,7 +17,7 @@ public class UsernameValidator implements ConstraintValidator<Username, String> 
     private AccountService accountService;
 
     @Override
-    public void initialize(Username username) {
+    public void initialize(Username constraintAnnotation) {
 
     }
 

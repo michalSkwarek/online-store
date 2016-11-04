@@ -44,7 +44,7 @@ public class Account implements Serializable {
     private String email;
 
     @Column(name = "date_created")
-    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateCreated;
 
     @Column(name = "role")

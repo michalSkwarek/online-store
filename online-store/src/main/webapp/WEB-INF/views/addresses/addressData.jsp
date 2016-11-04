@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<section>
+<section class="form">
     <form:form modelAttribute="address" method="post">
         <fieldset>
             <legend>
@@ -13,51 +13,57 @@
 
             <form:hidden path="id" />
 
-            <div>
-                <label for="street">
+            <div class="box">
+                <div class="error">
+                    <form:errors path="street" />
+                </div>
+                <label for="street" class="title">
                     <spring:message code="address.details.street.label" />
                 </label>
                 <div>
-                    <form:input path="street" id="street" />
-                    <form:errors path="street" />
+                    <form:input path="street" id="street" cssClass="field" />
                 </div>
             </div>
 
-            <div>
-                <label for="streetNumber">
+            <div class="box">
+                <div class="error">
+                    <form:errors path="streetNumber" />
+                </div>
+                <label for="streetNumber" class="title">
                     <spring:message code="address.details.streetNumber.label" />
                 </label>
                 <div>
-                    <form:input path="streetNumber" id="streetNumber" />
-                    <form:errors path="streetNumber" />
+                    <form:input path="streetNumber" id="streetNumber" cssClass="field" />
                 </div>
             </div>
 
-            <div>
-                <label for="doorNumber">
+            <div class="box">
+                <label for="doorNumber" class="title">
                     <spring:message code="address.details.doorNumber.label" />
                 </label>
                 <div>
-                    <form:input path="doorNumber" id="doorNumber" />
+                    <form:input path="doorNumber" id="doorNumber" cssClass="field" />
                 </div>
             </div>
 
-            <div>
-                <label for="zipCode">
+            <div class="box">
+                <div class="error">
+                    <form:errors path="zipCode" />
+                </div>
+                <label for="zipCode" class="title">
                     <spring:message code="address.details.zipCode.label" />
                 </label>
                 <div>
-                    <form:input path="zipCode" id="zipCode" />
-                    <form:errors path="zipCode" />
+                    <form:input path="zipCode" id="zipCode" cssClass="field" />
                 </div>
             </div>
 
-            <div>
-                <label for="city">
+            <div class="box">
+                <label for="city" class="title">
                     <spring:message code="address.details.city.label" />
                 </label>
                 <div>
-                    <form:input path="city.name" id="city" />
+                    <form:input path="city.name" id="city" cssClass="field" />
                 </div>
             </div>
 
