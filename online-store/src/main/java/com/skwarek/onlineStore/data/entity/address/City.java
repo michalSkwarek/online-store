@@ -22,6 +22,10 @@ public class City implements Serializable {
 
     public City() { }
 
+    public City(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

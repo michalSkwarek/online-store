@@ -56,6 +56,15 @@ public class Account implements Serializable {
 
     public Account() { }
 
+    public Account(String username, String password, Boolean enabled, String email, Date dateCreated, String role) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.email = email;
+        this.dateCreated = dateCreated;
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }

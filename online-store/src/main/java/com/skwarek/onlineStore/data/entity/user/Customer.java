@@ -49,6 +49,14 @@ public class Customer implements Serializable {
 
     public Customer() { }
 
+    public Customer(String firstName, String lastName, String birthDate, String phoneNumber, Integer numberOfOrders) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+        this.numberOfOrders = numberOfOrders;
+    }
+
     public Long getId() {
         return id;
     }
