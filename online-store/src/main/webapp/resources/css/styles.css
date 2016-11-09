@@ -22,8 +22,7 @@ body {
     background-color: yellowgreen;
     width: 960px;
     margin: 0 auto;
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding: 60px 20px 40px 20px;
 }
 .footer {
     background-color: blanchedalmond;
@@ -34,28 +33,53 @@ body {
     bottom: 0;
 }
 
-/*.header {*/
-    /*background-color: blanchedalmond;*/
-    /*padding: 20px;*/
-    /*height: 40px;*/
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*width: 100%;*/
-/*}*/
-/*.content {*/
-    /*background-color: yellowgreen;*/
-    /*width: 960px;*/
-    /*margin: 80px auto 0 auto;*/
-    /*min-height: 1000px;*/
-/*}*/
-/*.footer {*/
-    /*background-color: blanchedalmond;*/
-    /*padding: 5px;*/
-    /*width: 100%;*/
-    /*text-align: center;*/
-/*}*/
+/*homePage*/
+.welcome {
+    text-align: center;
+    font-size: 200%;
+}
+.heading {
+    margin: 10px 0;
+}
+.category {
+    text-align: center;
+}
+.category div a {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1px 30px;
+    text-decoration: none;
+}
+.product {
+    text-align: center;
+    padding: 20px 0;
+}
+.product div {
+    float: left;
+    width: 230px;
+    margin: 0 4px 30px 4px;
+    border: 1px solid black;
+    background-color: cornflowerblue;
+}
+.product div p {
+    margin: 10px 0;
+}
+.product div a {
+    border: 1px solid orange;
+    padding: 0 10px;
+    margin: 0 10px;
+    background-color: red;
+    text-decoration: none;
+}
+.manufacturer {
+    text-align: center;
+}
+.manufacturer a {
+    text-decoration: none;
+    margin: 3px;
+}
 
-
+/*products/list*/
 
 
 

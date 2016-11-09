@@ -5,10 +5,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <form:form method="post">
-        <div>
+    <div>
+        <form:form method="post">
             <div>
-                <p><spring:message code="products.message.selectCategories" /></p>
+                <p class="heading"><spring:message code="products.message.selectCategories" /></p>
                 <c:forEach items="${categories}" var="category">
                     <label>
                         <input type="checkbox" name="category" value="${category.name}">${category.name}
@@ -17,7 +17,7 @@
             </div>
 
             <div>
-                <p><spring:message code="products.message.selectManufacturers" /></p>
+                <p class="heading"><spring:message code="products.message.selectManufacturers" /></p>
                 <c:forEach items="${manufacturers}" var="manufacturer" >
                     <label>
                         <input type="checkbox" name="manufacturer" value="${manufacturer.brand}">${manufacturer.brand}
@@ -26,7 +26,7 @@
             </div>
 
             <div>
-                <p><spring:message code="products.message.selectPriceRange" /></p>
+                <p class="heading"><spring:message code="products.message.selectPriceRange" /></p>
                 <label>
                     <spring:message code="products.message.from" /> <input type="text" name="fromPriceRange">
                     <spring:message code="products.message.to" /> <input type="text" name="toPriceRange">
@@ -34,24 +34,24 @@
             </div>
 
             <div>
-                <p><spring:message code="products.message.selectPriceOrder" /></p>
+                <p class="heading"><spring:message code="products.message.selectPriceOrder" /></p>
                 <label>
                     <input type="radio" name="priceOrder" value="asc" checked><spring:message code="products.message.ascending" />
                     <input type="radio" name="priceOrder" value="desc"><spring:message code="products.message.descending" />
                 </label>
             </div>
-        </div>
 
-        <div>
-            <input type="submit" value="<spring:message code="submit" />" />
-        </div>
-    </form:form>
+            <div>
+                <input type="submit" value="<spring:message code="submit" />" />
+            </div>
+        </form:form>
+    </div>
 
-    <div>
-        <p><spring:message code="products.message.allProducts" /></p>
+    <div class="product">
+        <p class="heading"><spring:message code="products.message.allProducts" /></p>
         <c:forEach items="${products}" var="product">
             <div>
-                <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
+                <img src="/productImages/${product.id}" alt="product" width="230px" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice}</p>
                 <p>${product.category.name}</p>

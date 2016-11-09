@@ -4,12 +4,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div>
-        <h1><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h1>
+    <div class="welcome">
+        <p><spring:message code="homePage.message.welcomeToOurOnlineStore" /></p>
     </div>
 
-    <div>
-        <p><spring:message code="products" /></p>
+    <div class="category">
+        <p class="heading"><spring:message code="homePage.message.categories" /></p>
         <div>
             <c:forEach items="${categories}" var="category">
                 <a href="<spring:url value="/products/category/${category.name}" />">${category.name}</a>
@@ -17,13 +17,13 @@
         </div>
     </div>
 
-    <div>
-        <p><spring:message code="homePage.message.recommendedForYou" /></p>
+    <div class="product">
+        <p class="heading"><spring:message code="homePage.message.recommendedForYou" /></p>
         <c:forEach items="${products}" var="product">
             <div>
-                <img src="/productImages/${product.id}" alt="product" style="width: 10%" />
+                <img src="/productImages/${product.id}" alt="product" width="230px" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
-                <p>${product.unitPrice}</p>
+                <p>${product.unitPrice} PLN</p>
                 <a href="<spring:url value="/products/${product.id}" />"><spring:message code="products.message.details" /></a>
                 <security:authorize  access="!hasRole('ROLE_ADMIN')">
                     <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.message.addToCart" /></a>
@@ -32,11 +32,12 @@
         </c:forEach>
     </div>
 
-    <div>
-        <p><spring:message code="homePage.message.goToTheManufacturersStore" /></p>
+    <div class="manufacturer">
+        <p class="heading"><spring:message code="homePage.message.goToTheManufacturersStore" /></p>
         <c:forEach items="${manufacturers}" var="manufacturer">
-            <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" style="width: 5%" />
-            <a href="<spring:url value="${manufacturer.website}" />">${manufacturer.brand}</a>
+            <a href="<spring:url value="${manufacturer.website}" />">
+                <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" width="64px" />
+            </a>
         </c:forEach>
     </div>
 </section>
