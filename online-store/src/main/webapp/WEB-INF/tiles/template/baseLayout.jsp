@@ -6,32 +6,16 @@
     <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body>
-    <section>
-        <div>
-            <h1>Online store</h1>
-        </div>
-
-        <div>
-            <tiles:insertAttribute name="headerMenuUserAdmin" />
-        </div>
-
-        <div>
+    <section class="wrapper">
+        <div class="header">
             <tiles:insertAttribute name="header" />
         </div>
 
-        <div>
-            <tiles:insertAttribute name="menu" />
-        </div>
-
-        <div>
-            <tiles:insertAttribute name="menuAdmin" />
-        </div>
-
-        <div>
+        <div class="content">
             <tiles:insertAttribute name="content" />
         </div>
 
-        <div>
+        <div class="footer">
             <tiles:insertAttribute name="footer" />
         </div>
     </section>

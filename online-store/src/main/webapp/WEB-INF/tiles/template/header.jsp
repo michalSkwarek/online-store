@@ -5,6 +5,10 @@
 
 <section>
     <div>
+        <h1>Online store</h1>
+    </div>
+
+    <div>
         <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
             <div>
                 <a href="<spring:url value="/users/${pageContext.request.userPrincipal.name}" />"><spring:message code="header.message.userData" /></a>
@@ -41,4 +45,32 @@
             <a href="?language=pl" >pl</a> | <a href="?language=en">en</a>
         </div>
     </div>
+
+    <div>
+        <div>
+            <a href="<spring:url value="/welcome" />"><spring:message code="menu.message.homePage" /></a>
+        </div>
+        <div>
+            <a href="<spring:url value="/products/list" />"><spring:message code="products" /></a>
+        </div>
+        <security:authorize  access="!hasRole('ROLE_ADMIN')">
+            <div>
+                <a href="<spring:url value="/order/myCart" />"><spring:message code="menu.message.cart" /></a>
+            </div>
+        </security:authorize>
+        <security:authorize  access="hasRole('ROLE_ADMIN')">
+            <div>
+                <a href="<spring:url value="/admin/products/list" />"><spring:message code="menu.message.adminPage" /></a>
+            </div>
+        </security:authorize>
+    </div>
+
+    <security:authorize  access="hasRole('ROLE_ADMIN')">
+        <div>
+            <a href="<spring:url value="/admin/products/list" />"><spring:message code="products" /></a>
+        </div>
+        <div>
+            <a href="<spring:url value="/admin/manufacturers/list" />"><spring:message code="manufacturers" /></a>
+        </div>
+    </security:authorize>
 </section>

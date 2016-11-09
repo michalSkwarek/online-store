@@ -1,8 +1,104 @@
 body {
     font-family: Arial, Verdana, sans-serif;
     font-size: 100%;
-    color: black;
-    background-color: white;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    position: relative;
+}
+.header {
+    background-color: blanchedalmond;
+    padding: 10px;
+    height: 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.content {
+    background-color: yellowgreen;
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.footer {
+    background-color: blanchedalmond;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+}
+
+/*.header {*/
+    /*background-color: blanchedalmond;*/
+    /*padding: 20px;*/
+    /*height: 40px;*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*width: 100%;*/
+/*}*/
+/*.content {*/
+    /*background-color: yellowgreen;*/
+    /*width: 960px;*/
+    /*margin: 80px auto 0 auto;*/
+    /*min-height: 1000px;*/
+/*}*/
+/*.footer {*/
+    /*background-color: blanchedalmond;*/
+    /*padding: 5px;*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+.logo h1 {
+    width: 30%;
+    margin-top: 0;
+    font-size: 250%;
+    margin-left: 50px;
+}
+.left-strap {
+    position: absolute;
+    width: 35%;
+    left: 400px;
+}
+.right-strap {
+    position: absolute;
+    width: 35%;
+    left: 900px;
+    text-align: right;
+}
+.top-strap {
+    height: 20px;
+    top: 20px;
+}
+.bottom-strap {
+    height: 20px;
+    top: 40px;
+}
+.left-strap div {
+    display: inline;
+    padding-left: 50px;
+}
+.right-strap div {
+    display: inline;
+    padding-right: 50px;
+}
+
+.header-content-break {
+    margin-top: 100px;
 }
 
 .form {
@@ -126,47 +222,46 @@ body {
 
 
 
-
 /*body {*/
-    /*width: 960px;*/
-    /*font-family: Arial Verdana, sans-serif;*/
-    /*color: red;*/
-    /*background-color: beige;*/
-    /*font-size: 100%;*/
+/*width: 960px;*/
+/*font-family: Arial Verdana, sans-serif;*/
+/*color: red;*/
+/*background-color: beige;*/
+/*font-size: 100%;*/
 /*}*/
 
 /*.main {*/
-    /*width: 960px;*/
-    /*float: left;*/
+/*width: 960px;*/
+/*float: left;*/
 /*}*/
 
 /*.select {*/
-    /*width: 160px;*/
+/*width: 160px;*/
 /*}*/
 
 
 /*.box-container {*/
-    /*!*display: inline;*!*/
-    /*width: 800px;*/
-    /*float: left;*/
-    /*!*position: fixed;*!*/
-    /*!*position: static;*!*/
+/*!*display: inline;*!*/
+/*width: 800px;*/
+/*float: left;*/
+/*!*position: fixed;*!*/
+/*!*position: static;*!*/
 /*}*/
 
 /*.box-product {*/
-    /*width: 180px;*/
-    /*height: 180px;*/
-    /*padding: 10px;*/
-    /*margin: 10px;*/
-    /*border: 1px solid blue;*/
-    /*float: left;*/
+/*width: 180px;*/
+/*height: 180px;*/
+/*padding: 10px;*/
+/*margin: 10px;*/
+/*border: 1px solid blue;*/
+/*float: left;*/
 /*}*/
 
 /*.manufacturer-box {*/
-    /*width: 80px;*/
-    /*height: 80px;*/
-    /*padding: 10px;*/
-    /*margin: 10px;*/
-    /*border: 1px solid blue;*/
-    /*float: left;*/
+/*width: 80px;*/
+/*height: 80px;*/
+/*padding: 10px;*/
+/*margin: 10px;*/
+/*border: 1px solid blue;*/
+/*float: left;*/
 /*}*/
