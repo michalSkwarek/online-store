@@ -12,7 +12,6 @@
 
     <mvc:annotation-driven validator="validator" />
     <context:component-scan base-package="com.skwarek.onlineStore" />
-    <mvc:resources location="/resources/" mapping="/resources/**" />
     <mvc:interceptors>
         <bean class= "org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="language"/>
