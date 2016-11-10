@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-	<div>
+	<div class="info-view">
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
 			<div>
 				<h1><spring:message code="orders.message.dear" />, ${pageContext.request.userPrincipal.name}</h1>

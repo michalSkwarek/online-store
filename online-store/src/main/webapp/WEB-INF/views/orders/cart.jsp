@@ -5,89 +5,84 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div>
-        <spring:message code="orders.message.myCart" />
-    </div>
-
-    <c:if test="${cart.cartTotalPrice == 0}">
-        <div>
-            <p><spring:message code="orders.message.thisCartIsEmpty" /></p>
+    <div class="content-frame">
+        <div class="heading">
+            <h1><spring:message code="orders.message.myCart" /></h1>
         </div>
-    </c:if>
 
-    <div>
-        <form:form method="post" modelAttribute="cart">
-            <c:forEach items="${cart.items}" var="item" varStatus="varStatus">
-                <div>
-                    <img src="/productImages/${item.product.id}" alt="product" style="width: 10%" />
-                </div>
+        <div class="total-cart">
+            <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
+        </div>
 
-                <div>
-                    <label><spring:message code="product.details.model.label" /></label>
-                        ${item.product.model}
-                </div>
-
-                <div>
-                    <label><spring:message code="product.details.unitPrice.label" /></label>
-                        ${item.product.unitPrice}
-                </div>
-
-                <div>
-                    <label><spring:message code="product.details.category.label" /></label>
-                        ${item.product.category.name}
-                </div>
-
-                <div>
-                    <label><spring:message code="manufacturer.details.brand.label" /></label>
-                        ${item.product.manufacturer.brand}
-                </div>
-
-                <div>
-                    <label><spring:message code="item.details.quantity.label" /></label>
-                    <input type="text" name="quantity" value="${item.quantity}">
-                </div>
-
-                <div>
-                    <label><spring:message code="item.details.totalPrice.label" /></label>
-                        ${item.itemTotalPrice}
-                </div>
-
-                <div>
-                    <a href="<spring:url value="/order/deleteProduct?id=${item.product.id}" />"><spring:message code="orders.message.deleteFromCart" /></a>
-                </div>
-            </c:forEach>
-
-            <c:if test="${cart.cartTotalPrice != 0}">
-                <div>
-                    <input type="submit" value="<spring:message code="edit" />"/>
-                </div>
-            </c:if>
-
-            <div>
-                <a href="<spring:url value="/products/list" />"><spring:message code="orders.message.continueBuy" /></a>
+        <c:if test="${cart.cartTotalPrice == 0}">
+            <div class="info-view">
+                <p><spring:message code="orders.message.thisCartIsEmpty" /></p>
             </div>
-        </form:form>
-    </div>
+        </c:if>
 
-    <div>
-        <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
-    </div>
+        <div class="product">
+            <form:form method="post" modelAttribute="cart">
+                <c:forEach items="${cart.items}" var="item" varStatus="varStatus">
+                    <div class="frame">
+                        <img src="/productImages/${item.product.id}" alt="product" width="230px" />
+                        <p>${item.product.manufacturer.brand} ${item.product.model}</p>
+                        <p>${item.product.unitPrice} PLN</p>
+                        <p>${item.product.category.name}</p>
 
-    <c:if test="${cart.cartTotalPrice != 0}">
-        <div>
-            <security:authorize access="!hasRole('ROLE_USER')">
+                        <div class="box">
+                            <%--<div class="error">--%>
+                                <%--<form:errors path="quantity" />--%>
+                            <%--</div>--%>
+                            <label class="title">
+                                <spring:message code="item.details.quantity.label" />
+                            </label>
+                            <div>
+                                <input type="text" name="quantity" value="${item.quantity}">
+                            </div>
+                        </div>
+
+                        <p><spring:message code="item.details.totalPrice.label" />: ${item.itemTotalPrice} PLN</p>
+
+                        <div>
+                            <a href="<spring:url value="/order/deleteProduct?id=${item.product.id}" />">
+                                <button type="button" class="button-add-to-cart"><spring:message code="orders.message.deleteFromCart" /></button>
+                            </a>
+                        </div>
+                    </div>
+                </c:forEach>
+
+                <c:if test="${cart.cartTotalPrice != 0}">
+                    <div>
+                        <input type="submit" class="button-edit" value="<spring:message code="edit" />"/>
+                    </div>
+                </c:if>
+
                 <div>
-                    <a href="<spring:url value="/login" />">
-                        <spring:message code="orders.message.enterShippingAddress" />
-                        (<spring:message code="orders.message.youMustLoginFirst" />)
+                    <a href="<spring:url value="/products/list" />">
+                        <button type="button" class="button-save"><spring:message code="orders.message.continueBuy" /></button>
                     </a>
                 </div>
-            </security:authorize>
-            <security:authorize access="hasRole('ROLE_USER')">
-                <div>
-                    <a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/address" />"><spring:message code="orders.message.enterShippingAddress" /></a>
-                </div>
-            </security:authorize>
+
+                <c:if test="${cart.cartTotalPrice != 0}">
+                    <security:authorize access="!hasRole('ROLE_USER')">
+                        <div>
+                            <a href="<spring:url value="/login" />">
+                                <button type="button" class="button-save">
+                                    <spring:message code="orders.message.enterShippingAddress" />
+                                    (<spring:message code="orders.message.youMustLoginFirst" />)
+                                </button>
+                            </a>
+                        </div>
+                    </security:authorize>
+                    <security:authorize access="hasRole('ROLE_USER')">
+                        <div>
+                            <a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/address" />">
+                                <button type="button" class="button-save"><spring:message code="orders.message.enterShippingAddress" /></button>
+                            </a>
+                        </div>
+                    </security:authorize>
+                </c:if>
+            </form:form>
         </div>
-    </c:if>
+    </div>
 </section>

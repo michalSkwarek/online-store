@@ -2,6 +2,8 @@ package com.skwarek.onlineStore.data.model.order;
 
 import com.skwarek.onlineStore.data.entity.product.Product;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -11,6 +13,8 @@ public class Item {
 
     private Product product;
 
+    @Min(value = 0, message = "{Item.quantity.validation.min}")
+    @NotNull(message = "{Item.quantity.validation.notNull}")
     private Integer quantity;
 
     private BigDecimal itemTotalPrice;

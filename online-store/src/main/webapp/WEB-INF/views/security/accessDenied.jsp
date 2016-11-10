@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <section>
-	<div>
+	<div class="error-view">
 		<div>
 			<h1><spring:message code="security.message.accessIsDenied" /></h1>
 		</div>
