@@ -4,73 +4,75 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<section class="form">
-    <form:form modelAttribute="address" method="post">
-        <fieldset>
-            <legend>
-                <spring:message code="addresses.messages.addressData" />
-            </legend>
+<section>
+    <div class="form">
+        <form:form modelAttribute="address" method="post">
+            <fieldset>
+                <legend>
+                    <spring:message code="addresses.messages.addressData" />
+                </legend>
 
-            <form:hidden path="id" />
+                <form:hidden path="id" />
 
-            <div class="box">
-                <div class="error">
-                    <form:errors path="street" />
+                <div class="box">
+                    <div class="error">
+                        <form:errors path="street" />
+                    </div>
+                    <label for="street" class="title">
+                        <spring:message code="address.details.street.label" />
+                    </label>
+                    <div>
+                        <form:input path="street" id="street" cssClass="input-field" />
+                    </div>
                 </div>
-                <label for="street" class="title">
-                    <spring:message code="address.details.street.label" />
-                </label>
+
+                <div class="box">
+                    <div class="error">
+                        <form:errors path="streetNumber" />
+                    </div>
+                    <label for="streetNumber" class="title">
+                        <spring:message code="address.details.streetNumber.label" />
+                    </label>
+                    <div>
+                        <form:input path="streetNumber" id="streetNumber" cssClass="input-field" />
+                    </div>
+                </div>
+
+                <div class="box">
+                    <label for="doorNumber" class="title">
+                        <spring:message code="address.details.doorNumber.label" />
+                    </label>
+                    <div>
+                        <form:input path="doorNumber" id="doorNumber" cssClass="input-field" />
+                    </div>
+                </div>
+
+                <div class="box">
+                    <div class="error">
+                        <form:errors path="zipCode" />
+                    </div>
+                    <label for="zipCode" class="title">
+                        <spring:message code="address.details.zipCode.label" />
+                    </label>
+                    <div>
+                        <form:input path="zipCode" id="zipCode" cssClass="input-field" />
+                    </div>
+                </div>
+
+                <div class="box">
+                    <label for="city" class="title">
+                        <spring:message code="address.details.city.label" />
+                    </label>
+                    <div>
+                        <form:input path="city.name" id="city" cssClass="input-field" />
+                    </div>
+                </div>
+
                 <div>
-                    <form:input path="street" id="street" cssClass="field" />
+                    <input type="submit" value="<spring:message code="save" />" />
                 </div>
-            </div>
 
-            <div class="box">
-                <div class="error">
-                    <form:errors path="streetNumber" />
-                </div>
-                <label for="streetNumber" class="title">
-                    <spring:message code="address.details.streetNumber.label" />
-                </label>
-                <div>
-                    <form:input path="streetNumber" id="streetNumber" cssClass="field" />
-                </div>
-            </div>
-
-            <div class="box">
-                <label for="doorNumber" class="title">
-                    <spring:message code="address.details.doorNumber.label" />
-                </label>
-                <div>
-                    <form:input path="doorNumber" id="doorNumber" cssClass="field" />
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="error">
-                    <form:errors path="zipCode" />
-                </div>
-                <label for="zipCode" class="title">
-                    <spring:message code="address.details.zipCode.label" />
-                </label>
-                <div>
-                    <form:input path="zipCode" id="zipCode" cssClass="field" />
-                </div>
-            </div>
-
-            <div class="box">
-                <label for="city" class="title">
-                    <spring:message code="address.details.city.label" />
-                </label>
-                <div>
-                    <form:input path="city.name" id="city" cssClass="field" />
-                </div>
-            </div>
-
-            <div>
-                <input type="submit" value="<spring:message code="save" />" />
-            </div>
-
-        </fieldset>
-    </form:form>
+            </fieldset>
+        </form:form>
+    </div>
 </section>

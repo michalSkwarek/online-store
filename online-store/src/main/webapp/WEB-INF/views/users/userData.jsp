@@ -1,132 +1,174 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
     <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-        <div>
-            <div>
-                <h1><spring:message code="accounts.messages.accountData" /></h1>
-            </div>
+        <div class="form">
+            <fieldset>
+                <legend>
+                    <spring:message code="accounts.messages.accountData" />
+                </legend>
 
-            <div>
-                <label>
-                    <spring:message code="account.details.username.label" />
-                </label>
-                    ${account.username}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="account.details.username.label" />
+                    </label>
+                    <div class="field">
+                            ${account.username}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="account.details.password.label" />
-                </label>
-                    ${account.password}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="account.details.password.label" />
+                    </label>
+                    <div class="field">
+                            ${account.password}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="account.details.email.label" />
-                </label>
-                    ${account.email}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="account.details.email.label" />
+                    </label>
+                    <div class="field">
+                            ${account.email}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="account.details.dateCreated.label" />
-                </label>
-                    ${account.dateCreated}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="account.details.dateCreated.label" />
+                    </label>
+                    <div class="field">
+                            <fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${account.dateCreated}" />
+                    </div>
+                </div>
 
-            <div>
-                <a href="<spring:url value="/accounts/edit/${account.username}" />"><spring:message code="edit" /></a>
-            </div>
+                <div>
+                    <a href="<spring:url value="/accounts/edit/${account.username}" />">
+                        <button type="button"><spring:message code="edit" /></button>
+                    </a>
+                </div>
+
+            </fieldset>
         </div>
     </security:authorize>
 
     <security:authorize  access="hasRole('ROLE_USER')">
-        <div>
-            <div>
-                <h1><spring:message code="customers.messages.customerData" /></h1>
-            </div>
+        <div class="form">
+            <fieldset>
+                <legend>
+                    <spring:message code="customers.messages.customerData" />
+                </legend>
 
-            <div>
-                <label>
-                    <spring:message code="customer.details.firstName.label" />
-                </label>
-                    ${account.customer.firstName}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="customer.details.firstName.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.firstName}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="customer.details.lastName.label" />
-                </label>
-                    ${account.customer.lastName}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="customer.details.lastName.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.lastName}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="customer.details.birthDate.label" />
-                </label>
-                    ${account.customer.birthDate}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="customer.details.birthDate.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.birthDate}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="customer.details.phoneNumber.label" />
-                </label>
-                    ${account.customer.phoneNumber}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="customer.details.phoneNumber.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.phoneNumber}
+                    </div>
+                </div>
 
-            <div>
-                <a href="<spring:url value="/customers/edit/${account.username}" />"><spring:message code="edit" /></a>
-            </div>
+                <div>
+                    <a href="<spring:url value="/customers/edit/${account.username}" />">
+                        <button type="button"><spring:message code="edit" /></button>
+                    </a>
+                </div>
+
+            </fieldset>
         </div>
     </security:authorize>
 
     <security:authorize  access="hasRole('ROLE_USER')">
-        <div>
-            <div>
-                <h1><spring:message code="addresses.messages.addressData" /></h1>
-            </div>
+        <div class="form">
+            <fieldset>
+                <legend>
+                    <spring:message code="addresses.messages.addressData" />
+                </legend>
 
-            <div>
-                <label>
-                    <spring:message code="address.details.street.label" />
-                </label>
-                    ${account.customer.billingAddress.street}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="address.details.street.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.billingAddress.street}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="address.details.streetNumber.label" />
-                </label>
-                    ${account.customer.billingAddress.streetNumber}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="address.details.streetNumber.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.billingAddress.streetNumber}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="address.details.doorNumber.label" />
-                </label>
-                    ${account.customer.billingAddress.doorNumber}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="address.details.doorNumber.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.billingAddress.doorNumber}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="address.details.zipCode.label" />
-                </label>
-                    ${account.customer.billingAddress.zipCode}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="address.details.zipCode.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.billingAddress.zipCode}
+                    </div>
+                </div>
 
-            <div>
-                <label>
-                    <spring:message code="address.details.city.label" />
-                </label>
-                    ${account.customer.billingAddress.city.name}
-            </div>
+                <div class="box">
+                    <label class="title">
+                        <spring:message code="address.details.city.label" />
+                    </label>
+                    <div class="field">
+                            ${account.customer.billingAddress.city.name}
+                    </div>
+                </div>
 
-            <div>
-                <a href="<spring:url value="/addresses/edit/${account.username}" />"><spring:message code="edit" /></a>
-            </div>
+                <div>
+                    <a href="<spring:url value="/addresses/edit/${account.username}" />">
+                        <button type="button"><spring:message code="edit" /></button>
+                    </a>
+                </div>
+
+            </fieldset>
         </div>
     </security:authorize>
 </section>
