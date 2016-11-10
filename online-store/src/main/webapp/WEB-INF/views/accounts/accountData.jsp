@@ -95,7 +95,7 @@
                 </c:if>
 
                 <div>
-                    <input type="submit" value="<spring:message code="save" />" />
+                    <input type="submit" class="button-save" value="<spring:message code="save" />" />
                 </div>
 
             </fieldset>

@@ -12,7 +12,9 @@
         <p class="heading"><spring:message code="homePage.message.categories" /></p>
         <div>
             <c:forEach items="${categories}" var="category">
-                <a href="<spring:url value="/products/category/${category.name}" />">${category.name}</a>
+                <a href="<spring:url value="/products/category/${category.name}" />">
+                    <button type="button" class="button-category">${category.name}</button>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -20,13 +22,21 @@
     <div class="product">
         <p class="heading"><spring:message code="homePage.message.recommendedForYou" /></p>
         <c:forEach items="${products}" var="product">
-            <div>
+            <div class="frame">
                 <img src="/productImages/${product.id}" alt="product" width="230px" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice} PLN</p>
-                <a href="<spring:url value="/products/${product.id}" />"><spring:message code="products.message.details" /></a>
+                <div>
+                    <a href="<spring:url value="/products/${product.id}" />">
+                        <button type="button" class="button-details"><spring:message code="products.message.details" /></button>
+                    </a>
+                </div>
                 <security:authorize  access="!hasRole('ROLE_ADMIN')">
-                    <a href="<spring:url value="/order/addProduct?id=${product.id}" />"><spring:message code="products.message.addToCart" /></a>
+                    <div>
+                        <a href="<spring:url value="/order/addProduct?id=${product.id}" />">
+                            <button type="button" class="button-add-to-cart"><spring:message code="products.message.addToCart" /></button>
+                        </a>
+                    </div>
                 </security:authorize>
             </div>
         </c:forEach>

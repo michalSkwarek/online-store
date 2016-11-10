@@ -49,7 +49,7 @@
 
                 <div>
                     <a href="<spring:url value="/accounts/edit/${account.username}" />">
-                        <button type="button"><spring:message code="edit" /></button>
+                        <button type="button" class="button-edit"><spring:message code="edit" /></button>
                     </a>
                 </div>
 
@@ -102,7 +102,7 @@
 
                 <div>
                     <a href="<spring:url value="/customers/edit/${account.username}" />">
-                        <button type="button"><spring:message code="edit" /></button>
+                        <button type="button" class="button-edit"><spring:message code="edit" /></button>
                     </a>
                 </div>
 
@@ -164,7 +164,7 @@
 
                 <div>
                     <a href="<spring:url value="/addresses/edit/${account.username}" />">
-                        <button type="button"><spring:message code="edit" /></button>
+                        <button type="button" class="button-edit"><spring:message code="edit" /></button>
                     </a>
                 </div>
 

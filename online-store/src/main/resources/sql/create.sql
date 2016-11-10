@@ -320,7 +320,7 @@ INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (27
 INSERT INTO gpu (id, model) VALUES (22, 'Intel Iris Pro Graphics');
 INSERT INTO gpu (id, model) VALUES (23, 'Intel HD Graphics 6000');
 INSERT INTO gpu (id, model) VALUES (24, 'Intel HD Graphics 520');
-INSERT INTO gpu (id, model, memory, memory_type) VALUES (25, 'Intel HD Graphics 530 + NVIDIA GeForce GTX 960M', 2, 'GDDR5');
+INSERT INTO gpu (id, model, memory, memory_type) VALUES (25, 'NVIDIA GeForce GTX 960M', 2, 'GDDR5');
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (26, 'NVIDIA Quadro M600M', 8, 'GDDR5');
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (27, 'NVIDIA GeForce GTX 1070 SLI', 8, 'GDDR5');
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (28, 'NVIDIA GeForce GTX 980M', 4, 'GDDR5');
