@@ -10,9 +10,11 @@
             <h1><spring:message code="orders.message.myCart" /></h1>
         </div>
 
-        <div class="total-cart">
-            <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
-        </div>
+        <c:if test="${cart.cartTotalPrice != 0}">
+            <div class="total-cart">
+                <h1><spring:message code="cart.details.total.label" />: ${cart.cartTotalPrice} PLN</h1>
+            </div>
+        </c:if>
 
         <c:if test="${cart.cartTotalPrice == 0}">
             <div class="info-view">
