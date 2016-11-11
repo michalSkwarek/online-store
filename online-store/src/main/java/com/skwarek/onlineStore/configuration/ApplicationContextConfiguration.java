@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -18,7 +19,6 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
-import javax.validation.Validator;
 import java.util.Locale;
 
 /**
@@ -67,19 +67,22 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter {
         return localeChangeInterceptor;
     }
 
-    //problem - see xml config
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(localeChangeInterceptor());
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
 
     @Bean
-    public Validator validator() {
+    public LocalValidatorFactoryBean validator() {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
         localValidatorFactoryBean.setValidationMessageSource(messageSource());
         return localValidatorFactoryBean;
     }
 
+    @Override
+    public Validator getValidator() {
+        return validator();
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
