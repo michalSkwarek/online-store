@@ -1,11 +1,8 @@
 package com.skwarek.onlineStore.data.entity.user;
 
-import com.skwarek.onlineStore.web.validator.Username;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -38,8 +35,8 @@ public class Account implements Serializable {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @NotNull(message = "{Account.email.validation.notNull}")
-    @Pattern(regexp = "[a-zA-Z0-9]+@[a-z.]+", message = "{Account.email.validation.pattern}")
+//    @NotNull(message = "{Account.email.validation.notNull}")
+//    @Pattern(regexp = "[a-zA-Z0-9]+@[a-z.]+", message = "{Account.email.validation.pattern}")
     @Column(name = "email")
     private String email;
 

@@ -2,11 +2,11 @@ package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.service.AccountService;
+import com.skwarek.onlineStore.web.validator.UsernameValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +24,14 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private UsernameValidator usernameValidator;
+
+    @InitBinder
+    public void initialiseBinder(WebDataBinder binder) {
+        binder.setValidator(usernameValidator);
+    }
 
     @RequestMapping(value = "/{username}")
     public String getAccountByUsername(@PathVariable String username, Model model) {
