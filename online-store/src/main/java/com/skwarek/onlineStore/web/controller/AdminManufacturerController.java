@@ -4,6 +4,7 @@ import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.UploadFileService;
+import com.skwarek.onlineStore.web.validator.BrandValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +31,9 @@ public class AdminManufacturerController {
     @Autowired
     private UploadFileService uploadFileService;
 
+    @Autowired
+    private BrandValidator brandValidator;
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
@@ -47,6 +51,8 @@ public class AdminManufacturerController {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addManufacturer(@Valid Manufacturer manufacturer, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
+
+        brandValidator.validate(manufacturer, result);
 
         if (fileUpload.isEmpty() || result.hasErrors()) {
             return "manufacturers/manufacturerData";
@@ -72,6 +78,8 @@ public class AdminManufacturerController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateManufacturer(@PathVariable Long id, @Valid Manufacturer manufacturer, BindingResult result) {
+
+        brandValidator.validate(manufacturer, result);
 
         if (result.hasErrors()) {
             return "manufacturers/manufacturerData";

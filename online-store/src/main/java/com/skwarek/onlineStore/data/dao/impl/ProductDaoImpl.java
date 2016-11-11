@@ -140,4 +140,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         listOfProducts.retainAll(this.getProductsByManufacturersFilter(manufacturers));
         return listOfProducts;
     }
+
+    @Override
+    public Product getProductByModel(String model) {
+        Query getProductQuery = getSession().createQuery("from Product p where p.model = :model");
+        getProductQuery.setParameter("model", model);
+        getProductQuery.setMaxResults(1);
+        return (Product) getProductQuery.uniqueResult();
+    }
 }

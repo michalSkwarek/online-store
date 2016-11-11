@@ -9,6 +9,7 @@ import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsF
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editor.CategoryEditor;
 import com.skwarek.onlineStore.web.editor.ManufacturerEditor;
+import com.skwarek.onlineStore.web.validator.ModelValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,9 @@ public class AdminProductController {
 
     @Autowired
     private UploadFileService uploadFileService;
+
+    @Autowired
+    private ModelValidator modelValidator;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -75,6 +79,8 @@ public class AdminProductController {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addProduct(@Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
+        modelValidator.validate(product, result);
+
         if (fileUpload.isEmpty() || result.hasErrors()) {
             return "products/productData";
         }
@@ -100,6 +106,8 @@ public class AdminProductController {
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result) {
+
+        modelValidator.validate(product, result);
 
         if (result.hasErrors()) {
             return "products/productData";

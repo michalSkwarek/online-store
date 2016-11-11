@@ -28,4 +28,9 @@ public class ManufacturerServiceImpl extends GenericServiceImpl<Manufacturer, Lo
     public void updateManufacturer(Manufacturer manufacturer) {
         manufacturerDao.updateManufacturer(manufacturer);
     }
+
+    @Override
+    public Manufacturer getManufacturerByBrand(String brand) {
+        return manufacturerDao.getManufacturerByBrand(brand);
+    }
 }

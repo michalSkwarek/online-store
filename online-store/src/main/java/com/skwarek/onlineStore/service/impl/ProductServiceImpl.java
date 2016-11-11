@@ -49,4 +49,9 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     public List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
         return productDao.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
     }
+
+    @Override
+    public Product getProductByModel(String model) {
+        return productDao.getProductByModel(model);
+    }
 }

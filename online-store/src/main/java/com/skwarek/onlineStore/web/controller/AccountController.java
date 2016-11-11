@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,11 +26,6 @@ public class AccountController {
     @Autowired
     private UsernameValidator usernameValidator;
 
-    @InitBinder
-    public void initialiseBinder(WebDataBinder binder) {
-        binder.setValidator(usernameValidator);
-    }
-
     @RequestMapping(value = "/{username}")
     public String getAccountByUsername(@PathVariable String username, Model model) {
 
@@ -50,6 +43,8 @@ public class AccountController {
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addAccount(@Valid Account account, BindingResult result) {
+
+        usernameValidator.validate(account, result);
 
         if (result.hasErrors()) {
             account.setUsername(null);

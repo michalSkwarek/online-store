@@ -1,11 +1,12 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import com.skwarek.onlineStore.web.validator.Model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -23,7 +24,6 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Long id;
 
-//    @Model
     @NotEmpty(message = "{Product.model.validation.notEmpty}")
     @Column(name = "model")
     private String model;

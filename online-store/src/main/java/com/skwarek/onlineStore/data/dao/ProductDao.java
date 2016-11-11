@@ -28,4 +28,6 @@ public interface ProductDao extends GenericDao<Product, Long> {
     List getProductsByPriceFilter(String low, String high, String priceOrder);
 
     List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
+
+    Product getProductByModel(String model);
 }

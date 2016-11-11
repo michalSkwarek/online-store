@@ -3,6 +3,8 @@ package com.skwarek.onlineStore.data.entity.user;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,14 +18,13 @@ public class Account implements Serializable {
 
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_USER = "ROLE_USER";
-    private static final long serialVersionUID = -2035625372437413793L;
+    private static final long serialVersionUID = -4745694015645566183L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-//    @Username
     @Size(min = 3, max = 5, message = "{Account.username.validation.size}")
     @Column(name = "username")
     private String username;
@@ -35,8 +36,8 @@ public class Account implements Serializable {
     @Column(name = "enabled")
     private Boolean enabled;
 
-//    @NotNull(message = "{Account.email.validation.notNull}")
-//    @Pattern(regexp = "[a-zA-Z0-9]+@[a-z.]+", message = "{Account.email.validation.pattern}")
+    @NotNull(message = "{Account.email.validation.notNull}")
+    @Pattern(regexp = "[a-zA-Z0-9]+@[a-z.]+", message = "{Account.email.validation.pattern}")
     @Column(name = "email")
     private String email;
 

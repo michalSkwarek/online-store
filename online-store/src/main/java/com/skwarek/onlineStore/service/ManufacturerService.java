@@ -11,4 +11,6 @@ public interface ManufacturerService extends GenericService<Manufacturer, Long> 
     boolean deleteManufacturer(Long id);
 
     void updateManufacturer(Manufacturer manufacturer);
+
+    Manufacturer getManufacturerByBrand(String brand);
 }

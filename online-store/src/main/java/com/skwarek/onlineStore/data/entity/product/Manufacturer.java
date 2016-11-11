@@ -3,7 +3,6 @@ package com.skwarek.onlineStore.data.entity.product;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -21,7 +20,6 @@ public class Manufacturer implements Serializable {
     @Column(name = "id")
     private Long id;
 
-//    @Brand
     @NotEmpty(message = "{Manufacturer.brand.validation.notEmpty}")
     @Column(name = "brand")
     private String brand;
