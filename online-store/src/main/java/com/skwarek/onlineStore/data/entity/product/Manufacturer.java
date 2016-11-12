@@ -83,18 +83,13 @@ public class Manufacturer implements Serializable {
 
         Manufacturer that = (Manufacturer) o;
 
-        if (brand != null ? !brand.equals(that.brand) : that.brand != null) return false;
-        if (logo != null ? !logo.equals(that.logo) : that.logo != null) return false;
-        return website != null ? website.equals(that.website) : that.website == null;
+        return brand != null ? brand.equals(that.brand) : that.brand == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = brand != null ? brand.hashCode() : 0;
-        result = 31 * result + (logo != null ? logo.hashCode() : 0);
-        result = 31 * result + (website != null ? website.hashCode() : 0);
-        return result;
+        return brand != null ? brand.hashCode() : 0;
     }
 
     @Override

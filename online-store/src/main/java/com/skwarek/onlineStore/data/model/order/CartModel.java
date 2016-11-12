@@ -69,7 +69,7 @@ public class CartModel {
         updateGrandTotal();
     }
 
-    public void updateGrandTotal() {
+    private void updateGrandTotal() {
         cartTotalPrice = new BigDecimal(0);
         for (Item item : items) {
             cartTotalPrice = cartTotalPrice.add(item.getItemTotalPrice());
@@ -85,6 +85,17 @@ public class CartModel {
             }
         }
         updateGrandTotal();
+    }
+
+    public boolean isAddProductToCart(Product product) {
+        for (Item itemInCart : items) {
+            if (itemInCart.getProduct().equals(product)) {
+                if (itemInCart.getQuantity() >= product.getUnitsInMagazine()) {
+                    return false;
+                }
+            }
+        }
+        return product.isAvailability();
     }
 
     @Override

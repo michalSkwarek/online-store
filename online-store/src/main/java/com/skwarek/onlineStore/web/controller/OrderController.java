@@ -8,6 +8,7 @@ import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.data.model.order.CartModel;
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.Utils;
+import com.skwarek.onlineStore.web.validator.QuantityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private QuantityValidator quantityValidator;
+
     @RequestMapping(value = "/{username}/list")
     public String showOrders(@PathVariable String username, Model model) {
 
@@ -51,6 +55,11 @@ public class OrderController {
 
         Product product = productService.read(id);
         CartModel cart = Utils.getCartModelInSession(request);
+
+        if (!cart.isAddProductToCart(product)) {
+            return "orders/productUnavailable";
+        }
+
         orderService.addProductToCart(product, cart);
         model.addAttribute("cart", cart);
         return "redirect:/order/myCart";
@@ -75,13 +84,17 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/myCart", method = RequestMethod.POST)
-    public String cartUpdateQuantity(HttpServletRequest request, @Valid @RequestParam(value = "quantity") String[] quantities, BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "accounts/accountData";
-        }
+    public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities, BindingResult result) {
 
         CartModel cart = Utils.getCartModelInSession(request);
+
+//        quantityValidator.validate(cart, result);
+
+//        if (result.hasErrors()) {
+//            System.out.println("dupek ");
+//            return "orders/cart";
+//        }
+
         orderService.updateQuantitiesInCart(quantities, cart);
         return "redirect:/order/myCart";
     }

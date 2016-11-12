@@ -32,9 +32,9 @@
                         <p>${item.product.category.name}</p>
 
                         <div class="box">
-                            <%--<div class="error">--%>
-                                <%--<form:errors path="quantity" />--%>
-                            <%--</div>--%>
+                            <div class="error">
+                                <%--<form:errors path="item.quantity" />--%>
+                            </div>
                             <label class="title">
                                 <spring:message code="item.details.quantity.label" />
                             </label>

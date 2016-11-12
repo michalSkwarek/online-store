@@ -113,6 +113,11 @@
         <put-attribute name="content" value="/WEB-INF/views/orders/list.jsp" />
     </definition>
 
+    <definition name="orders/productUnavailable" extends="baseLayout">
+        <put-attribute name="title" value="Product unavailable" />
+        <put-attribute name="content" value="/WEB-INF/views/orders/productUnavailable.jsp" />
+    </definition>
+
     <definition name="orders/thanks" extends="baseLayout">
         <put-attribute name="title" value="Thanks" />
         <put-attribute name="content" value="/WEB-INF/views/orders/thanks.jsp" />

@@ -13,8 +13,8 @@ public class Item {
 
     private Product product;
 
-    @Min(value = 0, message = "{Item.quantity.validation.min}")
-    @NotNull(message = "{Item.quantity.validation.notNull}")
+//    @Min(value = 0, message = "{Item.quantity.validation.min}")
+//    @NotNull(message = "{Item.quantity.validation.notNull}")
     private Integer quantity;
 
     private BigDecimal itemTotalPrice;

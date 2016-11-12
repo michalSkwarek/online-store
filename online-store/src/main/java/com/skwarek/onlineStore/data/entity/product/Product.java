@@ -134,29 +134,13 @@ public class Product implements Serializable {
 
         Product product = (Product) o;
 
-        if (model != null ? !model.equals(product.model) : product.model != null) return false;
-        if (unitPrice != null ? !unitPrice.equals(product.unitPrice) : product.unitPrice != null) return false;
-        if (category != null ? !category.equals(product.category) : product.category != null) return false;
-        if (manufacturer != null ? !manufacturer.equals(product.manufacturer) : product.manufacturer != null)
-            return false;
-        if (productImage != null ? !productImage.equals(product.productImage) : product.productImage != null)
-            return false;
-        if (productSpecifications != null ? !productSpecifications.equals(product.productSpecifications) : product.productSpecifications != null)
-            return false;
-        return unitsInMagazine != null ? unitsInMagazine.equals(product.unitsInMagazine) : product.unitsInMagazine == null;
+        return model != null ? model.equals(product.model) : product.model == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = model != null ? model.hashCode() : 0;
-        result = 31 * result + (unitPrice != null ? unitPrice.hashCode() : 0);
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
-        result = 31 * result + (productImage != null ? productImage.hashCode() : 0);
-        result = 31 * result + (productSpecifications != null ? productSpecifications.hashCode() : 0);
-        result = 31 * result + (unitsInMagazine != null ? unitsInMagazine.hashCode() : 0);
-        return result;
+        return model != null ? model.hashCode() : 0;
     }
 
     @Override
