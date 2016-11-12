@@ -107,8 +107,6 @@ public class AdminProductController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result) {
 
-        modelValidator.validate(product, result);
-
         if (result.hasErrors()) {
             return "products/productData";
         }

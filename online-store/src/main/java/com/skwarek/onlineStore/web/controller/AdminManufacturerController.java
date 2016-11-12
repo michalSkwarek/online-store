@@ -79,8 +79,6 @@ public class AdminManufacturerController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
     public String updateManufacturer(@PathVariable Long id, @Valid Manufacturer manufacturer, BindingResult result) {
 
-        brandValidator.validate(manufacturer, result);
-
         if (result.hasErrors()) {
             return "manufacturers/manufacturerData";
         }
