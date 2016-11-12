@@ -150,9 +150,9 @@ public class Customer implements Serializable {
                 "firstName=" + firstName +
                 ", lastName=" + lastName +
                 ", birthDate=" + birthDate +
-                ", billingAddress=" + billingAddress +
                 ", phoneNumber=" + phoneNumber +
                 ", numberOfOrders=" + numberOfOrders +
+                ", billingAddress=" + billingAddress +
                 '}';
     }
 }

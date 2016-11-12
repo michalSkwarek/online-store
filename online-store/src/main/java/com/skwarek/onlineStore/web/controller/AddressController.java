@@ -26,14 +26,6 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping(value = "/{username}")
-    public String getAddressByUsername(@PathVariable String username, Model model) {
-
-        Address address = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
-        model.addAttribute("address", address);
-        return "addresses/addressData";
-    }
-
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createAddress(Model model) {
 

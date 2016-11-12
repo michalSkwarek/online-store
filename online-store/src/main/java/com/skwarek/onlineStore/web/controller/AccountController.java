@@ -26,14 +26,6 @@ public class AccountController {
     @Autowired
     private UsernameValidator usernameValidator;
 
-    @RequestMapping(value = "/{username}")
-    public String getAccountByUsername(@PathVariable String username, Model model) {
-
-        Account account = accountService.getAccountByUsername(username);
-        model.addAttribute("account", account);
-        return "accounts/accountData";
-    }
-
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createAccount(Model model) {
 

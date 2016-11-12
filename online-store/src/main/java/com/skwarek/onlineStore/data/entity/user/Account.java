@@ -37,7 +37,7 @@ public class Account implements Serializable {
     private Boolean enabled;
 
     @NotNull(message = "{Account.email.validation.notNull}")
-    @Pattern(regexp = "[a-zA-Z0-9]+@[a-z.]+", message = "{Account.email.validation.pattern}")
+    @Pattern(regexp = "[a-zA-Z0-9.]+@[a-zA-Z0-9.]+", message = "{Account.email.validation.pattern}")
     @Column(name = "email")
     private String email;
 

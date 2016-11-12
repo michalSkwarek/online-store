@@ -26,14 +26,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping(value = "/{username}")
-    public String getCustomerByUsername(@PathVariable String username, Model model) {
-
-        Customer customer = accountService.getAccountByUsername(username).getCustomer();
-        model.addAttribute("customer", customer);
-        return "customers/customerData";
-    }
-
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createCustomer(Model model) {
 
