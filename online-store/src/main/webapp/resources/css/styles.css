@@ -289,6 +289,7 @@ body {
 }
 .list-table {
     border-spacing: 0;
+    width: 100%;
 }
 .list-table tr.head th {
     color: white;
@@ -320,15 +321,37 @@ body {
 }
 
 /*login*/
-.login {
-    width: 300px;
-    text-align: center;
-    margin: auto;
-    background-color: white;
-    line-height: 1.6em;
+.login-page {
+    width: 360px;
+    margin: 20px auto;
+    padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 20px;
+    text-align: center;
+}
+.login-page input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 10px;
+}
+.login-page .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.login-page .message a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+.login-page .message a:hover {
+    color: #45a049;
+    text-decoration: none;
 }
 .wrong {
     color: red;

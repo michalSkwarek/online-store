@@ -12,13 +12,13 @@
 
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<div>
-					<h1><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h1>
+					<h2><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h2>
 				</div>
 			</sec:authorize>
 
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<div>
-					<h1><spring:message code="security.message.adminPermission" />!</h1>
+					<h2><spring:message code="security.message.adminPermission" />!</h2>
 				</div>
 			</sec:authorize>
 		</c:if>
