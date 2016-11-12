@@ -33,7 +33,7 @@
 
                         <div class="box">
                             <div class="error">
-                                <%--<form:errors path="item.quantity" />--%>
+                                <form:errors path="*" />
                             </div>
                             <label class="title">
                                 <spring:message code="item.details.quantity.label" />

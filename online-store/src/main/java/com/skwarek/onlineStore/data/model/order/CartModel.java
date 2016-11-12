@@ -79,8 +79,11 @@ public class CartModel {
     public void updateQuantity(String[] quantities) {
         int i = 0;
         for (Item itemInCart : items) {
-            itemInCart.setQuantity(Integer.parseInt(quantities[i++]));
-            if (itemInCart.getQuantity() == 0) {
+            Long quantity = Long.parseLong(quantities[i++]);
+            if (quantity > 0) {
+                Long unitsInMagazine = itemInCart.getProduct().getUnitsInMagazine();
+                itemInCart.setQuantity(Math.min(quantity, unitsInMagazine));
+            } else {
                 items.remove(itemInCart);
             }
         }

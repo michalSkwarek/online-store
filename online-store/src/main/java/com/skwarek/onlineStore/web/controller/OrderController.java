@@ -1,25 +1,23 @@
 package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
-import com.skwarek.onlineStore.data.entity.order.Order;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.data.model.order.CartModel;
-import com.skwarek.onlineStore.service.*;
+import com.skwarek.onlineStore.service.AccountService;
+import com.skwarek.onlineStore.service.OrderService;
+import com.skwarek.onlineStore.service.ProductService;
 import com.skwarek.onlineStore.web.Utils;
-import com.skwarek.onlineStore.web.validator.QuantityValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -37,9 +35,6 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
-
-    @Autowired
-    private QuantityValidator quantityValidator;
 
     @RequestMapping(value = "/{username}/list")
     public String showOrders(@PathVariable String username, Model model) {
@@ -84,16 +79,9 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/myCart", method = RequestMethod.POST)
-    public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities, BindingResult result) {
+    public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities) {
 
         CartModel cart = Utils.getCartModelInSession(request);
-
-//        quantityValidator.validate(cart, result);
-
-//        if (result.hasErrors()) {
-//            System.out.println("dupek ");
-//            return "orders/cart";
-//        }
 
         orderService.updateQuantitiesInCart(quantities, cart);
         return "redirect:/order/myCart";
