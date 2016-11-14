@@ -1,8 +1,10 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,9 +22,11 @@ public class GPU implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{Specifications.gpu.model.validation.notEmpty}")
     @Column(name = "model")
     private String model;
 
+    @Min(value = 0, message = "{Specifications.gpu.memory.validation.min}")
     @Column(name = "memory")
     private Integer memory;
 

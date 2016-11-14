@@ -280,6 +280,10 @@ body {
 
 .box p {
     color: blueviolet;
+    font-size: 150%;
+    font-style: italic;
+    text-align: center;
+    margin: 10px 0 5px 0;
 }
 
 /*table*/

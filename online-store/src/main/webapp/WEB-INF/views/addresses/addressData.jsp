@@ -60,6 +60,9 @@
                 </div>
 
                 <div class="box">
+                    <div class="error">
+                        <form:errors path="city.name" />
+                    </div>
                     <label for="city" class="title">
                         <spring:message code="address.details.city.label" />
                     </label>

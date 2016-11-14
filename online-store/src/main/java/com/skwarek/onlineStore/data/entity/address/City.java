@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.address;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,6 +19,7 @@ public class City implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{City.name.validation.notEmpty}")
     @Column(name = "name")
     private String name;
 

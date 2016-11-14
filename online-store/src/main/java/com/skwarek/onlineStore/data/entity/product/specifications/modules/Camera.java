@@ -2,6 +2,8 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -13,9 +15,13 @@ public class Camera implements Serializable {
 
     private static final long serialVersionUID = 3636964795025103911L;
 
+    @Min(value = 0, message = "{Specifications.camera.resolutionMainCamera.validation.min}")
+    @Digits(integer = 3, fraction = 1, message = "{Specifications.camera.resolutionMainCamera.validation.digits}")
     @Column(name = "resolution_main_camera")
     private Double resolutionMainCamera;
 
+    @Min(value = 0, message = "{Specifications.camera.resolutionFrontCamera.validation.min}")
+    @Digits(integer = 3, fraction = 1, message = "{Specifications.camera.resolutionFrontCamera.validation.digits}")
     @Column(name = "resolution_front_camera")
     private Double resolutionFrontCamera;
 

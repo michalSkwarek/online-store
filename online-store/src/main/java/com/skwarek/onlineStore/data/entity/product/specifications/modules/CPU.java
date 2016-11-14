@@ -1,8 +1,12 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,15 +24,23 @@ public class CPU implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{Specifications.cpu.model.validation.notEmpty}")
     @Column(name = "model")
     private String model;
 
+    @NotNull(message = "{Specifications.cpu.numberOfCores.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.cpu.numberOfCores.validation.min}")
     @Column(name = "number_of_cores")
     private Integer numberOfCores;
 
+    @NotNull(message = "{Specifications.cpu.lowClockSpeed.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.cpu.lowClockSpeed.validation.min}")
+    @Digits(integer = 8, fraction = 2, message = "{Specifications.cpu.lowClockSpeed.validation.digits}")
     @Column(name = "low_clock_speed")
     private Double lowClockSpeed;
 
+    @Min(value = 0, message = "{Specifications.cpu.highClockSpeed.validation.min}")
+    @Digits(integer = 8, fraction = 2, message = "{Specifications.cpu.highClockSpeed.validation.digits}")
     @Column(name = "high_clock_speed")
     private Double highClockSpeed;
 

@@ -14,11 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.validation.Valid;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -77,11 +79,12 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addProduct(@Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
+    public String addProduct(Model model, @Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
         modelValidator.validate(product, result);
 
         if (fileUpload.isEmpty() || result.hasErrors()) {
+            addAllCategoriesAndManufacturersToModel(model);
             return "products/productData";
         }
 
@@ -105,9 +108,10 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable Long id, @Valid Product product, BindingResult result) {
+    public String updateProduct(Model model, @PathVariable Long id, @Valid Product product, BindingResult result) {
 
         if (result.hasErrors()) {
+            addAllCategoriesAndManufacturersToModel(model);
             return "products/productData";
         }
 
@@ -142,10 +146,21 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.POST)
-    public String addSpecificationsToProduct(@PathVariable Long id, ProductSpecifications specifications) {
+    public String addSpecificationsToProduct(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
+
+        if (result.hasErrors()) {
+            List<String> errors = new LinkedList<>();
+            for (Object object : result.getAllErrors()) {
+                ObjectError objectError = (ObjectError) object;
+                errors.add(objectError.getDefaultMessage());
+            }
+            model.addAttribute("spec", spec);
+            model.addAttribute("errors", errors);
+            return "products/addSpecifications";
+        }
 
         Product product = productService.read(id);
-        productSpecificationsService.createSpecifications(specifications, product);
+        productSpecificationsService.createSpecifications(spec, product);
         return "redirect:/admin/products/list";
     }
 

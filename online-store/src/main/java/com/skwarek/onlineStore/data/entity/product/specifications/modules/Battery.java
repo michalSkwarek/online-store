@@ -1,6 +1,8 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,8 @@ public class Battery implements Serializable {
 
     private static final long serialVersionUID = -6399133713133458317L;
 
+    @NotNull(message = "{Specifications.battery.capacity.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.battery.capacity.validation.min}")
     @Column(name = "battery_capacity")
     private Integer capacity;
 

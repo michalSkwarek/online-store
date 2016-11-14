@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,9 +19,11 @@ public class OS implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{Specifications.os.name.validation.notEmpty}")
     @Column(name = "name")
     private String name;
 
+    @NotEmpty(message = "{Specifications.os.version.validation.notEmpty}")
     @Column(name = "version")
     private String version;
 

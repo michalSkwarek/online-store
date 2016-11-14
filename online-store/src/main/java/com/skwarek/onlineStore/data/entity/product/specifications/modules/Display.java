@@ -1,6 +1,9 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -18,12 +21,19 @@ public class Display implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotNull(message = "{Specifications.display.diagonal.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.display.diagonal.validation.min}")
+    @Digits(integer = 3, fraction = 1, message = "{Specifications.display.diagonal.validation.digits}")
     @Column(name = "diagonal")
     private Double diagonal;
 
+    @NotNull(message = "{Specifications.display.widthInPixels.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.display.widthInPixels.validation.min}")
     @Column(name = "width_in_pixels")
     private Integer widthInPixels;
 
+    @NotNull(message = "{Specifications.display.heightInPixels.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.display.heightInPixels.validation.min}")
     @Column(name = "height_in_pixels")
     private Integer heightInPixels;
 

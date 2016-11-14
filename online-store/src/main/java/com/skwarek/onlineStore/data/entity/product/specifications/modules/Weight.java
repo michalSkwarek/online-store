@@ -2,6 +2,9 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -12,6 +15,9 @@ public class Weight implements Serializable {
 
     private static final long serialVersionUID = 7268529761943739781L;
 
+    @NotNull(message = "{Specifications.weight.value.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.weight.value.validation.min}")
+    @Digits(integer = 4, fraction = 2, message = "{Specifications.weight.value.validation.digits}")
     @Column(name = "weight")
     private Double value;
 

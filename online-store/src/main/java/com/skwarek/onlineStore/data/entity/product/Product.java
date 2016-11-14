@@ -34,12 +34,10 @@ public class Product implements Serializable {
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
-    @NotNull(message = "{Product.category.validation.notNull}")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @NotNull(message = "{Product.manufacturer.validation.notNull}")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;

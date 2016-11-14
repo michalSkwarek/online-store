@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.address;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
@@ -36,6 +37,7 @@ public class Address implements Serializable {
     @Column(name = "zip_code")
     private String zipCode;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "city_id")
     private City city;
