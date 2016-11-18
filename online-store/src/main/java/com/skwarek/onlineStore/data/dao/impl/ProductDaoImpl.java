@@ -48,21 +48,21 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Override
-    public List getRandomFewProducts() {
+    public List findRandomFewProducts() {
         Query listOfRandomProducts = getSession().createQuery("from Product p where p.unitPrice > (select avg(p.unitPrice) from p) order by p.unitsInMagazine desc");
         listOfRandomProducts.setMaxResults(8);
         return listOfRandomProducts.list();
     }
 
     @Override
-    public List getProductsByCategory(String category) {
+    public List findProductsByCategory(String category) {
         Query listOfProductsByCategoryQuery = getSession().createQuery("from Product p where p.category.name = :name");
         listOfProductsByCategoryQuery.setParameter("name", category);
         return listOfProductsByCategoryQuery.list();
     }
 
     @Override
-    public List getProductsByManufacturer(String manufacturer) {
+    public List findroductsByManufacturer(String manufacturer) {
         Query listOfProductsByManufacturerQuery = getSession().createQuery("from Product p where p.manufacturer.brand = :brand");
         listOfProductsByManufacturerQuery.setParameter("brand", manufacturer);
         return listOfProductsByManufacturerQuery.list();
@@ -70,26 +70,26 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     @SuppressWarnings("unchecked")
-    public List getProductsByCategoriesFilter(String[] categories) {
+    public List findProductsByCategoriesFilter(String[] categories) {
         List<Product> productsByCategories = new ArrayList<>();
         for (String category : categories) {
-            productsByCategories.addAll(this.getProductsByCategory(category));
+            productsByCategories.addAll(this.findProductsByCategory(category));
         }
         return productsByCategories;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List getProductsByManufacturersFilter(String[] manufacturers) {
+    public List findProductsByManufacturersFilter(String[] manufacturers) {
         List<Product> productsByManufacturers = new ArrayList<>();
         for (String manufacturer : manufacturers) {
-            productsByManufacturers.addAll(this.getProductsByManufacturer(manufacturer));
+            productsByManufacturers.addAll(this.findroductsByManufacturer(manufacturer));
         }
         return productsByManufacturers;
     }
 
     @Override
-    public List getProductsByPriceFilter(String low, String high, String priceOrder) {
+    public List findProductsByPriceFilter(String low, String high, String priceOrder) {
         if (!low.equals("") && !high.equals("")) {
             return getProductsByPriceFilterWithLowAndHighParams(low, high, priceOrder);
         } else if (!low.equals("") && high.equals("")) {
@@ -134,15 +134,15 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
-        List<Product> listOfProducts = this.getProductsByPriceFilter(low, high, priceOrder);
-        listOfProducts.retainAll(this.getProductsByCategoriesFilter(categories));
-        listOfProducts.retainAll(this.getProductsByManufacturersFilter(manufacturers));
+    public List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
+        List<Product> listOfProducts = this.findProductsByPriceFilter(low, high, priceOrder);
+        listOfProducts.retainAll(this.findProductsByCategoriesFilter(categories));
+        listOfProducts.retainAll(this.findProductsByManufacturersFilter(manufacturers));
         return listOfProducts;
     }
 
     @Override
-    public Product getProductByModel(String model) {
+    public Product findProductByModel(String model) {
         Query getProductQuery = getSession().createQuery("from Product p where p.model = :model");
         getProductQuery.setParameter("model", model);
         getProductQuery.setMaxResults(1);

@@ -24,7 +24,7 @@ public class ModelValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Product product = (Product) target;
-        if (productService.getProductByModel(product.getModel()) != null) {
+        if (productService.findProductByModel(product.getModel()) != null) {
             errors.rejectValue("model", "Product.model.validation.duplicate");
         }
     }

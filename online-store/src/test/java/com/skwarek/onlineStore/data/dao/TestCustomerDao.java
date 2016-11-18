@@ -37,19 +37,19 @@ public class TestCustomerDao {
     public void testGetLastAccount() {
         Customer newCustomer = new Customer("John", "Doe", "2000-06-16", "123456789", 1);
         customerDao.create(newCustomer);
-        Customer found = customerDao.getLastCustomer();
+        Customer found = customerDao.findLastCustomer();
         assertEquals(newCustomer, found);
     }
 
     @Test
     public void testCreateCustomer() {
-        int size = customerDao.getAll().size();
+        int size = customerDao.findAll().size();
         Account newAccount = new Account("user", "pass1", true, "email1@gmail.com", new Date(), Account.ROLE_USER);
         accountDao.create(newAccount);
         Customer newCustomer = new Customer("John", "Doe", "2000-06-16", "123456789", 1);
         newAccount.setCustomer(newCustomer);
         customerDao.createCustomer(newCustomer);
-        assertTrue(size < customerDao.getAll().size());
+        assertTrue(size < customerDao.findAll().size());
     }
 
     @Test

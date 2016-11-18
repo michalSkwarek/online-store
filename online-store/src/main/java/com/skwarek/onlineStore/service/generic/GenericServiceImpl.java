@@ -43,6 +43,6 @@ public abstract class GenericServiceImpl<E, PK extends Serializable> implements 
     @Override
     @Transactional(readOnly = true)
     public List<E> getAll() {
-        return genericDao.getAll();
+        return genericDao.findAll();
     }
 }

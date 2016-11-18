@@ -22,7 +22,7 @@ public class AddressDaoImpl extends GenericDaoImpl<Address, Long> implements Add
     @Override
     public void createBillingAddress(Address address) {
         setCityToAddress(address);
-        Customer customer = customerDao.getLastCustomer();
+        Customer customer = customerDao.findLastCustomer();
         customer.setBillingAddress(address);
         customerDao.update(customer);
     }

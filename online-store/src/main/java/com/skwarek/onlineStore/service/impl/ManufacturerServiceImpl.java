@@ -30,7 +30,7 @@ public class ManufacturerServiceImpl extends GenericServiceImpl<Manufacturer, Lo
     }
 
     @Override
-    public Manufacturer getManufacturerByBrand(String brand) {
-        return manufacturerDao.getManufacturerByBrand(brand);
+    public Manufacturer findManufacturerByBrand(String brand) {
+        return manufacturerDao.findManufacturerByBrand(brand);
     }
 }

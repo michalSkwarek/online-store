@@ -40,8 +40,8 @@ public class OrderServiceImpl extends GenericServiceImpl<Order, Long> implements
 
     @Override
     @Transactional(readOnly = true)
-    public List getCustomerOrders(Customer customer) {
-        return orderDao.getCustomerOrders(customer);
+    public List findCustomerOrders(Customer customer) {
+        return orderDao.findCustomerOrders(customer);
     }
 
     @Override

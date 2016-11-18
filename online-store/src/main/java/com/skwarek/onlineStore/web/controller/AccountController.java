@@ -50,7 +50,7 @@ public class AccountController {
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
     public String getAccount(@PathVariable String username, Model model) {
 
-        Account account = accountService.getAccountByUsername(username);
+        Account account = accountService.findAccountByUsername(username);
         model.addAttribute("account", account);
         return "accounts/accountData";
     }

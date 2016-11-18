@@ -24,7 +24,7 @@ public class UsernameValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Account account = (Account) target;
-        if (accountService.getAccountByUsername(account.getUsername()) != null) {
+        if (accountService.findAccountByUsername(account.getUsername()) != null) {
             errors.rejectValue("username", "Account.username.validation.duplicate");
         }
     }

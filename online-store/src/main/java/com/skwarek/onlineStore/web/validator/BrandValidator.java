@@ -24,7 +24,7 @@ public class BrandValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Manufacturer manufacturer = (Manufacturer) target;
-        if (manufacturerService.getManufacturerByBrand(manufacturer.getBrand()) != null) {
+        if (manufacturerService.findManufacturerByBrand(manufacturer.getBrand()) != null) {
             errors.rejectValue("brand", "Manufacturer.brand.validation.duplicate");
         }
     }

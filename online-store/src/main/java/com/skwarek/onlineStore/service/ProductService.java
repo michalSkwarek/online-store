@@ -14,11 +14,11 @@ public interface ProductService extends GenericService<Product, Long> {
 
     void updateProduct(Product product);
 
-    List getRandomFewProducts();
+    List findRandomFewProducts();
 
-    List getProductsByCategory(String category);
+    List findProductsByCategory(String category);
 
-    List<Product> getProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
+    List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
 
-    Product getProductByModel(String model);
+    Product findProductByModel(String model);
 }

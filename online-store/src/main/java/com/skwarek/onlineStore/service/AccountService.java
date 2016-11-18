@@ -8,7 +8,7 @@ import com.skwarek.onlineStore.service.generic.GenericService;
  */
 public interface AccountService extends GenericService<Account, Long> {
 
-    Account getAccountByUsername(String username);
+    Account findAccountByUsername(String username);
 
     void createAccount(Account account);
 

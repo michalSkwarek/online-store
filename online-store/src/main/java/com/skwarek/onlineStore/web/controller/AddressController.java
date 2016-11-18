@@ -47,7 +47,7 @@ public class AddressController {
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
     public String getAddress(@PathVariable String username, Model model) {
 
-        Address address = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
+        Address address = accountService.findAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", address);
         return "addresses/addressData";
     }

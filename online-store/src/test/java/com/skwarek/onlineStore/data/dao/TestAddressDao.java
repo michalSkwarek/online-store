@@ -13,7 +13,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -39,11 +38,11 @@ public class TestAddressDao {
     public void testCreateBillingAddressWithNoExistCityInDatabase() {
         Customer newCustomer = new Customer("John", "Doe", "2000-06-16", "123456789", 1);
         customerDao.create(newCustomer);
-        int sizeAddresses = addressDao.getAll().size();
+        int sizeAddresses = addressDao.findAll().size();
         int sizeCities = citiesCounter();
         Address billingAddress = new Address("Street", "1A", "2B", "11-222", new City("City"));
         addressDao.createBillingAddress(billingAddress);
-        assertTrue(sizeAddresses < addressDao.getAll().size());
+        assertTrue(sizeAddresses < addressDao.findAll().size());
         assertTrue(sizeCities < citiesCounter());
 
     }
@@ -59,7 +58,7 @@ public class TestAddressDao {
     }
 
     private int citiesCounter() {
-        List<Address> addresses = addressDao.getAll();
+        List<Address> addresses = addressDao.findAll();
         Set<String> cities = new HashSet<>();
         for (Address address : addresses) {
             cities.add(address.getCity().getName());
@@ -69,10 +68,10 @@ public class TestAddressDao {
 
     @Test
     public void testCreateShippingAddressWithExistCityInDatabase() {
-        int sizeAddresses = addressDao.getAll().size();
+        int sizeAddresses = addressDao.findAll().size();
         Address shippingAddress = new Address("Street", "1A", "2B", "11-222", new City("City"));
         addressDao.createShippingAddress(shippingAddress);
-        assertTrue(sizeAddresses < addressDao.getAll().size());
+        assertTrue(sizeAddresses < addressDao.findAll().size());
     }
 
     @Test

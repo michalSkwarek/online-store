@@ -42,7 +42,7 @@ public class ManufacturerDaoImpl extends GenericDaoImpl<Manufacturer, Long> impl
     }
 
     @Override
-    public Manufacturer getManufacturerByBrand(String brand) {
+    public Manufacturer findManufacturerByBrand(String brand) {
         Query getManufacturerQuery = getSession().createQuery("from Manufacturer m where m.brand = :brand");
         getManufacturerQuery.setParameter("brand", brand);
         getManufacturerQuery.setMaxResults(1);

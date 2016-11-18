@@ -12,5 +12,5 @@ public interface ManufacturerDao extends GenericDao<Manufacturer, Long> {
 
     void updateManufacturer(Manufacturer manufacturer);
 
-    Manufacturer getManufacturerByBrand(String brand);
+    Manufacturer findManufacturerByBrand(String brand);
 }

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface OrderService extends GenericService<Order, Long> {
 
-    List getCustomerOrders(Customer customer);
+    List findCustomerOrders(Customer customer);
 
     void addProductToCart(Product product, CartModel cart);
 

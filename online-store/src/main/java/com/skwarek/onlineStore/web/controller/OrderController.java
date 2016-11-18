@@ -39,8 +39,8 @@ public class OrderController {
     @RequestMapping(value = "/{username}/list")
     public String showOrders(@PathVariable String username, Model model) {
 
-        Customer customer = accountService.getAccountByUsername(username).getCustomer();
-        List orders = orderService.getCustomerOrders(customer);
+        Customer customer = accountService.findAccountByUsername(username).getCustomer();
+        List orders = orderService.findCustomerOrders(customer);
         model.addAttribute("orders", orders);
         return "orders/list";
     }
@@ -90,7 +90,7 @@ public class OrderController {
     @RequestMapping(value = "/{username}/address", method = RequestMethod.GET)
     public String getAddress(@PathVariable String username, Model model) {
 
-        Address billingAddress = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
+        Address billingAddress = accountService.findAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", billingAddress);
         return "addresses/addressData";
     }
@@ -106,7 +106,7 @@ public class OrderController {
     @RequestMapping(value = "/{username}/confirm", method = RequestMethod.GET)
     public String confirmOrder(@PathVariable String username, HttpServletRequest request, Model model) {
 
-        Account account = accountService.getAccountByUsername(username);
+        Account account = accountService.findAccountByUsername(username);
         model.addAttribute("account", account);
         CartModel cart = Utils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
@@ -119,7 +119,7 @@ public class OrderController {
     public String saveOrder(@PathVariable String username, HttpServletRequest request) {
 
         CartModel cart = Utils.getCartModelInSession(request);
-        Customer customer = accountService.getAccountByUsername(username).getCustomer();
+        Customer customer = accountService.findAccountByUsername(username).getCustomer();
         orderService.saveOrder(customer, cart);
         Utils.removeCartModelInSession(request);
         return "redirect:/order/" + username + "/thanks";

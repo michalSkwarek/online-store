@@ -39,7 +39,7 @@ public class WelcomeController {
         List<Manufacturer> manufacturers = manufacturerService.getAll();
         model.addAttribute("manufacturers", manufacturers);
 
-        List products = productService.getRandomFewProducts();
+        List products = productService.findRandomFewProducts();
         model.addAttribute("products", products);
 
         return "homePage";

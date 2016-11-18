@@ -48,7 +48,7 @@ public class ProductController {
                                @RequestParam(value = "toPriceRange") String high,
                                @RequestParam String priceOrder) {
 
-        List<Product> products = productService.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
+        List<Product> products = productService.findProductsByFilter(categories, manufacturers, low, high, priceOrder);
         if (products == null || products.isEmpty()) {
             return "/error";
         }
@@ -67,7 +67,7 @@ public class ProductController {
     @RequestMapping(value = "/category/{category}", method = RequestMethod.GET)
     public String showProductsByCategory(Model model, @PathVariable String category) {
 
-        List products = productService.getProductsByCategory(category);
+        List products = productService.findProductsByCategory(category);
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
         return "/products/list";

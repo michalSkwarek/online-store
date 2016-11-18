@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface OrderDao extends GenericDao<Order, Long> {
 
-    List getCustomerOrders(Customer customer);
+    List findCustomerOrders(Customer customer);
 
     void createOrder(Order order);
 }

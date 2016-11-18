@@ -32,7 +32,7 @@ public class TestAccountDao {
         String username = "user";
         Account newAccount = new Account(username, "pass", true, "email@gmail.com", new Date(), Account.ROLE_USER);
         accountDao.create(newAccount);
-        Account found = accountDao.getAccountByUsername(username);
+        Account found = accountDao.findAccountByUsername(username);
         assertEquals(newAccount, found);
     }
 
@@ -40,7 +40,7 @@ public class TestAccountDao {
     public void testGetLastAccount() {
         Account newAccount = new Account("user", "pass", true, "email@gmail.com", new Date(), Account.ROLE_USER);
         accountDao.create(newAccount);
-        Account found = accountDao.getLastAccount();
+        Account found = accountDao.findLastAccount();
         assertEquals(newAccount, found);
     }
 
