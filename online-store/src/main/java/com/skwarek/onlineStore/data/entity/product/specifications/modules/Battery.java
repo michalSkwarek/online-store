@@ -36,7 +36,7 @@ public class Battery implements Serializable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.equals("") ? null : type;
     }
 
     @Override

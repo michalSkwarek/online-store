@@ -42,12 +42,12 @@
 					<th><spring:message code="account.details.password.label" /></th>
 				</tr>
 				<tr>
-					<td><spring:message code="user" />:</td>
+					<td><spring:message code="user" /></td>
 					<td>aaa</td>
 					<td>111</td>
 				</tr>
 				<tr>
-					<td><spring:message code="admin" />:</td>
+					<td><spring:message code="admin" /></td>
 					<td>zzz</td>
 					<td>999</td>
 				</tr>

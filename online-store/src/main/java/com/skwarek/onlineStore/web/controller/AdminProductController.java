@@ -5,6 +5,7 @@ import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import com.skwarek.onlineStore.data.entity.product.specifications.modules.RAM;
 import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsFactory;
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editor.CategoryEditor;

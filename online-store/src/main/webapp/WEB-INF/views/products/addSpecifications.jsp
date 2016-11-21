@@ -40,7 +40,9 @@
                         <label for="memory" class="title"><spring:message code="specifications.details.gpu.memory.label" /> (GB)</label>
                         <form:input path="gpu.memory" id="memory" cssClass="input-field" />
                         <label for="memoryType" class="title"><spring:message code="specifications.details.cpu.memoryType.label" /></label>
-                        <form:input path="gpu.type" id="memoryType" cssClass="input-field" />
+                        <br>
+                        <form:radiobutton path="gpu.type" id="memoryType" /><spring:message code="none" />
+                        <form:radiobutton path="gpu.type" value="GDDR5" id="memoryType" />GDDR5
                     </div>
                 </c:if>
 
@@ -50,7 +52,11 @@
                         <label for="value"><spring:message code="specifications.details.ram.value.label" /> (MB / GB)</label>
                         <form:input path="ram.value" id="value" cssClass="input-field" />
                         <label for="type"><spring:message code="specifications.details.ram.memoryType.label" /></label>
-                        <form:input path="ram.type" id="type" cssClass="input-field" />
+                        <br>
+                        <form:radiobutton path="ram.type" id="type" /><spring:message code="none" />
+                        <form:radiobutton path="ram.type" value="DDR3" id="type" />DDR3
+                        <form:radiobutton path="ram.type" value="DDR4" id="type" />DDR4
+                        <form:radiobutton path="ram.type" value="DDR5" id="type" />DDR5
                     </div>
                 </c:if>
 
@@ -60,7 +66,10 @@
                         <label for="diskMemory"><spring:message code="specifications.details.storage.diskMemory.label" /> (GB)</label>
                         <form:input path="storage.diskMemory" id="diskMemory" cssClass="input-field" />
                         <label for="type"><spring:message code="specifications.details.storage.diskType.label" /></label>
-                        <form:input path="storage.type" id="type" cssClass="input-field" />
+                        <br>
+                        <form:radiobutton path="storage.type" id="type" /><spring:message code="none" />
+                        <form:radiobutton path="storage.type" value="HDD" id="type" />HDD
+                        <form:radiobutton path="storage.type" value="SSD" id="type" />SSD
                     </div>
                 </c:if>
 
@@ -82,7 +91,10 @@
                         <label for="capacity"><spring:message code="specifications.details.battery.capacity.label" /> (mAh)</label>
                         <form:input path="battery.capacity" id="capacity" cssClass="input-field" />
                         <label for="type"><spring:message code="specifications.details.battery.batteryType.label" /></label>
-                        <form:input path="battery.type" id="type" cssClass="input-field" />
+                        <br>
+                        <form:radiobutton path="battery.type" id="type" /><spring:message code="none" />
+                        <form:radiobutton path="battery.type" value="Li-ion" id="type" />Li-ion
+                        <form:radiobutton path="battery.type" value="Li-poly" id="type" />Li-poly
                     </div>
                 </c:if>
 

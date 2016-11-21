@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -36,7 +38,7 @@ public class RAM implements Serializable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.equals("") ? null : type;
     }
 
     @Override
