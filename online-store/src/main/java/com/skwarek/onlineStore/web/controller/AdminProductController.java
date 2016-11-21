@@ -5,7 +5,6 @@ import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import com.skwarek.onlineStore.data.entity.product.specifications.modules.RAM;
 import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsFactory;
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editor.CategoryEditor;
@@ -150,13 +149,7 @@ public class AdminProductController {
     public String addSpecificationsToProduct(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
 
         if (result.hasErrors()) {
-            List<String> errors = new LinkedList<>();
-            for (Object object : result.getAllErrors()) {
-                ObjectError objectError = (ObjectError) object;
-                errors.add(objectError.getDefaultMessage());
-            }
-            model.addAttribute("spec", spec);
-            model.addAttribute("errors", errors);
+            errorsHandling(model, spec, result);
             return "products/addSpecifications";
         }
 
@@ -174,9 +167,24 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.POST)
-    public String updateSpecifications(@PathVariable Long id, ProductSpecifications specifications) {
+    public String updateSpecifications(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
 
-        productSpecificationsService.updateSpecifications(specifications);
+        if (result.hasErrors()) {
+            errorsHandling(model, spec, result);
+            return "products/addSpecifications";
+        }
+
+        productSpecificationsService.updateSpecifications(spec);
         return "redirect:/admin/products/list";
+    }
+
+    private void errorsHandling(Model model, @Valid ProductSpecifications spec, BindingResult result) {
+        List<String> errors = new LinkedList<>();
+        for (Object object : result.getAllErrors()) {
+            ObjectError objectError = (ObjectError) object;
+            errors.add(objectError.getDefaultMessage());
+        }
+        model.addAttribute("spec", spec);
+        model.addAttribute("errors", errors);
     }
 }
