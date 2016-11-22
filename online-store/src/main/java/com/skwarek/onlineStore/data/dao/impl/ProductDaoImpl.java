@@ -62,7 +62,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     }
 
     @Override
-    public List findroductsByManufacturer(String manufacturer) {
+    public List findProductsByManufacturer(String manufacturer) {
         Query listOfProductsByManufacturerQuery = getSession().createQuery("from Product p where p.manufacturer.brand = :brand");
         listOfProductsByManufacturerQuery.setParameter("brand", manufacturer);
         return listOfProductsByManufacturerQuery.list();
@@ -72,8 +72,10 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     @SuppressWarnings("unchecked")
     public List findProductsByCategoriesFilter(String[] categories) {
         List<Product> productsByCategories = new ArrayList<>();
-        for (String category : categories) {
-            productsByCategories.addAll(this.findProductsByCategory(category));
+        if (categories != null) {
+            for (String category : categories) {
+                productsByCategories.addAll(this.findProductsByCategory(category));
+            }
         }
         return productsByCategories;
     }
@@ -82,8 +84,10 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
     @SuppressWarnings("unchecked")
     public List findProductsByManufacturersFilter(String[] manufacturers) {
         List<Product> productsByManufacturers = new ArrayList<>();
-        for (String manufacturer : manufacturers) {
-            productsByManufacturers.addAll(this.findroductsByManufacturer(manufacturer));
+        if (manufacturers != null) {
+            for (String manufacturer : manufacturers) {
+                productsByManufacturers.addAll(this.findProductsByManufacturer(manufacturer));
+            }
         }
         return productsByManufacturers;
     }

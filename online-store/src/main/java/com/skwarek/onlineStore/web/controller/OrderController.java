@@ -125,14 +125,14 @@ public class OrderController {
         return "redirect:/order/" + username + "/thanks";
     }
 
-    @RequestMapping(value = { "/{username}/thanks" })
+    @RequestMapping(value = "/{username}/thanks")
     public String thanks(@PathVariable String username, Model model) {
 
         model.addAttribute("customer", username);
         return "orders/thanks";
     }
 
-    @RequestMapping(value = { "/cancel" })
+    @RequestMapping(value = "/cancel")
     public String cancelOrder(HttpServletRequest request) {
 
         Utils.removeCartModelInSession(request);

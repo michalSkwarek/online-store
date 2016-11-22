@@ -63,6 +63,7 @@ body {
 }
 .manufacturer {
     text-align: center;
+    clear: left;
 }
 .manufacturer a {
     text-decoration: none;
@@ -286,6 +287,10 @@ body {
     margin: 10px 0 5px 0;
 }
 
+.select-box {
+    padding-top: 10px;
+}
+
 /*table*/
 .content-frame {
     margin: 20px auto;
@@ -393,49 +398,3 @@ body {
     text-align: center;
     padding: 20px 37px;
 }
-
-
-
-
-
-
-
-
-
-
-
-/*.main {*/
-/*width: 960px;*/
-/*float: left;*/
-/*}*/
-
-/*.select {*/
-/*width: 160px;*/
-/*}*/
-
-
-/*.box-container {*/
-/*!*display: inline;*!*/
-/*width: 800px;*/
-/*float: left;*/
-/*!*position: fixed;*!*/
-/*!*position: static;*!*/
-/*}*/
-
-/*.box-product {*/
-/*width: 180px;*/
-/*height: 180px;*/
-/*padding: 10px;*/
-/*margin: 10px;*/
-/*border: 1px solid blue;*/
-/*float: left;*/
-/*}*/
-
-/*.manufacturer-box {*/
-/*width: 80px;*/
-/*height: 80px;*/
-/*padding: 10px;*/
-/*margin: 10px;*/
-/*border: 1px solid blue;*/
-/*float: left;*/
-/*}*/

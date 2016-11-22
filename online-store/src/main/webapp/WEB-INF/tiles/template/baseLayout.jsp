@@ -2,7 +2,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
 <head>
-    <link rel="stylesheet" href="../../../resources/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="/resources/css/styles.css?version=1" type="text/css" />
     <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body>

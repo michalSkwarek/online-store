@@ -98,58 +98,58 @@
                     </div>
                 </c:if>
 
-                <%--<c:if test="${spec.powerSupply != null}">--%>
-                    <%--<div class="box">--%>
-                        <%--<p><spring:message code="specifications.details.powerSupply.label" /> (W)</p>--%>
-                        <%--<form:input path="powerSupply.power" cssClass="input-field" />--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+                <c:if test="${spec.powerSupply != null}">
+                    <div class="box">
+                        <p><spring:message code="specifications.details.powerSupply.label" /> (W)</p>
+                        <form:input path="powerSupply.power" cssClass="input-field" />
+                    </div>
+                </c:if>
 
-                <%--<c:if test="${spec.os != null}">--%>
-                    <%--<div class="box">--%>
-                        <%--<p><spring:message code="specifications.details.os.label" /></p>--%>
-                        <%--<label for="name"><spring:message code="specifications.details.os.name.label" /></label>--%>
-                        <%--<form:input path="os.name" id="name" cssClass="input-field" />--%>
-                        <%--<label for="version"><spring:message code="specifications.details.os.version.label" /></label>--%>
-                        <%--<form:input path="os.version" id="version" cssClass="input-field" />--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+                <c:if test="${spec.os != null}">
+                    <div class="box">
+                        <p><spring:message code="specifications.details.os.label" /></p>
+                        <label for="name"><spring:message code="specifications.details.os.name.label" /></label>
+                        <form:input path="os.name" id="name" cssClass="input-field" />
+                        <label for="version"><spring:message code="specifications.details.os.version.label" /></label>
+                        <form:input path="os.version" id="version" cssClass="input-field" />
+                    </div>
+                </c:if>
 
-                <%--<c:if test="${spec.camera != null}">--%>
-                    <%--<div class="box">--%>
-                        <%--<p><spring:message code="specifications.details.camera.label" /> (MP)</p>--%>
-                        <%--<label for="resolutionMainCamera"><spring:message code="specifications.details.os.mainCamera.label" /></label>--%>
-                        <%--<form:input path="camera.resolutionMainCamera" id="resolutionMainCamera" cssClass="input-field" />--%>
-                        <%--<label for="resolutionFrontCamera"><spring:message code="specifications.details.os.frontCamera.label" /></label>--%>
-                        <%--<form:input path="camera.resolutionFrontCamera" id="resolutionFrontCamera" cssClass="input-field" />--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+                <c:if test="${spec.camera != null}">
+                    <div class="box">
+                        <p><spring:message code="specifications.details.camera.label" /> (MP)</p>
+                        <label for="resolutionMainCamera"><spring:message code="specifications.details.os.mainCamera.label" /></label>
+                        <form:input path="camera.resolutionMainCamera" id="resolutionMainCamera" cssClass="input-field" />
+                        <label for="resolutionFrontCamera"><spring:message code="specifications.details.os.frontCamera.label" /></label>
+                        <form:input path="camera.resolutionFrontCamera" id="resolutionFrontCamera" cssClass="input-field" />
+                    </div>
+                </c:if>
 
-                <%--<c:if test="${spec.webcam != null}">--%>
-                    <%--<div class="box">--%>
-                        <%--<p><spring:message code="specifications.details.webcam.label" /> (MP)</p>--%>
-                        <%--<form:input path="webcam.resolutionWebcam" cssClass="input-field" />--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+                <c:if test="${spec.webcam != null}">
+                    <div class="box">
+                        <p><spring:message code="specifications.details.webcam.label" /> (MP)</p>
+                        <form:input path="webcam.resolutionWebcam" cssClass="input-field" />
+                    </div>
+                </c:if>
 
-                <%--<c:if test="${spec.dimensions != null}">--%>
-                    <%--<div class="box">--%>
-                        <%--<p><spring:message code="specifications.details.dimensions.label" /> (mm)</p>--%>
-                        <%--<label for="thickness"><spring:message code="specifications.details.dimensions.thickness.label" /></label>--%>
-                        <%--<form:input path="dimensions.thickness" id="thickness" cssClass="input-field" />--%>
-                        <%--<label for="width"><spring:message code="specifications.details.dimensions.width.label" /></label>--%>
-                        <%--<form:input path="dimensions.width" id="width" cssClass="input-field" />--%>
-                        <%--<label for="height"><spring:message code="specifications.details.dimensions.height.label" /></label>--%>
-                        <%--<form:input path="dimensions.height" id="height" cssClass="input-field" />--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+                <c:if test="${spec.dimensions != null}">
+                    <div class="box">
+                        <p><spring:message code="specifications.details.dimensions.label" /> (mm)</p>
+                        <label for="thickness"><spring:message code="specifications.details.dimensions.thickness.label" /></label>
+                        <form:input path="dimensions.thickness" id="thickness" cssClass="input-field" />
+                        <label for="width"><spring:message code="specifications.details.dimensions.width.label" /></label>
+                        <form:input path="dimensions.width" id="width" cssClass="input-field" />
+                        <label for="height"><spring:message code="specifications.details.dimensions.height.label" /></label>
+                        <form:input path="dimensions.height" id="height" cssClass="input-field" />
+                    </div>
+                </c:if>
 
-                <%--<c:if test="${spec.weight != null}">--%>
-                    <%--<div class="box">--%>
-                        <%--<p><spring:message code="specifications.details.weight.label" /> (g / kg)</p>--%>
-                        <%--<form:input path="weight.value" cssClass="input-field" />--%>
-                    <%--</div>--%>
-                <%--</c:if>--%>
+                <c:if test="${spec.weight != null}">
+                    <div class="box">
+                        <p><spring:message code="specifications.details.weight.label" /> (g / kg)</p>
+                        <form:input path="weight.value" cssClass="input-field" />
+                    </div>
+                </c:if>
 
                 <div>
                     <input type="submit" class="button-save" value="<spring:message code="save" />" />

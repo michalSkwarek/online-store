@@ -19,7 +19,7 @@ public interface ProductDao extends GenericDao<Product, Long> {
 
     List findProductsByCategory(String category);
 
-    List findroductsByManufacturer(String manufacturer);
+    List findProductsByManufacturer(String manufacturer);
 
     List findProductsByCategoriesFilter(String[] categories);
 

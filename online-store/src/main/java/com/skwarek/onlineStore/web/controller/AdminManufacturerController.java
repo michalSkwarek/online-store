@@ -37,7 +37,7 @@ public class AdminManufacturerController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        List<Manufacturer> manufacturers = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturers);
         return "manufacturers/list";
     }

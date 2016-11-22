@@ -7,7 +7,7 @@
 <section>
     <div>
         <form:form method="post">
-            <div>
+            <div class="select-box">
                 <p class="heading"><spring:message code="products.message.selectCategories" /></p>
                 <c:forEach items="${categories}" var="category">
                     <label>
@@ -16,7 +16,7 @@
                 </c:forEach>
             </div>
 
-            <div>
+            <div class="select-box">
                 <p class="heading"><spring:message code="products.message.selectManufacturers" /></p>
                 <c:forEach items="${manufacturers}" var="manufacturer" >
                     <label>
@@ -25,15 +25,15 @@
                 </c:forEach>
             </div>
 
-            <div>
+            <div class="select-box">
                 <p class="heading"><spring:message code="products.message.selectPriceRange" /></p>
                 <label>
-                    <spring:message code="products.message.from" /> <input type="text" name="fromPriceRange">
-                    <spring:message code="products.message.to" /> <input type="text" name="toPriceRange">
+                    <spring:message code="products.message.from" /> <input type="text" name="fromPriceRange"> PLN
+                    <spring:message code="products.message.to" /> <input type="text" name="toPriceRange"> PLN
                 </label>
             </div>
 
-            <div>
+            <div class="select-box">
                 <p class="heading"><spring:message code="products.message.selectPriceOrder" /></p>
                 <label>
                     <input type="radio" name="priceOrder" value="asc" checked><spring:message code="products.message.ascending" />
@@ -42,7 +42,7 @@
             </div>
 
             <div>
-                <input type="submit" value="<spring:message code="submit" />" />
+                <input type="submit" class="button-save" value="<spring:message code="submit" />" />
             </div>
         </form:form>
     </div>
@@ -68,6 +68,15 @@
                     </div>
                 </security:authorize>
             </div>
+        </c:forEach>
+    </div>
+
+    <div class="manufacturer">
+        <p class="heading"><spring:message code="homePage.message.goToTheManufacturersStore" /></p>
+        <c:forEach items="${manufacturers}" var="manufacturer">
+            <a href="<spring:url value="${manufacturer.website}" />">
+                <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" width="64px" />
+            </a>
         </c:forEach>
     </div>
 </section>

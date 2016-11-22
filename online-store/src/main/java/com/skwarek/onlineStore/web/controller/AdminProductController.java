@@ -57,7 +57,7 @@ public class AdminProductController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
-        List<Product> products = productService.getAll();
+        List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
         return "products/adminList";
@@ -127,9 +127,9 @@ public class AdminProductController {
     }
 
     private void addAllCategoriesAndManufacturersToModel(Model model) {
-        List<Category> categoriesAll = categoryService.getAll();
+        List<Category> categoriesAll = categoryService.findAll();
         model.addAttribute("categories", categoriesAll);
-        List<Manufacturer> manufacturersAll = manufacturerService.getAll();
+        List<Manufacturer> manufacturersAll = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturersAll);
     }
 
