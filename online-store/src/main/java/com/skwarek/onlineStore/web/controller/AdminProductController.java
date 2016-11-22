@@ -9,13 +9,18 @@ import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsF
 import com.skwarek.onlineStore.service.*;
 import com.skwarek.onlineStore.web.editor.CategoryEditor;
 import com.skwarek.onlineStore.web.editor.ManufacturerEditor;
+import com.skwarek.onlineStore.web.validator.ModelValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.validation.Valid;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -40,6 +45,9 @@ public class AdminProductController {
     @Autowired
     private UploadFileService uploadFileService;
 
+    @Autowired
+    private ModelValidator modelValidator;
+
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
@@ -49,7 +57,7 @@ public class AdminProductController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
-        List<Product> products = productService.getAll();
+        List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
         return "products/adminList";
@@ -71,15 +79,20 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addProduct(Product product, @RequestParam CommonsMultipartFile fileUpload) {
+    public String addProduct(Model model, @Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
-        if (fileUpload != null) {
-            UploadFile uploadFile = new UploadFile();
-            uploadFile.setFileName(fileUpload.getOriginalFilename());
-            uploadFile.setData(fileUpload.getBytes());
-            uploadFileService.create(uploadFile);
-            product.setProductImage(uploadFile);
+        modelValidator.validate(product, result);
+
+        if (fileUpload.isEmpty() || result.hasErrors()) {
+            addAllCategoriesAndManufacturersToModel(model);
+            return "products/productData";
         }
+
+        UploadFile uploadFile = new UploadFile();
+        uploadFile.setFileName(fileUpload.getOriginalFilename());
+        uploadFile.setData(fileUpload.getBytes());
+        uploadFileService.create(uploadFile);
+        product.setProductImage(uploadFile);
 
         productService.create(product);
         return "redirect:/admin/products/list";
@@ -95,7 +108,12 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateProduct(@PathVariable Long id, Product product) {
+    public String updateProduct(Model model, @PathVariable Long id, @Valid Product product, BindingResult result) {
+
+        if (result.hasErrors()) {
+            addAllCategoriesAndManufacturersToModel(model);
+            return "products/productData";
+        }
 
         productService.updateProduct(product);
         return "redirect:/admin/products/list";
@@ -109,9 +127,9 @@ public class AdminProductController {
     }
 
     private void addAllCategoriesAndManufacturersToModel(Model model) {
-        List<Category> categoriesAll = categoryService.getAll();
+        List<Category> categoriesAll = categoryService.findAll();
         model.addAttribute("categories", categoriesAll);
-        List<Manufacturer> manufacturersAll = manufacturerService.getAll();
+        List<Manufacturer> manufacturersAll = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturersAll);
     }
 
@@ -128,10 +146,15 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.POST)
-    public String addSpecificationsToProduct(@PathVariable Long id, ProductSpecifications specifications) {
+    public String addSpecificationsToProduct(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
+
+        if (result.hasErrors()) {
+            errorsHandling(model, spec, result);
+            return "products/addSpecifications";
+        }
 
         Product product = productService.read(id);
-        productSpecificationsService.createSpecifications(specifications, product);
+        productSpecificationsService.createSpecifications(spec, product);
         return "redirect:/admin/products/list";
     }
 
@@ -144,9 +167,24 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.POST)
-    public String updateSpecifications(@PathVariable Long id, ProductSpecifications specifications) {
+    public String updateSpecifications(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
 
-        productSpecificationsService.updateSpecifications(specifications);
+        if (result.hasErrors()) {
+            errorsHandling(model, spec, result);
+            return "products/addSpecifications";
+        }
+
+        productSpecificationsService.updateSpecifications(spec);
         return "redirect:/admin/products/list";
+    }
+
+    private void errorsHandling(Model model, @Valid ProductSpecifications spec, BindingResult result) {
+        List<String> errors = new LinkedList<>();
+        for (Object object : result.getAllErrors()) {
+            ObjectError objectError = (ObjectError) object;
+            errors.add(objectError.getDefaultMessage());
+        }
+        model.addAttribute("spec", spec);
+        model.addAttribute("errors", errors);
     }
 }

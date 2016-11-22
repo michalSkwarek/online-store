@@ -33,13 +33,13 @@ public class WelcomeController {
 
         model.addAttribute("welcome", "Welcome to our online store!");
 
-        List<Category> categories = categoryService.getAll();
+        List<Category> categories = categoryService.findAll();
         model.addAttribute("categories", categories);
 
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        List<Manufacturer> manufacturers = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturers);
 
-        List products = productService.getRandomFewProducts();
+        List products = productService.findRandomFewProducts();
         model.addAttribute("products", products);
 
         return "homePage";

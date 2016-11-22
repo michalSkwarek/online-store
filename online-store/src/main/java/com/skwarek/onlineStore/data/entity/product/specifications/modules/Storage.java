@@ -2,6 +2,8 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,8 @@ public class Storage implements Serializable {
 
     private static final long serialVersionUID = -521811971477233640L;
 
+    @NotNull(message = "{Specifications.storage.diskMemory.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.storage.value.validation.min}")
     @Column(name = "disk_memory")
     private Integer diskMemory;
 
@@ -33,7 +37,7 @@ public class Storage implements Serializable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.equals("") ? null : type;
     }
 
     @Override

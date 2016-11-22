@@ -1,12 +1,13 @@
 package com.skwarek.onlineStore.web.controller;
 
 import com.skwarek.onlineStore.data.entity.address.Address;
-import com.skwarek.onlineStore.data.entity.order.Order;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 import com.skwarek.onlineStore.data.model.order.CartModel;
-import com.skwarek.onlineStore.service.*;
+import com.skwarek.onlineStore.service.AccountService;
+import com.skwarek.onlineStore.service.OrderService;
+import com.skwarek.onlineStore.service.ProductService;
 import com.skwarek.onlineStore.web.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,8 +39,8 @@ public class OrderController {
     @RequestMapping(value = "/{username}/list")
     public String showOrders(@PathVariable String username, Model model) {
 
-        Customer customer = accountService.getAccountByUsername(username).getCustomer();
-        List orders = orderService.getCustomerOrders(customer);
+        Customer customer = accountService.findAccountByUsername(username).getCustomer();
+        List orders = orderService.findCustomerOrders(customer);
         model.addAttribute("orders", orders);
         return "orders/list";
     }
@@ -49,6 +50,11 @@ public class OrderController {
 
         Product product = productService.read(id);
         CartModel cart = Utils.getCartModelInSession(request);
+
+        if (!cart.isAddProductToCart(product)) {
+            return "orders/productUnavailable";
+        }
+
         orderService.addProductToCart(product, cart);
         model.addAttribute("cart", cart);
         return "redirect:/order/myCart";
@@ -76,6 +82,7 @@ public class OrderController {
     public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities) {
 
         CartModel cart = Utils.getCartModelInSession(request);
+
         orderService.updateQuantitiesInCart(quantities, cart);
         return "redirect:/order/myCart";
     }
@@ -83,7 +90,7 @@ public class OrderController {
     @RequestMapping(value = "/{username}/address", method = RequestMethod.GET)
     public String getAddress(@PathVariable String username, Model model) {
 
-        Address billingAddress = accountService.getAccountByUsername(username).getCustomer().getBillingAddress();
+        Address billingAddress = accountService.findAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", billingAddress);
         return "addresses/addressData";
     }
@@ -99,7 +106,7 @@ public class OrderController {
     @RequestMapping(value = "/{username}/confirm", method = RequestMethod.GET)
     public String confirmOrder(@PathVariable String username, HttpServletRequest request, Model model) {
 
-        Account account = accountService.getAccountByUsername(username);
+        Account account = accountService.findAccountByUsername(username);
         model.addAttribute("account", account);
         CartModel cart = Utils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
@@ -112,20 +119,20 @@ public class OrderController {
     public String saveOrder(@PathVariable String username, HttpServletRequest request) {
 
         CartModel cart = Utils.getCartModelInSession(request);
-        Customer customer = accountService.getAccountByUsername(username).getCustomer();
+        Customer customer = accountService.findAccountByUsername(username).getCustomer();
         orderService.saveOrder(customer, cart);
         Utils.removeCartModelInSession(request);
         return "redirect:/order/" + username + "/thanks";
     }
 
-    @RequestMapping(value = { "/{username}/thanks" })
+    @RequestMapping(value = "/{username}/thanks")
     public String thanks(@PathVariable String username, Model model) {
 
         model.addAttribute("customer", username);
         return "orders/thanks";
     }
 
-    @RequestMapping(value = { "/cancel" })
+    @RequestMapping(value = "/cancel")
     public String cancelOrder(HttpServletRequest request) {
 
         Utils.removeCartModelInSession(request);

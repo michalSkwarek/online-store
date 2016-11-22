@@ -184,9 +184,9 @@ INSERT INTO files_upload (id, file_name, data) VALUES (29, 'file29.jpg', load_fi
 INSERT INTO files_upload (id, file_name, data) VALUES (30, 'file30.jpg', load_file('/etc/images/smartphone/product-big,huawei-p8.jpg'));
 
 -- add few products
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (1, 'iPhone 7 Plus', 4479, 1, 1, 1, 1, 10);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (2, 'iPhone 7', 3879, 1, 1, 2, 2, 7);
-INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (3, 'iPhone 6s Plus', 3879, 1, 1, 3, 3, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (1, 'iPhone 7 Plus', 4479, 1, 1, 1, 1, 3);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (2, 'iPhone 7', 3879, 1, 1, 2, 2, 0);
+INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (3, 'iPhone 6s Plus', 3879, 1, 1, 3, 3, 1);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (4, 'iPhone 6s', 3349, 1, 1, 4, 4, 2);
 INSERT INTO product (id, model, unit_price, category_id, manufacturer_id, product_image_id, specifications_id, units_in_magazine) VALUES (5, 'iPhone SE', 2399, 1, 1, 5, 5, 1);
 
@@ -320,7 +320,7 @@ INSERT INTO display (id, diagonal, width_in_pixels, height_in_pixels) VALUES (27
 INSERT INTO gpu (id, model) VALUES (22, 'Intel Iris Pro Graphics');
 INSERT INTO gpu (id, model) VALUES (23, 'Intel HD Graphics 6000');
 INSERT INTO gpu (id, model) VALUES (24, 'Intel HD Graphics 520');
-INSERT INTO gpu (id, model, memory, memory_type) VALUES (25, 'Intel HD Graphics 530 + NVIDIA GeForce GTX 960M', 2, 'GDDR5');
+INSERT INTO gpu (id, model, memory, memory_type) VALUES (25, 'NVIDIA GeForce GTX 960M', 2, 'GDDR5');
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (26, 'NVIDIA Quadro M600M', 8, 'GDDR5');
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (27, 'NVIDIA GeForce GTX 1070 SLI', 8, 'GDDR5');
 INSERT INTO gpu (id, model, memory, memory_type) VALUES (28, 'NVIDIA GeForce GTX 980M', 4, 'GDDR5');

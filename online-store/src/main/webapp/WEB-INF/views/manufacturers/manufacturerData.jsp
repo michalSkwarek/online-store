@@ -5,53 +5,58 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="manufacturer" enctype="multipart/form-data">
-        <fieldset>
-            <legend>
-                <spring:message code="manufacturers.messages.manufacturerData" />
-            </legend>
+    <div class="form">
+        <form:form action="?${_csrf.parameterName}=${_csrf.token}" method="post" modelAttribute="manufacturer" enctype="multipart/form-data">
+            <fieldset>
+                <legend>
+                    <spring:message code="manufacturers.messages.manufacturerData" />
+                </legend>
 
-            <div>
-                <label for="brand">
-                    <spring:message code="manufacturer.details.brand.label" />
-                </label>
-                <div>
-                    <form:input path="brand" id="brand" />
+                <div class="box">
+                    <div class="error">
+                        <form:errors path="brand" />
+                    </div>
+                    <label for="brand" class="title">
+                        <spring:message code="manufacturer.details.brand.label" />
+                    </label>
+                    <div>
+                        <form:input path="brand" id="brand" cssClass="input-field" />
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <label for="website">
-                    <spring:message code="manufacturer.details.website.label" />
-                </label>
-                <div>
-                    <form:input path="website" id="website" />
+                <div class="box">
+                    <label for="website" class="title">
+                        <spring:message code="manufacturer.details.website.label" />
+                    </label>
+                    <div>
+                        <form:input path="website" id="website" cssClass="input-field" />
+                    </div>
                 </div>
-            </div>
 
-            <div>
-                <c:choose>
-                    <c:when test="${manufacturer.logo == null}">
-                        <label for="logo">
-                            <spring:message code="manufacturer.details.logo.label" />
-                        </label>
-                        <div>
-                            <input name="fileUpload" id="logo" type="file" />
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div>
-                            <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" style="width: 10%" />
-                            <form:hidden path="logo.id" />
-                        </div>
-                    </c:otherwise>
-                </c:choose>
-            </div>
+                <div class="box">
+                    <c:choose>
+                        <c:when test="${manufacturer.logo == null}">
+                            <label for="logo" class="title">
+                                <spring:message code="manufacturer.details.logo.label" />
+                            </label>
+                            <div>
+                                <input name="fileUpload" id="logo" type="file" />
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="image">
+                                <img src="/manufacturerImages/${manufacturer.id}" alt="manufacturer" width="50%" />
+                                <form:hidden path="logo.id" />
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
 
-            <div>
-                <input type="submit" value="<spring:message code="save" />" />
-            </div>
+                <div>
+                    <input type="submit" class="button-save" value="<spring:message code="save" />" />
+                </div>
 
-        </fieldset>
-    </form:form>
+            </fieldset>
+        </form:form>
+    </div>
 </section>

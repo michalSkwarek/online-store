@@ -23,8 +23,8 @@ public class AccountServiceImpl extends GenericServiceImpl<Account, Long> implem
 
     @Override
     @Transactional(readOnly = true)
-    public Account getAccountByUsername(String username) {
-        return accountDao.getAccountByUsername(username);
+    public Account findAccountByUsername(String username) {
+        return accountDao.findAccountByUsername(username);
     }
 
     @Override

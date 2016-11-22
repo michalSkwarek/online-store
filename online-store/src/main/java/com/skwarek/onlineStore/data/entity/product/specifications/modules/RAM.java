@@ -1,6 +1,10 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -11,6 +15,8 @@ public class RAM implements Serializable {
 
     private static final long serialVersionUID = 1012756462133620058L;
 
+    @NotNull(message = "{Specifications.ram.value.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.ram.value.validation.min}")
     @Column(name = "ram")
     private Integer value;
 
@@ -32,7 +38,7 @@ public class RAM implements Serializable {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = type.equals("") ? null : type;
     }
 
     @Override

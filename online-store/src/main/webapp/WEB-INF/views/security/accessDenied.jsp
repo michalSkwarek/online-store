@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <section>
-	<div>
+	<div class="error-view">
 		<div>
 			<h1><spring:message code="security.message.accessIsDenied" /></h1>
 		</div>
@@ -15,7 +15,7 @@
 			</c:when>
 			<c:otherwise>
 				<div>
-					<h2><spring:message code="orders.message.dear" />, ${username}</h2>
+					<h1><spring:message code="orders.message.dear" />, ${username}</h1>
 					<h2><spring:message code="security.message.userPermission" />!</h2>
 				</div>
 			</c:otherwise>

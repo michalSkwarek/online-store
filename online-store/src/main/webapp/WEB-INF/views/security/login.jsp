@@ -5,67 +5,54 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-	<div>
-		<h1><spring:message code="security.message.accessAuthentication" /></h1>
-	</div>
+	<div class="login-page">
+		<div class="heading">
+			<h1><spring:message code="security.message.accessAuthentication" /></h1>
+		</div>
 
-	<div>
 		<div>
 			<c:if test="${error == true}">
-				<div>
+				<div class="wrong">
 					<p><spring:message code="security.message.invalidUsernameAndPassword" /></p>
 				</div>
 			</c:if>
 			<c:if test="${message == true}">
-				<div>
+				<div class="info">
 					<p><spring:message code="security.message.youHaveBeenLoggedOutSuccessfully" /></p>
 				</div>
 			</c:if>
 		</div>
 
 		<div>
-			<form:form method="post">
-				<table>
-					<tr>
-						<td><spring:message code="account.details.username.label" />: </td>
-						<td><input type="text" name="username"></td>
-					</tr>
-					<tr>
-						<td><spring:message code="account.details.password.label" />: </td>
-						<td><input type="password" name="password" /></td>
-					</tr>
-					<tr>
-						<td>
-							<input type="submit" value="<spring:message code="submit" />"/>
-						</td>
-					</tr>
-				</table>
+			<form:form method="post" cssClass="login-form">
+				<input type="text" name="username" placeholder="<spring:message code="account.details.username.label" />"/>
+				<input type="password" name="password" placeholder="<spring:message code="account.details.password.label" />"/>
+				<button class="button-save"><spring:message code="submit" /></button>
+				<p class="message"><spring:message code="security.message.notRegistered" />?
+					<a href="<spring:url value="/accounts/new" />"><spring:message code="security.message.createNewAccount" /></a>
+				</p>
 			</form:form>
 		</div>
 
 		<div>
-			<table>
-				<p><spring:message code="example" /></p>
-				<tr>
-					<th></th>
+			<table class="list-table">
+				<tr class="head">
+					<th>Example</th>
 					<th><spring:message code="account.details.username.label" /></th>
 					<th><spring:message code="account.details.password.label" /></th>
 				</tr>
 				<tr>
-					<td>User:</td>
+					<td><spring:message code="user" /></td>
 					<td>aaa</td>
 					<td>111</td>
 				</tr>
 				<tr>
-					<td>Admin:</td>
+					<td><spring:message code="admin" /></td>
 					<td>zzz</td>
 					<td>999</td>
 				</tr>
 			</table>
 		</div>
-	</div>
 
-	<div>
-		<a href="<spring:url value="/accounts/new" />"><spring:message code="security.message.createNewAccount" /></a>
 	</div>
 </section>

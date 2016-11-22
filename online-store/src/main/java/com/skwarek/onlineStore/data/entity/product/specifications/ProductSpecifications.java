@@ -3,6 +3,7 @@ package com.skwarek.onlineStore.data.entity.product.specifications;
 import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import java.io.Serializable;
 
 /**
@@ -19,43 +20,55 @@ public class ProductSpecifications implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cpu_id")
     private CPU cpu;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "gpu_id")
     private GPU gpu;
 
+    @Valid
     @Embedded
     private RAM ram;
 
+    @Valid
     @Embedded
     private Storage storage;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "display_id")
     private Display display;
 
+    @Valid
     @Embedded
     private Battery battery;
 
+    @Valid
     @Embedded
     private PowerSupply powerSupply;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "os_id")
     private OS os;
 
+    @Valid
     @Embedded
     private Camera camera;
 
+    @Valid
     @Embedded
     private Webcam webcam;
 
+    @Valid
     @Embedded
     private Dimensions dimensions;
 
+    @Valid
     @Embedded
     private Weight weight;
 
@@ -207,7 +220,6 @@ public class ProductSpecifications implements Serializable {
     @Override
     public String toString() {
         return "ProductSpecifications{" +
-                "id=" + id +
                 ", cpu=" + cpu +
                 ", gpu=" + gpu +
                 ", ram=" + ram +

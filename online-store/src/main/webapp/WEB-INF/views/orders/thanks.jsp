@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div>
+    <div class="thanks-view">
         <h1><spring:message code="orders.message.dear" />, ${customer}</h1>
         <h1><spring:message code="orders.message.thankYouForOrder" /></h1>
         <h2><spring:message code="orders.message.youMustWait2DaysToDelivery" /></h2>

@@ -69,7 +69,7 @@ public class CartModel {
         updateGrandTotal();
     }
 
-    public void updateGrandTotal() {
+    private void updateGrandTotal() {
         cartTotalPrice = new BigDecimal(0);
         for (Item item : items) {
             cartTotalPrice = cartTotalPrice.add(item.getItemTotalPrice());
@@ -79,12 +79,26 @@ public class CartModel {
     public void updateQuantity(String[] quantities) {
         int i = 0;
         for (Item itemInCart : items) {
-            itemInCart.setQuantity(Integer.parseInt(quantities[i++]));
-            if (itemInCart.getQuantity() == 0) {
+            Long quantity = Long.parseLong(quantities[i++]);
+            if (quantity > 0) {
+                Long unitsInMagazine = itemInCart.getProduct().getUnitsInMagazine();
+                itemInCart.setQuantity(Math.min(quantity, unitsInMagazine));
+            } else {
                 items.remove(itemInCart);
             }
         }
         updateGrandTotal();
+    }
+
+    public boolean isAddProductToCart(Product product) {
+        for (Item itemInCart : items) {
+            if (itemInCart.getProduct().equals(product)) {
+                if (itemInCart.getQuantity() >= product.getUnitsInMagazine()) {
+                    return false;
+                }
+            }
+        }
+        return product.isAvailability();
     }
 
     @Override

@@ -4,15 +4,18 @@ import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.service.ManufacturerService;
 import com.skwarek.onlineStore.service.UploadFileService;
+import com.skwarek.onlineStore.web.validator.BrandValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -28,10 +31,13 @@ public class AdminManufacturerController {
     @Autowired
     private UploadFileService uploadFileService;
 
+    @Autowired
+    private BrandValidator brandValidator;
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
-        List<Manufacturer> manufacturers = manufacturerService.getAll();
+        List<Manufacturer> manufacturers = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturers);
         return "manufacturers/list";
     }
@@ -44,15 +50,19 @@ public class AdminManufacturerController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addManufacturer(Manufacturer manufacturer, @RequestParam CommonsMultipartFile fileUpload) {
+    public String addManufacturer(@Valid Manufacturer manufacturer, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
-        if (fileUpload != null) {
-            UploadFile uploadFile = new UploadFile();
-            uploadFile.setFileName(fileUpload.getOriginalFilename());
-            uploadFile.setData(fileUpload.getBytes());
-            uploadFileService.create(uploadFile);
-            manufacturer.setLogo(uploadFile);
+        brandValidator.validate(manufacturer, result);
+
+        if (fileUpload.isEmpty() || result.hasErrors()) {
+            return "manufacturers/manufacturerData";
         }
+
+        UploadFile uploadFile = new UploadFile();
+        uploadFile.setFileName(fileUpload.getOriginalFilename());
+        uploadFile.setData(fileUpload.getBytes());
+        uploadFileService.create(uploadFile);
+        manufacturer.setLogo(uploadFile);
 
         manufacturerService.create(manufacturer);
         return "redirect:/admin/manufacturers/list";
@@ -67,7 +77,11 @@ public class AdminManufacturerController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateManufacturer(@PathVariable Long id, Manufacturer manufacturer) {
+    public String updateManufacturer(@PathVariable Long id, @Valid Manufacturer manufacturer, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "manufacturers/manufacturerData";
+        }
 
         manufacturerService.updateManufacturer(manufacturer);
         return "redirect:/admin/manufacturers/list";

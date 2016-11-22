@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-	<div>
+	<div class="info-view">
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
 			<div>
 				<h1><spring:message code="orders.message.dear" />, ${pageContext.request.userPrincipal.name}</h1>
@@ -12,13 +12,13 @@
 
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<div>
-					<h1><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h1>
+					<h2><spring:message code="homePage.message.welcomeToOurOnlineStore" /></h2>
 				</div>
 			</sec:authorize>
 
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<div>
-					<h1><spring:message code="security.message.adminPermission" />!</h1>
+					<h2><spring:message code="security.message.adminPermission" />!</h2>
 				</div>
 			</sec:authorize>
 		</c:if>

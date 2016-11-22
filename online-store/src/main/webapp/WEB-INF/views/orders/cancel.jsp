@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div>
+    <div class="info-view">
         <h1><spring:message code="orders.message.yourOrderWasCancelled" /></h1>
     </div>
 </section>

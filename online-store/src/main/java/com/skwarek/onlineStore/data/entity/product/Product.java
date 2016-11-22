@@ -1,8 +1,12 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -20,9 +24,13 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{Product.model.validation.notEmpty}")
     @Column(name = "model")
     private String model;
 
+    @Min(value = 0, message = "{Product.unitPrice.validation.min}")
+    @Digits(integer = 8, fraction = 2, message = "{Product.unitPrice.validation.digits}")
+    @NotNull(message = "{Product.unitPrice.validation.notNull}")
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
@@ -42,6 +50,8 @@ public class Product implements Serializable {
     @JoinColumn(name = "specifications_id")
     private ProductSpecifications productSpecifications;
 
+    @Min(value = 0, message = "{Product.unitsInMagazine.validation.min}")
+    @NotNull(message = "{Product.unitsInMagazine.validation.notNull}")
     @Column(name = "units_in_magazine")
     private Long unitsInMagazine;
 
@@ -122,29 +132,13 @@ public class Product implements Serializable {
 
         Product product = (Product) o;
 
-        if (model != null ? !model.equals(product.model) : product.model != null) return false;
-        if (unitPrice != null ? !unitPrice.equals(product.unitPrice) : product.unitPrice != null) return false;
-        if (category != null ? !category.equals(product.category) : product.category != null) return false;
-        if (manufacturer != null ? !manufacturer.equals(product.manufacturer) : product.manufacturer != null)
-            return false;
-        if (productImage != null ? !productImage.equals(product.productImage) : product.productImage != null)
-            return false;
-        if (productSpecifications != null ? !productSpecifications.equals(product.productSpecifications) : product.productSpecifications != null)
-            return false;
-        return unitsInMagazine != null ? unitsInMagazine.equals(product.unitsInMagazine) : product.unitsInMagazine == null;
+        return model != null ? model.equals(product.model) : product.model == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = model != null ? model.hashCode() : 0;
-        result = 31 * result + (unitPrice != null ? unitPrice.hashCode() : 0);
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
-        result = 31 * result + (productImage != null ? productImage.hashCode() : 0);
-        result = 31 * result + (productSpecifications != null ? productSpecifications.hashCode() : 0);
-        result = 31 * result + (unitsInMagazine != null ? unitsInMagazine.hashCode() : 0);
-        return result;
+        return model != null ? model.hashCode() : 0;
     }
 
     @Override

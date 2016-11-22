@@ -2,6 +2,9 @@ package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Locale;
 
@@ -13,12 +16,21 @@ public class Dimensions implements Serializable {
 
     private static final long serialVersionUID = 8377272462893849544L;
 
+    @NotNull(message = "{Specifications.dimensions.thickness.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.dimensions.thickness.validation.min}")
+    @Digits(integer = 4, fraction = 1, message = "{Specifications.dimensions.thickness.validation.digits}")
     @Column(name = "thickness")
     private Double thickness;
 
+    @NotNull(message = "{Specifications.dimensions.width.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.dimensions.width.validation.min}")
+    @Digits(integer = 4, fraction = 1, message = "{Specifications.dimensions.width.validation.digits}")
     @Column(name = "width")
     private Double width;
 
+    @NotNull(message = "{Specifications.dimensions.height.validation.notNull}")
+    @Min(value = 0, message = "{Specifications.dimensions.height.validation.min}")
+    @Digits(integer = 4, fraction = 1, message = "{Specifications.dimensions.height.validation.digits}")
     @Column(name = "height")
     private Double height;
 

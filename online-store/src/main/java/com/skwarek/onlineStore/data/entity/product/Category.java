@@ -1,6 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Set;
 

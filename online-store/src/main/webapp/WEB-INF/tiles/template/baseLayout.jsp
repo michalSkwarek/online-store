@@ -2,36 +2,20 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
 <head>
-    <link rel="stylesheet" href="../../../resources/css/styles.css" type="text/css" />
+    <link rel="stylesheet" href="/resources/css/styles.css?version=1" type="text/css" />
     <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body>
-    <section>
-        <div>
-            <h1>Online store</h1>
-        </div>
-
-        <div>
-            <tiles:insertAttribute name="headerMenuUserAdmin" />
-        </div>
-
-        <div>
+    <section class="wrapper">
+        <div class="header">
             <tiles:insertAttribute name="header" />
         </div>
 
-        <div>
-            <tiles:insertAttribute name="menu" />
-        </div>
-
-        <div>
-            <tiles:insertAttribute name="menuAdmin" />
-        </div>
-
-        <div>
+        <div class="content">
             <tiles:insertAttribute name="content" />
         </div>
 
-        <div>
+        <div class="footer">
             <tiles:insertAttribute name="footer" />
         </div>
     </section>

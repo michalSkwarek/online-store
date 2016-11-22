@@ -1,0 +1,40 @@
+.logo h1 {
+    width: 30%;
+    margin-top: 0;
+    font-size: 250%;
+    margin-left: 50px;
+}
+.left-header {
+    position: absolute;
+    width: 35%;
+    left: 400px;
+}
+.right-header {
+    position: absolute;
+    width: 35%;
+    left: 900px;
+    text-align: right;
+}
+.top-header {
+    height: 20px;
+    top: 10px;
+}
+.bottom-header {
+    height: 20px;
+    top: 30px;
+}
+.left-header div {
+    display: inline;
+    padding-left: 50px;
+}
+.right-header div {
+    display: inline;
+    padding-right: 50px;
+}
+.menu a {
+    color: #000000;
+    text-decoration: none;
+}
+.menu a:hover {
+    color: #FF0000;
+}

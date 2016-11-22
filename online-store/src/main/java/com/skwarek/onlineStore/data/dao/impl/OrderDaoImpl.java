@@ -16,7 +16,7 @@ import java.util.List;
 public class OrderDaoImpl extends GenericDaoImpl<Order, Long> implements OrderDao {
 
     @Override
-    public List getCustomerOrders(Customer customer) {
+    public List findCustomerOrders(Customer customer) {
         Query getOrdersQuery = getSession().createQuery("from Order o where o.customer = :customer");
         getOrdersQuery.setParameter("customer", customer);
         return getOrdersQuery.list();

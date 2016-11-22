@@ -4,16 +4,14 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -40,14 +38,13 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-    //problem - see xml config
-//    @Bean
-//    public CommonsMultipartResolver getCommonsMultipartResolver() {
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//        multipartResolver.setMaxUploadSize(20971520); // 20MB
-//        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
-//        return multipartResolver;
-//    }
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(20971520); // 20MB
+        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
+        return multipartResolver;
+    }
 
     @Bean
     public MessageSource messageSource() {
@@ -63,13 +60,34 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-    //problem - see xml config
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
-//        interceptor.setParamName("language");
-//        registry.addInterceptor(interceptor);
-//    }
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("language");
+        return localeChangeInterceptor;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+        localValidatorFactoryBean.setValidationMessageSource(messageSource());
+        return localValidatorFactoryBean;
+    }
+
+    @Override
+    public Validator getValidator() {
+        return validator();
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
 
     @Bean
     public TilesConfigurer tilesConfigurer() {

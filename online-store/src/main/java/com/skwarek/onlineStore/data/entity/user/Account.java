@@ -3,6 +3,8 @@ package com.skwarek.onlineStore.data.entity.user;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -16,28 +18,31 @@ public class Account implements Serializable {
 
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_USER = "ROLE_USER";
-    private static final long serialVersionUID = -2035625372437413793L;
+    private static final long serialVersionUID = -4745694015645566183L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Size(min = 3, max = 10, message = "{Size.Account.username.validation}")
+    @Size(min = 3, max = 5, message = "{Account.username.validation.size}")
     @Column(name = "username")
     private String username;
 
+    @Size(min = 3, max = 5, message = "{Account.password.validation.size}")
     @Column(name = "password")
     private String password;
 
     @Column(name = "enabled")
     private Boolean enabled;
 
+    @NotNull(message = "{Account.email.validation.notNull}")
+    @Pattern(regexp = "[a-zA-Z0-9.]+@[a-zA-Z0-9.]+", message = "{Account.email.validation.pattern}")
     @Column(name = "email")
     private String email;
 
     @Column(name = "date_created")
-    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateCreated;
 
     @Column(name = "role")
@@ -48,6 +53,15 @@ public class Account implements Serializable {
     private Customer customer;
 
     public Account() { }
+
+    public Account(String username, String password, Boolean enabled, String email, Date dateCreated, String role) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.email = email;
+        this.dateCreated = dateCreated;
+        this.role = role;
+    }
 
     public Long getId() {
         return id;

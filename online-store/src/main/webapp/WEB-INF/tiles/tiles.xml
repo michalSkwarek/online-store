@@ -5,11 +5,7 @@
 <tiles-definitions>
 
     <definition name="baseLayout" template="/WEB-INF/tiles/template/baseLayout.jsp">
-        <put-attribute name="title" value="" />
-        <put-attribute name="headerMenuUserAdmin" value="" />
         <put-attribute name="header" value="/WEB-INF/tiles/template/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/tiles/template/menu.jsp" />
-        <put-attribute name="menuAdmin" value="" />
         <put-attribute name="content" value="" />
         <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp" />
     </definition>
@@ -46,37 +42,29 @@
 
     <definition name="accounts/accountData" extends="baseLayout">
         <put-attribute name="title" value="Account data" />
-        <put-attribute name="headerMenuUserAdmin" value="/WEB-INF/tiles/template/headerMenuUserAdmin.jsp" />
         <put-attribute name="header" value="" />
-        <put-attribute name="menu" value="" />
         <put-attribute name="content" value="/WEB-INF/views/accounts/accountData.jsp" />
     </definition>
 
     <definition name="customers/customerData" extends="baseLayout">
         <put-attribute name="title" value="Customer data" />
-        <put-attribute name="headerMenuUserAdmin" value="/WEB-INF/tiles/template/headerMenuUserAdmin.jsp" />
         <put-attribute name="header" value="" />
-        <put-attribute name="menu" value="" />
         <put-attribute name="content" value="/WEB-INF/views/customers/customerData.jsp" />
     </definition>
 
     <definition name="addresses/addressData" extends="baseLayout">
         <put-attribute name="title" value="Address data" />
-        <put-attribute name="headerMenuUserAdmin" value="/WEB-INF/tiles/template/headerMenuUserAdmin.jsp" />
         <put-attribute name="header" value="" />
-        <put-attribute name="menu" value="" />
         <put-attribute name="content" value="/WEB-INF/views/addresses/addressData.jsp" />
     </definition>
 
     <definition name="manufacturers/list" extends="baseLayout">
         <put-attribute name="title" value="All manufacturers" />
-        <put-attribute name="menuAdmin" value="/WEB-INF/tiles/template/menuAdmin.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/manufacturers/list.jsp" />
     </definition>
 
     <definition name="manufacturers/manufacturerData" extends="baseLayout">
         <put-attribute name="title" value="Manufacturer data" />
-        <put-attribute name="menuAdmin" value="/WEB-INF/tiles/template/menuAdmin.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/manufacturers/manufacturerData.jsp" />
     </definition>
 
@@ -87,25 +75,21 @@
 
     <definition name="products/adminList" extends="baseLayout">
         <put-attribute name="title" value="All products" />
-        <put-attribute name="menuAdmin" value="/WEB-INF/tiles/template/menuAdmin.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/products/adminList.jsp" />
     </definition>
 
     <definition name="products/productData" extends="baseLayout">
         <put-attribute name="title" value="Product data" />
-        <put-attribute name="menuAdmin" value="/WEB-INF/tiles/template/menuAdmin.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/products/productData.jsp" />
     </definition>
 
     <definition name="products/specifications" extends="baseLayout">
         <put-attribute name="title" value="Product specifications" />
-        <put-attribute name="menuAdmin" value="/WEB-INF/tiles/template/menuAdmin.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/products/specifications.jsp" />
     </definition>
 
     <definition name="products/addSpecifications" extends="baseLayout">
         <put-attribute name="title" value="Add specifications" />
-        <put-attribute name="menuAdmin" value="/WEB-INF/tiles/template/menuAdmin.jsp" />
         <put-attribute name="content" value="/WEB-INF/views/products/addSpecifications.jsp" />
     </definition>
 
@@ -127,6 +111,11 @@
     <definition name="orders/list" extends="baseLayout">
         <put-attribute name="title" value="Order history" />
         <put-attribute name="content" value="/WEB-INF/views/orders/list.jsp" />
+    </definition>
+
+    <definition name="orders/productUnavailable" extends="baseLayout">
+        <put-attribute name="title" value="Product unavailable" />
+        <put-attribute name="content" value="/WEB-INF/views/orders/productUnavailable.jsp" />
     </definition>
 
     <definition name="orders/thanks" extends="baseLayout">

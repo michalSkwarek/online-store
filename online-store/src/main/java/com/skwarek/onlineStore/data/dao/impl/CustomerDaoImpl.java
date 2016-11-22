@@ -24,7 +24,7 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer, Long> implements C
     private AddressDao addressDao;
 
     @Override
-    public Customer getLastCustomer() {
+    public Customer findLastCustomer() {
         Query getCustomerQuery = getSession().createQuery("from Customer c order by c.id desc");
         getCustomerQuery.setMaxResults(1);
         return (Customer) getCustomerQuery.uniqueResult();
@@ -32,7 +32,7 @@ public class CustomerDaoImpl extends GenericDaoImpl<Customer, Long> implements C
 
     @Override
     public void createCustomer(Customer customer) {
-        Account account = accountDao.getLastAccount();
+        Account account = accountDao.findLastAccount();
         account.setCustomer(customer);
         accountDao.update(account);
     }

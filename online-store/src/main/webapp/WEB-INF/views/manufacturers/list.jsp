@@ -4,30 +4,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div>
-        <a href="<spring:url value="/admin/manufacturers/new" />"><spring:message code="manufacturers.message.addNewManufacturers" /></a>
-    </div>
+    <div class="table">
+        <div>
+            <a href="<spring:url value="/admin/manufacturers/new" />">
+                <button type="button" class="button-edit"><spring:message code="manufacturers.message.addNewManufacturer" /></button>
+            </a>
+        </div>
 
-    <div>
-        <h1><spring:message code="manufacturers.message.allManufacturers" /></h1>
-    </div>
+        <div>
+            <p class="heading"><spring:message code="manufacturers.message.allManufacturers" /></p>
+        </div>
 
-    <div>
-        <table>
-            <tr>
-                <td><spring:message code="manufacturer.details.brand.label" /></td>
-                <td><spring:message code="manufacturer.details.website.label" /></td>
-                <td><spring:message code="edit" /></td>
-                <td><spring:message code="delete" /></td>
-            </tr>
-            <c:forEach items="${manufacturers}" var="manufacturer">
-                <tr>
-                    <td>${manufacturer.brand}</td>
-                    <td><a href="${manufacturer.website}">${manufacturer.website}</a></td>
-                    <td><a href="/admin/manufacturers/edit/${manufacturer.id}"><spring:message code="edit" /></a></td>
-                    <td><a href="/admin/manufacturers/delete/${manufacturer.id}"><spring:message code="delete" /></a></td>
+        <div>
+            <table class="list-table">
+                <tr class="head">
+                    <th><spring:message code="manufacturer.details.brand.label" /></th>
+                    <th><spring:message code="manufacturer.details.website.label" /></th>
+                    <th><spring:message code="edit" /></th>
+                    <th><spring:message code="delete" /></th>
                 </tr>
-            </c:forEach>
-        </table>
+                <c:forEach items="${manufacturers}" var="manufacturer">
+                    <tr>
+                        <td>${manufacturer.brand}</td>
+                        <td><a href="${manufacturer.website}">${manufacturer.website}</a></td>
+                        <td class="option"><a href="/admin/manufacturers/edit/${manufacturer.id}"><spring:message code="edit" /></a></td>
+                        <td class="option"><a href="/admin/manufacturers/delete/${manufacturer.id}"><spring:message code="delete" /></a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
     </div>
 </section>

@@ -1,8 +1,10 @@
 package com.skwarek.onlineStore.data.entity.address;
 
-import com.skwarek.onlineStore.data.entity.user.Customer;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 /**
@@ -19,23 +21,36 @@ public class Address implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @NotEmpty(message = "{Address.street.validation.notEmpty}")
     @Column(name = "street")
     private String street;
 
+    @NotEmpty(message = "{Address.streetNumber.validation.notEmpty}")
     @Column(name = "street_number")
     private String streetNumber;
 
     @Column(name = "door_number")
     private String doorNumber;
 
+    @NotEmpty(message = "{Address.zipCode.validation.notEmpty}")
+    @Pattern(regexp = "[0-9]{2}-[0-9]{3}", message = "{Address.zipCode.validation.pattern}")
     @Column(name = "zip_code")
     private String zipCode;
 
+    @Valid
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "city_id")
     private City city;
 
     public Address() { }
+
+    public Address(String street, String streetNumber, String doorNumber, String zipCode, City city) {
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.doorNumber = doorNumber;
+        this.zipCode = zipCode;
+        this.city = city;
+    }
 
     public Long getId() {
         return id;

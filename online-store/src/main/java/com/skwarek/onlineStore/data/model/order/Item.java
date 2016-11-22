@@ -11,7 +11,7 @@ public class Item {
 
     private Product product;
 
-    private Integer quantity;
+    private Long quantity;
 
     private BigDecimal itemTotalPrice;
 
@@ -27,11 +27,11 @@ public class Item {
         this.product = product;
     }
 
-    public int getQuantity() {
+    public long getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(long quantity) {
         this.quantity = quantity;
         this.updateItemTotalPrice();
     }

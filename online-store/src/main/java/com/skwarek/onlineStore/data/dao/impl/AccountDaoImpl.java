@@ -19,7 +19,7 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
     private CustomerDao customerDao;
 
     @Override
-    public Account getAccountByUsername(String username) {
+    public Account findAccountByUsername(String username) {
         Query getAccountQuery = getSession().createQuery("from Account a where a.username = :username");
         getAccountQuery.setParameter("username", username);
         getAccountQuery.setMaxResults(1);
@@ -27,7 +27,7 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
     }
 
     @Override
-    public Account getLastAccount() {
+    public Account findLastAccount() {
         Query getAccountQuery = getSession().createQuery("from Account a order by a.id desc");
         getAccountQuery.setMaxResults(1);
         return (Account) getAccountQuery.uniqueResult();

@@ -20,7 +20,7 @@ public class UserDataController {
     @RequestMapping(value = "/{username}")
     public String getUserData(Model model, @PathVariable String username) {
 
-        model.addAttribute("account", accountService.getAccountByUsername(username));
+        model.addAttribute("account", accountService.findAccountByUsername(username));
         return "users/userData";
     }
 }

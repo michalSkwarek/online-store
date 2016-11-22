@@ -35,7 +35,16 @@ public class ProductController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
 
-        List<Product> products = productService.getAll();
+        List<Product> products = productService.findAll();
+        model.addAttribute("products", products);
+        addAllCategoriesAndManufacturersToModel(model);
+        return "products/list";
+    }
+
+    @RequestMapping(value = "/category/{category}", method = RequestMethod.GET)
+    public String showProductsByCategory(Model model, @PathVariable String category) {
+
+        List products = productService.findProductsByCategory(category);
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
         return "products/list";
@@ -48,13 +57,13 @@ public class ProductController {
                                @RequestParam(value = "toPriceRange") String high,
                                @RequestParam String priceOrder) {
 
-        List<Product> products = productService.getProductsByFilter(categories, manufacturers, low, high, priceOrder);
+        List<Product> products = productService.findProductsByFilter(categories, manufacturers, low, high, priceOrder);
         if (products == null || products.isEmpty()) {
-            return "/error";
+            return "error";
         }
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
-        return "/products/list";
+        return "products/list";
     }
 
     @RequestMapping(value = "/{id}")
@@ -64,19 +73,10 @@ public class ProductController {
         return "products/specifications";
     }
 
-    @RequestMapping(value = "/category/{category}", method = RequestMethod.GET)
-    public String showProductsByCategory(Model model, @PathVariable String category) {
-
-        List products = productService.getProductsByCategory(category);
-        model.addAttribute("products", products);
-        addAllCategoriesAndManufacturersToModel(model);
-        return "/products/list";
-    }
-
     private void addAllCategoriesAndManufacturersToModel(Model model) {
-        List<Category> categoriesAll = categoryService.getAll();
+        List<Category> categoriesAll = categoryService.findAll();
         model.addAttribute("categories", categoriesAll);
-        List<Manufacturer> manufacturersAll = manufacturerService.getAll();
+        List<Manufacturer> manufacturersAll = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturersAll);
     }
 }
