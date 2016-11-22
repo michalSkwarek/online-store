@@ -9,7 +9,7 @@
     </div>
 
     <div class="menu">
-        <div class="right-strap top-strap">
+        <div class="right-header top-header">
             <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
                 <div>
                     <a href="<spring:url value="/users/${pageContext.request.userPrincipal.name}" />"><spring:message code="header.message.userData" /></a>
@@ -26,7 +26,7 @@
         </div>
 
         <security:authorize  access="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-            <div class="right-strap bottom-strap">
+            <div class="right-header bottom-header">
                 <div><a href="<spring:url value="/login" />"><spring:message code="header.message.signIn" /></a></div>
             </div>
         </security:authorize>
@@ -42,14 +42,14 @@
                 }
             </script>
 
-            <div class="right-strap bottom-strap">
+            <div class="right-header bottom-header">
                 <div>
                     <a href="javascript:formSubmit()"><spring:message code="header.message.logout" /></a>
                 </div>
             </div>
         </security:authorize>
 
-        <div class="left-strap top-strap">
+        <div class="left-header top-header">
             <div class="">
                 <a href="<spring:url value="/welcome" />"><spring:message code="menu.message.homePage" /></a>
             </div>
@@ -64,7 +64,7 @@
         </div>
 
         <security:authorize  access="hasRole('ROLE_ADMIN')">
-            <div class="left-strap bottom-strap">
+            <div class="left-header bottom-header">
                 <div>
                     <a href="<spring:url value="/admin/products/list" />"><spring:message code="menu.message.adminPage" /></a>
                 </div>

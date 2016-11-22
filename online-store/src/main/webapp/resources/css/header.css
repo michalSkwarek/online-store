@@ -4,30 +4,30 @@
     font-size: 250%;
     margin-left: 50px;
 }
-.left-strap {
+.left-header {
     position: absolute;
     width: 35%;
     left: 400px;
 }
-.right-strap {
+.right-header {
     position: absolute;
     width: 35%;
     left: 900px;
     text-align: right;
 }
-.top-strap {
+.top-header {
     height: 20px;
     top: 10px;
 }
-.bottom-strap {
+.bottom-header {
     height: 20px;
     top: 30px;
 }
-.left-strap div {
+.left-header div {
     display: inline;
     padding-left: 50px;
 }
-.right-strap div {
+.right-header div {
     display: inline;
     padding-right: 50px;
 }
