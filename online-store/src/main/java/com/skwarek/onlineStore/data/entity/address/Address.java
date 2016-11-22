@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.address;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -12,14 +13,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "address")
-public class Address implements Serializable {
+public class Address extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1139804983797527132L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -6034490560387237633L;
 
     @NotEmpty(message = "{Address.street.validation.notEmpty}")
     @Column(name = "street")
@@ -43,22 +39,6 @@ public class Address implements Serializable {
     private City city;
 
     public Address() { }
-
-    public Address(String street, String streetNumber, String doorNumber, String zipCode, City city) {
-        this.street = street;
-        this.streetNumber = streetNumber;
-        this.doorNumber = doorNumber;
-        this.zipCode = zipCode;
-        this.city = city;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getStreet() {
         return street;

@@ -4,37 +4,21 @@
     font-size: 250%;
     margin-left: 50px;
 }
-.left-header {
+.menu-table {
     position: absolute;
-    width: 35%;
-    left: 400px;
+    width: 70%;
+    height: 100%;
+    table-layout: fixed;
+    left: 25%;
+    top: 0;
 }
-.right-header {
-    position: absolute;
-    width: 35%;
-    left: 900px;
-    text-align: right;
+.menu-table td {
+    padding: 0 5px;
 }
-.top-header {
-    height: 20px;
-    top: 10px;
-}
-.bottom-header {
-    height: 20px;
-    top: 30px;
-}
-.left-header div {
-    display: inline;
-    padding-left: 50px;
-}
-.right-header div {
-    display: inline;
-    padding-right: 50px;
-}
-.menu a {
+.menu-table td a {
     color: #000000;
     text-decoration: none;
 }
-.menu a:hover {
+.menu-table td a:hover {
     color: #FF0000;
 }

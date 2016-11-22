@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
@@ -10,14 +12,9 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "category")
-public class Category implements Serializable {
+public class Category extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -5349758308611697305L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -4271496387779523311L;
 
     @Column(name = "name")
     private String name;
@@ -26,14 +23,6 @@ public class Category implements Serializable {
     private Set<Product> products;
 
     public Category() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

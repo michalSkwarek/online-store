@@ -1,8 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

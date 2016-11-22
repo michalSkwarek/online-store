@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
@@ -12,14 +14,9 @@ import java.util.Locale;
  */
 @Entity
 @Table(name = "display")
-public class Display implements Serializable {
+public class Display extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 574478679360415794L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -8402872347735729365L;
 
     @NotNull(message = "{Specifications.display.diagonal.validation.notNull}")
     @Min(value = 0, message = "{Specifications.display.diagonal.validation.min}")
@@ -38,14 +35,6 @@ public class Display implements Serializable {
     private Integer heightInPixels;
 
     public Display() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Double getDiagonal() {
         return diagonal;

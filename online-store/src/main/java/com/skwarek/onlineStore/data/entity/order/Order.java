@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.order;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 
 import javax.persistence.*;
@@ -11,14 +12,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "orders")
-public class Order implements Serializable {
-
-    private static final long serialVersionUID = -6774549650536053855L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class Order extends BaseEntity implements Serializable {
 
     @Embedded
     private Cart cart;
@@ -35,14 +29,6 @@ public class Order implements Serializable {
     private Date dateCreated;
 
     public Order() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Cart getCart() {
         return cart;

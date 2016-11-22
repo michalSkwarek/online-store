@@ -1,5 +1,7 @@
 package com.skwarek.onlineStore.data.entity.product;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -9,14 +11,9 @@ import java.util.Arrays;
  */
 @Entity
 @Table(name = "files_upload")
-public class UploadFile implements Serializable {
+public class UploadFile extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 4817526488251095234L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private static final long serialVersionUID = -8916416516345262126L;
 
     @Column(name = "file_name")
     private String fileName;
@@ -26,14 +23,6 @@ public class UploadFile implements Serializable {
     private byte[] data;
 
     public UploadFile() { }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFileName() {
         return fileName;

@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.user;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,16 +15,11 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "account")
-public class Account implements Serializable {
+public class Account extends BaseEntity implements Serializable {
 
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_USER = "ROLE_USER";
-    private static final long serialVersionUID = -4745694015645566183L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = 1237200494497518900L;
 
     @Size(min = 3, max = 5, message = "{Account.username.validation.size}")
     @Column(name = "username")
@@ -53,23 +49,6 @@ public class Account implements Serializable {
     private Customer customer;
 
     public Account() { }
-
-    public Account(String username, String password, Boolean enabled, String email, Date dateCreated, String role) {
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.email = email;
-        this.dateCreated = dateCreated;
-        this.role = role;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;

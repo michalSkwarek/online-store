@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.product;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -15,14 +16,9 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "product")
-public class Product implements Serializable {
+public class Product extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -2379568691831188780L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -4682002815091850304L;
 
     @NotEmpty(message = "{Product.model.validation.notEmpty}")
     @Column(name = "model")
@@ -56,14 +52,6 @@ public class Product implements Serializable {
     private Long unitsInMagazine;
 
     public Product() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getModel() {
         return model;

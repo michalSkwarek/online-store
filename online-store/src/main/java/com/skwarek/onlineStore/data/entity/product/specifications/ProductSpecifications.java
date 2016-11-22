@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.product.specifications;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 
 import javax.persistence.*;
@@ -11,14 +12,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "specifications")
-public class ProductSpecifications implements Serializable {
+public class ProductSpecifications extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 4870579911098474262L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -5490479111819234519L;
 
     @Valid
     @ManyToOne(cascade = CascadeType.ALL)
@@ -73,14 +69,6 @@ public class ProductSpecifications implements Serializable {
     private Weight weight;
 
     public ProductSpecifications() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public CPU getCpu() {
         return cpu;

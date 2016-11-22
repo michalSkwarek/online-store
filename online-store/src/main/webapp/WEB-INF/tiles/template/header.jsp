@@ -8,73 +8,96 @@
         <h1>Online store</h1>
     </div>
 
-    <div class="menu">
-        <div class="right-header top-header">
-            <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-                <div>
-                    <a href="<spring:url value="/users/${pageContext.request.userPrincipal.name}" />"><spring:message code="header.message.userData" /></a>
-                </div>
-            </security:authorize>
-            <security:authorize  access="hasRole('ROLE_USER')">
-                <div>
-                    <a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/list" />"><spring:message code="header.message.myOrders" /></a>
-                </div>
-            </security:authorize>
-            <div>
-                <a href="?language=pl" >pl</a> | <a href="?language=en">en</a>
-            </div>
-        </div>
+    <div>
+        <table class="menu-table">
+            <tr>
+                <td>
+                    <div class="">
+                        <a href="<spring:url value="/welcome" />"><spring:message code="menu.message.homePage" /></a>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <a href="<spring:url value="/products/list" />"><spring:message code="products" /></a>
+                    </div>
+                </td>
+                <td>
+                    <security:authorize  access="!hasRole('ROLE_ADMIN')">
+                        <div>
+                            <a href="<spring:url value="/order/myCart" />"><spring:message code="menu.message.cart" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+                <td></td>
+                <td>
+                    <security:authorize  access="hasRole('ROLE_USER')">
+                        <div class="text-right">
+                            <a href="<spring:url value="/order/${pageContext.request.userPrincipal.name}/list" />"><spring:message code="header.message.myOrders" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+                <td>
+                    <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                        <div class="text-right">
+                            <a href="<spring:url value="/users/${pageContext.request.userPrincipal.name}" />"><spring:message code="header.message.userData" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+                <td>
+                    <div class="text-right">
+                        <a href="?language=pl" >pl</a> | <a href="?language=en">en</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <security:authorize  access="hasRole('ROLE_ADMIN')">
+                        <div>
+                            <a href="<spring:url value="/admin/products/list" />"><spring:message code="menu.message.adminPage" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+                <td>
+                    <security:authorize  access="hasRole('ROLE_ADMIN')">
+                        <div>
+                            <a href="<spring:url value="/admin/products/list" />"><spring:message code="products" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+                <td>
+                    <security:authorize  access="hasRole('ROLE_ADMIN')">
+                        <div>
+                            <a href="<spring:url value="/admin/manufacturers/list" />"><spring:message code="manufacturers" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <security:authorize  access="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                        <div class="text-right">
+                            <a href="<spring:url value="/login" />"><spring:message code="header.message.signIn" /></a>
+                        </div>
+                    </security:authorize>
+                    <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
 
-        <security:authorize  access="!hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-            <div class="right-header bottom-header">
-                <div><a href="<spring:url value="/login" />"><spring:message code="header.message.signIn" /></a></div>
-            </div>
-        </security:authorize>
-        <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
+                        <c:url value="/logout" var="logoutUrl" />
+                        <form action="${logoutUrl}" method="post" id="logoutForm">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                        </form>
+                        <script>
+                            function formSubmit() {
+                                document.getElementById("logoutForm").submit();
+                            }
+                        </script>
 
-            <c:url value="/logout" var="logoutUrl" />
-            <form action="${logoutUrl}" method="post" id="logoutForm">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-            </form>
-            <script>
-                function formSubmit() {
-                    document.getElementById("logoutForm").submit();
-                }
-            </script>
-
-            <div class="right-header bottom-header">
-                <div>
-                    <a href="javascript:formSubmit()"><spring:message code="header.message.logout" /></a>
-                </div>
-            </div>
-        </security:authorize>
-
-        <div class="left-header top-header">
-            <div class="">
-                <a href="<spring:url value="/welcome" />"><spring:message code="menu.message.homePage" /></a>
-            </div>
-            <div>
-                <a href="<spring:url value="/products/list" />"><spring:message code="products" /></a>
-            </div>
-            <security:authorize  access="!hasRole('ROLE_ADMIN')">
-                <div>
-                    <a href="<spring:url value="/order/myCart" />"><spring:message code="menu.message.cart" /></a>
-                </div>
-            </security:authorize>
-        </div>
-
-        <security:authorize  access="hasRole('ROLE_ADMIN')">
-            <div class="left-header bottom-header">
-                <div>
-                    <a href="<spring:url value="/admin/products/list" />"><spring:message code="menu.message.adminPage" /></a>
-                </div>
-                <div>
-                    <a href="<spring:url value="/admin/products/list" />"><spring:message code="products" /></a>
-                </div>
-                <div>
-                    <a href="<spring:url value="/admin/manufacturers/list" />"><spring:message code="manufacturers" /></a>
-                </div>
-            </div>
-        </security:authorize>
+                        <div class="text-right">
+                            <a href="javascript:formSubmit()"><spring:message code="header.message.logout" /></a>
+                        </div>
+                    </security:authorize>
+                </td>
+            </tr>
+        </table>
     </div>
 </section>

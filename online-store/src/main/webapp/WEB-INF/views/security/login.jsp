@@ -37,7 +37,7 @@
 		<div>
 			<table class="list-table">
 				<tr class="head">
-					<th>Example</th>
+					<th><spring:message code="example" /></th>
 					<th><spring:message code="account.details.username.label" /></th>
 					<th><spring:message code="account.details.password.label" /></th>
 				</tr>

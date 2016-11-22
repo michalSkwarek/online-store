@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -10,14 +11,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "os")
-public class OS implements Serializable {
+public class OS extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 6001672831050783364L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -1353287992705749589L;
 
     @NotEmpty(message = "{Specifications.os.name.validation.notEmpty}")
     @Column(name = "name")
@@ -29,20 +25,12 @@ public class OS implements Serializable {
 
     public OS() { }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.equals("") ? null : name;
     }
 
     public String getVersion() {
@@ -50,7 +38,7 @@ public class OS implements Serializable {
     }
 
     public void setVersion(String version) {
-        this.version = version;
+        this.version = version.equals("") ? null : version;
     }
 
     @Override
@@ -60,7 +48,6 @@ public class OS implements Serializable {
 
         OS os = (OS) o;
 
-        if (id != null ? !id.equals(os.id) : os.id != null) return false;
         if (name != null ? !name.equals(os.name) : os.name != null) return false;
         return version != null ? version.equals(os.version) : os.version == null;
 
@@ -68,8 +55,7 @@ public class OS implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (version != null ? version.hashCode() : 0);
         return result;
     }

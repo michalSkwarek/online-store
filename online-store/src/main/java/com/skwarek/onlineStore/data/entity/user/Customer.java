@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.user;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.address.Address;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -12,14 +13,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "customer")
-public class Customer implements Serializable {
+public class Customer extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -188553511107544419L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -2102982277035069743L;
 
     @NotEmpty(message = "{Customer.firstName.validation.notEmpty}")
     @Column(name = "first_name")
@@ -48,22 +44,6 @@ public class Customer implements Serializable {
     private Account account;
 
     public Customer() { }
-
-    public Customer(String firstName, String lastName, String birthDate, String phoneNumber, Integer numberOfOrders) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.phoneNumber = phoneNumber;
-        this.numberOfOrders = numberOfOrders;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

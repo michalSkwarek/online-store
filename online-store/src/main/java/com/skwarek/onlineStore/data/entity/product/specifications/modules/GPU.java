@@ -1,5 +1,6 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
+import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -13,14 +14,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "gpu")
-public class GPU implements Serializable {
+public class GPU extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -2430778721526582057L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private static final long serialVersionUID = -2400380829767762475L;
 
     @NotEmpty(message = "{Specifications.gpu.model.validation.notEmpty}")
     @Column(name = "model")
@@ -37,14 +33,6 @@ public class GPU implements Serializable {
     private List<ProductSpecifications> specifications;
 
     public GPU() { }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getModel() {
         return model;
