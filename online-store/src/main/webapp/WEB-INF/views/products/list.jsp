@@ -50,7 +50,7 @@
     <div class="product">
         <p class="heading"><spring:message code="products.message.allProducts" /></p>
         <c:forEach items="${products}" var="product">
-            <div class="frame">
+            <div class="product-frame">
                 <img src="/productImages/${product.id}" alt="product" width="230px" />
                 <p>${product.manufacturer.brand} ${product.model}</p>
                 <p>${product.unitPrice} PLN</p>

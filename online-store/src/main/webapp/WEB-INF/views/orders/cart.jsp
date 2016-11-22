@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div class="content-frame">
+    <div class="table">
         <div class="heading">
             <h1><spring:message code="orders.message.myCart" /></h1>
         </div>
@@ -25,7 +25,7 @@
         <div class="product">
             <form:form method="post" modelAttribute="cart">
                 <c:forEach items="${cart.items}" var="item" varStatus="varStatus">
-                    <div class="frame">
+                    <div class="product-frame">
                         <img src="/productImages/${item.product.id}" alt="product" width="230px" />
                         <p>${item.product.manufacturer.brand} ${item.product.model}</p>
                         <p>${item.product.unitPrice} PLN</p>

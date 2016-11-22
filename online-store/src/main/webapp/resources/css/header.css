@@ -1,0 +1,37 @@
+.logo h1 {
+    width: 30%;
+    margin-top: 0;
+    font-size: 250%;
+    margin-left: 50px;
+}
+.left-strap {
+    position: absolute;
+    width: 35%;
+    left: 400px;
+}
+.right-strap {
+    position: absolute;
+    width: 35%;
+    left: 900px;
+    text-align: right;
+}
+.top-strap {
+    height: 20px;
+    top: 20px;
+}
+.bottom-strap {
+    height: 20px;
+    top: 40px;
+}
+.left-strap div {
+    display: inline;
+    padding-left: 50px;
+}
+.right-strap div {
+    display: inline;
+    padding-right: 50px;
+}
+
+.header-content-break {
+    margin-top: 100px;
+}

@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div class="content-frame">
+    <div class="table">
         <div>
             <a href="<spring:url value="/admin/products/new" />">
                 <button type="button" class="button-edit"><spring:message code="products.message.addNewProduct" /></button>
@@ -30,7 +30,7 @@
                 <c:forEach items="${products}" var="product">
                     <tr>
                         <td>${product.model}</td>
-                        <td class="unit-price">${product.unitPrice} PLN</td>
+                        <td class="text-right">${product.unitPrice} PLN</td>
                         <td>${product.category.name}</td>
                         <td>${product.manufacturer.brand}</td>
                         <td class="option"><a href="/products/${product.id}"><spring:message code="product.details.specifications.label" /></a></td>

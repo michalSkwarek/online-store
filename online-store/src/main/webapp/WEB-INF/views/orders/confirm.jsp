@@ -91,7 +91,7 @@
 
                     <div class="product-order-confirm">
                         <c:forEach items="${cart.items}" var="item">
-                                <div class="frame">
+                                <div class="product-frame">
                                     <img src="/productImages/${item.product.id}" alt="product" width="230px" />
                                     <p>${item.product.manufacturer.brand} ${item.product.model}</p>
                                     <p>${item.product.unitPrice} PLN</p>

@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div class="content-frame">
+    <div class="table">
         <div class="heading">
             <h1><spring:message code="orders.message.orderHistory" /></h1>
         </div>
@@ -29,7 +29,7 @@
                         <c:set var="count" value="${count + 1}" />
                         <tr>
                             <td>${count}</td>
-                            <td class="unit-price">${order.cart.cartTotalPrice} PLN</td>
+                            <td class="text-right">${order.cart.cartTotalPrice} PLN</td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${order.dateCreated}" /></td>
                             <td><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${order.shippingDetail.dateDelivery}" /></td>
                         </tr>

@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <section>
-    <div class="content-frame">
+    <div class="table">
         <div>
             <a href="<spring:url value="/admin/manufacturers/new" />">
                 <button type="button" class="button-edit"><spring:message code="manufacturers.message.addNewManufacturer" /></button>
