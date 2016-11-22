@@ -17,11 +17,11 @@
 }
 .top-strap {
     height: 20px;
-    top: 20px;
+    top: 10px;
 }
 .bottom-strap {
     height: 20px;
-    top: 40px;
+    top: 30px;
 }
 .left-strap div {
     display: inline;
@@ -31,7 +31,10 @@
     display: inline;
     padding-right: 50px;
 }
-
-.header-content-break {
-    margin-top: 100px;
+.menu a {
+    color: #000000;
+    text-decoration: none;
+}
+.menu a:hover {
+    color: #FF0000;
 }
