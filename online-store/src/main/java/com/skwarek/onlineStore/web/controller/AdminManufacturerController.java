@@ -25,37 +25,41 @@ import java.util.List;
 @RequestMapping(value = "/admin/manufacturers")
 public class AdminManufacturerController {
 
-    @Autowired
-    private ManufacturerService manufacturerService;
+    private static final String VIEWS_MANUFACTURERS_LIST = "manufacturers/list";
+    private static final String VIEWS_MANUFACTURER_FORM = "manufacturers/manufacturerData";
+    private final ManufacturerService manufacturerService;
+    private final UploadFileService uploadFileService;
+    private final BrandValidator brandValidator;
 
     @Autowired
-    private UploadFileService uploadFileService;
-
-    @Autowired
-    private BrandValidator brandValidator;
+    public AdminManufacturerController(ManufacturerService manufacturerService, UploadFileService uploadFileService, BrandValidator brandValidator) {
+        this.manufacturerService = manufacturerService;
+        this.uploadFileService = uploadFileService;
+        this.brandValidator = brandValidator;
+    }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String showProducts(Model model) {
+    public String showManufacturers(Model model) {
 
         List<Manufacturer> manufacturers = manufacturerService.findAll();
         model.addAttribute("manufacturers", manufacturers);
-        return "manufacturers/list";
+        return VIEWS_MANUFACTURERS_LIST;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String createManufacturer(Model model) {
+    public String initCreateManufacturerForm(Model model) {
 
         model.addAttribute("manufacturer", new Manufacturer());
-        return "manufacturers/manufacturerData";
+        return VIEWS_MANUFACTURER_FORM;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addManufacturer(@Valid Manufacturer manufacturer, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
+    public String processCreateManufacturerForm(@Valid Manufacturer manufacturer, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
         brandValidator.validate(manufacturer, result);
 
         if (fileUpload.isEmpty() || result.hasErrors()) {
-            return "manufacturers/manufacturerData";
+            return VIEWS_MANUFACTURER_FORM;
         }
 
         UploadFile uploadFile = new UploadFile();
@@ -69,18 +73,18 @@ public class AdminManufacturerController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String getManufacturer(@PathVariable Long id, Model model) {
+    public String initUpdateManufacturerForm(@PathVariable Long id, Model model) {
 
         Manufacturer manufacturer = manufacturerService.read(id);
         model.addAttribute("manufacturer", manufacturer);
-        return "manufacturers/manufacturerData";
+        return VIEWS_MANUFACTURER_FORM;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateManufacturer(@PathVariable Long id, @Valid Manufacturer manufacturer, BindingResult result) {
+    public String processUpdateManufacturerForm(@PathVariable Long id, @Valid Manufacturer manufacturer, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "manufacturers/manufacturerData";
+            return VIEWS_MANUFACTURER_FORM;
         }
 
         manufacturerService.updateManufacturer(manufacturer);

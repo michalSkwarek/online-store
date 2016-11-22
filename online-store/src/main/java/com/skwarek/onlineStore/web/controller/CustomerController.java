@@ -20,24 +20,28 @@ import javax.validation.Valid;
 @RequestMapping(value = "/customers")
 public class CustomerController {
 
-    @Autowired
-    private AccountService accountService;
+    private static final String VIEWS_CUSTOMER_FORM = "customers/customerData";
+    private final AccountService accountService;
+    private final CustomerService customerService;
 
     @Autowired
-    private CustomerService customerService;
+    public CustomerController(AccountService accountService, CustomerService customerService) {
+        this.accountService = accountService;
+        this.customerService = customerService;
+    }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String createCustomer(Model model) {
+    public String initCreateCustomerForm(Model model) {
 
         model.addAttribute("customer", new Customer());
-        return "customers/customerData";
+        return VIEWS_CUSTOMER_FORM;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addCustomer(@Valid Customer customer, BindingResult result) {
+    public String processCreateCustomerForm(@Valid Customer customer, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "customers/customerData";
+            return VIEWS_CUSTOMER_FORM;
         }
 
         customerService.createCustomer(customer);
@@ -45,18 +49,18 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
-    public String getAddress(@PathVariable String username, Model model) {
+    public String initUpdateCustomerForm(@PathVariable String username, Model model) {
 
         Customer customer = accountService.findAccountByUsername(username).getCustomer();
         model.addAttribute("customer", customer);
-        return "customers/customerData";
+        return VIEWS_CUSTOMER_FORM;
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
-    public String updateAddress(@PathVariable String username, @Valid Customer customer, BindingResult result) {
+    public String processUpdateCustomerForm(@PathVariable String username, @Valid Customer customer, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "customers/customerData";
+            return VIEWS_CUSTOMER_FORM;
         }
 
         customerService.updateCustomer(customer);

@@ -19,14 +19,17 @@ import java.util.List;
 @Controller
 public class WelcomeController {
 
-    @Autowired
-    private CategoryService categoryService;
+    private static final String VIEWS_HOME_PAGE = "homePage";
+    private final CategoryService categoryService;
+    private final ManufacturerService manufacturerService;
+    private final ProductService productService;
 
     @Autowired
-    private ManufacturerService manufacturerService;
-
-    @Autowired
-    private ProductService productService;
+    public WelcomeController(CategoryService categoryService, ManufacturerService manufacturerService, ProductService productService) {
+        this.categoryService = categoryService;
+        this.manufacturerService = manufacturerService;
+        this.productService = productService;
+    }
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcome(Model model) {
@@ -42,7 +45,7 @@ public class WelcomeController {
         List products = productService.findRandomFewProducts();
         model.addAttribute("products", products);
 
-        return "homePage";
+        return VIEWS_HOME_PAGE;
     }
 }
 

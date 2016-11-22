@@ -14,21 +14,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ImageController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+    private final ManufacturerService manufacturerService;
 
     @Autowired
-    private ManufacturerService manufacturerService;
+    public ImageController(ProductService productService, ManufacturerService manufacturerService) {
+        this.productService = productService;
+        this.manufacturerService = manufacturerService;
+    }
 
     @RequestMapping(value = "/productImages/{productId}")
     @ResponseBody
     public byte[] getProductImage(@PathVariable long productId)  {
+
         return productService.read(productId).getProductImage().getData();
     }
 
     @RequestMapping(value = "/manufacturerImages/{manufacturerId}")
     @ResponseBody
     public byte[] getManufacturerImage(@PathVariable long manufacturerId)  {
+
         return manufacturerService.read(manufacturerId).getLogo().getData();
     }
 }

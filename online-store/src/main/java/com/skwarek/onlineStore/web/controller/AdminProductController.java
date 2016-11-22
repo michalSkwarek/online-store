@@ -30,26 +30,32 @@ import java.util.List;
 @RequestMapping(value = "/admin/products")
 public class AdminProductController {
 
-    @Autowired
-    private ProductService productService;
+    private static final String VIEWS_PRODUCTS_ADMIN_LIST = "products/adminList";
+    private static final String VIEWS_PRODUCT_FORM = "products/productData";
+    private static final String VIEWS_PRODUCT_SPECIFICATIONS = "products/specifications";
+    private static final String VIEWS_PRODUCT_SPECIFICATIONS_FORM = "products/addSpecifications";
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final ManufacturerService manufacturerService;
+    private final ProductSpecificationsService productSpecificationsService;
+    private final UploadFileService uploadFileService;
+    private final ModelValidator modelValidator;
 
     @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private ManufacturerService manufacturerService;
-
-    @Autowired
-    private ProductSpecificationsService productSpecificationsService;
-
-    @Autowired
-    private UploadFileService uploadFileService;
-
-    @Autowired
-    private ModelValidator modelValidator;
+    public AdminProductController(ProductService productService, CategoryService categoryService,
+                                  ManufacturerService manufacturerService, ProductSpecificationsService productSpecificationsService,
+                                  UploadFileService uploadFileService, ModelValidator modelValidator) {
+        this.productService = productService;
+        this.categoryService = categoryService;
+        this.manufacturerService = manufacturerService;
+        this.productSpecificationsService = productSpecificationsService;
+        this.uploadFileService = uploadFileService;
+        this.modelValidator = modelValidator;
+    }
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
+
         binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
         binder.registerCustomEditor(Manufacturer.class, new ManufacturerEditor(manufacturerService));
     }
@@ -60,32 +66,32 @@ public class AdminProductController {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
-        return "products/adminList";
+        return VIEWS_PRODUCTS_ADMIN_LIST;
     }
 
     @RequestMapping(value = "/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
 
         model.addAttribute("product", productService.read(id));
-        return "products/specifications";
+        return VIEWS_PRODUCT_SPECIFICATIONS;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String createProduct(Model model) {
+    public String initCreateProductForm(Model model) {
 
         model.addAttribute("product", new Product());
         addAllCategoriesAndManufacturersToModel(model);
-        return "products/productData";
+        return VIEWS_PRODUCT_FORM;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addProduct(Model model, @Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
+    public String processCreateProductForm(Model model, @Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
 
         modelValidator.validate(product, result);
 
         if (fileUpload.isEmpty() || result.hasErrors()) {
             addAllCategoriesAndManufacturersToModel(model);
-            return "products/productData";
+            return VIEWS_PRODUCT_FORM;
         }
 
         UploadFile uploadFile = new UploadFile();
@@ -99,20 +105,20 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String getProduct(@PathVariable Long id, Model model) {
+    public String initUpdateProductForm(@PathVariable Long id, Model model) {
 
         Product product = productService.read(id);
         model.addAttribute("product", product);
         addAllCategoriesAndManufacturersToModel(model);
-        return "products/productData";
+        return VIEWS_PRODUCT_FORM;
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String updateProduct(Model model, @PathVariable Long id, @Valid Product product, BindingResult result) {
+    public String processUpdateProductForm(Model model, @PathVariable Long id, @Valid Product product, BindingResult result) {
 
         if (result.hasErrors()) {
             addAllCategoriesAndManufacturersToModel(model);
-            return "products/productData";
+            return VIEWS_PRODUCT_FORM;
         }
 
         productService.updateProduct(product);
@@ -127,6 +133,7 @@ public class AdminProductController {
     }
 
     private void addAllCategoriesAndManufacturersToModel(Model model) {
+
         List<Category> categoriesAll = categoryService.findAll();
         model.addAttribute("categories", categoriesAll);
         List<Manufacturer> manufacturersAll = manufacturerService.findAll();
@@ -136,21 +143,21 @@ public class AdminProductController {
 //----------------------------------------------------------------------------------------------------------------------
 
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.GET)
-    public String createSpecifications(@PathVariable Long id, Model model) {
+    public String initCreateSpecificationsForm(@PathVariable Long id, Model model) {
 
         String productCategory = productService.read(id).getCategory().getName();
         SpecificationsFactory factory = new SpecificationsFactory();
         ProductSpecifications specifications = factory.createSpecifications(productCategory);
         model.addAttribute("spec", specifications);
-        return "products/addSpecifications";
+        return VIEWS_PRODUCT_SPECIFICATIONS_FORM;
     }
 
     @RequestMapping(value = "/spec/{id}", method = RequestMethod.POST)
-    public String addSpecificationsToProduct(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
+    public String processCreateSpecificationsForm(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
 
         if (result.hasErrors()) {
             errorsHandling(model, spec, result);
-            return "products/addSpecifications";
+            return VIEWS_PRODUCT_SPECIFICATIONS_FORM;
         }
 
         Product product = productService.read(id);
@@ -159,19 +166,19 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.GET)
-    public String getSpecifications(@PathVariable Long id, Model model) {
+    public String initUpdateSpecificationsForm(@PathVariable Long id, Model model) {
 
         ProductSpecifications specifications = productSpecificationsService.read(id);
         model.addAttribute("spec", specifications);
-        return "products/addSpecifications";
+        return VIEWS_PRODUCT_SPECIFICATIONS_FORM;
     }
 
     @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.POST)
-    public String updateSpecifications(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
+    public String processUpdateSpecificationsForm(Model model, @PathVariable Long id, @Valid ProductSpecifications spec, BindingResult result) {
 
         if (result.hasErrors()) {
             errorsHandling(model, spec, result);
-            return "products/addSpecifications";
+            return VIEWS_PRODUCT_SPECIFICATIONS_FORM;
         }
 
         productSpecificationsService.updateSpecifications(spec);
@@ -179,6 +186,7 @@ public class AdminProductController {
     }
 
     private void errorsHandling(Model model, @Valid ProductSpecifications spec, BindingResult result) {
+
         List<String> errors = new LinkedList<>();
         for (Object object : result.getAllErrors()) {
             ObjectError objectError = (ObjectError) object;

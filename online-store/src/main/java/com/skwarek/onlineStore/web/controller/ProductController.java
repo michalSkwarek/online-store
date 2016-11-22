@@ -23,14 +23,19 @@ import java.util.List;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private static final String VIEWS_PRODUCTS_LIST = "products/list";
+    private static final String VIEWS_PRODUCT_SPECIFICATIONS = "products/specifications";
+    private static final String VIEWS_ERROR = "error";
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final ManufacturerService manufacturerService;
 
     @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private ManufacturerService manufacturerService;
+    public ProductController(ProductService productService, CategoryService categoryService, ManufacturerService manufacturerService) {
+        this.productService = productService;
+        this.categoryService = categoryService;
+        this.manufacturerService = manufacturerService;
+    }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String showProducts(Model model) {
@@ -38,7 +43,7 @@ public class ProductController {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
-        return "products/list";
+        return VIEWS_PRODUCTS_LIST;
     }
 
     @RequestMapping(value = "/category/{category}", method = RequestMethod.GET)
@@ -47,7 +52,7 @@ public class ProductController {
         List products = productService.findProductsByCategory(category);
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
-        return "products/list";
+        return VIEWS_PRODUCTS_LIST;
     }
 
     @RequestMapping(value = {"/list", "/category/**"}, method = RequestMethod.POST)
@@ -58,22 +63,25 @@ public class ProductController {
                                @RequestParam String priceOrder) {
 
         List<Product> products = productService.findProductsByFilter(categories, manufacturers, low, high, priceOrder);
+
         if (products == null || products.isEmpty()) {
-            return "error";
+            return VIEWS_ERROR;
         }
+
         model.addAttribute("products", products);
         addAllCategoriesAndManufacturersToModel(model);
-        return "products/list";
+        return VIEWS_PRODUCTS_LIST;
     }
 
     @RequestMapping(value = "/{id}")
     public String getProductById(Model model, @PathVariable Long id) {
 
         model.addAttribute("product", productService.read(id));
-        return "products/specifications";
+        return VIEWS_PRODUCT_SPECIFICATIONS;
     }
 
     private void addAllCategoriesAndManufacturersToModel(Model model) {
+
         List<Category> categoriesAll = categoryService.findAll();
         model.addAttribute("categories", categoriesAll);
         List<Manufacturer> manufacturersAll = manufacturerService.findAll();

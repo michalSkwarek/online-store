@@ -20,24 +20,28 @@ import javax.validation.Valid;
 @RequestMapping(value = "/addresses")
 public class AddressController {
 
-    @Autowired
-    private AccountService accountService;
+    private static final String VIEWS_ADDRESS_FORM = "accounts/accountData";
+    private final AccountService accountService;
+    private final AddressService addressService;
 
     @Autowired
-    private AddressService addressService;
+    public AddressController(AccountService accountService, AddressService addressService) {
+        this.accountService = accountService;
+        this.addressService = addressService;
+    }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String createAddress(Model model) {
+    public String initCreateAddressForm(Model model) {
 
         model.addAttribute("address", new Address());
-        return "addresses/addressData";
+        return VIEWS_ADDRESS_FORM;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addAddress(@Valid Address address, BindingResult result) {
+    public String processCreateAddressForm(@Valid Address address, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "addresses/addressData";
+            return VIEWS_ADDRESS_FORM;
         }
 
         addressService.createBillingAddress(address);
@@ -45,18 +49,18 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
-    public String getAddress(@PathVariable String username, Model model) {
+    public String initUpdateAddressForm(@PathVariable String username, Model model) {
 
         Address address = accountService.findAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", address);
-        return "addresses/addressData";
+        return VIEWS_ADDRESS_FORM;
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
-    public String updateAddress(@PathVariable String username, @Valid Address address, BindingResult result) {
+    public String processUpdateAddressForm(@PathVariable String username, @Valid Address address, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "addresses/addressData";
+            return VIEWS_ADDRESS_FORM;
         }
 
         addressService.updateBillingAddress(address);

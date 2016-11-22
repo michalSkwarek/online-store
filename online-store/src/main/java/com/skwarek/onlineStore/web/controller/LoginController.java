@@ -16,35 +16,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+    private static final String VIEWS_LOGIN_FORM = "security/login";
+    private static final String VIEWS_HELLO = "security/hello";
+    private static final String VIEWS_ACCESS_DENIED = "security/accessDenied";
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model,
+    public String initLoginForm(Model model,
                         @RequestParam(value = "error", required = false) String error,
                         @RequestParam(value = "logout", required = false) String logout) {
 
         if (error != null) {
             model.addAttribute("error", true);
         }
+
         if (logout != null) {
             model.addAttribute("message", true);
         }
-        return "security/login";
+
+        return VIEWS_LOGIN_FORM;
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String helloPage() {
 
-        return "security/hello";
+        return VIEWS_HELLO;
     }
 
     @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
     public String accessDenied(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
             model.addAttribute("username", userDetail.getUsername());
         }
-        return "security/accessDenied";
+
+        return VIEWS_ACCESS_DENIED;
     }
 }
 

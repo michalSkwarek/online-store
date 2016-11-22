@@ -20,27 +20,31 @@ import javax.validation.Valid;
 @RequestMapping(value = "/accounts")
 public class AccountController {
 
-    @Autowired
-    private AccountService accountService;
+    private static final String VIEWS_ACCOUNT_FORM = "accounts/accountData";
+    private final AccountService accountService;
+    private final UsernameValidator usernameValidator;
 
     @Autowired
-    private UsernameValidator usernameValidator;
+    public AccountController(AccountService accountService, UsernameValidator usernameValidator) {
+        this.accountService = accountService;
+        this.usernameValidator = usernameValidator;
+    }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    public String createAccount(Model model) {
+    public String initCreateAccountForm(Model model) {
 
         model.addAttribute("account", new Account());
-        return "accounts/accountData";
+        return VIEWS_ACCOUNT_FORM;
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String addAccount(@Valid Account account, BindingResult result) {
+    public String processCreateAccountForm(@Valid Account account, BindingResult result) {
 
         usernameValidator.validate(account, result);
 
         if (result.hasErrors()) {
             account.setUsername(null);
-            return "accounts/accountData";
+            return VIEWS_ACCOUNT_FORM;
         }
 
         accountService.createAccount(account);
@@ -48,18 +52,18 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
-    public String getAccount(@PathVariable String username, Model model) {
+    public String initUpdateAccountForm(@PathVariable String username, Model model) {
 
         Account account = accountService.findAccountByUsername(username);
         model.addAttribute("account", account);
-        return "accounts/accountData";
+        return VIEWS_ACCOUNT_FORM;
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.POST)
-    public String updateAccount(@PathVariable String username, @Valid Account account, BindingResult result) {
+    public String processUpdateAccountForm(@PathVariable String username, @Valid Account account, BindingResult result) {
 
         if (result.hasErrors()) {
-            return "accounts/accountData";
+            return VIEWS_ACCOUNT_FORM;
         }
 
         accountService.updateAccount(account);

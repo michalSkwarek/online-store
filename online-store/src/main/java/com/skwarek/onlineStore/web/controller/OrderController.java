@@ -27,14 +27,23 @@ import java.util.List;
 @RequestMapping(value = "/order")
 public class OrderController {
 
-    @Autowired
-    private ProductService productService;
+    private static final String VIEWS_ORDERS_LIST = "orders/list";
+    private static final String VIEWS_CART = "orders/cart";
+    private static final String VIEWS_CONFIRM_ORDER = "orders/confirm";
+    private static final String VIEWS_ADDRESS_FORM = "accounts/accountData";
+    private static final String VIEWS_PRODUCT_UNAVAILABLE = "orders/productUnavailable";
+    private static final String VIEWS_THANKS = "orders/thanks";
+    private static final String VIEWS_CANCEL = "orders/cancel";
+    private final ProductService productService;
+    private final AccountService accountService;
+    private final OrderService orderService;
 
     @Autowired
-    private AccountService accountService;
-
-    @Autowired
-    private OrderService orderService;
+    public OrderController(ProductService productService, AccountService accountService, OrderService orderService) {
+        this.productService = productService;
+        this.accountService = accountService;
+        this.orderService = orderService;
+    }
 
     @RequestMapping(value = "/{username}/list")
     public String showOrders(@PathVariable String username, Model model) {
@@ -42,7 +51,7 @@ public class OrderController {
         Customer customer = accountService.findAccountByUsername(username).getCustomer();
         List orders = orderService.findCustomerOrders(customer);
         model.addAttribute("orders", orders);
-        return "orders/list";
+        return VIEWS_ORDERS_LIST;
     }
 
     @RequestMapping(value = "/addProduct")
@@ -52,7 +61,7 @@ public class OrderController {
         CartModel cart = Utils.getCartModelInSession(request);
 
         if (!cart.isAddProductToCart(product)) {
-            return "orders/productUnavailable";
+            return VIEWS_PRODUCT_UNAVAILABLE;
         }
 
         orderService.addProductToCart(product, cart);
@@ -75,28 +84,27 @@ public class OrderController {
 
         CartModel cart = Utils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
-        return "orders/cart";
+        return VIEWS_CART;
     }
 
     @RequestMapping(value = "/myCart", method = RequestMethod.POST)
     public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities) {
 
         CartModel cart = Utils.getCartModelInSession(request);
-
         orderService.updateQuantitiesInCart(quantities, cart);
         return "redirect:/order/myCart";
     }
 
     @RequestMapping(value = "/{username}/address", method = RequestMethod.GET)
-    public String getAddress(@PathVariable String username, Model model) {
+    public String initCreateShippingAddressForm(@PathVariable String username, Model model) {
 
         Address billingAddress = accountService.findAccountByUsername(username).getCustomer().getBillingAddress();
         model.addAttribute("address", billingAddress);
-        return "addresses/addressData";
+        return VIEWS_ADDRESS_FORM;
     }
 
     @RequestMapping(value = "/{username}/address", method = RequestMethod.POST)
-    public String confirmShippingAddress(@PathVariable String username, HttpServletRequest request, Address address) {
+    public String processCreateShippingAddressForm(@PathVariable String username, HttpServletRequest request, Address address) {
 
         CartModel cart = Utils.getCartModelInSession(request);
         orderService.setShippingAddressToCart(address, cart);
@@ -104,7 +112,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/{username}/confirm", method = RequestMethod.GET)
-    public String confirmOrder(@PathVariable String username, HttpServletRequest request, Model model) {
+    public String processConfirmOrder(@PathVariable String username, HttpServletRequest request, Model model) {
 
         Account account = accountService.findAccountByUsername(username);
         model.addAttribute("account", account);
@@ -112,11 +120,11 @@ public class OrderController {
         model.addAttribute("cart", cart);
         Address shippingAddress = cart.getCartAddress();
         model.addAttribute("shippingAddress", shippingAddress);
-        return "orders/confirm";
+        return VIEWS_CONFIRM_ORDER;
     }
 
     @RequestMapping(value = "/{username}/confirm", method = RequestMethod.POST)
-    public String saveOrder(@PathVariable String username, HttpServletRequest request) {
+    public String processSaveOrder(@PathVariable String username, HttpServletRequest request) {
 
         CartModel cart = Utils.getCartModelInSession(request);
         Customer customer = accountService.findAccountByUsername(username).getCustomer();
@@ -129,13 +137,13 @@ public class OrderController {
     public String thanks(@PathVariable String username, Model model) {
 
         model.addAttribute("customer", username);
-        return "orders/thanks";
+        return VIEWS_THANKS;
     }
 
     @RequestMapping(value = "/cancel")
     public String cancelOrder(HttpServletRequest request) {
 
         Utils.removeCartModelInSession(request);
-        return "orders/cancel";
+        return VIEWS_CANCEL;
     }
 }
