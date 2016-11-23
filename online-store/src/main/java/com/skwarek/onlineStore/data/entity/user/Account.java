@@ -1,11 +1,12 @@
 package com.skwarek.onlineStore.data.entity.user;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -32,8 +33,8 @@ public class Account extends BaseEntity implements Serializable {
     @Column(name = "enabled")
     private Boolean enabled;
 
-    @NotNull(message = "{Account.email.validation.notNull}")
-    @Pattern(regexp = "[a-zA-Z0-9.]+@[a-zA-Z0-9.]+", message = "{Account.email.validation.pattern}")
+    @NotEmpty(message = "{Account.email.validation.notEmpty}")
+    @Email(message = "{Account.email.validation.pattern}")
     @Column(name = "email")
     private String email;
 
