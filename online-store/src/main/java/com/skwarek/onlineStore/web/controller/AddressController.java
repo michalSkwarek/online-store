@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/addresses")
 public class AddressController {
 
-    private static final String VIEWS_ADDRESS_FORM = "accounts/accountData";
+    private static final String VIEWS_ADDRESS_FORM = "addresses/addressData";
     private final AccountService accountService;
     private final AddressService addressService;
 

@@ -30,7 +30,7 @@ public class OrderController {
     private static final String VIEWS_ORDERS_LIST = "orders/list";
     private static final String VIEWS_CART = "orders/cart";
     private static final String VIEWS_CONFIRM_ORDER = "orders/confirm";
-    private static final String VIEWS_ADDRESS_FORM = "accounts/accountData";
+    private static final String VIEWS_ADDRESS_FORM = "addresses/addressData";
     private static final String VIEWS_PRODUCT_UNAVAILABLE = "orders/productUnavailable";
     private static final String VIEWS_THANKS = "orders/thanks";
     private static final String VIEWS_CANCEL = "orders/cancel";
