@@ -50,6 +50,7 @@ public class ProductServiceImpl extends GenericServiceImpl<Product, Long> implem
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Product findProductByModel(String model) {
         return productDao.findProductByModel(model);
     }
