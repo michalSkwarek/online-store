@@ -208,18 +208,18 @@ public class ProductSpecifications extends BaseEntity implements Serializable {
     @Override
     public String toString() {
         return "ProductSpecifications{" +
-                ", cpu=" + cpu +
-                ", gpu=" + gpu +
-                ", ram=" + ram +
-                ", storage=" + storage +
-                ", display=" + display +
-                ", battery=" + battery +
-                ", powerSupply=" + powerSupply +
-                ", os=" + os +
-                ", camera=" + camera +
-                ", webcam=" + webcam +
-                ", dimensions=" + dimensions +
-                ", weight=" + weight +
+                ((cpu == null) ? "" : ", cpu=" + cpu) +
+                ((gpu == null) ? "" : ", gpu=" + gpu) +
+                ((ram == null) ? "" : ", ram=" + ram) +
+                ((storage == null) ? "" : ", storage=" + storage) +
+                ((display == null) ? "" : ", display=" + display) +
+                ((battery == null) ? "" : ", battery=" + battery) +
+                ((powerSupply == null) ? "" : ", powerSupply=" + powerSupply) +
+                ((os == null) ? "" : ", os=" + os) +
+                ((camera == null) ? "" : ", camera=" + camera) +
+                ((webcam == null) ? "" : ", webcam=" + webcam) +
+                ((dimensions == null) ? "" : ", dimensions=" + dimensions) +
+                ((weight == null) ? "" : ", weight=" + weight) +
                 '}';
     }
 }
