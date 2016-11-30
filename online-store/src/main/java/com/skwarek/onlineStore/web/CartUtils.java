@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by Michal on 18/10/2016.
  */
-public class Utils {
+public class CartUtils {
 
     public static CartModel getCartModelInSession(HttpServletRequest request) {
         CartModel cartModel = (CartModel) request.getSession().getAttribute("cart");

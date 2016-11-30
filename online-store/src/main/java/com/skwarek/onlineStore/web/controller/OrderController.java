@@ -8,7 +8,7 @@ import com.skwarek.onlineStore.data.model.order.CartModel;
 import com.skwarek.onlineStore.service.AccountService;
 import com.skwarek.onlineStore.service.OrderService;
 import com.skwarek.onlineStore.service.ProductService;
-import com.skwarek.onlineStore.web.Utils;
+import com.skwarek.onlineStore.web.CartUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +58,7 @@ public class OrderController {
     public String addProductToCart(HttpServletRequest request, @RequestParam Long id, Model model) {
 
         Product product = productService.read(id);
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
 
         if (!cart.isAddProductToCart(product)) {
             return VIEWS_PRODUCT_UNAVAILABLE;
@@ -73,7 +73,7 @@ public class OrderController {
     public String deleteProductFromCart(HttpServletRequest request, @RequestParam Long id, Model model) {
 
         Product product = productService.read(id);
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
         orderService.removeProductFromCart(product, cart);
         model.addAttribute("cart", cart);
         return "redirect:/order/myCart";
@@ -82,7 +82,7 @@ public class OrderController {
     @RequestMapping(value = "/myCart", method = RequestMethod.GET)
     public String getCart(HttpServletRequest request, Model model) {
 
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
         return VIEWS_CART;
     }
@@ -90,7 +90,7 @@ public class OrderController {
     @RequestMapping(value = "/myCart", method = RequestMethod.POST)
     public String cartUpdateQuantity(HttpServletRequest request, @RequestParam(value = "quantity") String[] quantities) {
 
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
         orderService.updateQuantitiesInCart(quantities, cart);
         return "redirect:/order/myCart";
     }
@@ -106,7 +106,7 @@ public class OrderController {
     @RequestMapping(value = "/{username}/address", method = RequestMethod.POST)
     public String processCreateShippingAddressForm(@PathVariable String username, HttpServletRequest request, Address address) {
 
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
         orderService.setShippingAddressToCart(address, cart);
         return "redirect:/order/" + username + "/confirm";
     }
@@ -116,7 +116,7 @@ public class OrderController {
 
         Account account = accountService.findAccountByUsername(username);
         model.addAttribute("account", account);
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
         Address shippingAddress = cart.getCartAddress();
         model.addAttribute("shippingAddress", shippingAddress);
@@ -126,10 +126,10 @@ public class OrderController {
     @RequestMapping(value = "/{username}/confirm", method = RequestMethod.POST)
     public String processSaveOrder(@PathVariable String username, HttpServletRequest request) {
 
-        CartModel cart = Utils.getCartModelInSession(request);
+        CartModel cart = CartUtils.getCartModelInSession(request);
         Customer customer = accountService.findAccountByUsername(username).getCustomer();
         orderService.saveOrder(customer, cart);
-        Utils.removeCartModelInSession(request);
+        CartUtils.removeCartModelInSession(request);
         return "redirect:/order/" + username + "/thanks";
     }
 
@@ -143,7 +143,7 @@ public class OrderController {
     @RequestMapping(value = "/cancel")
     public String cancelOrder(HttpServletRequest request) {
 
-        Utils.removeCartModelInSession(request);
+        CartUtils.removeCartModelInSession(request);
         return VIEWS_CANCEL;
     }
 }
