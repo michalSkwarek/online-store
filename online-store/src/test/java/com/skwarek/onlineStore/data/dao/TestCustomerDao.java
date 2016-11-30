@@ -1,9 +1,6 @@
 package com.skwarek.onlineStore.data.dao;
 
 import com.skwarek.onlineStore.configuration.ApplicationContextConfiguration;
-import com.skwarek.onlineStore.data.entity.address.Address;
-import com.skwarek.onlineStore.data.entity.address.City;
-import com.skwarek.onlineStore.data.entity.user.Account;
 import com.skwarek.onlineStore.data.entity.user.Customer;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Michal on 05/11/2016.
@@ -32,16 +25,16 @@ public class TestCustomerDao {
     @Autowired
     private CustomerDao customerDao;
 
-    private static Customer newCustomer;
+    private Customer newCustomer;
 
     @Before
     public void setUp() {
-        newCustomer = new Customer();
-        newCustomer.setFirstName("John");
-        newCustomer.setLastName("Doe");
-        newCustomer.setBirthDate("2000-06-16");
-        newCustomer.setPhoneNumber("123456789");
-        newCustomer.setNumberOfOrders(1);
+        this.newCustomer = new Customer();
+        this.newCustomer.setFirstName("John");
+        this.newCustomer.setLastName("Doe");
+        this.newCustomer.setBirthDate("2000-06-16");
+        this.newCustomer.setPhoneNumber("123456789");
+        this.newCustomer.setNumberOfOrders(1);
     }
 
     @Test

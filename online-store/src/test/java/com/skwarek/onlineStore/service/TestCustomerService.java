@@ -16,8 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Michal on 05/11/2016.
@@ -34,38 +33,38 @@ public class TestCustomerService {
     @Autowired
     private CustomerService customerService;
 
-    private static Account newAccount;
-    private static Customer newCustomer;
-    private static City newCity;
-    private static Address newAddress;
+    private Account newAccount;
+    private Customer newCustomer;
+    private City newCity;
+    private Address newAddress;
 
     @Before
     public void setUp() {
-        newCity = new City();
-        newCity.setName("Warsaw");
+        this.newCity = new City();
+        this.newCity.setName("Warsaw");
 
-        newAddress = new Address();
-        newAddress.setStreet("Magic Street");
-        newAddress.setStreetNumber("1A");
-        newAddress.setDoorNumber("99");
-        newAddress.setZipCode("11-222");
-        newAddress.setCity(newCity);
+        this.newAddress = new Address();
+        this.newAddress.setStreet("Magic Street");
+        this.newAddress.setStreetNumber("1A");
+        this.newAddress.setDoorNumber("99");
+        this.newAddress.setZipCode("11-222");
+        this.newAddress.setCity(newCity);
 
-        newCustomer = new Customer();
-        newCustomer.setFirstName("John");
-        newCustomer.setLastName("Doe");
-        newCustomer.setBirthDate("2000-06-16");
-        newCustomer.setBillingAddress(newAddress);
-        newCustomer.setPhoneNumber("123456789");
+        this.newCustomer = new Customer();
+        this.newCustomer.setFirstName("John");
+        this.newCustomer.setLastName("Doe");
+        this.newCustomer.setBirthDate("2000-06-16");
+        this.newCustomer.setBillingAddress(newAddress);
+        this.newCustomer.setPhoneNumber("123456789");
 
-        newAccount = new Account();
-        newAccount.setUsername("user");
-        newAccount.setPassword("pass");
-        newAccount.setEnabled(true);
-        newAccount.setEmail("email@gmail.com");
-        newAccount.setDateCreated(new Date());
-        newAccount.setRole(Account.ROLE_USER);
-        newAccount.setCustomer(newCustomer);
+        this.newAccount = new Account();
+        this.newAccount.setUsername("user");
+        this.newAccount.setPassword("pass");
+        this.newAccount.setEnabled(true);
+        this.newAccount.setEmail("email@gmail.com");
+        this.newAccount.setDateCreated(new Date());
+        this.newAccount.setRole(Account.ROLE_USER);
+        this.newAccount.setCustomer(newCustomer);
     }
 
     @Test

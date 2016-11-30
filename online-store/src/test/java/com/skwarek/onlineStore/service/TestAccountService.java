@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -26,23 +26,23 @@ public class TestAccountService {
     @Autowired
     private AccountService accountService;
 
-    private static Account newAccount;
-    private static Customer newCustomer;
+    private Account newAccount;
+    private Customer newCustomer;
 
     @Before
     public void setUp() {
-        newCustomer = new Customer();
-        newCustomer.setFirstName("John");
-        newCustomer.setLastName("Doe");
-        newCustomer.setBirthDate("2000-06-16");
-        newCustomer.setPhoneNumber("123456789");
-        newCustomer.setNumberOfOrders(1);
+        this.newCustomer = new Customer();
+        this.newCustomer.setFirstName("John");
+        this.newCustomer.setLastName("Doe");
+        this.newCustomer.setBirthDate("2000-06-16");
+        this.newCustomer.setPhoneNumber("123456789");
+        this.newCustomer.setNumberOfOrders(1);
 
-        newAccount = new Account();
-        newAccount.setUsername("user");
-        newAccount.setPassword("pass");
-        newAccount.setEmail("email@gmail.com");
-        newAccount.setCustomer(newCustomer);
+        this.newAccount = new Account();
+        this.newAccount.setUsername("user");
+        this.newAccount.setPassword("pass");
+        this.newAccount.setEmail("email@gmail.com");
+        this.newAccount.setCustomer(newCustomer);
     }
 
     @Test

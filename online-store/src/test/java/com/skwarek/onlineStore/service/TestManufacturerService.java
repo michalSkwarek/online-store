@@ -1,12 +1,9 @@
 package com.skwarek.onlineStore.service;
 
 import com.skwarek.onlineStore.configuration.ApplicationContextConfiguration;
-import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.UploadFile;
-import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 /**
  * Created by Michal on 25/11/2016.
@@ -35,25 +32,25 @@ public class TestManufacturerService {
     @Autowired
     private ProductService productService;
 
-    private static Product newProduct;
-    private static Manufacturer newManufacturer;
-    private static UploadFile logo;
+    private Product newProduct;
+    private Manufacturer newManufacturer;
+    private UploadFile logo;
 
     @Before
     public void setUp() {
-        logo = new UploadFile();
-        logo.setFileName("Magic Apple logo");
+        this.logo = new UploadFile();
+        this.logo.setFileName("Magic Apple logo");
 
-        newManufacturer = new Manufacturer();
-        newManufacturer.setBrand("Magic Apple");
-        newManufacturer.setLogo(logo);
-        newManufacturer.setWebsite("http://www.magic-apple.com");
+        this.newManufacturer = new Manufacturer();
+        this.newManufacturer.setBrand("Magic Apple");
+        this.newManufacturer.setLogo(logo);
+        this.newManufacturer.setWebsite("http://www.magic-apple.com");
 
-        newProduct = new Product();
-        newProduct.setModel("Magic iPhone 7");
-        newProduct.setUnitPrice(new BigDecimal(4000));
-        newProduct.setManufacturer(newManufacturer);
-        newProduct.setUnitsInMagazine(10L);
+        this.newProduct = new Product();
+        this.newProduct.setModel("Magic iPhone 7");
+        this.newProduct.setUnitPrice(new BigDecimal(4000));
+        this.newProduct.setManufacturer(newManufacturer);
+        this.newProduct.setUnitsInMagazine(10L);
     }
 
     @Test

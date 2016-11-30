@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Michal on 25/11/2016.
@@ -40,98 +40,98 @@ public class TestProductSpecificationsService {
     @Autowired
     private SessionFactory sessionFactory;
 
-    private static Product newProduct;
-    private static Category newCategory;
-    private static Manufacturer newManufacturer;
-    private static UploadFile logo;
-    private static UploadFile productImage;
-    private static ProductSpecifications newSpecifications;
-    private static CPU newCpu;
-    private static GPU newGpu;
-    private static RAM newRam;
-    private static Storage newStorage;
-    private static Display newDisplay;
-    private static Battery newBattery;
-    private static OS newOs;
-    private static Camera newCamera;
-    private static Dimensions newDimensions;
-    private static Weight newWeight;
+    private Product newProduct;
+    private Category newCategory;
+    private Manufacturer newManufacturer;
+    private UploadFile logo;
+    private UploadFile productImage;
+    private ProductSpecifications newSpecifications;
+    private CPU newCpu;
+    private GPU newGpu;
+    private RAM newRam;
+    private Storage newStorage;
+    private Display newDisplay;
+    private Battery newBattery;
+    private OS newOs;
+    private Camera newCamera;
+    private Dimensions newDimensions;
+    private Weight newWeight;
 
     @Before
     public void setUp() {
-        newCategory = new Category();
-        newCategory.setName("Smartphone");
+        this.newCategory = new Category();
+        this.newCategory.setName("Smartphone");
 
-        logo = new UploadFile();
-        logo.setFileName("Magic Apple logo");
+        this.logo = new UploadFile();
+        this.logo.setFileName("Magic Apple logo");
 
-        newManufacturer = new Manufacturer();
-        newManufacturer.setBrand("Magic Apple");
-        newManufacturer.setLogo(logo);
-        newManufacturer.setWebsite("http://www.magic-apple.com");
+        this.newManufacturer = new Manufacturer();
+        this.newManufacturer.setBrand("Magic Apple");
+        this.newManufacturer.setLogo(logo);
+        this.newManufacturer.setWebsite("http://www.magic-apple.com");
 
-        productImage = new UploadFile();
-        productImage.setFileName("Magic iPhone 7 image");
+        this.productImage = new UploadFile();
+        this.productImage.setFileName("Magic iPhone 7 image");
 
-        newCpu = new CPU();
-        newCpu.setModel("Magic Apple A10");
-        newCpu.setNumberOfCores(4);
-        newCpu.setLowClockSpeed(2.4);
+        this.newCpu = new CPU();
+        this.newCpu.setModel("Magic Apple A10");
+        this.newCpu.setNumberOfCores(4);
+        this.newCpu.setLowClockSpeed(2.4);
 
-        newGpu = new GPU();
-        newGpu.setModel("Magic PowerVR GT7600");
+        this.newGpu = new GPU();
+        this.newGpu.setModel("Magic PowerVR GT7600");
 
-        newRam = new RAM();
-        newRam.setValue(4);
+        this.newRam = new RAM();
+        this.newRam.setValue(4);
 
-        newStorage = new Storage();
-        newStorage.setDiskMemory(128);
+        this.newStorage = new Storage();
+        this.newStorage.setDiskMemory(128);
 
-        newDisplay = new Display();
-        newDisplay.setDiagonal(5.5);
-        newDisplay.setWidthInPixels(2000);
-        newDisplay.setHeightInPixels(1000);
+        this.newDisplay = new Display();
+        this.newDisplay.setDiagonal(5.5);
+        this.newDisplay.setWidthInPixels(2000);
+        this.newDisplay.setHeightInPixels(1000);
 
-        newBattery = new Battery();
-        newBattery.setCapacity(2910);
-        newBattery.setType("Li-ion");
+        this.newBattery = new Battery();
+        this.newBattery.setCapacity(2910);
+        this.newBattery.setType("Li-ion");
 
-        newOs = new OS();
-        newOs.setName("Magic iOS");
-        newOs.setVersion("10");
+        this.newOs = new OS();
+        this.newOs.setName("Magic iOS");
+        this.newOs.setVersion("10");
 
-        newCamera = new Camera();
-        newCamera.setResolutionMainCamera(12.0);
-        newCamera.setResolutionFrontCamera(7.0);
+        this.newCamera = new Camera();
+        this.newCamera.setResolutionMainCamera(12.0);
+        this.newCamera.setResolutionFrontCamera(7.0);
 
-        newDimensions = new Dimensions();
-        newDimensions.setThickness(7.3);
-        newDimensions.setWidth(77.9);
-        newDimensions.setHeight(158.2);
+        this.newDimensions = new Dimensions();
+        this.newDimensions.setThickness(7.3);
+        this.newDimensions.setWidth(77.9);
+        this.newDimensions.setHeight(158.2);
 
-        newWeight = new Weight();
-        newWeight.setValue(189.0);
+        this.newWeight = new Weight();
+        this.newWeight.setValue(189.0);
 
-        newSpecifications = new ProductSpecifications();
-        newSpecifications.setCpu(newCpu);
-        newSpecifications.setGpu(newGpu);
-        newSpecifications.setRam(newRam);
-        newSpecifications.setStorage(newStorage);
-        newSpecifications.setDisplay(newDisplay);
-        newSpecifications.setBattery(newBattery);
-        newSpecifications.setOs(newOs);
-        newSpecifications.setCamera(newCamera);
-        newSpecifications.setDimensions(newDimensions);
-        newSpecifications.setWeight(newWeight);
+        this.newSpecifications = new ProductSpecifications();
+        this.newSpecifications.setCpu(newCpu);
+        this.newSpecifications.setGpu(newGpu);
+        this.newSpecifications.setRam(newRam);
+        this.newSpecifications.setStorage(newStorage);
+        this.newSpecifications.setDisplay(newDisplay);
+        this.newSpecifications.setBattery(newBattery);
+        this.newSpecifications.setOs(newOs);
+        this.newSpecifications.setCamera(newCamera);
+        this.newSpecifications.setDimensions(newDimensions);
+        this.newSpecifications.setWeight(newWeight);
 
-        newProduct = new Product();
-        newProduct.setModel("Magic iPhone 7");
-        newProduct.setUnitPrice(new BigDecimal(4000.00));
-        newProduct.setCategory(newCategory);
-        newProduct.setManufacturer(newManufacturer);
-        newProduct.setProductImage(productImage);
-        newProduct.setProductSpecifications(newSpecifications);
-        newProduct.setUnitsInMagazine(10L);
+        this.newProduct = new Product();
+        this.newProduct.setModel("Magic iPhone 7");
+        this.newProduct.setUnitPrice(new BigDecimal(4000.00));
+        this.newProduct.setCategory(newCategory);
+        this.newProduct.setManufacturer(newManufacturer);
+        this.newProduct.setProductImage(productImage);
+        this.newProduct.setProductSpecifications(newSpecifications);
+        this.newProduct.setUnitsInMagazine(10L);
     }
 
     @Test

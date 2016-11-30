@@ -17,8 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Michal on 05/11/2016.
@@ -35,41 +34,41 @@ public class TestAddressService {
     @Autowired
     private CustomerService customerService;
 
-    private static Customer newCustomer;
-    private static City newCity;
-    private static City otherCity;
-    private static Address newAddress;
-    private static Address otherAddress;
+    private Customer newCustomer;
+    private City newCity;
+    private City otherCity;
+    private Address newAddress;
+    private Address otherAddress;
 
     @Before
     public void setUp() {
-        newCity = new City();
-        newCity.setName("NewCity");
+        this.newCity = new City();
+        this.newCity.setName("NewCity");
 
-        otherCity = new City();
-        otherCity.setName("OtherCity");
+        this.otherCity = new City();
+        this.otherCity.setName("OtherCity");
 
-        newAddress = new Address();
-        newAddress.setStreet("Magic Street");
-        newAddress.setStreetNumber("1A");
-        newAddress.setDoorNumber("99");
-        newAddress.setZipCode("11-222");
-        newAddress.setCity(newCity);
+        this.newAddress = new Address();
+        this.newAddress.setStreet("Magic Street");
+        this.newAddress.setStreetNumber("1A");
+        this.newAddress.setDoorNumber("99");
+        this.newAddress.setZipCode("11-222");
+        this.newAddress.setCity(newCity);
 
-        otherAddress = new Address();
-        otherAddress.setStreet("No magic Street");
-        otherAddress.setStreetNumber("2B");
-        otherAddress.setDoorNumber("100");
-        otherAddress.setZipCode("22-333");
-        otherAddress.setCity(otherCity);
+        this.otherAddress = new Address();
+        this.otherAddress.setStreet("No magic Street");
+        this.otherAddress.setStreetNumber("2B");
+        this.otherAddress.setDoorNumber("100");
+        this.otherAddress.setZipCode("22-333");
+        this.otherAddress.setCity(otherCity);
 
-        newCustomer = new Customer();
-        newCustomer.setFirstName("John");
-        newCustomer.setLastName("Doe");
-        newCustomer.setBirthDate("2000-06-16");
-        newCustomer.setBillingAddress(newAddress);
-        newCustomer.setPhoneNumber("123456789");
-        newCustomer.setNumberOfOrders(1);
+        this.newCustomer = new Customer();
+        this.newCustomer.setFirstName("John");
+        this.newCustomer.setLastName("Doe");
+        this.newCustomer.setBirthDate("2000-06-16");
+        this.newCustomer.setBillingAddress(newAddress);
+        this.newCustomer.setPhoneNumber("123456789");
+        this.newCustomer.setNumberOfOrders(1);
     }
 
     @Test

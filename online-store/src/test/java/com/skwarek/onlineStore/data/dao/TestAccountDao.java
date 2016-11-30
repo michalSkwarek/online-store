@@ -2,7 +2,6 @@ package com.skwarek.onlineStore.data.dao;
 
 import com.skwarek.onlineStore.configuration.ApplicationContextConfiguration;
 import com.skwarek.onlineStore.data.entity.user.Account;
-import com.skwarek.onlineStore.data.entity.user.Customer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by Michal on 26.09.2016.
@@ -29,17 +28,17 @@ public class TestAccountDao {
     @Autowired
     private AccountDao accountDao;
 
-    private static Account newAccount;
+    private Account newAccount;
 
     @Before
     public void setUp() {
-        newAccount = new Account();
-        newAccount.setUsername("user");
-        newAccount.setPassword("pass");
-        newAccount.setEnabled(true);
-        newAccount.setEmail("email@gmail.com");
-        newAccount.setDateCreated(new Date());
-        newAccount.setRole(Account.ROLE_USER);
+        this.newAccount = new Account();
+        this.newAccount.setUsername("user");
+        this.newAccount.setPassword("pass");
+        this.newAccount.setEnabled(true);
+        this.newAccount.setEmail("email@gmail.com");
+        this.newAccount.setDateCreated(new Date());
+        this.newAccount.setRole(Account.ROLE_USER);
     }
 
     @Test
