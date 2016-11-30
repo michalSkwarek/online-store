@@ -1,4 +1,4 @@
-package com.skwarek.onlineStore.data.dao;
+package com.skwarek.onlineStore.service;
 
 import com.skwarek.onlineStore.configuration.ApplicationContextConfiguration;
 import com.skwarek.onlineStore.data.entity.address.Address;
@@ -27,13 +27,13 @@ import static junit.framework.Assert.assertTrue;
 @ContextConfiguration(classes = ApplicationContextConfiguration.class)
 @WebAppConfiguration
 @Transactional
-public class TestAddressDao {
+public class TestAddressService {
 
     @Autowired
-    private AddressDao addressDao;
+    private AddressService addressService;
 
     @Autowired
-    private CustomerDao customerDao;
+    private CustomerService customerService;
 
     private static Customer newCustomer;
     private static City newCity;
@@ -44,10 +44,10 @@ public class TestAddressDao {
     @Before
     public void setUp() {
         newCity = new City();
-        newCity.setName("Warsaw");
+        newCity.setName("NewCity");
 
         otherCity = new City();
-        otherCity.setName("Cracow");
+        otherCity.setName("OtherCity");
 
         newAddress = new Address();
         newAddress.setStreet("Magic Street");
@@ -74,28 +74,28 @@ public class TestAddressDao {
 
     @Test
     public void testCreateBillingAddressWithNoExistCityInDatabase() {
-        customerDao.create(newCustomer);
-        int oldSizeAddresses = addressDao.findAll().size();
+        customerService.create(newCustomer);
+        int oldSizeAddresses = addressService.findAll().size();
         int oldSizeCities = citiesCounter();
-        addressDao.createBillingAddress(otherAddress);
-        assertTrue(oldSizeAddresses < addressDao.findAll().size());
-        assertTrue(oldSizeCities < citiesCounter());
+        addressService.createBillingAddress(otherAddress);
+        assertTrue(oldSizeAddresses + 1 == addressService.findAll().size());
+        assertTrue(oldSizeCities + 1 == citiesCounter());
 
     }
 
     @Test
     public void testCreateBillingAddressWithExistCityInDatabase() {
-        customerDao.create(newCustomer);
-        int oldSizeAddresses = addressDao.findAll().size();
+        customerService.create(newCustomer);
+        int oldSizeAddresses = addressService.findAll().size();
         int oldSizeCities = citiesCounter();
         otherAddress.setCity(newCity);
-        addressDao.createBillingAddress(otherAddress);
-        assertTrue(oldSizeAddresses < addressDao.findAll().size());
+        addressService.createBillingAddress(otherAddress);
+        assertTrue(oldSizeAddresses + 1 == addressService.findAll().size());
         assertTrue(oldSizeCities == citiesCounter());
     }
 
     private int citiesCounter() {
-        List<Address> addresses = addressDao.findAll();
+        List<Address> addresses = addressService.findAll();
         Set<String> cities = new HashSet<>();
         for (Address address : addresses) {
             cities.add(address.getCity().getName());
@@ -105,27 +105,35 @@ public class TestAddressDao {
 
     @Test
     public void testUpdateAddress() {
-        addressDao.create(newAddress);
+        addressService.create(newAddress);
         newAddress.setStreet("No magic Street");
         newAddress.setStreetNumber("2B");
         newAddress.setDoorNumber("100");
         newAddress.setZipCode("22-333");
         newAddress.setCity(otherCity);
-        addressDao.updateBillingAddress(newAddress);
-        Address found = addressDao.read(newAddress.getId());
+        addressService.updateBillingAddress(newAddress);
+        Address found = addressService.read(newAddress.getId());
         assertEquals("No magic Street", found.getStreet());
         assertEquals("2B", found.getStreetNumber());
         assertEquals("100", found.getDoorNumber());
         assertEquals("22-333", found.getZipCode());
-        assertEquals("Cracow", found.getCity().getName());
+        assertEquals("OtherCity", found.getCity().getName());
     }
 
     @Test
-    public void testCreateShippingAddress() {
-        customerDao.create(newCustomer);
-        int oldSizeAddresses = addressDao.findAll().size();
+    public void testCreateShippingAddressWithDifferentBillingAddress() {
+        customerService.create(newCustomer);
+        int oldSizeAddresses = addressService.findAll().size();
         Address shippingAddress = otherAddress;
-        addressDao.createShippingAddress(shippingAddress);
-        assertTrue(oldSizeAddresses < addressDao.findAll().size());
+        addressService.createShippingAddress(shippingAddress);
+        assertTrue(oldSizeAddresses + 1 == addressService.findAll().size());
+    }
+
+    @Test
+    public void testCreateShippingAddressWithSameBillingAddress() {
+        customerService.create(newCustomer);
+        int oldSizeAddresses = addressService.findAll().size();
+        addressService.createShippingAddress(newAddress);
+        assertTrue(oldSizeAddresses == addressService.findAll().size());
     }
 }

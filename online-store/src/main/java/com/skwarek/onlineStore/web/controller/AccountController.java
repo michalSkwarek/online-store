@@ -55,6 +55,7 @@ public class AccountController {
     public String initUpdateAccountForm(@PathVariable String username, Model model) {
 
         Account account = accountService.findAccountByUsername(username);
+        System.out.println("qqqq " + account + " " + username);
         model.addAttribute("account", account);
         return VIEWS_ACCOUNT_FORM;
     }
