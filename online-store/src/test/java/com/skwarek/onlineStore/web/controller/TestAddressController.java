@@ -46,9 +46,11 @@ public class TestAddressController {
         this.username = "user";
 
         this.newCity = new City();
+        this.newCity.setId(1L);
         this.newCity.setName("New City");
 
         this.newAddress = new Address();
+        this.newAddress.setId(1L);
         this.newAddress.setStreet("Magic Street");
         this.newAddress.setStreetNumber("1A");
         this.newAddress.setDoorNumber("99");
