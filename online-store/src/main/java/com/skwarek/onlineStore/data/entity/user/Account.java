@@ -19,7 +19,7 @@ public class Account extends BaseEntity implements Serializable {
 
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_USER = "ROLE_USER";
-    private static final long serialVersionUID = 1237200494497518900L;
+    private static final long serialVersionUID = 8393579790546371852L;
 
     @Size(min = 3, max = 5, message = "{Account.username.validation.size}")
     @Column(name = "username")
@@ -44,7 +44,7 @@ public class Account extends BaseEntity implements Serializable {
     @Column(name = "role")
     private String role;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -130,7 +130,6 @@ public class Account extends BaseEntity implements Serializable {
                 ", email=" + email +
                 ", dateCreated=" + dateCreated +
                 ", role=" + role +
-                ", customer=" + customer +
-                '}';
+                "}";
     }
 }

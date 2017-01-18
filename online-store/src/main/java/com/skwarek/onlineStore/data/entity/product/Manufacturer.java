@@ -1,10 +1,13 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -20,15 +23,16 @@ public class Manufacturer extends BaseEntity implements Serializable {
     @Column(name = "brand")
     private String brand;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "logo_id")
     private UploadFile logo;
 
     @Column(name = "website")
     private String website;
 
-    @Transient
-    private Set<Product> products;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "manufacturer")
+    private Set<Product> products = new HashSet<>();
 
     public Manufacturer() { }
 

@@ -1,6 +1,8 @@
 package com.skwarek.onlineStore.data.entity.address;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
+import com.skwarek.onlineStore.data.entity.order.ShippingDetail;
+import com.skwarek.onlineStore.data.entity.user.Customer;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -15,7 +17,7 @@ import java.io.Serializable;
 @Table(name = "address")
 public class Address extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -6034490560387237633L;
+    private static final long serialVersionUID = -8729948090985103705L;
 
     @NotEmpty(message = "{Address.street.validation.notEmpty}")
     @Column(name = "street")
@@ -34,9 +36,15 @@ public class Address extends BaseEntity implements Serializable {
     private String zipCode;
 
     @Valid
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "billingAddress")
+    private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "shippingAddress")
+    private ShippingDetail shippingDetail;
 
     public Address() { }
 
@@ -80,6 +88,22 @@ public class Address extends BaseEntity implements Serializable {
         this.city = city;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public ShippingDetail getShippingDetail() {
+        return shippingDetail;
+    }
+
+    public void setShippingDetail(ShippingDetail shippingDetail) {
+        this.shippingDetail = shippingDetail;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,7 +137,6 @@ public class Address extends BaseEntity implements Serializable {
                 ", streetNumber=" + streetNumber +
                 ", doorNumber=" + doorNumber +
                 ", zipCode=" + zipCode +
-                ", city=" + city +
-                '}';
+                "}";
     }
 }

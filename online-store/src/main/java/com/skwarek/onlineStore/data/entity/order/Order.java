@@ -14,14 +14,16 @@ import java.util.Date;
 @Table(name = "orders")
 public class Order extends BaseEntity implements Serializable {
 
+    private static final long serialVersionUID = -8602938062979118480L;
+
     @Embedded
     private Cart cart;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "shipping_detail_id")
     private ShippingDetail shippingDetail;
 

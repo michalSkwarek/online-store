@@ -13,7 +13,7 @@ import java.util.Arrays;
 @Table(name = "files_upload")
 public class UploadFile extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -8916416516345262126L;
+    private static final long serialVersionUID = -1658099054017888965L;
 
     @Column(name = "file_name")
     private String fileName;
@@ -21,6 +21,12 @@ public class UploadFile extends BaseEntity implements Serializable {
     @Column(name = "data")
     @Lob
     private byte[] data;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "productImage")
+    private Product product;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "logo")
+    private Manufacturer manufacturer;
 
     public UploadFile() { }
 
@@ -38,6 +44,22 @@ public class UploadFile extends BaseEntity implements Serializable {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
     @Override
@@ -63,6 +85,6 @@ public class UploadFile extends BaseEntity implements Serializable {
     public String toString() {
         return "UploadFile{" +
                 "fileName=" + fileName +
-                '}';
+                "}";
     }
 }

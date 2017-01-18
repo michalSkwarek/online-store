@@ -14,14 +14,17 @@ import java.util.Date;
 @Table(name = "shipping_detail")
 public class ShippingDetail extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 2057094402468688259L;
+    private static final long serialVersionUID = 7221938644825388800L;
 
     @Column(name = "date_delivery")
     private Date dateDelivery;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "shipping_address_id")
     private Address shippingAddress;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "shippingDetail")
+    private Order order;
 
     public ShippingDetail() { }
 
@@ -39,6 +42,14 @@ public class ShippingDetail extends BaseEntity implements Serializable {
 
     public void setShippingAddress(Address shippingAddress) {
         this.shippingAddress = shippingAddress;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override
@@ -64,7 +75,6 @@ public class ShippingDetail extends BaseEntity implements Serializable {
     public String toString() {
         return "ShippingDetail{" +
                 ", dateDelivery=" + dateDelivery +
-                ", shippingAddress=" + shippingAddress +
-                '}';
+                "}";
     }
 }

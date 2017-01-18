@@ -1,10 +1,14 @@
 package com.skwarek.onlineStore.data.entity.address;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Michal on 23.09.2016.
@@ -13,11 +17,15 @@ import java.io.Serializable;
 @Table(name = "city")
 public class City extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 3193815843479979880L;
+    private static final long serialVersionUID = -3271934192695286533L;
 
     @NotEmpty(message = "{City.name.validation.notEmpty}")
     @Column(name = "name")
     private String name;
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "city")
+    private Set<Address> addresses = new HashSet<>();
 
     public City() { }
 
@@ -27,6 +35,14 @@ public class City extends BaseEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 
     @Override
@@ -49,6 +65,6 @@ public class City extends BaseEntity implements Serializable {
     public String toString() {
         return "City{" +
                 "name=" + name +
-                '}';
+                "}";
     }
 }

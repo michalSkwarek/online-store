@@ -2,6 +2,7 @@ package com.skwarek.onlineStore.data.entity.user;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.address.Address;
+import com.skwarek.onlineStore.data.entity.order.Order;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ import java.io.Serializable;
 @Table(name = "customer")
 public class Customer extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -2102982277035069743L;
+    private static final long serialVersionUID = -3674845161594081814L;
 
     @NotEmpty(message = "{Customer.firstName.validation.notEmpty}")
     @Column(name = "first_name")
@@ -30,7 +31,7 @@ public class Customer extends BaseEntity implements Serializable {
     @Column(name = "birth_date")
     private String birthDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "billing_address_id")
     private Address billingAddress;
 
@@ -40,8 +41,11 @@ public class Customer extends BaseEntity implements Serializable {
     @Column(name = "number_of_orders")
     private Integer numberOfOrders;
 
-    @Transient
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private Account account;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
+    private Order order;
 
     public Customer() { }
 
@@ -101,6 +105,14 @@ public class Customer extends BaseEntity implements Serializable {
         this.account = account;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -132,7 +144,6 @@ public class Customer extends BaseEntity implements Serializable {
                 ", birthDate=" + birthDate +
                 ", phoneNumber=" + phoneNumber +
                 ", numberOfOrders=" + numberOfOrders +
-                ", billingAddress=" + billingAddress +
-                '}';
+                "}";
     }
 }

@@ -1,13 +1,18 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
+import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Created by Michal on 27.09.2016.
@@ -34,6 +39,10 @@ public class Display extends BaseEntity implements Serializable {
     @Column(name = "height_in_pixels")
     private Integer heightInPixels;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "display")
+    private Set<ProductSpecifications> specifications = new HashSet<>();
+
     public Display() { }
 
     public Double getDiagonal() {
@@ -58,6 +67,14 @@ public class Display extends BaseEntity implements Serializable {
 
     public void setHeightInPixels(Integer heightInPixels) {
         this.heightInPixels = heightInPixels;
+    }
+
+    public Set<ProductSpecifications> getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(Set<ProductSpecifications> specifications) {
+        this.specifications = specifications;
     }
 
     private int calculationOfDensity() {

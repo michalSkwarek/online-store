@@ -46,6 +46,6 @@ public class Cart implements Serializable {
     public String toString() {
         return "Cart{" +
                 ", cartTotalPrice=" + cartTotalPrice +
-                '}';
+                "}";
     }
 }

@@ -30,19 +30,19 @@ public class Product extends BaseEntity implements Serializable {
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "product_image_id")
     private UploadFile productImage;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "specifications_id")
     private ProductSpecifications productSpecifications;
 

@@ -1,10 +1,12 @@
 package com.skwarek.onlineStore.data.entity.product;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,8 +21,9 @@ public class Category extends BaseEntity implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Transient
-    private Set<Product> products;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "category")
+    private Set<Product> products = new HashSet<>();
 
     public Category() { }
 
