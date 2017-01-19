@@ -1,76 +1,90 @@
 package com.skwarek.onlineStore.service;
 
+import com.skwarek.onlineStore.MyEmbeddedDatabase;
 import com.skwarek.onlineStore.configuration.ApplicationContextConfiguration;
+import com.skwarek.onlineStore.data.dao.AccountDao;
 import com.skwarek.onlineStore.data.entity.user.Account;
-import com.skwarek.onlineStore.data.entity.user.Customer;
+import com.skwarek.onlineStore.service.impl.AccountServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Michal on 26.09.2016.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ApplicationContextConfiguration.class)
-@WebAppConfiguration
-@Transactional
 public class TestAccountService {
+
+    private final static String ACCOUNT_USERNAME = "aaa";
+    private final static String NOT_EXISTING_ACCOUNT_USERNAME = "abc";
+
+    private Account account;
+    private Account newAccount;
+
+    private AccountDao accountDao;
 
     @Autowired
     private AccountService accountService;
 
-    private Account newAccount;
-    private Customer newCustomer;
-
     @Before
     public void setUp() {
-        this.newCustomer = new Customer();
-        this.newCustomer.setFirstName("John");
-        this.newCustomer.setLastName("Doe");
-        this.newCustomer.setBirthDate("2000-06-16");
-        this.newCustomer.setPhoneNumber("123456789");
-        this.newCustomer.setNumberOfOrders(1);
+        MyEmbeddedDatabase myDB = new MyEmbeddedDatabase();
+
+        this.account = myDB.getAccount_no_1();
 
         this.newAccount = new Account();
         this.newAccount.setUsername("user");
         this.newAccount.setPassword("pass");
         this.newAccount.setEmail("email@gmail.com");
-        this.newAccount.setCustomer(newCustomer);
+
+        this.accountDao = mock(AccountDao.class);
+
+        this.accountService = new AccountServiceImpl(accountDao);
     }
 
     @Test
     public void testFindAccountByUsername() {
-        String username = "user";
-        Account notExistingAccount = accountService.findAccountByUsername(username);
+        given(this.accountDao.findAccountByUsername(NOT_EXISTING_ACCOUNT_USERNAME)).willReturn(null);
+        Account notExistingAccount = accountService.findAccountByUsername(NOT_EXISTING_ACCOUNT_USERNAME);
         assertNull(notExistingAccount);
-        accountService.create(newAccount);
-        Account existingAccount = accountService.findAccountByUsername(username);
+        verify(accountDao, times(1)).findAccountByUsername(NOT_EXISTING_ACCOUNT_USERNAME);
+
+        given(this.accountDao.findAccountByUsername(ACCOUNT_USERNAME)).willReturn(account);
+        Account existingAccount = accountService.findAccountByUsername(ACCOUNT_USERNAME);
         assertNotNull(existingAccount);
-        assertEquals(newAccount, existingAccount);
+        assertEquals(account, existingAccount);
+        verify(accountDao, times(1)).findAccountByUsername(ACCOUNT_USERNAME);
+
+        verifyNoMoreInteractions(accountDao);
     }
 
     @Test
     public void testCreateAccount() {
-        int oldSize = accountService.findAll().size();
         accountService.createAccount(newAccount);
-        assertTrue(oldSize + 1 == accountService.findAll().size());
+
+        assertNull(newAccount.getId());
+        assertEquals("user", newAccount.getUsername());
+        assertEquals("pass", newAccount.getPassword());
+        assertEquals(true, newAccount.getEnabled());
+        assertEquals("email@gmail.com", newAccount.getEmail());
+        assertNotNull(newAccount.getDateCreated());
+        assertEquals("ROLE_USER", newAccount.getRole());
+        assertNull(newAccount.getCustomer());
+
+        verify(accountDao, times(1)).createAccount(newAccount);
+        verifyNoMoreInteractions(accountDao);
     }
 
     @Test
     public void testUpdateAccount() {
-        accountService.create(newAccount);
-        newAccount.setPassword("pass1");
-        newAccount.setEmail("email1@gmail.com");
-        accountService.updateAccount(newAccount);
-        Account found = accountService.read(newAccount.getId());
-        assertEquals("pass1", found.getPassword());
-        assertEquals("email1@gmail.com", found.getEmail());
+        accountService.updateAccount(account);
+
+        verify(accountDao, times(1)).updateAccount(account);
+        verifyNoMoreInteractions(accountDao);
     }
 }

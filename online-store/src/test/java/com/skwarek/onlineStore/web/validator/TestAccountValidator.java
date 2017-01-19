@@ -1,7 +1,7 @@
 package com.skwarek.onlineStore.web.validator;
 
+import com.skwarek.onlineStore.MyEmbeddedDatabase;
 import com.skwarek.onlineStore.data.entity.user.Account;
-import com.skwarek.onlineStore.data.entity.user.Customer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,23 +20,13 @@ public class TestAccountValidator {
 
     private Validator validator;
 
-    private Account newAccount;
-    private Customer newCustomer;
+    private Account account;
 
     @Before
     public void setUp() {
-        this.newCustomer = new Customer();
-        this.newCustomer.setFirstName("John");
-        this.newCustomer.setLastName("Doe");
-        this.newCustomer.setBirthDate("2000-06-16");
-        this.newCustomer.setPhoneNumber("123456789");
-        this.newCustomer.setNumberOfOrders(1);
+        MyEmbeddedDatabase myDB = new MyEmbeddedDatabase();
 
-        this.newAccount = new Account();
-        this.newAccount.setUsername("user");
-        this.newAccount.setPassword("pass");
-        this.newAccount.setEmail("email@gmail.com");
-        this.newAccount.setCustomer(newCustomer);
+        this.account = myDB.getAccount_no_1();
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
@@ -45,16 +35,16 @@ public class TestAccountValidator {
     @Test
     public void accountIsValid() {
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     public void usernameTooShort() {
-        newAccount.setUsername("us");
+        account.setUsername("us");
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("{Account.username.validation.size}", constraintViolations.iterator().next().getMessage());
@@ -62,9 +52,9 @@ public class TestAccountValidator {
 
     @Test
     public void usernameTooLong() {
-        newAccount.setUsername("userna");
+        account.setUsername("userna");
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("{Account.username.validation.size}", constraintViolations.iterator().next().getMessage());
@@ -72,9 +62,9 @@ public class TestAccountValidator {
 
     @Test
     public void passwordTooShort() {
-        newAccount.setPassword("ps");
+        account.setPassword("ps");
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("{Account.password.validation.size}", constraintViolations.iterator().next().getMessage());
@@ -82,9 +72,9 @@ public class TestAccountValidator {
 
     @Test
     public void passwordTooLong() {
-        newAccount.setPassword("passwo");
+        account.setPassword("passwo");
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("{Account.password.validation.size}", constraintViolations.iterator().next().getMessage());
@@ -92,9 +82,9 @@ public class TestAccountValidator {
 
     @Test
     public void emailIsNull() {
-        newAccount.setEmail("");
+        account.setEmail("");
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("{Account.email.validation.notEmpty}", constraintViolations.iterator().next().getMessage());
@@ -102,9 +92,9 @@ public class TestAccountValidator {
 
     @Test
     public void emailHasInvalidForm() {
-        newAccount.setEmail("emailgmail.com");
+        account.setEmail("emailgmail.com");
         Set<ConstraintViolation<Account>> constraintViolations =
-                validator.validate(newAccount);
+                validator.validate(account);
 
         assertEquals(1, constraintViolations.size());
         assertEquals("{Account.email.validation.pattern}", constraintViolations.iterator().next().getMessage());

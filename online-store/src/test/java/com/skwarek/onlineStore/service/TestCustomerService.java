@@ -1,93 +1,73 @@
 package com.skwarek.onlineStore.service;
 
+import com.skwarek.onlineStore.MyEmbeddedDatabase;
 import com.skwarek.onlineStore.configuration.ApplicationContextConfiguration;
-import com.skwarek.onlineStore.data.entity.address.Address;
-import com.skwarek.onlineStore.data.entity.address.City;
-import com.skwarek.onlineStore.data.entity.user.Account;
+import com.skwarek.onlineStore.data.dao.CustomerDao;
 import com.skwarek.onlineStore.data.entity.user.Customer;
+import com.skwarek.onlineStore.service.impl.CustomerServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by Michal on 05/11/2016.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ApplicationContextConfiguration.class)
-@WebAppConfiguration
-@Transactional
 public class TestCustomerService {
 
-    @Autowired
-    private AccountService accountService;
+    private Customer customer;
+    private Customer newCustomer;
+
+    private CustomerDao customerDao;
 
     @Autowired
     private CustomerService customerService;
 
-    private Account newAccount;
-    private Customer newCustomer;
-    private City newCity;
-    private Address newAddress;
-
     @Before
     public void setUp() {
-        this.newCity = new City();
-        this.newCity.setName("Warsaw");
+        MyEmbeddedDatabase myDB = new MyEmbeddedDatabase();
 
-        this.newAddress = new Address();
-        this.newAddress.setStreet("Magic Street");
-        this.newAddress.setStreetNumber("1A");
-        this.newAddress.setDoorNumber("99");
-        this.newAddress.setZipCode("11-222");
-        this.newAddress.setCity(newCity);
+        this.customer = myDB.getCustomer_no_1();
 
         this.newCustomer = new Customer();
         this.newCustomer.setFirstName("John");
         this.newCustomer.setLastName("Doe");
         this.newCustomer.setBirthDate("2000-06-16");
-        this.newCustomer.setBillingAddress(newAddress);
         this.newCustomer.setPhoneNumber("123456789");
 
-        this.newAccount = new Account();
-        this.newAccount.setUsername("user");
-        this.newAccount.setPassword("pass");
-        this.newAccount.setEnabled(true);
-        this.newAccount.setEmail("email@gmail.com");
-        this.newAccount.setDateCreated(new Date());
-        this.newAccount.setRole(Account.ROLE_USER);
-        this.newAccount.setCustomer(newCustomer);
+        this.customerDao = mock(CustomerDao.class);
+
+        this.customerService = new CustomerServiceImpl(customerDao);
     }
 
     @Test
     public void testCreateCustomer() {
-        newAccount.setCustomer(null);
-        accountService.create(newAccount);
-        int oldSize = customerService.findAll().size();
         customerService.createCustomer(newCustomer);
-        assertTrue(oldSize + 1 == customerService.findAll().size());
+
+        assertNull(newCustomer.getId());
+        assertEquals("John", newCustomer.getFirstName());
+        assertEquals("Doe", newCustomer.getLastName());
+        assertEquals("2000-06-16", newCustomer.getBirthDate());
+        assertNull(newCustomer.getBillingAddress());
+        assertEquals("123456789", newCustomer.getPhoneNumber());
+        assertEquals(0, (int) newCustomer.getNumberOfOrders());
+        assertNull(newCustomer.getAccount());
+        assertNull(newCustomer.getOrders());
+
+        verify(customerDao, times(1)).createCustomer(newCustomer);
+        verifyNoMoreInteractions(customerDao);
     }
 
     @Test
     public void testUpdateCustomer() {
-        accountService.create(newAccount);
-        newCustomer.setFirstName("John1");
-        newCustomer.setLastName("Doe1");
-        newCustomer.setBirthDate("2000-06-17");
-        newCustomer.setPhoneNumber("111222333");
-        customerService.updateCustomer(newCustomer);
-        Customer found = customerService.read(newCustomer.getId());
-        assertEquals("John1", found.getFirstName());
-        assertEquals("Doe1", found.getLastName());
-        assertEquals("2000-06-17", found.getBirthDate());
-        assertEquals("111222333", found.getPhoneNumber());
+        customerService.updateCustomer(customer);
+
+        verify(customerDao, times(1)).updateCustomer(customer);
+        verifyNoMoreInteractions(customerDao);
     }
 }
