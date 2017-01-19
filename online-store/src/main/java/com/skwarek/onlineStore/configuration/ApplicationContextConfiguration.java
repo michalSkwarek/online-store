@@ -41,8 +41,8 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(20971520); // 20MB
-        multipartResolver.setMaxInMemorySize(1048576);	// 1MB
+        multipartResolver.setMaxUploadSize(20971520);
+        multipartResolver.setMaxInMemorySize(1048576);
         return multipartResolver;
     }
 
@@ -89,17 +89,17 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
-//    @Bean
-//    public TilesConfigurer tilesConfigurer() {
-//        TilesConfigurer tilesConfigurer = new TilesConfigurer();
-//        tilesConfigurer.setDefinitions("/WEB-INF/tiles/tiles.xml");
-//        tilesConfigurer.setCheckRefresh(true);
-//        return tilesConfigurer;
-//    }
-//
-//    @Override
-//    public void configureViewResolvers(ViewResolverRegistry registry) {
-//        TilesViewResolver viewResolver = new TilesViewResolver();
-//        registry.viewResolver(viewResolver);
-//    }
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions("/WEB-INF/tiles/tiles.xml");
+        tilesConfigurer.setCheckRefresh(true);
+        return tilesConfigurer;
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        TilesViewResolver viewResolver = new TilesViewResolver();
+        registry.viewResolver(viewResolver);
+    }
 }

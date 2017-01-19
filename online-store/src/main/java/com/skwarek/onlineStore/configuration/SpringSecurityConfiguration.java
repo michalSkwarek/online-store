@@ -21,6 +21,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
                         "select username, password, enabled from account where username=?")
