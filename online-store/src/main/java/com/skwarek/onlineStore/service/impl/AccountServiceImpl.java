@@ -18,8 +18,12 @@ import java.util.Date;
 @Transactional(propagation = Propagation.REQUIRED)
 public class AccountServiceImpl extends GenericServiceImpl<Account, Long> implements AccountService {
 
+    private final AccountDao accountDao;
+
     @Autowired
-    private AccountDao accountDao;
+    public AccountServiceImpl(AccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -32,7 +36,7 @@ public class AccountServiceImpl extends GenericServiceImpl<Account, Long> implem
         account.setEnabled(true);
         account.setDateCreated(new Date());
         account.setRole(Account.ROLE_USER);
-        accountDao.create(account);
+        accountDao.createAccount(account);
     }
 
     @Override

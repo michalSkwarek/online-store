@@ -3,12 +3,14 @@ package com.skwarek.onlineStore.data.entity.address;
 import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.order.ShippingDetail;
 import com.skwarek.onlineStore.data.entity.user.Customer;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Michal on 23.09.2016.
@@ -17,7 +19,7 @@ import java.io.Serializable;
 @Table(name = "address")
 public class Address extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = -8729948090985103705L;
+    private static final long serialVersionUID = -6803451763518510225L;
 
     @NotEmpty(message = "{Address.street.validation.notEmpty}")
     @Column(name = "street")
@@ -35,16 +37,16 @@ public class Address extends BaseEntity implements Serializable {
     @Column(name = "zip_code")
     private String zipCode;
 
-    @Valid
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @NotEmpty(message = "{Address.city.validation.notEmpty}")
+    @Column(name = "city")
+    private String city;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "billingAddress")
     private Customer customer;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "shippingAddress")
-    private ShippingDetail shippingDetail;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "shippingAddress")
+    private List<ShippingDetail> shippingDetails;
 
     public Address() { }
 
@@ -80,11 +82,11 @@ public class Address extends BaseEntity implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public City getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
@@ -96,12 +98,12 @@ public class Address extends BaseEntity implements Serializable {
         this.customer = customer;
     }
 
-    public ShippingDetail getShippingDetail() {
-        return shippingDetail;
+    public List<ShippingDetail> getShippingDetails() {
+        return shippingDetails;
     }
 
-    public void setShippingDetail(ShippingDetail shippingDetail) {
-        this.shippingDetail = shippingDetail;
+    public void setShippingDetails(List<ShippingDetail> shippingDetails) {
+        this.shippingDetails = shippingDetails;
     }
 
     @Override
@@ -137,6 +139,7 @@ public class Address extends BaseEntity implements Serializable {
                 ", streetNumber=" + streetNumber +
                 ", doorNumber=" + doorNumber +
                 ", zipCode=" + zipCode +
+                ", city=" + city +
                 "}";
     }
 }

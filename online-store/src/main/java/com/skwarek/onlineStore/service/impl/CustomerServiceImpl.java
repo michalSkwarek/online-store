@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED)
 public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long> implements CustomerService {
 
+    private final CustomerDao customerDao;
+
     @Autowired
-    private CustomerDao customerDao;
+    public CustomerServiceImpl(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
 
     @Override
     public void createCustomer(Customer customer) {

@@ -128,8 +128,6 @@ public class Account extends BaseEntity implements Serializable {
                 "username=" + username +
                 ", password=" + password +
                 ", email=" + email +
-                ", dateCreated=" + dateCreated +
-                ", role=" + role +
                 "}";
     }
 }

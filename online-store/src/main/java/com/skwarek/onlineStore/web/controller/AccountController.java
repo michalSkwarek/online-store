@@ -20,7 +20,9 @@ import javax.validation.Valid;
 @RequestMapping(value = "/accounts")
 public class AccountController {
 
-    private static final String VIEWS_ACCOUNT_FORM = "accounts/accountData";
+    private final static String VIEWS_ACCOUNT_FORM = "accounts/accountData";
+    private final static String REDIRECT_TO = "redirect:";
+
     private final AccountService accountService;
     private final UsernameValidator usernameValidator;
 
@@ -48,7 +50,7 @@ public class AccountController {
         }
 
         accountService.createAccount(account);
-        return "redirect:/customers/new";
+        return REDIRECT_TO + "/customers/new";
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
@@ -67,6 +69,6 @@ public class AccountController {
         }
 
         accountService.updateAccount(account);
-        return "redirect:/users/" + username;
+        return REDIRECT_TO + "/users/" + username;
     }
 }

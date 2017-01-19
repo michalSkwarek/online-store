@@ -12,5 +12,7 @@ public interface AccountDao extends GenericDao<Account, Long> {
 
     Account findLastAccount();
 
+    void createAccount(Account account);
+
     void updateAccount(Account account);
 }

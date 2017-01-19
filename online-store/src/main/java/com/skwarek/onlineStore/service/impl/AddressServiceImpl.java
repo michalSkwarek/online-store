@@ -16,8 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED)
 public class AddressServiceImpl extends GenericServiceImpl<Address, Long> implements AddressService {
 
+    private final AddressDao addressDao;
+
     @Autowired
-    private AddressDao addressDao;
+    public AddressServiceImpl(AddressDao addressDao) {
+        this.addressDao = addressDao;
+    }
 
     @Override
     public void createBillingAddress(Address address) {

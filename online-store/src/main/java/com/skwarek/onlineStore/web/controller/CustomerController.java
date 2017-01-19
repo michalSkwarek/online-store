@@ -20,7 +20,9 @@ import javax.validation.Valid;
 @RequestMapping(value = "/customers")
 public class CustomerController {
 
-    private static final String VIEWS_CUSTOMER_FORM = "customers/customerData";
+    private final static String VIEWS_CUSTOMER_FORM = "customers/customerData";
+    private final static String REDIRECT_TO = "redirect:";
+
     private final AccountService accountService;
     private final CustomerService customerService;
 
@@ -45,7 +47,7 @@ public class CustomerController {
         }
 
         customerService.createCustomer(customer);
-        return "redirect:/addresses/new";
+        return REDIRECT_TO + "/addresses/new";
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
@@ -64,6 +66,6 @@ public class CustomerController {
         }
 
         customerService.updateCustomer(customer);
-        return "redirect:/users/" + username;
+        return REDIRECT_TO + "/users/" + username;
     }
 }

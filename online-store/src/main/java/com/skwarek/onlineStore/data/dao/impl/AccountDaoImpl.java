@@ -1,12 +1,9 @@
 package com.skwarek.onlineStore.data.dao.impl;
 
 import com.skwarek.onlineStore.data.dao.AccountDao;
-import com.skwarek.onlineStore.data.dao.CustomerDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.user.Account;
-import com.skwarek.onlineStore.data.entity.user.Customer;
 import org.hibernate.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,9 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("accountDao")
 public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements AccountDao {
-
-    @Autowired
-    private CustomerDao customerDao;
 
     @Override
     public Account findAccountByUsername(String username) {
@@ -34,11 +28,12 @@ public class AccountDaoImpl extends GenericDaoImpl<Account, Long> implements Acc
     }
 
     @Override
+    public void createAccount(Account account) {
+        create(account);
+    }
+
+    @Override
     public void updateAccount(Account account) {
-        if (account.getCustomer() != null) {
-            Customer customer = customerDao.read(account.getCustomer().getId());
-            account.setCustomer(customer);
-        }
         update(account);
     }
 }

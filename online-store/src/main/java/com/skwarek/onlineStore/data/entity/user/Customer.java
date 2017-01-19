@@ -3,11 +3,14 @@ package com.skwarek.onlineStore.data.entity.user;
 import com.skwarek.onlineStore.data.entity.BaseEntity;
 import com.skwarek.onlineStore.data.entity.address.Address;
 import com.skwarek.onlineStore.data.entity.order.Order;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Michal on 23.09.2016.
@@ -44,8 +47,9 @@ public class Customer extends BaseEntity implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private Account account;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
-    private Order order;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
+    private List<Order> orders;
 
     public Customer() { }
 
@@ -105,12 +109,12 @@ public class Customer extends BaseEntity implements Serializable {
         this.account = account;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override

@@ -20,7 +20,9 @@ import javax.validation.Valid;
 @RequestMapping(value = "/addresses")
 public class AddressController {
 
-    private static final String VIEWS_ADDRESS_FORM = "addresses/addressData";
+    private final static String VIEWS_ADDRESS_FORM = "addresses/addressData";
+    private final static String REDIRECT_TO = "redirect:";
+
     private final AccountService accountService;
     private final AddressService addressService;
 
@@ -45,7 +47,7 @@ public class AddressController {
         }
 
         addressService.createBillingAddress(address);
-        return "redirect:/welcome";
+        return REDIRECT_TO + "/welcome";
     }
 
     @RequestMapping(value = "/edit/{username}", method = RequestMethod.GET)
@@ -64,6 +66,6 @@ public class AddressController {
         }
 
         addressService.updateBillingAddress(address);
-        return "redirect:/users/" + username;
+        return REDIRECT_TO + "/users/" + username;
     }
 }
