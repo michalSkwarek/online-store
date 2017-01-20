@@ -5,7 +5,7 @@
 
 <section>
     <div class="logo">
-        <h1>Online store</h1>
+        <h1>Online  store</h1>
     </div>
 
     <div>
