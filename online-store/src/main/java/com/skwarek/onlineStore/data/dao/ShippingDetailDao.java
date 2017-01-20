@@ -8,4 +8,5 @@ import com.skwarek.onlineStore.data.entity.order.ShippingDetail;
  */
 public interface ShippingDetailDao extends GenericDao<ShippingDetail, Long> {
 
+    void createShippingDetail(ShippingDetail shippingDetail);
 }

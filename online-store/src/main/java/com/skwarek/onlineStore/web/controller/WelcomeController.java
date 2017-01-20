@@ -19,7 +19,8 @@ import java.util.List;
 @Controller
 public class WelcomeController {
 
-    private static final String VIEWS_HOME_PAGE = "homePage";
+    private final static String VIEWS_HOME_PAGE = "homePage";
+
     private final CategoryService categoryService;
     private final ManufacturerService manufacturerService;
     private final ProductService productService;
@@ -32,7 +33,7 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-    public String welcome(Model model) {
+    public String showWelcomePage(Model model) {
 
         model.addAttribute("welcome", "Welcome to our online store!");
 

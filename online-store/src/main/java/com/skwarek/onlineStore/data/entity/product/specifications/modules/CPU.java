@@ -1,19 +1,15 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
-import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Michal on 27.09.2016.
@@ -43,10 +39,6 @@ public class CPU extends BaseEntity implements Serializable {
     @Digits(integer = 8, fraction = 2, message = "{Specifications.cpu.highClockSpeed.validation.digits}")
     @Column(name = "high_clock_speed")
     private Double highClockSpeed;
-
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "cpu")
-    private Set<ProductSpecifications> specifications = new HashSet<>();
 
     public CPU() { }
 
@@ -80,14 +72,6 @@ public class CPU extends BaseEntity implements Serializable {
 
     public void setHighClockSpeed(Double highClockSpeed) {
         this.highClockSpeed = highClockSpeed;
-    }
-
-    public Set<ProductSpecifications> getSpecifications() {
-        return specifications;
-    }
-
-    public void setSpecifications(Set<ProductSpecifications> specifications) {
-        this.specifications = specifications;
     }
 
     @Override

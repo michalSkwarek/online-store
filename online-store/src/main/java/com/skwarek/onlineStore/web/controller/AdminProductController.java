@@ -3,7 +3,6 @@ package com.skwarek.onlineStore.web.controller;
 import com.skwarek.onlineStore.data.entity.product.Category;
 import com.skwarek.onlineStore.data.entity.product.Manufacturer;
 import com.skwarek.onlineStore.data.entity.product.Product;
-import com.skwarek.onlineStore.data.entity.product.UploadFile;
 import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import com.skwarek.onlineStore.data.model.product.specifications.SpecificationsFactory;
 import com.skwarek.onlineStore.service.*;
@@ -30,26 +29,25 @@ import java.util.List;
 @RequestMapping(value = "/admin/products")
 public class AdminProductController {
 
-    private static final String VIEWS_PRODUCTS_ADMIN_LIST = "products/adminList";
-    private static final String VIEWS_PRODUCT_FORM = "products/productData";
-    private static final String VIEWS_PRODUCT_SPECIFICATIONS = "products/specifications";
-    private static final String VIEWS_PRODUCT_SPECIFICATIONS_FORM = "products/addSpecifications";
+    private final static String VIEWS_PRODUCTS_ADMIN_LIST = "products/adminList";
+    private final static String VIEWS_PRODUCT_FORM = "products/productData";
+    private final static String VIEWS_PRODUCT_SPECIFICATIONS = "products/specifications";
+    private final static String VIEWS_PRODUCT_SPECIFICATIONS_FORM = "products/addSpecifications";
+    private final static String REDIRECT_TO = "redirect:";
+
     private final ProductService productService;
     private final CategoryService categoryService;
     private final ManufacturerService manufacturerService;
     private final ProductSpecificationsService productSpecificationsService;
-    private final UploadFileService uploadFileService;
     private final ModelValidator modelValidator;
 
     @Autowired
-    public AdminProductController(ProductService productService, CategoryService categoryService,
-                                  ManufacturerService manufacturerService, ProductSpecificationsService productSpecificationsService,
-                                  UploadFileService uploadFileService, ModelValidator modelValidator) {
+    public AdminProductController(ProductService productService, CategoryService categoryService, ManufacturerService manufacturerService,
+                                  ProductSpecificationsService productSpecificationsService, ModelValidator modelValidator) {
         this.productService = productService;
         this.categoryService = categoryService;
         this.manufacturerService = manufacturerService;
         this.productSpecificationsService = productSpecificationsService;
-        this.uploadFileService = uploadFileService;
         this.modelValidator = modelValidator;
     }
 
@@ -70,7 +68,7 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/{id}")
-    public String getProductById(Model model, @PathVariable Long id) {
+    public String showProduct(Model model, @PathVariable Long id) {
 
         model.addAttribute("product", productService.read(id));
         return VIEWS_PRODUCT_SPECIFICATIONS;
@@ -85,7 +83,8 @@ public class AdminProductController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public String processCreateProductForm(Model model, @Valid Product product, BindingResult result, @RequestParam CommonsMultipartFile fileUpload) {
+    public String processCreateProductForm(Model model, @Valid Product product, BindingResult result,
+                                           @RequestParam CommonsMultipartFile fileUpload) {
 
         modelValidator.validate(product, result);
 
@@ -94,14 +93,9 @@ public class AdminProductController {
             return VIEWS_PRODUCT_FORM;
         }
 
-        UploadFile uploadFile = new UploadFile();
-        uploadFile.setFileName(fileUpload.getOriginalFilename());
-        uploadFile.setData(fileUpload.getBytes());
-        uploadFileService.create(uploadFile);
-        product.setProductImage(uploadFile);
-
-        productService.create(product);
-        return "redirect:/admin/products/list";
+        productService.addImageToProduct(fileUpload, product);
+        productService.createProduct(product);
+        return REDIRECT_TO + "/admin/products/list";
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -122,14 +116,14 @@ public class AdminProductController {
         }
 
         productService.updateProduct(product);
-        return "redirect:/admin/products/list";
+        return REDIRECT_TO + "/admin/products/list";
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteProduct(@PathVariable Long id) {
 
         productService.deleteProduct(id);
-        return "redirect:/admin/products/list";
+        return REDIRECT_TO + "/admin/products/list";
     }
 
     private void addAllCategoriesAndManufacturersToModel(Model model) {
@@ -162,7 +156,7 @@ public class AdminProductController {
 
         Product product = productService.read(id);
         productSpecificationsService.createSpecifications(spec, product);
-        return "redirect:/admin/products/list";
+        return REDIRECT_TO + "/admin/products/list";
     }
 
     @RequestMapping(value = "/spec/edit/{id}", method = RequestMethod.GET)
@@ -182,7 +176,7 @@ public class AdminProductController {
         }
 
         productSpecificationsService.updateSpecifications(spec);
-        return "redirect:/admin/products/list";
+        return REDIRECT_TO + "/admin/products/list";
     }
 
     private void errorsHandling(Model model, @Valid ProductSpecifications spec, BindingResult result) {

@@ -2,6 +2,7 @@ package com.skwarek.onlineStore.service;
 
 import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.service.generic.GenericService;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.List;
 
@@ -10,15 +11,19 @@ import java.util.List;
  */
 public interface ProductService extends GenericService<Product, Long> {
 
-    boolean deleteProduct(Long id);
-
-    void updateProduct(Product product);
+    Product findProductByModel(String model);
 
     List findRandomFewProducts();
 
     List findProductsByCategory(String category);
 
-    List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
+    List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String lowPrice, String highPrice, String priceOrder);
 
-    Product findProductByModel(String model);
+    void createProduct(Product product);
+
+    void updateProduct(Product product);
+
+    boolean deleteProduct(Long id);
+
+    void addImageToProduct(CommonsMultipartFile fileUpload, Product product);
 }

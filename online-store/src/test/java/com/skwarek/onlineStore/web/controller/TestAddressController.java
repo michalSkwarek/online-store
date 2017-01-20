@@ -70,8 +70,6 @@ public class TestAddressController {
                 .andExpect(model().attribute("address", hasProperty("doorNumber", nullValue())))
                 .andExpect(model().attribute("address", hasProperty("zipCode", nullValue())))
                 .andExpect(model().attribute("address", hasProperty("city", nullValue())))
-                .andExpect(model().attribute("address", hasProperty("customer", nullValue())))
-                .andExpect(model().attribute("address", hasProperty("shippingDetails", nullValue())))
                 .andExpect(forwardedUrl(VIEWS_ADDRESS_FORM))
                 .andExpect(view().name(VIEWS_ADDRESS_FORM));
 
@@ -101,8 +99,6 @@ public class TestAddressController {
                 .andExpect(model().attribute("address", hasProperty("doorNumber", is("99"))))
                 .andExpect(model().attribute("address", hasProperty("zipCode", is("11222"))))
                 .andExpect(model().attribute("address", hasProperty("city", isEmptyString())))
-                .andExpect(model().attribute("address", hasProperty("customer", nullValue())))
-                .andExpect(model().attribute("address", hasProperty("shippingDetails", nullValue())))
                 .andExpect(forwardedUrl(VIEWS_ADDRESS_FORM))
                 .andExpect(view().name(VIEWS_ADDRESS_FORM));
 
@@ -137,8 +133,6 @@ public class TestAddressController {
         assertThat(formCustomer.getDoorNumber(), is("99"));
         assertThat(formCustomer.getZipCode(), is("11-222"));
         assertThat(formCustomer.getCity(), is("New City"));
-        assertThat(formCustomer.getCustomer(), nullValue());
-        assertThat(formCustomer.getShippingDetails(), nullValue());
     }
 
     @Test
@@ -155,9 +149,6 @@ public class TestAddressController {
                 .andExpect(model().attribute("address", hasProperty("doorNumber", is("25"))))
                 .andExpect(model().attribute("address", hasProperty("zipCode", is("01-446"))))
                 .andExpect(model().attribute("address", hasProperty("city", is("Warsaw"))))
-                .andExpect(model().attribute("address", hasProperty("customer", is(account.getCustomer()))))
-                .andExpect(model().attribute("address", hasProperty("shippingDetails",
-                        is(account.getCustomer().getBillingAddress().getShippingDetails()))))
                 .andExpect(forwardedUrl(VIEWS_ADDRESS_FORM))
                 .andExpect(view().name(VIEWS_ADDRESS_FORM));
 
@@ -188,8 +179,6 @@ public class TestAddressController {
                 .andExpect(model().attribute("address", hasProperty("doorNumber", is("99"))))
                 .andExpect(model().attribute("address", hasProperty("zipCode", is("11222"))))
                 .andExpect(model().attribute("address", hasProperty("city", isEmptyString())))
-                .andExpect(model().attribute("address", hasProperty("customer", nullValue())))
-                .andExpect(model().attribute("address", hasProperty("shippingDetails", nullValue())))
                 .andExpect(forwardedUrl(VIEWS_ADDRESS_FORM))
                 .andExpect(view().name(VIEWS_ADDRESS_FORM));
 
@@ -224,7 +213,5 @@ public class TestAddressController {
         assertThat(formCustomer.getDoorNumber(), is("99"));
         assertThat(formCustomer.getZipCode(), is("11-222"));
         assertThat(formCustomer.getCity(), is("New City"));
-        assertThat(formCustomer.getCustomer(), nullValue());
-        assertThat(formCustomer.getShippingDetails(), nullValue());
     }
 }

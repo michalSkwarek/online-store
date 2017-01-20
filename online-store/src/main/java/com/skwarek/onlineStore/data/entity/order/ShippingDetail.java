@@ -19,7 +19,7 @@ public class ShippingDetail extends BaseEntity implements Serializable {
     @Column(name = "date_delivery")
     private Date dateDelivery;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "shipping_address_id")
     private Address shippingAddress;
 
@@ -74,7 +74,8 @@ public class ShippingDetail extends BaseEntity implements Serializable {
     @Override
     public String toString() {
         return "ShippingDetail{" +
-                ", dateDelivery=" + dateDelivery +
-                "}";
+                "dateDelivery=" + dateDelivery +
+                ", shippingAddress=" + shippingAddress +
+                '}';
     }
 }

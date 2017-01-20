@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-    private static final String VIEWS_LOGIN_FORM = "security/login";
-    private static final String VIEWS_HELLO = "security/hello";
-    private static final String VIEWS_ACCESS_DENIED = "security/accessDenied";
+    private final static String VIEWS_LOGIN_FORM = "security/login";
+    private final static String VIEWS_HELLO = "security/hello";
+    private final static String VIEWS_ACCESS_DENIED = "security/accessDenied";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String initLoginForm(Model model,
@@ -37,13 +37,13 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String helloPage() {
+    public String showHelloPage() {
 
         return VIEWS_HELLO;
     }
 
     @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-    public String accessDenied(Model model) {
+    public String showAccessDeniedPage(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 

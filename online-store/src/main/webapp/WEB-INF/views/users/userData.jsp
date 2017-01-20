@@ -158,7 +158,7 @@
                         <spring:message code="address.details.city.label" />
                     </label>
                     <div class="field">
-                            ${account.customer.billingAddress.city.name}
+                            ${account.customer.billingAddress.city}
                     </div>
                 </div>
 

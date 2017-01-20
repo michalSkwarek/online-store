@@ -11,4 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository("uploadFileDao")
 public class UploadFileDaoImpl extends GenericDaoImpl<UploadFile, Long> implements UploadFileDao {
 
+    @Override
+    public void createFile(UploadFile file) {
+        create(file);
+    }
 }

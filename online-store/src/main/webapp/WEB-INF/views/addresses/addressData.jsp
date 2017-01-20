@@ -61,13 +61,13 @@
 
                 <div class="box">
                     <div class="error">
-                        <form:errors path="city.name" />
+                        <form:errors path="city" />
                     </div>
                     <label for="city" class="title">
                         <spring:message code="address.details.city.label" />
                     </label>
                     <div>
-                        <form:input path="city.name" id="city" cssClass="input-field" />
+                        <form:input path="city" id="city" cssClass="input-field" />
                     </div>
                 </div>
 

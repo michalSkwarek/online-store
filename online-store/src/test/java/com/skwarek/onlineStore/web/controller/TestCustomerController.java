@@ -70,9 +70,7 @@ public class TestCustomerController {
                 .andExpect(model().attribute("customer", hasProperty("birthDate", nullValue())))
                 .andExpect(model().attribute("customer", hasProperty("billingAddress", nullValue())))
                 .andExpect(model().attribute("customer", hasProperty("phoneNumber", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("numberOfOrders", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("account", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("orders", nullValue())))
+                .andExpect(model().attribute("customer", hasProperty("numberOfOrders", is(0))))
                 .andExpect(forwardedUrl(VIEWS_CUSTOMER_FORM))
                 .andExpect(view().name(VIEWS_CUSTOMER_FORM));
 
@@ -100,9 +98,7 @@ public class TestCustomerController {
                 .andExpect(model().attribute("customer", hasProperty("birthDate", is("2000-VI-16"))))
                 .andExpect(model().attribute("customer", hasProperty("billingAddress", nullValue())))
                 .andExpect(model().attribute("customer", hasProperty("phoneNumber", is("123456789"))))
-                .andExpect(model().attribute("customer", hasProperty("numberOfOrders", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("account", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("orders", nullValue())))
+                .andExpect(model().attribute("customer", hasProperty("numberOfOrders", is(0))))
                 .andExpect(forwardedUrl(VIEWS_CUSTOMER_FORM))
                 .andExpect(view().name(VIEWS_CUSTOMER_FORM));
 
@@ -136,9 +132,7 @@ public class TestCustomerController {
         assertThat(formCustomer.getBirthDate(), is("2000-06-16"));
         assertThat(formCustomer.getBillingAddress(), nullValue());
         assertThat(formCustomer.getPhoneNumber(), is("123456789"));
-        assertThat(formCustomer.getNumberOfOrders(), nullValue());
-        assertThat(formCustomer.getAccount(), nullValue());
-        assertThat(formCustomer.getOrders(), nullValue());
+        assertThat(formCustomer.getNumberOfOrders(), is(0));
     }
 
     @Test
@@ -156,8 +150,6 @@ public class TestCustomerController {
                 .andExpect(model().attribute("customer", hasProperty("billingAddress", is(customer.getBillingAddress()))))
                 .andExpect(model().attribute("customer", hasProperty("phoneNumber", is("111222333"))))
                 .andExpect(model().attribute("customer", hasProperty("numberOfOrders", is(1))))
-                .andExpect(model().attribute("customer", hasProperty("account", is(customer.getAccount()))))
-                .andExpect(model().attribute("customer", hasProperty("orders", is(customer.getOrders()))))
                 .andExpect(forwardedUrl(VIEWS_CUSTOMER_FORM))
                 .andExpect(view().name(VIEWS_CUSTOMER_FORM));
 
@@ -186,9 +178,7 @@ public class TestCustomerController {
                 .andExpect(model().attribute("customer", hasProperty("birthDate", is("2000-VI-16"))))
                 .andExpect(model().attribute("customer", hasProperty("billingAddress", nullValue())))
                 .andExpect(model().attribute("customer", hasProperty("phoneNumber", is("123456789"))))
-                .andExpect(model().attribute("customer", hasProperty("numberOfOrders", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("account", nullValue())))
-                .andExpect(model().attribute("customer", hasProperty("orders", nullValue())))
+                .andExpect(model().attribute("customer", hasProperty("numberOfOrders", is(0))))
                 .andExpect(forwardedUrl(VIEWS_CUSTOMER_FORM))
                 .andExpect(view().name(VIEWS_CUSTOMER_FORM));
 
@@ -222,8 +212,6 @@ public class TestCustomerController {
         assertThat(formCustomer.getBirthDate(), is("2000-06-16"));
         assertThat(formCustomer.getBillingAddress(), nullValue());
         assertThat(formCustomer.getPhoneNumber(), is("123456789"));
-        assertThat(formCustomer.getNumberOfOrders(), nullValue());
-        assertThat(formCustomer.getAccount(), nullValue());
-        assertThat(formCustomer.getOrders(), nullValue());
+        assertThat(formCustomer.getNumberOfOrders(), is(0));
     }
 }

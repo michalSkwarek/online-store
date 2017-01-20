@@ -25,14 +25,14 @@ public class ImageController {
 
     @RequestMapping(value = "/productImages/{productId}")
     @ResponseBody
-    public byte[] getProductImage(@PathVariable long productId)  {
+    public byte[] showProductImage(@PathVariable long productId)  {
 
         return productService.read(productId).getProductImage().getData();
     }
 
     @RequestMapping(value = "/manufacturerImages/{manufacturerId}")
     @ResponseBody
-    public byte[] getManufacturerImage(@PathVariable long manufacturerId)  {
+    public byte[] showManufacturerLogo(@PathVariable long manufacturerId)  {
 
         return manufacturerService.read(manufacturerId).getLogo().getData();
     }

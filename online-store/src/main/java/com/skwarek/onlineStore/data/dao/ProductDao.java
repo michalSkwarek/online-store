@@ -4,16 +4,13 @@ import com.skwarek.onlineStore.data.dao.generic.GenericDao;
 import com.skwarek.onlineStore.data.entity.product.Product;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Michal on 26.09.2016.
  */
 public interface ProductDao extends GenericDao<Product, Long> {
 
-    boolean deleteProduct(Long id);
-
-    void updateProduct(Product product);
+    Product findProductByModel(String model);
 
     List findRandomFewProducts();
 
@@ -27,7 +24,11 @@ public interface ProductDao extends GenericDao<Product, Long> {
 
     List findProductsByPriceFilter(String low, String high, String priceOrder);
 
-    List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder);
+    List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String lowPrice, String highPrice, String priceOrder);
 
-    Product findProductByModel(String model);
+    void createProduct(Product product);
+
+    void updateProduct(Product product);
+
+    boolean deleteProduct(Long id);
 }

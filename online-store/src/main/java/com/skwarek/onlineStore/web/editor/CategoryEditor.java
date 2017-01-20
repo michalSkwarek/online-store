@@ -10,7 +10,7 @@ import java.beans.PropertyEditorSupport;
  */
 public class CategoryEditor extends PropertyEditorSupport {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     public CategoryEditor(CategoryService categoryService) {
         this.categoryService = categoryService;

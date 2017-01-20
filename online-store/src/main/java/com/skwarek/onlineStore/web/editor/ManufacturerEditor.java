@@ -10,7 +10,7 @@ import java.beans.PropertyEditorSupport;
  */
 public class ManufacturerEditor extends PropertyEditorSupport {
 
-    private ManufacturerService manufacturerService;
+    private final ManufacturerService manufacturerService;
 
     public ManufacturerEditor(ManufacturerService manufacturerService) {
         this.manufacturerService = manufacturerService;

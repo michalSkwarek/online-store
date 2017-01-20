@@ -1,14 +1,9 @@
 package com.skwarek.onlineStore.data.dao.impl;
 
 import com.skwarek.onlineStore.data.dao.ProductDao;
-import com.skwarek.onlineStore.data.dao.ProductSpecificationsDao;
-import com.skwarek.onlineStore.data.dao.UploadFileDao;
 import com.skwarek.onlineStore.data.dao.generic.GenericDaoImpl;
 import com.skwarek.onlineStore.data.entity.product.Product;
-import com.skwarek.onlineStore.data.entity.product.UploadFile;
-import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
 import org.hibernate.Query;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -21,30 +16,12 @@ import java.util.List;
 @Repository("productDao")
 public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements ProductDao {
 
-    @Autowired
-    private ProductSpecificationsDao productSpecificationsDao;
-
-    @Autowired
-    private UploadFileDao uploadFileDao;
-
     @Override
-    public boolean deleteProduct(Long id) {
-        Query removeProductQuery = getSession().createQuery("delete from Product p where p.id = :id");
-        removeProductQuery.setParameter("id", id);
-        return removeProductQuery.executeUpdate() > 0;
-    }
-
-    @Override
-    public void updateProduct(Product product) {
-        if (product.getProductImage() != null) {
-            UploadFile productImage = uploadFileDao.read(product.getProductImage().getId());
-            product.setProductImage(productImage);
-        }
-        if (product.getProductSpecifications() != null) {
-            ProductSpecifications productSpecifications = productSpecificationsDao.read(product.getProductSpecifications().getId());
-            product.setProductSpecifications(productSpecifications);
-        }
-        update(product);
+    public Product findProductByModel(String model) {
+        Query getProductQuery = getSession().createQuery("from Product p where p.model = :model");
+        getProductQuery.setParameter("model", model);
+        getProductQuery.setMaxResults(1);
+        return (Product) getProductQuery.uniqueResult();
     }
 
     @Override
@@ -99,7 +76,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
         } else if (!low.equals("") && high.equals("")) {
             return getProductsByPriceFilterWithLowParam(low, priceOrder);
         } else if (low.equals("") && !high.equals("")) {
-            return  getProductsByPriceFilterWithHighParam(high, priceOrder);
+            return getProductsByPriceFilterWithHighParam(high, priceOrder);
         } else {
             return getProductsByPriceFilterWithoutLowAndHighParams(priceOrder);
         }
@@ -138,18 +115,27 @@ public class ProductDaoImpl extends GenericDaoImpl<Product, Long> implements Pro
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String low, String high, String priceOrder) {
-        List<Product> listOfProducts = this.findProductsByPriceFilter(low, high, priceOrder);
+    public List<Product> findProductsByFilter(String[] categories, String[] manufacturers, String lowPrice, String highPrice, String priceOrder) {
+        List<Product> listOfProducts = this.findProductsByPriceFilter(lowPrice, highPrice, priceOrder);
         listOfProducts.retainAll(this.findProductsByCategoriesFilter(categories));
         listOfProducts.retainAll(this.findProductsByManufacturersFilter(manufacturers));
         return listOfProducts;
     }
 
     @Override
-    public Product findProductByModel(String model) {
-        Query getProductQuery = getSession().createQuery("from Product p where p.model = :model");
-        getProductQuery.setParameter("model", model);
-        getProductQuery.setMaxResults(1);
-        return (Product) getProductQuery.uniqueResult();
+    public void createProduct(Product product) {
+        create(product);
+    }
+
+    @Override
+    public void updateProduct(Product product) {
+        update(product);
+    }
+
+    @Override
+    public boolean deleteProduct(Long id) {
+        Query removeProductQuery = getSession().createQuery("delete from Product p where p.id = :id");
+        removeProductQuery.setParameter("id", id);
+        return removeProductQuery.executeUpdate() > 0;
     }
 }

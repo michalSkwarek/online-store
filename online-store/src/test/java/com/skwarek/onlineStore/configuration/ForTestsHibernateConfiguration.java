@@ -32,7 +32,7 @@ public class ForTestsHibernateConfiguration {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-        dataSource.setUrl("jdbc:hsqldb:mem:dataSource");
+        dataSource.setUrl("jdbc:hsqldb:file:dataSource");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         return dataSource;

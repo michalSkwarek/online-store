@@ -8,4 +8,5 @@ import com.skwarek.onlineStore.data.entity.product.UploadFile;
  */
 public interface UploadFileDao extends GenericDao<UploadFile, Long> {
 
+    void createFile(UploadFile file);
 }

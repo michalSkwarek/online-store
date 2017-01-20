@@ -1,16 +1,12 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
-import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Michal on 27.09.2016.
@@ -29,10 +25,6 @@ public class OS extends BaseEntity implements Serializable {
     @Column(name = "version")
     private String version;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "os")
-    private Set<ProductSpecifications> specifications = new HashSet<>();
-
     public OS() { }
 
     public String getName() {
@@ -49,14 +41,6 @@ public class OS extends BaseEntity implements Serializable {
 
     public void setVersion(String version) {
         this.version = version.equals("") ? null : version;
-    }
-
-    public Set<ProductSpecifications> getSpecifications() {
-        return specifications;
-    }
-
-    public void setSpecifications(Set<ProductSpecifications> specifications) {
-        this.specifications = specifications;
     }
 
     @Override

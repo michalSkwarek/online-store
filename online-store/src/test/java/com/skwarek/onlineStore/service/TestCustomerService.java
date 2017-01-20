@@ -55,9 +55,7 @@ public class TestCustomerService {
         assertEquals("2000-06-16", newCustomer.getBirthDate());
         assertNull(newCustomer.getBillingAddress());
         assertEquals("123456789", newCustomer.getPhoneNumber());
-        assertEquals(0, (int) newCustomer.getNumberOfOrders());
-        assertNull(newCustomer.getAccount());
-        assertNull(newCustomer.getOrders());
+        assertEquals(0, newCustomer.getNumberOfOrders());
 
         verify(customerDao, times(1)).createCustomer(newCustomer);
         verifyNoMoreInteractions(customerDao);

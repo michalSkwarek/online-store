@@ -53,7 +53,7 @@
                 <td>
                     <security:authorize  access="hasRole('ROLE_ADMIN')">
                         <div>
-                            <a href="<spring:url value="/admin/products/list" />"><spring:message code="menu.message.adminPage" /></a>
+                            <p><spring:message code="menu.message.adminPages" />:</p>
                         </div>
                     </security:authorize>
                 </td>
@@ -81,19 +81,8 @@
                         </div>
                     </security:authorize>
                     <security:authorize  access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')">
-
-                        <c:url value="/logout" var="logoutUrl" />
-                        <form action="${logoutUrl}" method="post" id="logoutForm">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                        </form>
-                        <script>
-                            function formSubmit() {
-                                document.getElementById("logoutForm").submit();
-                            }
-                        </script>
-
                         <div class="text-right">
-                            <a href="javascript:formSubmit()"><spring:message code="header.message.logout" /></a>
+                            <a href="/logout"><spring:message code="header.message.logout" /></a>
                         </div>
                     </security:authorize>
                 </td>

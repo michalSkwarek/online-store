@@ -23,9 +23,10 @@ import java.util.List;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    private static final String VIEWS_PRODUCTS_LIST = "products/list";
-    private static final String VIEWS_PRODUCT_SPECIFICATIONS = "products/specifications";
-    private static final String VIEWS_ERROR = "error";
+    private final static String VIEWS_PRODUCTS_LIST = "products/list";
+    private final static String VIEWS_PRODUCT_SPECIFICATIONS = "products/specifications";
+    private final static String VIEWS_ERROR = "error";
+
     private final ProductService productService;
     private final CategoryService categoryService;
     private final ManufacturerService manufacturerService;
@@ -56,13 +57,13 @@ public class ProductController {
     }
 
     @RequestMapping(value = {"/list", "/category/**"}, method = RequestMethod.POST)
-    public String showProducts(Model model, @RequestParam(value = "category", required = false) String[] categories,
+    public String showProductsByFilter(Model model, @RequestParam(value = "category", required = false) String[] categories,
                                @RequestParam(value = "manufacturer", required = false) String[] manufacturers,
-                               @RequestParam(value = "fromPriceRange") String low,
-                               @RequestParam(value = "toPriceRange") String high,
+                               @RequestParam(value = "fromPriceRange") String lowPrice,
+                               @RequestParam(value = "toPriceRange") String highPrice,
                                @RequestParam String priceOrder) {
 
-        List<Product> products = productService.findProductsByFilter(categories, manufacturers, low, high, priceOrder);
+        List<Product> products = productService.findProductsByFilter(categories, manufacturers, lowPrice, highPrice, priceOrder);
 
         if (products == null || products.isEmpty()) {
             return VIEWS_ERROR;
@@ -74,7 +75,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/{id}")
-    public String getProductById(Model model, @PathVariable Long id) {
+    public String showProduct(Model model, @PathVariable Long id) {
 
         model.addAttribute("product", productService.read(id));
         return VIEWS_PRODUCT_SPECIFICATIONS;

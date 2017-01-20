@@ -42,7 +42,7 @@ public class Product extends BaseEntity implements Serializable {
     @JoinColumn(name = "product_image_id")
     private UploadFile productImage;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specifications_id")
     private ProductSpecifications productSpecifications;
 

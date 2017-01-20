@@ -17,8 +17,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ProductSpecificationsServiceImpl extends GenericServiceImpl<ProductSpecifications, Long> implements ProductSpecificationsService {
 
+    private final ProductSpecificationsDao productSpecificationsDao;
+
     @Autowired
-    private ProductSpecificationsDao productSpecificationsDao;
+    public ProductSpecificationsServiceImpl(ProductSpecificationsDao productSpecificationsDao) {
+        this.productSpecificationsDao = productSpecificationsDao;
+    }
 
     @Override
     public void createSpecifications(ProductSpecifications productSpecifications, Product product) {

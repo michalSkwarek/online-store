@@ -11,4 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository("ShippingDetailDao")
 public class ShippingDetailDaoImpl extends GenericDaoImpl<ShippingDetail, Long> implements ShippingDetailDao {
 
+    @Override
+    public void createShippingDetail(ShippingDetail shippingDetail) {
+        create(shippingDetail);
+    }
 }

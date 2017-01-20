@@ -1,7 +1,6 @@
 package com.skwarek.onlineStore.data.entity.product.specifications;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
-import com.skwarek.onlineStore.data.entity.product.Product;
 import com.skwarek.onlineStore.data.entity.product.specifications.modules.*;
 
 import javax.persistence.*;
@@ -15,15 +14,15 @@ import java.io.Serializable;
 @Table(name = "specifications")
 public class ProductSpecifications extends BaseEntity implements Serializable {
 
-
     private static final long serialVersionUID = 2338356791547882364L;
+
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cpu_id")
     private CPU cpu;
 
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "gpu_id")
     private GPU gpu;
 
@@ -36,7 +35,7 @@ public class ProductSpecifications extends BaseEntity implements Serializable {
     private Storage storage;
 
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "display_id")
     private Display display;
 
@@ -49,7 +48,7 @@ public class ProductSpecifications extends BaseEntity implements Serializable {
     private PowerSupply powerSupply;
 
     @Valid
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "os_id")
     private OS os;
 
@@ -68,9 +67,6 @@ public class ProductSpecifications extends BaseEntity implements Serializable {
     @Valid
     @Embedded
     private Weight weight;
-
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "productSpecifications")
-    private Product product;
 
     public ProductSpecifications() { }
 
@@ -168,14 +164,6 @@ public class ProductSpecifications extends BaseEntity implements Serializable {
 
     public void setWeight(Weight weight) {
         this.weight = weight;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
     @Override

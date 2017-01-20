@@ -1,16 +1,13 @@
 package com.skwarek.onlineStore.data.entity.product.specifications.modules;
 
 import com.skwarek.onlineStore.data.entity.BaseEntity;
-import com.skwarek.onlineStore.data.entity.product.specifications.ProductSpecifications;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Michal on 30.09.2016.
@@ -31,10 +28,6 @@ public class GPU extends BaseEntity implements Serializable {
 
     @Column(name = "memory_type")
     private String type;
-
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "gpu")
-    private Set<ProductSpecifications> specifications = new HashSet<>();
 
     public GPU() { }
 
@@ -60,14 +53,6 @@ public class GPU extends BaseEntity implements Serializable {
 
     public void setType(String type) {
         this.type = type.equals("") ? null : type;
-    }
-
-    public Set<ProductSpecifications> getSpecifications() {
-        return specifications;
-    }
-
-    public void setSpecifications(Set<ProductSpecifications> specifications) {
-        this.specifications = specifications;
     }
 
     @Override

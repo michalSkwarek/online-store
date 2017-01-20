@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,14 +43,14 @@ public class Customer extends BaseEntity implements Serializable {
     private String phoneNumber;
 
     @Column(name = "number_of_orders")
-    private Integer numberOfOrders;
+    private int numberOfOrders;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private Account account;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
 
     public Customer() { }
 
@@ -93,11 +94,11 @@ public class Customer extends BaseEntity implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getNumberOfOrders() {
+    public int getNumberOfOrders() {
         return numberOfOrders;
     }
 
-    public void setNumberOfOrders(Integer numberOfOrders) {
+    public void setNumberOfOrders(int numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
     }
 

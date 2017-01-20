@@ -22,7 +22,7 @@ public interface OrderService extends GenericService<Order, Long> {
 
     void updateQuantitiesInCart(String[] quantities, CartModel cart);
 
-    void setShippingAddressToCart(Address address, CartModel cart);
+    void addShippingAddressToCart(Address address, CartModel cart);
 
     void saveOrder(Customer customer, CartModel cart);
 }

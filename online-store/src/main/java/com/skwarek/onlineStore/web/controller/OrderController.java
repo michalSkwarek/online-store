@@ -27,13 +27,15 @@ import java.util.List;
 @RequestMapping(value = "/order")
 public class OrderController {
 
-    private static final String VIEWS_ORDERS_LIST = "orders/list";
-    private static final String VIEWS_CART = "orders/cart";
-    private static final String VIEWS_CONFIRM_ORDER = "orders/confirm";
-    private static final String VIEWS_ADDRESS_FORM = "addresses/addressData";
-    private static final String VIEWS_PRODUCT_UNAVAILABLE = "orders/productUnavailable";
-    private static final String VIEWS_THANKS = "orders/thanks";
-    private static final String VIEWS_CANCEL = "orders/cancel";
+    private final static String VIEWS_ORDERS_LIST = "orders/list";
+    private final static String VIEWS_CART = "orders/cart";
+    private final static String VIEWS_CONFIRM_ORDER = "orders/confirm";
+    private final static String VIEWS_ADDRESS_FORM = "addresses/addressData";
+    private final static String VIEWS_PRODUCT_UNAVAILABLE = "orders/productUnavailable";
+    private final static String VIEWS_THANKS = "orders/thanks";
+    private final static String VIEWS_CANCEL = "orders/cancel";
+    private final static String REDIRECT_TO = "redirect:";
+
     private final ProductService productService;
     private final AccountService accountService;
     private final OrderService orderService;
@@ -66,7 +68,7 @@ public class OrderController {
 
         orderService.addProductToCart(product, cart);
         model.addAttribute("cart", cart);
-        return "redirect:/order/myCart";
+        return REDIRECT_TO + "/order/myCart";
     }
 
     @RequestMapping(value = "/deleteProduct")
@@ -76,11 +78,11 @@ public class OrderController {
         CartModel cart = CartUtils.getCartModelInSession(request);
         orderService.removeProductFromCart(product, cart);
         model.addAttribute("cart", cart);
-        return "redirect:/order/myCart";
+        return REDIRECT_TO + "/order/myCart";
     }
 
     @RequestMapping(value = "/myCart", method = RequestMethod.GET)
-    public String getCart(HttpServletRequest request, Model model) {
+    public String showCart(HttpServletRequest request, Model model) {
 
         CartModel cart = CartUtils.getCartModelInSession(request);
         model.addAttribute("cart", cart);
@@ -92,7 +94,7 @@ public class OrderController {
 
         CartModel cart = CartUtils.getCartModelInSession(request);
         orderService.updateQuantitiesInCart(quantities, cart);
-        return "redirect:/order/myCart";
+        return REDIRECT_TO + "/order/myCart";
     }
 
     @RequestMapping(value = "/{username}/address", method = RequestMethod.GET)
@@ -107,8 +109,8 @@ public class OrderController {
     public String processCreateShippingAddressForm(@PathVariable String username, HttpServletRequest request, Address address) {
 
         CartModel cart = CartUtils.getCartModelInSession(request);
-        orderService.setShippingAddressToCart(address, cart);
-        return "redirect:/order/" + username + "/confirm";
+        orderService.addShippingAddressToCart(address, cart);
+        return REDIRECT_TO + "/order/" + username + "/confirm";
     }
 
     @RequestMapping(value = "/{username}/confirm", method = RequestMethod.GET)
@@ -130,7 +132,7 @@ public class OrderController {
         Customer customer = accountService.findAccountByUsername(username).getCustomer();
         orderService.saveOrder(customer, cart);
         CartUtils.removeCartModelInSession(request);
-        return "redirect:/order/" + username + "/thanks";
+        return REDIRECT_TO + "/order/" + username + "/thanks";
     }
 
     @RequestMapping(value = "/{username}/thanks")
