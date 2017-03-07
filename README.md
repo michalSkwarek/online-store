@@ -6,5 +6,5 @@ Online store with panel of user and administrator with validation and i18n
 - Hibernate 5
 - JUnit, Mockito
 - HTML5, CSS3, JSP, Apache Tiles
-- SQL, MySql, HSQLDB
+- SQL, MySQL, HSQLDB
 - Maven
