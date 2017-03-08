@@ -1,5 +1,5 @@
 # online-store
-Online store with panel of user and administrator with validation and i18n
+An online store that contains an user panel and an administration panel
 ### Technologies
 - Java 7
 - Spring 4 (MVC, Security, Test)
